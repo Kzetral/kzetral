@@ -1,610 +1,192 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KZETRAL — Pour un monde mieux.</title>
-<meta name="description" content="KZETRAL — Une nouvelle vision de l'automobile et des mobilités de demain.">
-
+<meta name="description" content="KZETRAL — Un projet automobile tourné vers l'innovation et les mobilités de demain.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --white: #ffffff;
-  --black: #08090b;
-  --grey: #a5a9ae;
-  --accent: #b9d5e8;
-  --font: "Manrope", Arial, sans-serif;
-}
+:root{--black:#08090b;--grey:#a5a9ae;--accent:#b9d5e8;--font:"Manrope",Arial,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:var(--font);background:#fff;color:var(--black);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+::selection{background:#b9d5e8;color:#08090b}
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-
-body {
-  font-family: var(--font);
-  background: white;
-  color: var(--black);
-  overflow-x: hidden;
-}
-
-a { text-decoration: none; color: inherit; }
-button { font: inherit; }
-
-::selection { background: #b9d5e8; color: #08090b; }
-
-/* NAVIGATION */
-
-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 94px;
-  padding: 0 7%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 100;
-  color: white;
-  border-bottom: 1px solid rgba(255,255,255,.15);
-}
-
-.brand { font-size: 25px; font-weight: 800; letter-spacing: 5px; }
-.brand sup { font-size: 9px; letter-spacing: 0; }
-
-.nav-links { display: flex; gap: 42px; align-items: center; }
-
-.nav-links a {
-  position: relative;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: rgba(255,255,255,.82);
-  transition: color .3s;
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--accent);
-  transition: width .35s ease;
-}
-
-.nav-links a:hover { color: white; }
-.nav-links a:hover::after { width: 100%; }
-
-.nav-right { display: flex; align-items: center; gap: 25px; }
-
-.language {
-  border: 0;
-  background: transparent;
-  color: white;
-  cursor: pointer;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  transition: color .3s, transform .3s;
-}
-
-.language:hover { color: var(--accent); transform: translateY(-2px); }
-
-.nav-contact {
-  padding: 13px 20px;
-  border: 1px solid rgba(255,255,255,.7);
-  font-size: 10px;
-  letter-spacing: 1px;
-  font-weight: 700;
-  white-space: nowrap;
-  transition: .35s ease;
-}
-
-.nav-contact:hover {
-  color: #08090b;
-  background: white;
-  border-color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255,255,255,.12);
-}
-
-.menu-button {
-  display: none;
-  background: none;
-  border: 0;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-  transition: transform .3s;
-}
-
-.menu-button:hover { transform: scale(1.12); }
+/* HEADER */
+header{position:absolute;top:0;left:0;width:100%;height:94px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;z-index:100;color:white;border-bottom:1px solid rgba(255,255,255,.15)}
+.brand{font-size:25px;font-weight:800;letter-spacing:5px}
+.brand sup{font-size:9px;letter-spacing:0}
+.nav-links{display:flex;gap:42px;align-items:center}
+.nav-links a{position:relative;font-size:11px;font-weight:600;letter-spacing:1px;color:rgba(255,255,255,.82);transition:.3s}
+.nav-links a:hover{color:white}
+.nav-links a:after{content:"";position:absolute;bottom:-8px;left:0;width:0;height:1px;background:var(--accent);transition:width .35s}
+.nav-links a:hover:after{width:100%}
+.nav-right{display:flex;align-items:center;gap:22px}
+.language{border:0;background:transparent;color:white;cursor:pointer;font-size:11px;font-weight:700;letter-spacing:1px}
+.language:hover{color:var(--accent)}
+.nav-contact{padding:13px 20px;border:1px solid rgba(255,255,255,.7);font-size:10px;letter-spacing:1px;font-weight:700;white-space:nowrap;transition:.3s}
+.nav-contact:hover{background:white;color:#08090b}
+.menu-button{display:none;background:none;border:0;color:white;cursor:pointer;font-size:11px;font-weight:700;letter-spacing:1.5px}
 
 /* HERO */
-
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100svh;
-  min-height: 680px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-  color: white;
-  background: #111820;
-}
-
-.hero-background {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 50% 42%, rgba(89,112,130,.22), transparent 55%),
-    linear-gradient(135deg, #202a34 0%, #111820 48%, #08090b 100%);
-  transform: scale(1.04);
-  animation: backgroundReveal 1.8s ease forwards;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(0,0,0,.12), transparent 40%, rgba(0,0,0,.4)),
-    radial-gradient(ellipse at center, transparent 5%, rgba(0,0,0,.18) 100%);
-  pointer-events: none;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-top: 65px;
-  animation: contentReveal 1.2s ease both;
-}
-
-.hero-overline {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 6px;
-  color: rgba(255,255,255,.82);
-  margin-bottom: 28px;
-}
-
-.hero h1 {
-  font-size: clamp(76px, 13.5vw, 190px);
-  font-weight: 800;
-  letter-spacing: -.095em;
-  line-height: .86;
-  white-space: nowrap;
-  text-shadow: 0 8px 45px rgba(0,0,0,.2);
-}
-
-.hero h1 span {
-  display: block;
-  font-size: .35em;
-  font-weight: 500;
-  letter-spacing: .25em;
-  margin-top: 30px;
-  margin-left: 0;
-  text-align: center;
-}
-
-.hero-description {
-  font-size: 13px;
-  line-height: 2;
-  max-width: 520px;
-  margin: 42px auto 32px;
-  color: rgba(255,255,255,.82);
-}
-
-.hero-actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 13px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  position: relative;
-  overflow: hidden;
-  min-width: 190px;
-  padding: 17px 24px;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform .35s ease, background .35s ease, color .35s ease, border-color .35s ease, box-shadow .35s ease;
-}
-
-.btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 80%;
-  height: 100%;
-  background: linear-gradient(110deg, transparent, rgba(255,255,255,.35), transparent);
-  transform: skewX(-20deg);
-  transition: left .65s ease;
-  pointer-events: none;
-}
-
-.btn:hover::before { left: 140%; }
-.btn:hover { transform: translateY(-5px); box-shadow: 0 12px 28px rgba(0,0,0,.2); }
-.btn:active { transform: translateY(-1px) scale(.97); box-shadow: none; }
-
-.btn-white { background: white; color: #090a0c; border: 1px solid white; }
-.btn-white:hover { background: transparent; color: white; border-color: white; }
-
-.btn-transparent { color: white; border: 1px solid rgba(255,255,255,.65); background: transparent; }
-.btn-transparent:hover { background: white; color: #090a0c; border-color: white; }
-
-.hero-bottom {
-  position: absolute;
-  z-index: 3;
-  bottom: 34px;
-  left: 7%;
-  right: 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: rgba(255,255,255,.7);
-  font-size: 9px;
-  letter-spacing: 2px;
-}
-
-.hero-bottom span:last-child { display: flex; align-items: center; gap: 15px; }
-
-.hero-bottom span:last-child::after {
-  content: "";
-  height: 1px;
-  width: 55px;
-  background: white;
-  animation: linePulse 2s infinite ease-in-out;
-}
+.hero{position:relative;width:100%;height:100svh;min-height:680px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;color:white;background:#111820}
+.hero-background{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,rgba(89,112,130,.22),transparent 55%),linear-gradient(135deg,#202a34 0%,#111820 48%,#08090b 100%);transform:scale(1.04);animation:backgroundReveal 1.8s ease forwards}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.12),transparent 40%,rgba(0,0,0,.4));pointer-events:none}
+.hero-content{position:relative;z-index:2;width:90%;max-width:1200px;margin:auto;padding-top:65px;animation:contentReveal 1.2s ease both}
+.hero-overline{font-size:10px;font-weight:700;letter-spacing:6px;color:rgba(255,255,255,.82);margin-bottom:28px}
+.hero h1{font-size:clamp(76px,13.5vw,190px);font-weight:800;letter-spacing:-.095em;line-height:.86;white-space:nowrap}
+.hero h1 span{display:block;font-size:.35em;font-weight:500;letter-spacing:.25em;margin-top:30px}
+.hero-description{font-size:13px;line-height:2;max-width:520px;margin:42px auto 32px;color:rgba(255,255,255,.82)}
+.hero-actions{display:flex;justify-content:center;align-items:center;gap:13px;flex-wrap:wrap}
+.btn{position:relative;overflow:hidden;min-width:190px;padding:17px 24px;font-size:10px;font-weight:800;letter-spacing:1.5px;display:inline-flex;justify-content:center;align-items:center;transition:.35s}
+.btn:hover{transform:translateY(-5px);box-shadow:0 12px 28px rgba(0,0,0,.2)}
+.btn-white{background:white;color:#090a0c;border:1px solid white}
+.btn-white:hover{background:transparent;color:white}
+.btn-transparent{color:white;border:1px solid rgba(255,255,255,.65)}
+.btn-transparent:hover{background:white;color:#090a0c}
+.hero-bottom{position:absolute;z-index:3;bottom:34px;left:7%;right:7%;display:flex;justify-content:space-between;color:rgba(255,255,255,.7);font-size:9px;letter-spacing:2px}
+.hero-bottom span:last-child:after{content:"";display:inline-block;height:1px;width:55px;background:white;margin-left:15px;vertical-align:middle;animation:linePulse 2s infinite}
 
 /* INTRO */
-
-.intro {
-  padding: 155px 10%;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 80px;
-  align-items: start;
-}
-
-.section-label { font-size: 10px; font-weight: 800; letter-spacing: 3px; color: #858b91; }
-.intro-content { max-width: 850px; }
-
-.intro-content h2 {
-  font-size: clamp(35px, 5vw, 66px);
-  font-weight: 600;
-  letter-spacing: -.065em;
-  line-height: 1.15;
-  margin-bottom: 32px;
-}
-
-.intro-content p { color: #777e84; font-size: 13px; line-height: 2; max-width: 570px; }
+.intro{padding:155px 10%;display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
+.section-label{font-size:10px;font-weight:800;letter-spacing:3px;color:#858b91}
+.intro-content{max-width:850px}
+.intro-content h2{font-size:clamp(35px,5vw,66px);font-weight:600;letter-spacing:-.065em;line-height:1.15;margin-bottom:32px}
+.intro-content p{color:#777e84;font-size:13px;line-height:2;max-width:570px}
 
 /* EH-X */
+.ehx{min-height:750px;position:relative;display:flex;align-items:center;overflow:hidden;color:white;background:#111820}
+.ehx-image{position:absolute;inset:0;background:radial-gradient(ellipse at 75% 45%,rgba(115,145,166,.2),transparent 45%),linear-gradient(110deg,#080b0f,#17212a 55%,#0b1015)}
+.ehx:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.22),transparent 75%)}
+.ehx-content{position:relative;z-index:2;margin-left:10%;max-width:580px;padding:90px 0}
+.ehx-content .section-label{color:rgba(255,255,255,.65)}
+.ehx-content h2{font-size:clamp(75px,11vw,135px);font-weight:800;line-height:.85;letter-spacing:-.09em;margin:30px 0}
+.ehx-content h2 span{display:block;font-size:.36em;letter-spacing:.45em;font-weight:500;margin-top:25px;margin-left:.15em}
+.ehx-content p{max-width:420px;font-size:13px;line-height:2;color:rgba(255,255,255,.78);margin-bottom:32px}
+.ehx-number{position:absolute;right:7%;bottom:38px;font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.7)}
 
-.ehx {
-  min-height: 750px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  color: white;
-  background: #111820;
-}
-
-.ehx-image {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 75% 45%, rgba(115,145,166,.2), transparent 45%),
-    linear-gradient(110deg, #080b0f 0%, #17212a 55%, #0b1015 100%);
-}
-
-.ehx::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(0,0,0,.22), transparent 75%);
-  pointer-events: none;
-}
-
-.ehx-content { position: relative; z-index: 2; margin-left: 10%; max-width: 580px; padding: 90px 0; }
-.ehx-content .section-label { color: rgba(255,255,255,.65); }
-
-.ehx-content h2 {
-  font-size: clamp(75px, 11vw, 135px);
-  font-weight: 800;
-  line-height: .85;
-  letter-spacing: -.09em;
-  margin: 30px 0;
-}
-
-.ehx-content h2 span {
-  display: block;
-  font-size: .36em;
-  letter-spacing: .45em;
-  font-weight: 500;
-  margin-top: 25px;
-  margin-left: .15em;
-}
-
-.ehx-content p { max-width: 420px; font-size: 13px; line-height: 2; color: rgba(255,255,255,.78); margin-bottom: 32px; }
-.ehx-number { position: absolute; right: 7%; bottom: 38px; font-size: 10px; letter-spacing: 3px; color: rgba(255,255,255,.7); }
-
-/* NUMBERS */
-
-.numbers { padding: 130px 9%; background: #f6f7f8; }
-.numbers-heading { text-align: center; margin-bottom: 80px; }
-
-.numbers-heading h2 { font-size: clamp(35px, 5vw, 62px); letter-spacing: -.06em; margin-top: 20px; }
-.numbers-heading p { font-size: 12px; color: #81868b; margin-top: 18px; }
-
-.numbers-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid #d9dde0;
-  border-bottom: 1px solid #d9dde0;
-}
-
-.number-card { text-align: center; padding: 40px 12px; border-right: 1px solid #d9dde0; }
-.number-card:last-child { border: 0; }
-.number-card strong { display: block; font-size: clamp(32px, 4.3vw, 59px); letter-spacing: -.07em; font-weight: 600; }
-.number-card span { display: block; margin-top: 12px; font-size: 10px; color: #858b91; letter-spacing: 1px; }
-
-.disclaimer { text-align: center; margin-top: 24px; font-size: 10px; line-height: 1.7; color: #8b9095; }
+/* OBJECTIFS */
+.numbers{padding:130px 9%;background:#f6f7f8}
+.numbers-heading{text-align:center;margin-bottom:80px}
+.numbers-heading h2{font-size:clamp(35px,5vw,62px);letter-spacing:-.06em;margin-top:20px}
+.numbers-heading p{font-size:12px;color:#81868b;margin-top:18px}
+.numbers-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #d9dde0;border-bottom:1px solid #d9dde0}
+.number-card{text-align:center;padding:40px 12px;border-right:1px solid #d9dde0}
+.number-card:last-child{border:0}
+.number-card strong{display:block;font-size:clamp(32px,4.3vw,59px);letter-spacing:-.07em;font-weight:600}
+.number-card span{display:block;margin-top:12px;font-size:10px;color:#858b91;letter-spacing:1px}
+.disclaimer{text-align:center;margin-top:24px;font-size:10px;line-height:1.7;color:#8b9095}
 
 /* TECHNOLOGY */
-
-.technology { padding: 140px 9%; }
-
-.tech-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  margin-bottom: 55px;
-  gap: 30px;
-}
-
-.tech-heading h2 { font-size: clamp(38px, 5.5vw, 70px); letter-spacing: -.07em; line-height: 1; margin-top: 22px; }
-.tech-heading p { color: #858b91; font-size: 12px; line-height: 1.9; max-width: 300px; }
-
-.tech-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 18px; }
-
-.tech-card {
-  position: relative;
-  min-height: 440px;
-  overflow: hidden;
-  background: #151c23;
-  color: white;
-  transition: transform .45s ease, box-shadow .45s ease;
-}
-
-.tech-card:hover { transform: translateY(-6px); box-shadow: 0 18px 35px rgba(0,0,0,.12); }
-
-.tech-card-image {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 70% 25%, rgba(137,168,190,.25), transparent 50%),
-    linear-gradient(135deg, #263746, #10161d 70%);
-  transition: transform .8s;
-}
-
-.tech-two {
-  background:
-    radial-gradient(ellipse at 25% 30%, rgba(137,168,190,.2), transparent 50%),
-    linear-gradient(145deg, #202b36, #0d1116 75%);
-}
-
-.tech-card:hover .tech-card-image { transform: scale(1.04); }
-
-.tech-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(0deg, rgba(0,0,0,.7), transparent 85%);
-}
-
-.tech-card-content { position: absolute; z-index: 2; left: 34px; right: 34px; bottom: 34px; }
-.tech-card-content span { font-size: 9px; letter-spacing: 2px; color: rgba(255,255,255,.7); }
-.tech-card-content h3 { font-size: 27px; letter-spacing: -.04em; margin: 12px 0; }
-.tech-card-content p { font-size: 12px; line-height: 1.8; max-width: 390px; color: rgba(255,255,255,.75); }
+.technology{padding:140px 9%}
+.tech-heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:55px;gap:30px}
+.tech-heading h2{font-size:clamp(38px,5.5vw,70px);letter-spacing:-.07em;line-height:1;margin-top:22px}
+.tech-heading p{color:#858b91;font-size:12px;line-height:1.9;max-width:300px}
+.tech-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:18px}
+.tech-card{position:relative;min-height:440px;overflow:hidden;background:#151c23;color:white;transition:.45s}
+.tech-card:hover{transform:translateY(-6px);box-shadow:0 18px 35px rgba(0,0,0,.12)}
+.tech-card-image{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 25%,rgba(137,168,190,.25),transparent 50%),linear-gradient(135deg,#263746,#10161d 70%);transition:transform .8s}
+.tech-two{background:radial-gradient(ellipse at 25% 30%,rgba(137,168,190,.2),transparent 50%),linear-gradient(145deg,#202b36,#0d1116 75%)}
+.tech-card:hover .tech-card-image{transform:scale(1.04)}
+.tech-card:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.7),transparent 85%)}
+.tech-card-content{position:absolute;z-index:2;left:34px;right:34px;bottom:34px}
+.tech-card-content span{font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.7)}
+.tech-card-content h3{font-size:27px;letter-spacing:-.04em;margin:12px 0}
+.tech-card-content p{font-size:12px;line-height:1.8;max-width:390px;color:rgba(255,255,255,.75)}
 
 /* VISION */
-
-.vision {
-  min-height: 650px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: #090b0e;
-  color: white;
-}
-
-.vision-image {
-  background:
-    radial-gradient(ellipse at 50% 45%, rgba(107,137,157,.23), transparent 55%),
-    linear-gradient(135deg, #1b2731, #0a0d11);
-  min-height: 500px;
-  position: relative;
-}
-
-.vision-image::after {
-  content: "KZETRAL";
-  position: absolute;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: clamp(40px, 7vw, 100px);
-  font-weight: 800;
-  letter-spacing: -.08em;
-  color: rgba(255,255,255,.055);
-}
-
-.vision-content { display: flex; flex-direction: column; justify-content: center; padding: 100px 12%; }
-
-.vision-content h2 {
-  font-size: clamp(36px, 4.5vw, 60px);
-  line-height: 1.12;
-  letter-spacing: -.07em;
-  margin: 28px 0;
-}
-
-.vision-content p:last-child { color: #a0a6ad; font-size: 13px; line-height: 2; max-width: 450px; }
+.vision{min-height:650px;display:grid;grid-template-columns:1fr 1fr;background:#090b0e;color:white}
+.vision-image{background:radial-gradient(ellipse at 50% 45%,rgba(107,137,157,.23),transparent 55%),linear-gradient(135deg,#1b2731,#0a0d11);min-height:500px;position:relative}
+.vision-image:after{content:"KZETRAL";position:absolute;inset:0;display:flex;justify-content:center;align-items:center;font-size:clamp(40px,7vw,100px);font-weight:800;letter-spacing:-.08em;color:rgba(255,255,255,.055)}
+.vision-content{display:flex;flex-direction:column;justify-content:center;padding:100px 12%}
+.vision-content h2{font-size:clamp(36px,4.5vw,60px);line-height:1.12;letter-spacing:-.07em;margin:28px 0}
+.vision-content p:last-child{color:#a0a6ad;font-size:13px;line-height:2;max-width:450px}
 
 /* FOOTER */
+footer{padding:75px 8% 25px;background:#08090b;color:white}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;padding-bottom:75px}
+.footer-logo{font-size:27px;font-weight:800;letter-spacing:5px}
+.footer-brand p{color:#777f88;font-size:11px;margin-top:18px}
+.footer-column{display:flex;flex-direction:column;gap:15px}
+.footer-column h4{font-size:9px;letter-spacing:2px;color:#7f8790;margin-bottom:10px}
+.footer-column a{font-size:11px;color:#d1d4d7;transition:.25s}
+.footer-column a:hover{color:white;transform:translateX(4px)}
+.footer-bottom{border-top:1px solid #282c30;padding-top:22px;display:flex;justify-content:space-between;gap:20px;font-size:9px;color:#777f88;letter-spacing:.5px}
+.footer-bottom a:hover{color:white}
 
-footer { padding: 75px 8% 25px; background: #08090b; color: white; }
-
-.footer-top {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 50px;
-  padding-bottom: 75px;
-}
-
-.footer-logo { font-size: 27px; font-weight: 800; letter-spacing: 5px; }
-.footer-brand p { color: #777f88; font-size: 11px; margin-top: 18px; }
-
-.footer-column { display: flex; flex-direction: column; gap: 15px; }
-.footer-column h4 { font-size: 9px; letter-spacing: 2px; color: #7f8790; margin-bottom: 10px; }
-
-.footer-column a {
-  font-size: 11px;
-  color: #d1d4d7;
-  transition: color .25s, transform .25s;
-}
-
-.footer-column a:hover { color: white; transform: translateX(4px); }
-
-.footer-bottom {
-  border-top: 1px solid #282c30;
-  padding-top: 22px;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  font-size: 9px;
-  color: #777f88;
-  letter-spacing: .5px;
-}
-
-.footer-bottom a { transition: color .3s; }
-.footer-bottom a:hover { color: white; }
-
-/* REVEAL */
-
-.reveal { opacity: 0; transform: translateY(35px); transition: opacity .9s ease, transform .9s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-@keyframes backgroundReveal { from { transform: scale(1.12); } to { transform: scale(1.04); } }
-@keyframes contentReveal { from { opacity: 0; transform: translateY(35px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes linePulse { 0%, 100% { opacity: .45; transform: scaleX(.7); } 50% { opacity: 1; transform: scaleX(1); } }
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .9s,transform .9s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes backgroundReveal{from{transform:scale(1.12)}to{transform:scale(1.04)}}
+@keyframes contentReveal{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+@keyframes linePulse{0%,100%{opacity:.45;transform:scaleX(.7)}50%{opacity:1;transform:scaleX(1)}}
+@keyframes menuReveal{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 
 /* MOBILE */
-
-@media(max-width: 850px) {
-  header { height: 75px; padding: 0 5%; }
-  .menu-button { display: block; }
-
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 75px;
-    left: 0;
-    width: 100%;
-    background: rgba(8,9,11,.97);
-    padding: 25px 7%;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 25px;
-  }
-
-  .nav-links.open { display: flex; animation: menuReveal .3s ease both; }
-
-  /* Le bouton Contact reste dans l'en-tête, jamais dans le menu */
-
-  .hero { min-height: 650px; }
-  .hero h1 { font-size: clamp(65px, 15vw, 115px); }
-  .hero h1 span { font-size: .3em; letter-spacing: .45em; }
-  .intro { display: block; padding: 100px 8%; }
-  .intro-content { margin-top: 45px; }
-  .ehx { min-height: 680px; }
-  .ehx-content { margin-left: 8%; margin-right: 8%; }
-  .numbers { padding: 100px 7%; }
-  .numbers-grid { grid-template-columns: repeat(2, 1fr); }
-  .number-card:nth-child(2) { border-right: 0; }
-  .number-card:nth-child(-n+2) { border-bottom: 1px solid #d9dde0; }
-  .technology { padding: 100px 7%; }
-  .tech-heading { display: block; }
-  .tech-heading p { margin-top: 25px; }
-  .tech-grid { grid-template-columns: 1fr; }
-  .tech-card { min-height: 380px; }
-  .vision { grid-template-columns: 1fr; }
-  .vision-image { min-height: 350px; }
-  .vision-content { padding: 85px 8%; }
-  .footer-top { grid-template-columns: 1fr 1fr; gap: 45px 25px; }
-  .footer-brand { grid-column: span 2; }
+@media(max-width:850px){
+header{height:75px;padding:0 5%}
+.menu-button{display:block}
+.nav-links{display:none;position:absolute;top:75px;left:0;width:100%;background:rgba(8,9,11,.97);padding:25px 7%;flex-direction:column;align-items:flex-start;gap:25px}
+.nav-links.open{display:flex;animation:menuReveal .3s ease both}
+.hero{min-height:650px}
+.hero h1{font-size:clamp(65px,15vw,115px)}
+.hero h1 span{font-size:.3em;letter-spacing:.45em}
+.intro{display:block;padding:100px 8%}
+.intro-content{margin-top:45px}
+.ehx{min-height:680px}
+.ehx-content{margin-left:8%;margin-right:8%}
+.numbers{padding:100px 7%}
+.numbers-grid{grid-template-columns:repeat(2,1fr)}
+.number-card:nth-child(2){border-right:0}
+.number-card:nth-child(-n+2){border-bottom:1px solid #d9dde0}
+.technology{padding:100px 7%}
+.tech-heading{display:block}
+.tech-heading p{margin-top:25px}
+.tech-grid{grid-template-columns:1fr}
+.tech-card{min-height:380px}
+.vision{grid-template-columns:1fr}
+.vision-image{min-height:350px}
+.vision-content{padding:85px 8%}
+.footer-top{grid-template-columns:1fr 1fr;gap:45px 25px}
+.footer-brand{grid-column:span 2}
 }
-
-@media(max-width: 480px) {
-  header { padding: 0 4%; }
-  .brand { font-size: 19px; letter-spacing: 3px; }
-  .nav-right { gap: 12px; }
-  .nav-contact { padding: 10px 9px; font-size: 8px; letter-spacing: .5px; }
-  .language { font-size: 10px; }
-  .menu-button { font-size: 22px; }
-  .hero { min-height: 630px; }
-  .hero-content { width: 94%; }
-  .hero h1 { font-size: 17vw; letter-spacing: -.09em; }
-  .hero-overline { font-size: 8px; letter-spacing: 3px; }
-  .hero-description { font-size: 11px; padding: 0 12px; }
-  .btn { min-width: 160px; padding: 15px 16px; font-size: 9px; }
-  .hero-bottom { font-size: 8px; left: 5%; right: 5%; }
-  .ehx-content h2 { font-size: 82px; }
-  .number-card strong { font-size: 34px; }
-  .footer-top { gap: 38px 15px; }
-  .footer-bottom { flex-direction: column; line-height: 1.7; }
+@media(max-width:480px){
+header{padding:0 4%}
+.brand{font-size:19px;letter-spacing:3px}
+.nav-right{gap:11px}
+.nav-contact{padding:10px 8px;font-size:8px;letter-spacing:.3px}
+.language{font-size:10px}
+.menu-button{font-size:11px}
+.hero{min-height:630px}
+.hero-content{width:94%}
+.hero h1{font-size:17vw;letter-spacing:-.09em}
+.hero-overline{font-size:8px;letter-spacing:3px}
+.hero-description{font-size:11px;padding:0 12px}
+.btn{min-width:160px;padding:15px 16px;font-size:9px}
+.hero-bottom{font-size:8px;left:5%;right:5%}
+.ehx-content h2{font-size:82px}
+.number-card strong{font-size:34px}
+.footer-top{gap:38px 15px}
+.footer-bottom{flex-direction:column;line-height:1.7}
 }
-
-@keyframes menuReveal { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
-
-@media(prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-    scroll-behavior: auto !important;
-  }
-  .reveal { opacity: 1; transform: none; }
+@media(prefers-reduced-motion:reduce){
+*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+.reveal{opacity:1;transform:none}
 }
 </style>
 </head>
-
 <body>
 
 <header>
   <a href="index.html" class="brand">KZETRAL<sup>®</sup></a>
 
   <nav class="nav-links" id="navLinks">
-    <a href="#models" data-fr="MODÈLES" data-en="MODELS">MODÈLES</a>
     <a href="#technology" data-fr="TECHNOLOGIE" data-en="TECHNOLOGY">TECHNOLOGIE</a>
     <a href="vision.html" data-fr="NOTRE VISION" data-en="OUR VISION">NOTRE VISION</a>
     <a href="entreprise.html" data-fr="ENTREPRISE" data-en="COMPANY">ENTREPRISE</a>
@@ -612,40 +194,23 @@ footer { padding: 75px 8% 25px; background: #08090b; color: white; }
 
   <div class="nav-right">
     <button class="language" id="language">EN</button>
-
-    <a href="contact.html" class="nav-contact"
-       data-fr="CONTACTEZ-NOUS" data-en="CONTACT US">
-      CONTACTEZ-NOUS
-    </a>
-
-    <button class="menu-button" id="menuButton" aria-label="Ouvrir le menu">☰</button>
+    <a href="contact.html" class="nav-contact" data-fr="CONTACTEZ-NOUS" data-en="CONTACT US">CONTACTEZ-NOUS</a>
+    <button class="menu-button" id="menuButton" aria-label="Ouvrir le menu" aria-expanded="false">Menu</button>
   </div>
 </header>
 
 <main>
-
   <section class="hero" id="home">
     <div class="hero-background"></div>
-
     <div class="hero-content">
-      <div class="hero-overline" data-fr="L'AVENIR DE LA MOBILITÉ COMMENCE ICI" data-en="THE FUTURE OF MOBILITY STARTS HERE">
-        L'AVENIR DE LA MOBILITÉ COMMENCE ICI
-      </div>
-
+      <div class="hero-overline" data-fr="L'AVENIR DE LA MOBILITÉ COMMENCE ICI" data-en="THE FUTURE OF MOBILITY STARTS HERE">L'AVENIR DE LA MOBILITÉ COMMENCE ICI</div>
       <h1>KZETRAL<span>ROULER POUR MIEUX VIVRE</span></h1>
-
-      <p class="hero-description"
-         data-fr="Repousser les limites. Explorer de nouvelles technologies. Imaginer une autre façon de se déplacer."
-         data-en="Push boundaries. Explore new technologies. Imagine a different way to move.">
-        Faire revivre l'écologie. Explorer de nouvelles technologies. Imaginer une autre façon de se déplacer.
-      </p>
-
+      <p class="hero-description" data-fr="Repousser les limites. Explorer de nouvelles technologies. Imaginer une autre façon de se déplacer." data-en="Push boundaries. Explore new technologies. Imagine a different way to move.">Repousser les limites. Explorer de nouvelles technologies. Imaginer une autre façon de se déplacer.</p>
       <div class="hero-actions">
         <a href="#models" class="btn btn-white" data-fr="DÉCOUVRIR LE EH-X" data-en="DISCOVER THE EH-X">DÉCOUVRIR LE EH-X</a>
         <a href="vision.html" class="btn btn-transparent" data-fr="EXPLORER KZETRAL" data-en="EXPLORE KZETRAL">EXPLORER KZETRAL</a>
       </div>
     </div>
-
     <div class="hero-bottom">
       <span>KZETRAL AUTOMOTIVE</span>
       <span data-fr="DÉFILER POUR EXPLORER" data-en="SCROLL TO EXPLORE">DÉFILER POUR EXPLORER</span>
@@ -654,34 +219,20 @@ footer { padding: 75px 8% 25px; background: #08090b; color: white; }
 
   <section class="intro reveal" id="company">
     <div class="section-label">01 — KZETRAL</div>
-
     <div class="intro-content">
-      <h2 data-fr="Une nouvelle génération automobile. Une nouvelle ambition." data-en="A new generation of automotive. A new ambition.">
-        Une nouvelle génération automobile. Une nouvelle ambition.
-      </h2>
-
-      <p data-fr="KZETRAL est un projet de constructeur automobile qui explore les possibilités offertes par les nouvelles technologies. Notre ambition est de concevoir des véhicules qui associent design, innovation et mobilité de demain."
-         data-en="KZETRAL is an automotive manufacturer project exploring the possibilities offered by emerging technologies. Our ambition is to develop vehicles that bring together design, innovation and tomorrow's mobility.">
-        KZETRAL est un projet de constructeur automobile qui explore les possibilités offertes par les nouvelles technologies. Notre ambition est de concevoir des véhicules qui associent design, innovation et mobilité de demain.
-      </p>
+      <h2 data-fr="Une nouvelle génération automobile. Une nouvelle ambition." data-en="A new generation of automotive. A new ambition.">Une nouvelle génération automobile. Une nouvelle ambition.</h2>
+      <p data-fr="KZETRAL est un projet de constructeur automobile qui explore les possibilités offertes par les nouvelles technologies. Notre ambition est de concevoir des véhicules qui associent design, innovation et mobilité de demain." data-en="KZETRAL is an automotive manufacturer project exploring the possibilities offered by emerging technologies. Our ambition is to develop vehicles that bring together design, innovation and tomorrow's mobility.">KZETRAL est un projet de constructeur automobile qui explore les possibilités offertes par les nouvelles technologies. Notre ambition est de concevoir des véhicules qui associent design, innovation et mobilité de demain.</p>
     </div>
   </section>
 
   <section class="ehx" id="models">
     <div class="ehx-image"></div>
-
     <div class="ehx-content reveal">
       <div class="section-label">02 — FIRST CONCEPT</div>
       <h2>KZETRAL<span>EH-X</span></h2>
-
-      <p data-fr="Un SUV cinq places imaginé autour d'une architecture hydrogène et électrique. Le premier chapitre de notre vision automobile."
-         data-en="A five-seat SUV imagined around a hydrogen-electric architecture. The first chapter of our automotive vision.">
-        Un SUV cinq places imaginé autour d'une architecture hydrogène et électrique. Le premier chapitre de notre vision automobile.
-      </p>
-
+      <p data-fr="Un SUV cinq places imaginé autour d'une architecture hydrogène et électrique. Le premier chapitre de notre vision automobile." data-en="A five-seat SUV imagined around a hydrogen-electric architecture. The first chapter of our automotive vision.">Un SUV cinq places imaginé autour d'une architecture hydrogène et électrique. Le premier chapitre de notre vision automobile.</p>
       <a href="#technology" class="btn btn-white" data-fr="DÉCOUVRIR LE CONCEPT" data-en="EXPLORE THE CONCEPT">DÉCOUVRIR LE CONCEPT</a>
     </div>
-
     <div class="ehx-number">EH-X / 001</div>
   </section>
 
@@ -689,195 +240,109 @@ footer { padding: 75px 8% 25px; background: #08090b; color: white; }
     <div class="numbers-heading reveal">
       <div class="section-label">EH-X — OBJECTIFS DU PROJET</div>
       <h2 data-fr="L'ambition prend forme." data-en="Ambition takes shape.">L'ambition prend forme.</h2>
-      <p data-fr="Les objectifs actuellement étudiés pour le concept EH-X." data-en="Current development targets for the EH-X concept.">
-        Les objectifs actuellement étudiés pour le concept EH-X.
-      </p>
+      <p data-fr="Les objectifs actuellement étudiés pour le concept EH-X." data-en="Current development targets for the EH-X concept.">Les objectifs actuellement étudiés pour le concept EH-X.</p>
     </div>
-
     <div class="numbers-grid">
-      <div class="number-card reveal">
-        <strong>400</strong>
-        <span data-fr="CH — PUISSANCE VISÉE" data-en="HP — TARGET POWER">CH — PUISSANCE VISÉE</span>
-      </div>
-
-      <div class="number-card reveal">
-        <strong>700–800</strong>
-        <span data-fr="KM — AUTONOMIE VISÉE" data-en="KM — TARGET RANGE">KM — AUTONOMIE VISÉE</span>
-      </div>
-
-      <div class="number-card reveal">
-        <strong>05</strong>
-        <span data-fr="PLACES" data-en="SEATS">PLACES</span>
-      </div>
-
-      <div class="number-card reveal">
-        <strong>H₂ + EV</strong>
-        <span data-fr="ARCHITECTURE ENVISAGÉE" data-en="PROPOSED ARCHITECTURE">ARCHITECTURE ENVISAGÉE</span>
-      </div>
+      <div class="number-card reveal"><strong>400</strong><span data-fr="CH — PUISSANCE VISÉE" data-en="HP — TARGET POWER">CH — PUISSANCE VISÉE</span></div>
+      <div class="number-card reveal"><strong>700–800</strong><span data-fr="KM — AUTONOMIE VISÉE" data-en="KM — TARGET RANGE">KM — AUTONOMIE VISÉE</span></div>
+      <div class="number-card reveal"><strong>05</strong><span data-fr="PLACES" data-en="SEATS">PLACES</span></div>
+      <div class="number-card reveal"><strong>H₂ + EV</strong><span data-fr="ARCHITECTURE ENVISAGÉE" data-en="PROPOSED ARCHITECTURE">ARCHITECTURE ENVISAGÉE</span></div>
     </div>
-
-    <p class="disclaimer" data-fr="* Objectifs de conception non validés. Ces valeurs ne sont pas des caractéristiques techniques homologuées."
-       data-en="* Unvalidated design targets. These figures are not certified technical specifications.">
-      * Objectifs de conception non validés. Ces valeurs ne sont pas des caractéristiques techniques homologuées.
-    </p>
+    <p class="disclaimer" data-fr="* Objectifs de conception non validés. Ces valeurs ne sont pas des caractéristiques techniques homologuées." data-en="* Unvalidated design targets. These figures are not certified technical specifications.">* Objectifs de conception non validés. Ces valeurs ne sont pas des caractéristiques techniques homologuées.</p>
   </section>
 
   <section class="technology" id="technology">
     <div class="tech-heading reveal">
-      <div>
-        <div class="section-label">03 — TECHNOLOGY</div>
-        <h2 data-fr="Penser<br>plus loin." data-en="Think<br>beyond.">Penser<br>plus loin.</h2>
-      </div>
-
-      <p data-fr="L'innovation ne se limite pas à une technologie. Elle commence par une vision et se construit à travers la recherche."
-         data-en="Innovation is not limited to technology. It begins with a vision and takes shape through research.">
-        L'innovation ne se limite pas à une technologie. Elle commence par une vision et se construit à travers la recherche.
-      </p>
+      <div><div class="section-label">03 — TECHNOLOGY</div><h2 data-fr="Penser<br>plus loin." data-en="Think<br>beyond.">Penser<br>plus loin.</h2></div>
+      <p data-fr="L'innovation ne se limite pas à une technologie. Elle commence par une vision et se construit à travers la recherche." data-en="Innovation is not limited to technology. It begins with a vision and takes shape through research.">L'innovation ne se limite pas à une technologie. Elle commence par une vision et se construit à travers la recherche.</p>
     </div>
-
     <div class="tech-grid">
       <article class="tech-card reveal">
-        <div class="tech-card-image tech-one"></div>
-        <div class="tech-card-content">
-          <span>01 / ENERGY</span>
-          <h3 data-fr="Hydrogène & électrique" data-en="Hydrogen & electric">Hydrogène & électrique</h3>
-          <p data-fr="Explorer la complémentarité entre pile à combustible et motorisation électrique."
-             data-en="Exploring the combination of fuel-cell technology and electric propulsion.">
-            Explorer la complémentarité entre pile à combustible et motorisation électrique.
-          </p>
-        </div>
+        <div class="tech-card-image"></div>
+        <div class="tech-card-content"><span>01 / ENERGY</span><h3 data-fr="Hydrogène & électrique" data-en="Hydrogen & electric">Hydrogène & électrique</h3><p data-fr="Explorer la complémentarité entre pile à combustible et motorisation électrique." data-en="Exploring the combination of fuel-cell technology and electric propulsion.">Explorer la complémentarité entre pile à combustible et motorisation électrique.</p></div>
       </article>
-
       <article class="tech-card reveal">
         <div class="tech-card-image tech-two"></div>
-        <div class="tech-card-content">
-          <span>02 / DESIGN</span>
-          <h3 data-fr="Design & identité" data-en="Design & identity">Design & identité</h3>
-          <p data-fr="Créer une signature visuelle forte et imaginer une nouvelle expérience automobile."
-             data-en="Creating a distinctive visual signature and imagining a new automotive experience.">
-            Créer une signature visuelle forte et imaginer une nouvelle expérience automobile.
-          </p>
-        </div>
+        <div class="tech-card-content"><span>02 / DESIGN</span><h3 data-fr="Design & identité" data-en="Design & identity">Design & identité</h3><p data-fr="Créer une signature visuelle forte et imaginer une nouvelle expérience automobile." data-en="Creating a distinctive visual signature and imagining a new automotive experience.">Créer une signature visuelle forte et imaginer une nouvelle expérience automobile.</p></div>
       </article>
     </div>
   </section>
 
   <section class="vision" id="vision">
     <div class="vision-image"></div>
-
     <div class="vision-content reveal">
       <div class="section-label">04 — OUR VISION</div>
-      <h2 data-fr="Ne pas attendre demain. Le concevoir." data-en="Don't wait for tomorrow. Engineer it.">
-        Ne pas attendre demain. Le concevoir.
-      </h2>
-
-      <p data-fr="Nous croyons que l'avenir de l'automobile se construit par l'audace, la recherche et la volonté d'explorer de nouvelles solutions."
-         data-en="We believe the future of automotive is shaped by ambition, research and the willingness to explore new solutions.">
-        Nous croyons que l'avenir de l'automobile se construit par l'audace, la recherche et la volonté d'explorer de nouvelles solutions.
-      </p>
+      <h2 data-fr="Ne pas attendre demain. Le concevoir." data-en="Don't wait for tomorrow. Engineer it.">Ne pas attendre demain. Le concevoir.</h2>
+      <p data-fr="Nous croyons que l'avenir de l'automobile se construit par l'audace, la recherche et la volonté d'explorer de nouvelles solutions." data-en="We believe the future of automotive is shaped by ambition, research and the willingness to explore new solutions.">Nous croyons que l'avenir de l'automobile se construit par l'audace, la recherche et la volonté d'explorer de nouvelles solutions.</p>
     </div>
   </section>
-
 </main>
 
 <footer>
   <div class="footer-top">
-    <div class="footer-brand">
-      <a href="index.html" class="footer-logo">KZETRAL®</a>
-      <p data-fr="The future of motion." data-en="The future of motion.">The future of motion.</p>
-    </div>
-
-    <div class="footer-column">
-      <h4>DISCOVER</h4>
-      <a href="#models">EH-X</a>
-      <a href="#technology" data-fr="Technologie" data-en="Technology">Technologie</a>
-      <a href="vision.html" data-fr="Notre vision" data-en="Our vision">Notre vision</a>
-    </div>
-
-    <div class="footer-column">
-      <h4>KZETRAL</h4>
-      <a href="entreprise.html" data-fr="Entreprise" data-en="Company">Entreprise</a>
-      <a href="contact.html" data-fr="Contact" data-en="Contact">Contact</a>
-    </div>
-
-    <div class="footer-column">
-      <h4>FOLLOW US</h4>
-      <a href="contact.html">Instagram ↗</a>
-      <a href="contact.html">LinkedIn ↗</a>
-    </div>
+    <div class="footer-brand"><a href="index.html" class="footer-logo">KZETRAL®</a><p>The future of motion.</p></div>
+    <div class="footer-column"><h4>DISCOVER</h4><a href="#models">EH-X</a><a href="#technology" data-fr="Technologie" data-en="Technology">Technologie</a><a href="vision.html" data-fr="Notre vision" data-en="Our vision">Notre vision</a></div>
+    <div class="footer-column"><h4>KZETRAL</h4><a href="entreprise.html" data-fr="Entreprise" data-en="Company">Entreprise</a><a href="contact.html" data-fr="Contact" data-en="Contact">Contact</a></div>
+    <div class="footer-column"><h4>CONTACT</h4><a href="contact.html" data-fr="Nous contacter ↗" data-en="Contact us ↗">Nous contacter ↗</a></div>
   </div>
-
   <div class="footer-bottom">
     <span>© <span id="year"></span> KZETRAL — ALL RIGHTS RESERVED</span>
     <span data-fr="EH-X : CONCEPT EN DÉVELOPPEMENT" data-en="EH-X: CONCEPT IN DEVELOPMENT">EH-X : CONCEPT EN DÉVELOPPEMENT</span>
-    <a href="index.html">BACK TO TOP ↑</a>
+    <a href="#home">BACK TO TOP ↑</a>
   </div>
 </footer>
 
 <script>
-// ANNÉE
-document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("year").textContent=new Date().getFullYear();
 
-// LANGUES
-const languageButton = document.getElementById("language");
-let language = localStorage.getItem("kzetral-language") || "fr";
+const languageButton=document.getElementById("language");
+let language=localStorage.getItem("kzetral-language")||"fr";
 
-function applyLanguage() {
-  document.querySelectorAll("[data-fr][data-en]").forEach(element => {
-    element.innerHTML = element.dataset[language];
+function applyLanguage(){
+  document.querySelectorAll("[data-fr][data-en]").forEach(el=>{
+    el.innerHTML=el.dataset[language];
   });
-
-  document.documentElement.lang = language;
-  languageButton.textContent = language === "fr" ? "EN" : "FR";
+  document.documentElement.lang=language;
+  languageButton.textContent=language==="fr"?"EN":"FR";
 }
-
-languageButton.addEventListener("click", () => {
-  language = language === "fr" ? "en" : "fr";
-  localStorage.setItem("kzetral-language", language);
+languageButton.addEventListener("click",()=>{
+  language=language==="fr"?"en":"fr";
+  localStorage.setItem("kzetral-language",language);
   applyLanguage();
 });
-
 applyLanguage();
 
-// MENU MOBILE
-const menuButton = document.getElementById("menuButton");
-const navLinks = document.getElementById("navLinks");
+const menuButton=document.getElementById("menuButton");
+const navLinks=document.getElementById("navLinks");
 
-menuButton.addEventListener("click", () => {
-  navLinks.classList.toggle("open");
-  menuButton.textContent = navLinks.classList.contains("open") ? "✕" : "☰";
-  menuButton.setAttribute(
-    "aria-label",
-    navLinks.classList.contains("open") ? "Fermer le menu" : "Ouvrir le menu"
-  );
+function closeMenu(){
+  navLinks.classList.remove("open");
+  menuButton.textContent="Menu";
+  menuButton.setAttribute("aria-label","Ouvrir le menu");
+  menuButton.setAttribute("aria-expanded","false");
+}
+menuButton.addEventListener("click",()=>{
+  const isOpen=navLinks.classList.toggle("open");
+  menuButton.textContent=isOpen?"Fermer":"Menu";
+  menuButton.setAttribute("aria-label",isOpen?"Fermer le menu":"Ouvrir le menu");
+  menuButton.setAttribute("aria-expanded",String(isOpen));
 });
+navLinks.querySelectorAll("a").forEach(link=>link.addEventListener("click",closeMenu));
 
-navLinks.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("open");
-    menuButton.textContent = "☰";
-    menuButton.setAttribute("aria-label", "Ouvrir le menu");
-  });
-});
-
-// ANIMATIONS AU DÉFILEMENT
-const revealItems = document.querySelectorAll(".reveal");
-
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
+const revealItems=document.querySelectorAll(".reveal");
+if("IntersectionObserver" in window){
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
         entry.target.classList.add("visible");
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
-
-  revealItems.forEach(item => observer.observe(item));
-} else {
-  revealItems.forEach(item => item.classList.add("visible"));
+  },{threshold:.12});
+  revealItems.forEach(item=>observer.observe(item));
+}else{
+  revealItems.forEach(item=>item.classList.add("visible"));
 }
 </script>
-
 </body>
 </html>
