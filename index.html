@@ -102,6 +102,7 @@ header {
   font-size: 10px;
   letter-spacing: 1px;
   font-weight: 700;
+  white-space: nowrap;
   transition: .35s ease;
 }
 
@@ -470,22 +471,6 @@ header {
 
 .vision-content p:last-child { color: #a0a6ad; font-size: 13px; line-height: 2; max-width: 450px; }
 
-/* CONTACT */
-
-.contact { padding: 130px 8%; text-align: center; background: #f5f7f9; }
-
-.contact h2 {
-  font-size: clamp(40px, 7vw, 88px);
-  letter-spacing: -.08em;
-  line-height: 1;
-  max-width: 900px;
-  margin: 25px auto 35px;
-}
-
-.contact p { color: #7c8288; font-size: 13px; margin-bottom: 30px; }
-.contact .btn { background: #090a0c; color: white; border: 1px solid #090a0c; }
-.contact .btn:hover { background: transparent; color: #090a0c; }
-
 /* FOOTER */
 
 footer { padding: 75px 8% 25px; background: #08090b; color: white; }
@@ -537,7 +522,7 @@ footer { padding: 75px 8% 25px; background: #08090b; color: white; }
 /* MOBILE */
 
 @media(max-width: 850px) {
-  header { height: 75px; padding: 0 6%; }
+  header { height: 75px; padding: 0 5%; }
   .menu-button { display: block; }
 
   .nav-links {
@@ -554,7 +539,9 @@ footer { padding: 75px 8% 25px; background: #08090b; color: white; }
   }
 
   .nav-links.open { display: flex; animation: menuReveal .3s ease both; }
-  .nav-contact { display: none; }
+
+  /* Le bouton Contact reste dans l'en-tête, jamais dans le menu */
+
   .hero { min-height: 650px; }
   .hero h1 { font-size: clamp(65px, 15vw, 115px); }
   .hero h1 span { font-size: .3em; letter-spacing: .45em; }
@@ -579,8 +566,12 @@ footer { padding: 75px 8% 25px; background: #08090b; color: white; }
 }
 
 @media(max-width: 480px) {
-  .brand { font-size: 21px; }
-  .nav-right { gap: 17px; }
+  header { padding: 0 4%; }
+  .brand { font-size: 19px; letter-spacing: 3px; }
+  .nav-right { gap: 12px; }
+  .nav-contact { padding: 10px 9px; font-size: 8px; letter-spacing: .5px; }
+  .language { font-size: 10px; }
+  .menu-button { font-size: 22px; }
   .hero { min-height: 630px; }
   .hero-content { width: 94%; }
   .hero h1 { font-size: 17vw; letter-spacing: -.09em; }
@@ -590,7 +581,6 @@ footer { padding: 75px 8% 25px; background: #08090b; color: white; }
   .hero-bottom { font-size: 8px; left: 5%; right: 5%; }
   .ehx-content h2 { font-size: 82px; }
   .number-card strong { font-size: 34px; }
-  .contact { padding: 100px 7%; }
   .footer-top { gap: 38px 15px; }
   .footer-bottom { flex-direction: column; line-height: 1.7; }
 }
@@ -622,7 +612,12 @@ footer { padding: 75px 8% 25px; background: #08090b; color: white; }
 
   <div class="nav-right">
     <button class="language" id="language">EN</button>
-    <a href="contact.html" class="nav-contact" data-fr="NOUS CONTACTER" data-en="CONTACT US">NOUS CONTACTER</a>
+
+    <a href="contact.html" class="nav-contact"
+       data-fr="CONTACTEZ-NOUS" data-en="CONTACT US">
+      CONTACTEZ-NOUS
+    </a>
+
     <button class="menu-button" id="menuButton" aria-label="Ouvrir le menu">☰</button>
   </div>
 </header>
@@ -781,22 +776,6 @@ footer { padding: 75px 8% 25px; background: #08090b; color: white; }
         Nous croyons que l'avenir de l'automobile se construit par l'audace, la recherche et la volonté d'explorer de nouvelles solutions.
       </p>
     </div>
-  </section>
-
-  <section class="contact" id="contact">
-    <div class="section-label">05 — GET IN TOUCH</div>
-
-    <h2 data-fr="L'avenir ne fait que commencer." data-en="The future is just beginning.">
-      L'avenir ne fait que commencer.
-    </h2>
-
-    <p data-fr="Suivez le développement du projet KZETRAL." data-en="Follow the development of the KZETRAL project.">
-      Suivez le développement du projet KZETRAL.
-    </p>
-
-    <a href="contact.html" class="btn" data-fr="PRENDRE CONTACT ↗" data-en="GET IN TOUCH ↗">
-      PRENDRE CONTACT ↗
-    </a>
   </section>
 
 </main>
