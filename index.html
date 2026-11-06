@@ -87,6 +87,7 @@ header {
 }
 
 .nav-links a {
+  position: relative;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -94,8 +95,23 @@ header {
   transition: color .3s;
 }
 
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width .35s ease;
+}
+
 .nav-links a:hover {
   color: white;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 .nav-right {
@@ -112,6 +128,12 @@ header {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1px;
+  transition: color .3s, transform .3s;
+}
+
+.language:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
 }
 
 .nav-contact {
@@ -120,12 +142,15 @@ header {
   font-size: 10px;
   letter-spacing: 1px;
   font-weight: 700;
-  transition: .3s;
+  transition: .35s ease;
 }
 
 .nav-contact:hover {
   color: #08090b;
   background: white;
+  border-color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255,255,255,.12);
 }
 
 .menu-button {
@@ -135,6 +160,11 @@ header {
   color: white;
   font-size: 24px;
   cursor: pointer;
+  transition: transform .3s;
+}
+
+.menu-button:hover {
+  transform: scale(1.12);
 }
 
 /* HERO */
@@ -150,17 +180,15 @@ header {
   text-align: center;
   overflow: hidden;
   color: white;
-  background: #171b20;
+  background: #111820;
 }
 
 .hero-background {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(180deg, rgba(0,0,0,.38), rgba(0,0,0,.1) 40%, rgba(0,0,0,.65)),
-    url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=90");
-  background-size: cover;
-  background-position: center;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(89,112,130,.22), transparent 55%),
+    linear-gradient(135deg, #202a34 0%, #111820 48%, #08090b 100%);
   transform: scale(1.04);
   animation: backgroundReveal 1.8s ease forwards;
 }
@@ -169,7 +197,9 @@ header {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 5%, rgba(0,0,0,.18) 100%);
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.12), transparent 40%, rgba(0,0,0,.4)),
+    radial-gradient(ellipse at center, transparent 5%, rgba(0,0,0,.18) 100%);
   pointer-events: none;
 }
 
@@ -226,6 +256,8 @@ header {
 }
 
 .btn {
+  position: relative;
+  overflow: hidden;
   min-width: 190px;
   padding: 17px 24px;
   font-size: 10px;
@@ -234,7 +266,44 @@ header {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  transition: .3s;
+  transition:
+    transform .35s ease,
+    background .35s ease,
+    color .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    110deg,
+    transparent,
+    rgba(255,255,255,.35),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left .65s ease;
+  pointer-events: none;
+}
+
+.btn:hover::before {
+  left: 140%;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.2);
+}
+
+.btn:active {
+  transform: translateY(-1px) scale(.97);
+  box-shadow: none;
 }
 
 .btn-white {
@@ -246,6 +315,7 @@ header {
 .btn-white:hover {
   background: transparent;
   color: white;
+  border-color: white;
 }
 
 .btn-transparent {
@@ -257,6 +327,7 @@ header {
 .btn-transparent:hover {
   background: white;
   color: #090a0c;
+  border-color: white;
 }
 
 .hero-bottom {
@@ -284,6 +355,7 @@ header {
   height: 1px;
   width: 55px;
   background: white;
+  animation: linePulse 2s infinite ease-in-out;
 }
 
 /* INTRO */
@@ -337,16 +409,17 @@ header {
 .ehx-image {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(90deg, rgba(0,0,0,.8), rgba(0,0,0,.08)),
-    url("https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=2400&q=90");
-  background-size: cover;
-  background-position: center;
-  transition: transform 1s;
+  background:
+    radial-gradient(ellipse at 75% 45%, rgba(115,145,166,.2), transparent 45%),
+    linear-gradient(110deg, #080b0f 0%, #17212a 55%, #0b1015 100%);
 }
 
-.ehx:hover .ehx-image {
-  transform: scale(1.025);
+.ehx::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,.22), transparent 75%);
+  pointer-events: none;
 }
 
 .ehx-content {
@@ -497,35 +570,40 @@ header {
   position: relative;
   min-height: 440px;
   overflow: hidden;
-  background: #222;
+  background: #151c23;
   color: white;
+  transition: transform .45s ease, box-shadow .45s ease;
+}
+
+.tech-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 35px rgba(0,0,0,.12);
 }
 
 .tech-card-image {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
+  background:
+    radial-gradient(ellipse at 70% 25%, rgba(137,168,190,.25), transparent 50%),
+    linear-gradient(135deg, #263746, #10161d 70%);
   transition: transform .8s;
 }
 
-.tech-card:hover .tech-card-image {
-  transform: scale(1.06);
-}
-
-.tech-one {
-  background-image: url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1300&q=85");
-}
-
 .tech-two {
-  background-image: url("https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1300&q=85");
+  background:
+    radial-gradient(ellipse at 25% 30%, rgba(137,168,190,.2), transparent 50%),
+    linear-gradient(145deg, #202b36, #0d1116 75%);
+}
+
+.tech-card:hover .tech-card-image {
+  transform: scale(1.04);
 }
 
 .tech-card::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(0,0,0,.8), transparent 70%);
+  background: linear-gradient(0deg, rgba(0,0,0,.7), transparent 85%);
 }
 
 .tech-card-content {
@@ -566,10 +644,24 @@ header {
 }
 
 .vision-image {
-  background-image: url("https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1400&q=85");
-  background-size: cover;
-  background-position: center;
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(107,137,157,.23), transparent 55%),
+    linear-gradient(135deg, #1b2731, #0a0d11);
   min-height: 500px;
+  position: relative;
+}
+
+.vision-image::after {
+  content: "KZETRAL";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(40px, 7vw, 100px);
+  font-weight: 800;
+  letter-spacing: -.08em;
+  color: rgba(255,255,255,.055);
 }
 
 .vision-content {
@@ -669,11 +761,12 @@ footer {
 .footer-column a {
   font-size: 11px;
   color: #d1d4d7;
-  transition: color .2s;
+  transition: color .25s, transform .25s;
 }
 
 .footer-column a:hover {
   color: white;
+  transform: translateX(4px);
 }
 
 .footer-bottom {
@@ -685,6 +778,14 @@ footer {
   font-size: 9px;
   color: #777f88;
   letter-spacing: .5px;
+}
+
+.footer-bottom a {
+  transition: color .3s;
+}
+
+.footer-bottom a:hover {
+  color: white;
 }
 
 /* REVEAL */
@@ -708,6 +809,11 @@ footer {
 @keyframes contentReveal {
   from { opacity: 0; transform: translateY(35px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes linePulse {
+  0%, 100% { opacity: .45; transform: scaleX(.7); }
+  50% { opacity: 1; transform: scaleX(1); }
 }
 
 /* MOBILE */
@@ -737,6 +843,7 @@ footer {
 
   .nav-links.open {
     display: flex;
+    animation: menuReveal .3s ease both;
   }
 
   .nav-contact {
@@ -896,6 +1003,11 @@ footer {
     flex-direction: column;
     line-height: 1.7;
   }
+}
+
+@keyframes menuReveal {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @media(prefers-reduced-motion: reduce) {
@@ -1150,7 +1262,7 @@ let language = localStorage.getItem("kzetral-language") || "fr";
 
 function applyLanguage() {
   document.querySelectorAll("[data-fr][data-en]").forEach(element => {
-    element.textContent = element.dataset[language];
+    element.innerHTML = element.dataset[language];
   });
 
   document.documentElement.lang = language;
@@ -1172,12 +1284,17 @@ const navLinks = document.getElementById("navLinks");
 menuButton.addEventListener("click", () => {
   navLinks.classList.toggle("open");
   menuButton.textContent = navLinks.classList.contains("open") ? "✕" : "☰";
+  menuButton.setAttribute(
+    "aria-label",
+    navLinks.classList.contains("open") ? "Fermer le menu" : "Ouvrir le menu"
+  );
 });
 
 navLinks.querySelectorAll("a").forEach(link => {
   link.addEventListener("click", () => {
     navLinks.classList.remove("open");
     menuButton.textContent = "☰";
+    menuButton.setAttribute("aria-label", "Ouvrir le menu");
   });
 });
 
