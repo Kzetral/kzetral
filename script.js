@@ -1,15 +1,14 @@
 
+
 // =========================
-// KZETRAL — LANGUE FR / EN
+// KZETRAL — INTERACTIONS
 // =========================
 
-let currentLanguage = "fr";
+// LANGUE FR / EN
 
-const languageButton = document.getElementById("language");
+let currentLanguage = localStorage.getItem("kzetral-language") || "fr";
 
-function changeLanguage() {
-    currentLanguage = currentLanguage === "fr" ? "en" : "fr";
-
+function applyLanguage() {
     const elements = document.querySelectorAll("[data-fr][data-en]");
 
     elements.forEach((element) => {
@@ -19,12 +18,94 @@ function changeLanguage() {
                 : element.dataset.en;
     });
 
-    languageButton.textContent =
-        currentLanguage === "fr" ? "EN" : "FR";
+    const button = document.getElementById("language");
+
+    if (button) {
+        button.textContent = currentLanguage === "fr" ? "EN" : "FR";
+    }
 
     document.documentElement.lang = currentLanguage;
 }
 
+function changeLanguage() {
+    const button = document.getElementById("language");
+
+    document.body.classList.add("language-changing");
+
+    currentLanguage = currentLanguage === "fr" ? "en" : "fr";
+
+    localStorage.setItem("kzetral-language", currentLanguage);
+
+    applyLanguage();
+
+    setTimeout(() => {
+        document.body.classList.remove("language-changing");
+    }, 200);
+}
+
+const languageButton = document.getElementById("language");
+
 if (languageButton) {
     languageButton.addEventListener("click", changeLanguage);
 }
+
+applyLanguage();
+
+
+// ANNÉE AUTOMATIQUE
+
+const yearElement = document.getElementById("year");
+
+if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+}
+
+
+// APPARITION DES SECTIONS AU DÉFILEMENT
+
+const revealElements = document.querySelectorAll(
+    ".vision, .vehicle, .technology, .contact, .tech-grid article, .page-content"
+);
+
+revealElements.forEach((element) => {
+    element.classList.add("reveal");
+});
+
+if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.12
+    });
+
+    revealElements.forEach((element) => {
+        observer.observe(element);
+    });
+} else {
+    revealElements.forEach((element) => {
+        element.classList.add("visible");
+    });
+}
+
+
+// ANIMATION DES LIENS INTERNES
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+        const target = document.querySelector(link.getAttribute("href"));
+
+        if (target) {
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+    });
+});
