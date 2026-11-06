@@ -1,45 +1,42 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — KZETRAL</title>
 <meta name="description" content="Contactez l'équipe du projet KZETRAL.">
+<title>Contact — KZETRAL</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{font-family:"Manrope",Arial,sans-serif;background:#fff;color:#101114;min-height:100vh;display:flex;flex-direction:column}
 a{text-decoration:none;color:inherit}
 button,input,select,textarea{font:inherit}
-
-header{height:85px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;background:#fff;position:sticky;top:0;z-index:100}
-.logo{font-size:25px;font-weight:800;letter-spacing:5px}
+header{height:88px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;background:rgba(255,255,255,.97);position:sticky;top:0;z-index:100;backdrop-filter:blur(15px)}
+.logo{display:flex;align-items:center;flex-shrink:0}
+.logo img{height:43px;width:auto;max-width:190px;object-fit:contain;display:block}
 nav{display:flex;align-items:center;gap:36px}
 nav a{font-size:10px;font-weight:700;letter-spacing:1.2px;color:#555;transition:.25s}
-nav a:hover,nav a.active{color:#111}
-.right{display:flex;align-items:center;gap:20px}
-.lang{border:0;background:white;padding:10px 5px;cursor:pointer;font-size:11px;font-weight:700}
-.contact-btn{border:1px solid #111;padding:13px 19px;font-size:10px;font-weight:800;letter-spacing:1px;transition:.3s}
+nav a:hover,nav a.active{color:#829bad}
+.right{display:flex;align-items:center;gap:17px}
+.lang{border:0;background:white;padding:10px 5px;cursor:pointer;font-size:11px;font-weight:800}
+.contact-btn{border:1px solid #111;padding:13px 19px;font-size:10px;font-weight:800;letter-spacing:1px;white-space:nowrap;transition:.3s}
 .contact-btn:hover{background:#111;color:white}
-.menu-btn{display:none;border:0;background:none;font-size:11px;font-weight:700;letter-spacing:1px;cursor:pointer}
-
+.menu-btn{display:none;border:1px solid #ddd;background:#fff;padding:9px 12px;font-size:11px;font-weight:800;cursor:pointer}
 main{flex:1}
 .hero{padding:90px 9% 55px;background:radial-gradient(ellipse at 85% 30%,#edf0f2 0,transparent 42%),linear-gradient(120deg,#fff,#f7f8f9)}
 .eyebrow{font-size:10px;font-weight:800;letter-spacing:4px;color:#888;margin-bottom:25px}
 h1{font-size:clamp(55px,9vw,105px);line-height:.95;letter-spacing:-.08em;font-weight:800}
 .hero p{max-width:570px;font-size:14px;line-height:1.9;color:#737980;margin-top:27px}
-
 .contact-section{padding:45px 9% 100px}
 .contact-layout{display:grid;grid-template-columns:.7fr 1.3fr;gap:75px;max-width:1150px;margin:0 auto}
 .contact-intro{padding-top:10px}
 .section-label{font-size:10px;font-weight:800;letter-spacing:3px;color:#999;margin-bottom:20px}
 .contact-intro h2{font-size:clamp(28px,3.5vw,42px);letter-spacing:-.06em;line-height:1.15}
 .contact-intro p{font-size:13px;line-height:1.9;color:#777;margin-top:20px;max-width:330px}
-
 form{width:100%}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px 20px}
 .field{display:flex;flex-direction:column;gap:10px}
@@ -56,16 +53,14 @@ textarea{min-height:145px;resize:vertical;line-height:1.7}
 .submit-button:hover{background:white;color:#111}
 footer{padding:35px 7%;border-top:1px solid #eee;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;color:#858a90;font-size:10px}
 footer strong{font-size:17px;letter-spacing:4px;color:#111}
-footer a:hover{color:#111}
-
 @media(max-width:850px){
 header{height:74px;padding:0 5%}
-.logo{font-size:20px;letter-spacing:3px}
+.logo img{height:36px;max-width:145px}
 .menu-btn{display:block}
 nav{display:none;position:absolute;top:74px;left:0;right:0;background:white;padding:28px 7%;flex-direction:column;align-items:flex-start;gap:25px;border-bottom:1px solid #eee}
 nav.open{display:flex}
-.right{gap:12px}
-.contact-btn{padding:10px 10px;font-size:9px}
+.right{gap:10px}
+.contact-btn{display:inline-block;padding:10px 10px;font-size:9px}
 .hero{padding:75px 7% 45px}
 .contact-section{padding:45px 7% 75px}
 .contact-layout{grid-template-columns:1fr;gap:40px}
@@ -73,11 +68,11 @@ nav.open{display:flex}
 }
 @media(max-width:520px){
 header{padding:0 4%}
-.logo{font-size:18px;letter-spacing:2px}
-.right{gap:9px}
-.contact-btn{padding:9px 7px;font-size:8px;letter-spacing:.3px}
+.logo img{height:31px;max-width:112px}
+.right{gap:8px}
+.contact-btn{padding:9px 7px;font-size:8px;letter-spacing:.2px}
 .lang{font-size:10px}
-.menu-btn{font-size:10px}
+.menu-btn{font-size:10px;padding:8px}
 .hero{padding:65px 7% 35px}
 h1{font-size:16vw}
 .hero p{font-size:13px}
@@ -90,91 +85,68 @@ footer{align-items:flex-start;flex-direction:column}
 }
 </style>
 </head>
-
 <body>
 <header>
-  <a class="logo" href="index.html">KZETRAL</a>
-
+  <a class="logo" href="index.html" aria-label="KZETRAL - Accueil"><img src="images/logo-kzetral.png" alt="KZETRAL"></a>
   <nav id="mainNav">
     <a href="index.html" data-fr="ACCUEIL" data-en="HOME">ACCUEIL</a>
     <a href="vision.html" data-fr="NOTRE VISION" data-en="OUR VISION">NOTRE VISION</a>
     <a href="entreprise.html" data-fr="ENTREPRISE" data-en="COMPANY">ENTREPRISE</a>
   </nav>
-
   <div class="right">
     <button class="lang" id="languageButton">EN</button>
     <a class="contact-btn" href="contact.html" data-fr="CONTACTEZ-NOUS" data-en="CONTACT US">CONTACTEZ-NOUS</a>
-    <button class="menu-btn" id="menuButton" aria-label="Ouvrir le menu" aria-expanded="false">Menu</button>
+    <button class="menu-btn" id="menuButton" aria-expanded="false">Menu</button>
   </div>
 </header>
 
 <main>
-  <section class="hero">
-    <div class="eyebrow" data-fr="CONTACT — KZETRAL" data-en="CONTACT — KZETRAL">CONTACT — KZETRAL</div>
-    <h1 data-fr="PARLONS<br>ENSEMBLE." data-en="LET'S<br>CONNECT.">PARLONS<br>ENSEMBLE.</h1>
-    <p data-fr="Une question, une proposition ou une volonté de collaborer ? Présentez-nous votre demande à l'aide du formulaire ci-dessous." data-en="A question, a proposal or an interest in collaborating? Tell us about your request using the form below.">Une question, une proposition ou une volonté de collaborer ? Présentez-nous votre demande à l'aide du formulaire ci-dessous.</p>
-  </section>
+<section class="hero">
+  <div class="eyebrow" data-fr="CONTACT — KZETRAL" data-en="CONTACT — KZETRAL">CONTACT — KZETRAL</div>
+  <h1 data-fr="PARLONS<br>ENSEMBLE." data-en="LET'S<br>CONNECT.">PARLONS<br>ENSEMBLE.</h1>
+  <p data-fr="Une question, une proposition ou une volonté de collaborer ? Présentez-nous votre demande à l'aide du formulaire ci-dessous." data-en="A question, a proposal or an interest in collaborating? Tell us about your request using the form below.">Une question, une proposition ou une volonté de collaborer ? Présentez-nous votre demande à l'aide du formulaire ci-dessous.</p>
+</section>
 
-  <section class="contact-section">
-    <div class="contact-layout">
-      <div class="contact-intro">
-        <div class="section-label">01 — GET IN TOUCH</div>
-        <h2 data-fr="Comment pouvons-nous vous aider ?" data-en="How can we help you?">Comment pouvons-nous vous aider ?</h2>
-        <p data-fr="Complétez les informations demandées. Votre message nous permettra de mieux comprendre votre demande et de vous répondre." data-en="Complete the requested information. Your message will help us understand your request and respond to you.">Complétez les informations demandées. Votre message nous permettra de mieux comprendre votre demande et de vous répondre.</p>
+<section class="contact-section">
+  <div class="contact-layout">
+    <div class="contact-intro">
+      <div class="section-label">01 — GET IN TOUCH</div>
+      <h2 data-fr="Comment pouvons-nous vous aider ?" data-en="How can we help you?">Comment pouvons-nous vous aider ?</h2>
+      <p data-fr="Complétez les informations demandées. Votre message nous permettra de mieux comprendre votre demande et de vous répondre." data-en="Complete the requested information. Your message will help us understand your request and respond to you.">Complétez les informations demandées. Votre message nous permettra de mieux comprendre votre demande et de vous répondre.</p>
+    </div>
+
+    <form action="https://formsubmit.co/kzetral.contact@protonmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Nouveau message — Site KZETRAL">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+
+      <div class="form-grid">
+        <div class="field"><label for="nom" data-fr="NOM" data-en="LAST NAME">NOM</label><input type="text" id="nom" name="Nom" placeholder="Votre nom" data-placeholder-fr="Votre nom" data-placeholder-en="Your last name" autocomplete="family-name" required></div>
+        <div class="field"><label for="prenom" data-fr="PRÉNOM" data-en="FIRST NAME">PRÉNOM</label><input type="text" id="prenom" name="Prénom" placeholder="Votre prénom" data-placeholder-fr="Votre prénom" data-placeholder-en="Your first name" autocomplete="given-name" required></div>
+        <div class="field"><label for="email" data-fr="ADRESSE E-MAIL" data-en="EMAIL ADDRESS">ADRESSE E-MAIL</label><input type="email" id="email" name="Email" placeholder="nom@exemple.com" autocomplete="email" required></div>
+        <div class="field"><label for="telephone" data-fr="NUMÉRO DE TÉLÉPHONE" data-en="PHONE NUMBER">NUMÉRO DE TÉLÉPHONE</label><input type="tel" id="telephone" name="Téléphone" placeholder="+33 6 00 00 00 00" autocomplete="tel"></div>
+        <div class="field full">
+          <label for="motif" data-fr="MOTIF DE LA DEMANDE" data-en="REASON FOR CONTACT">MOTIF DE LA DEMANDE</label>
+          <select id="motif" name="Motif de la demande" required>
+            <option value="" data-fr="Sélectionnez un motif" data-en="Select a reason">Sélectionnez un motif</option>
+            <option value="Partenariat" data-fr="Partenariat" data-en="Partnership">Partenariat</option>
+            <option value="Proposition technique" data-fr="Proposition technique" data-en="Technical proposal">Proposition technique</option>
+            <option value="Presse et médias" data-fr="Presse et médias" data-en="Press and media">Presse et médias</option>
+            <option value="Investissement et accompagnement" data-fr="Investissement et accompagnement" data-en="Investment and support">Investissement et accompagnement</option>
+            <option value="Information générale" data-fr="Information générale" data-en="General information">Information générale</option>
+            <option value="Autre" data-fr="Autre" data-en="Other">Autre</option>
+          </select>
+        </div>
+        <div class="field full"><label for="message" data-fr="VOTRE MESSAGE" data-en="YOUR MESSAGE">VOTRE MESSAGE</label><textarea id="message" name="Message" placeholder="Présentez-nous votre demande..." data-placeholder-fr="Présentez-nous votre demande..." data-placeholder-en="Tell us about your request..." required></textarea></div>
       </div>
 
-      <form action="https://formsubmit.co/kzetral.contact@protonmail.com" method="POST">
-        <input type="hidden" name="_subject" value="Nouveau message — Site KZETRAL">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="true">
-
-        <div class="form-grid">
-          <div class="field">
-            <label for="nom" data-fr="NOM" data-en="LAST NAME">NOM</label>
-            <input type="text" id="nom" name="Nom" placeholder="Votre nom" data-placeholder-fr="Votre nom" data-placeholder-en="Your last name" autocomplete="family-name" required>
-          </div>
-
-          <div class="field">
-            <label for="prenom" data-fr="PRÉNOM" data-en="FIRST NAME">PRÉNOM</label>
-            <input type="text" id="prenom" name="Prénom" placeholder="Votre prénom" data-placeholder-fr="Votre prénom" data-placeholder-en="Your first name" autocomplete="given-name" required>
-          </div>
-
-          <div class="field">
-            <label for="email" data-fr="ADRESSE E-MAIL" data-en="EMAIL ADDRESS">ADRESSE E-MAIL</label>
-            <input type="email" id="email" name="Email" placeholder="nom@exemple.com" autocomplete="email" required>
-          </div>
-
-          <div class="field">
-            <label for="telephone" data-fr="NUMÉRO DE TÉLÉPHONE" data-en="PHONE NUMBER">NUMÉRO DE TÉLÉPHONE</label>
-            <input type="tel" id="telephone" name="Téléphone" placeholder="+33 6 00 00 00 00" autocomplete="tel">
-          </div>
-
-          <div class="field full">
-            <label for="motif" data-fr="MOTIF DE LA DEMANDE" data-en="REASON FOR CONTACT">MOTIF DE LA DEMANDE</label>
-            <select id="motif" name="Motif de la demande" required>
-              <option value="" data-fr="Sélectionnez un motif" data-en="Select a reason">Sélectionnez un motif</option>
-              <option value="Partenariat" data-fr="Partenariat" data-en="Partnership">Partenariat</option>
-              <option value="Proposition technique" data-fr="Proposition technique" data-en="Technical proposal">Proposition technique</option>
-              <option value="Presse et médias" data-fr="Presse et médias" data-en="Press and media">Presse et médias</option>
-              <option value="Investissement et accompagnement" data-fr="Investissement et accompagnement" data-en="Investment and support">Investissement et accompagnement</option>
-              <option value="Information générale" data-fr="Information générale" data-en="General information">Information générale</option>
-              <option value="Autre" data-fr="Autre" data-en="Other">Autre</option>
-            </select>
-          </div>
-
-          <div class="field full">
-            <label for="message" data-fr="VOTRE MESSAGE" data-en="YOUR MESSAGE">VOTRE MESSAGE</label>
-            <textarea id="message" name="Message" placeholder="Présentez-nous votre demande..." data-placeholder-fr="Présentez-nous votre demande..." data-placeholder-en="Tell us about your request..." required></textarea>
-          </div>
-        </div>
-
-        <div class="submit-row">
-          <p class="privacy-note" data-fr="Les informations transmises sont destinées au traitement de votre demande par KZETRAL." data-en="The information you provide is intended to help KZETRAL process your request.">Les informations transmises sont destinées au traitement de votre demande par KZETRAL.</p>
-          <button class="submit-button" type="submit" data-fr="ENVOYER LE MESSAGE ↗" data-en="SEND MESSAGE ↗">ENVOYER LE MESSAGE ↗</button>
-        </div>
-      </form>
-    </div>
-  </section>
+      <div class="submit-row">
+        <p class="privacy-note" data-fr="Les informations transmises sont destinées au traitement de votre demande par KZETRAL." data-en="The information you provide is intended to help KZETRAL process your request.">Les informations transmises sont destinées au traitement de votre demande par KZETRAL.</p>
+        <button class="submit-button" type="submit" data-fr="ENVOYER LE MESSAGE ↗" data-en="SEND MESSAGE ↗">ENVOYER LE MESSAGE ↗</button>
+      </div>
+    </form>
+  </div>
+</section>
 </main>
 
 <footer>
@@ -185,19 +157,13 @@ footer{align-items:flex-start;flex-direction:column}
 
 <script>
 document.getElementById("year").textContent=new Date().getFullYear();
-
 let language=localStorage.getItem("kzetral-language")||"fr";
 const languageButton=document.getElementById("languageButton");
-
 function applyLanguage(){
-  document.querySelectorAll("[data-fr][data-en]").forEach(el=>{
-    el.innerHTML=el.dataset[language];
-  });
-
+  document.querySelectorAll("[data-fr][data-en]").forEach(el=>el.innerHTML=el.dataset[language]);
   document.querySelectorAll("[data-placeholder-fr][data-placeholder-en]").forEach(el=>{
-    el.placeholder=el.dataset["placeholder"+(language==="fr"?"Fr":"En")];
+    el.placeholder=el.dataset[language==="fr"?"placeholderFr":"placeholderEn"];
   });
-
   document.documentElement.lang=language;
   languageButton.textContent=language==="fr"?"EN":"FR";
 }
@@ -210,7 +176,6 @@ applyLanguage();
 
 const menuButton=document.getElementById("menuButton");
 const mainNav=document.getElementById("mainNav");
-
 function closeMenu(){
   mainNav.classList.remove("open");
   menuButton.textContent="Menu";
@@ -225,3 +190,4 @@ mainNav.querySelectorAll("a").forEach(link=>link.addEventListener("click",closeM
 </script>
 </body>
 </html>
+
