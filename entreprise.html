@@ -1,178 +1,225 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entreprise | KZETRAL</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #fff;
-      color: #111;
-    }
-    a { color: inherit; text-decoration: none; }
-    header {
-      height: 85px; padding: 0 7%;
-      display: flex; align-items: center; justify-content: space-between;
-      border-bottom: 1px solid #eee; background: #fff;
-      position: sticky; top: 0; z-index: 10;
-    }
-    .logo { font-size: 25px; font-weight: 800; letter-spacing: 5px; }
-    nav { display: flex; align-items: center; gap: 36px; }
-    nav a { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; }
-    nav a:hover, nav a.active { color: #888; }
-    .right { display: flex; align-items: center; gap: 20px; }
-    .lang {
-      border: 1px solid #ddd; background: white; padding: 10px 13px;
-      cursor: pointer; font-size: 11px; letter-spacing: 1px;
-    }
-    .contact-btn {
-      border: 1px solid #111; padding: 13px 21px;
-      font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
-      transition: .3s;
-    }
-    .contact-btn:hover { background: #111; color: white; }
-    .menu-btn { display: none; border: 0; background: none; font-size: 25px; cursor: pointer; }
-    .hero {
-      min-height: 590px; padding: 100px 8%;
-      display: flex; flex-direction: column; justify-content: center;
-      background:
-        radial-gradient(ellipse at 75% 40%, #e9e9e9 0, transparent 43%),
-        linear-gradient(120deg, #fff 45%, #f4f4f4 100%);
-      overflow: hidden;
-    }
-    .eyebrow { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #777; margin-bottom: 28px; }
-    h1 { font-size: clamp(55px, 9vw, 115px); line-height: .95; letter-spacing: -5px; font-weight: 700; max-width: 950px; }
-    .hero p { max-width: 560px; font-size: 17px; line-height: 1.8; color: #555; margin-top: 35px; }
-    .section { padding: 110px 9%; }
-    .section-label { color: #888; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 25px; }
-    h2 { font-size: clamp(34px, 5vw, 62px); line-height: 1.08; letter-spacing: -2px; max-width: 850px; }
-    .lead { color: #666; font-size: 17px; line-height: 1.9; max-width: 760px; margin-top: 30px; }
-    .dark { background: #111; color: white; }
-    .dark .section-label { color: #aaa; }
-    .dark .lead { color: #bbb; }
-    .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; margin-top: 65px; }
-    .item { border-top: 1px solid #ddd; padding-top: 25px; }
-    .item h3 { font-size: 23px; margin-bottom: 15px; }
-    .item p { color: #666; line-height: 1.8; font-size: 15px; }
-    .dark .item { border-color: #444; }
-    .dark .item p { color: #bbb; }
-    .statement {
-      padding: 110px 9%; text-align: center;
-      background: #f5f5f5;
-    }
-    .statement p { font-size: clamp(28px, 5vw, 55px); font-weight: 600; letter-spacing: -1.5px; max-width: 950px; margin: auto; line-height: 1.2; }
-    footer {
-      padding: 40px 7%; display: flex; justify-content: space-between;
-      gap: 25px; flex-wrap: wrap; border-top: 1px solid #eee;
-      color: #777; font-size: 12px;
-    }
-    footer strong { color: #111; letter-spacing: 3px; }
-    @media(max-width: 800px) {
-      header { height: 72px; padding: 0 5%; }
-      .logo { font-size: 20px; }
-      .menu-btn { display: block; }
-      nav {
-        display: none; position: absolute; top: 72px; left: 0; right: 0;
-        background: white; padding: 30px 7%; flex-direction: column;
-        align-items: flex-start; border-bottom: 1px solid #eee;
-      }
-      nav.open { display: flex; }
-      .right { gap: 10px; }
-      .contact-btn { display: none; }
-      .hero { min-height: 520px; padding: 90px 7%; }
-      h1 { letter-spacing: -3px; }
-      .section { padding: 75px 7%; }
-      .columns { grid-template-columns: 1fr; gap: 40px; }
-      .statement { padding: 80px 7%; }
-    }
-  </style>
-</head>
-<body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KZETRAL — Entreprise</title>
+<meta name="description" content="Découvrez KZETRAL, son ambition, sa vision de la mobilité et son fondateur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:"Manrope",Arial,sans-serif;background:#fff;color:#101114;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+header{height:88px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e9e9e9;background:rgba(255,255,255,.96);position:sticky;top:0;z-index:100}
+.logo{font-size:25px;font-weight:800;letter-spacing:5px}
+nav{display:flex;align-items:center;gap:38px}
+nav a{font-size:10px;font-weight:700;letter-spacing:1.2px;color:#555;transition:.25s}
+nav a:hover,nav a.active{color:#111}
+.right{display:flex;align-items:center;gap:20px}
+.lang{border:0;background:white;padding:10px 5px;cursor:pointer;font-size:11px;font-weight:700}
+.contact-btn{border:1px solid #111;padding:13px 19px;font-size:10px;font-weight:800;letter-spacing:1px;transition:.3s}
+.contact-btn:hover{background:#111;color:white}
+.menu-btn{display:none;border:0;background:none;font-size:11px;font-weight:700;letter-spacing:1px;cursor:pointer}
+.hero{min-height:590px;padding:110px 9%;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(ellipse at 80% 40%,#e9edf0 0,transparent 42%),linear-gradient(120deg,#fff 40%,#f4f5f6 100%);overflow:hidden}
+.eyebrow{font-size:10px;font-weight:800;letter-spacing:4px;color:#777;margin-bottom:30px}
+.hero h1{font-size:clamp(65px,11vw,145px);line-height:.88;letter-spacing:-.09em;font-weight:800}
+.hero h1 span{display:block;font-size:.23em;letter-spacing:.23em;font-weight:600;margin-top:28px}
+.hero p{max-width:620px;font-size:15px;line-height:2;color:#666;margin-top:38px}
+.hero-index{margin-top:55px;font-size:9px;letter-spacing:2px;color:#999}
+.section{padding:120px 10%}
+.section-label{font-size:10px;font-weight:800;letter-spacing:3px;color:#92979c;margin-bottom:28px}
+h2{font-size:clamp(38px,5.5vw,72px);line-height:1.08;letter-spacing:-.07em;font-weight:600;max-width:900px}
+.lead{font-size:15px;line-height:2;color:#70767c;max-width:760px;margin-top:30px}
+.identity-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;margin-top:75px}
+.identity-item{border-top:1px solid #ddd;padding-top:25px}
+.identity-item span{font-size:10px;letter-spacing:2px;color:#999}
+.identity-item h3{font-size:23px;letter-spacing:-.7px;margin:18px 0 13px}
+.identity-item p{font-size:13px;line-height:1.9;color:#777;max-width:450px}
+.dark{background:#0b0e12;color:white}
+.dark .section-label{color:#8e969e}
+.dark .lead{color:#aeb4bb}
+.position-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:75px;border-top:1px solid #343a40;border-bottom:1px solid #343a40}
+.position-card{padding:35px 30px 40px 0;border-right:1px solid #343a40;margin-right:30px}
+.position-card:last-child{border-right:0;margin-right:0}
+.position-card .number{font-size:10px;letter-spacing:2px;color:#8e969e}
+.position-card h3{font-size:22px;line-height:1.3;margin:25px 0 17px}
+.position-card p{font-size:12px;line-height:1.9;color:#aeb4bb}
+.statement{padding:115px 10%;background:#f4f5f6}
+.statement p{font-size:clamp(28px,4.5vw,57px);font-weight:600;letter-spacing:-.06em;line-height:1.2;max-width:1000px}
+.founder{display:grid;grid-template-columns:.8fr 1.2fr;gap:90px;align-items:center}
+.founder-visual{min-height:430px;background:radial-gradient(ellipse at 50% 40%,#e1e6ea,transparent 60%),linear-gradient(145deg,#f7f8f9,#e9ecef);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.founder-visual span{font-size:clamp(38px,6vw,75px);font-weight:800;letter-spacing:-.09em;color:rgba(20,25,30,.08)}
+.founder-copy h2{font-size:clamp(38px,5vw,62px)}
+.founder-copy p{font-size:14px;line-height:2;color:#737980;margin-top:25px;max-width:650px}
+.founder-tag{display:inline-block;margin-top:30px;padding:12px 16px;border:1px solid #ddd;font-size:9px;font-weight:800;letter-spacing:1.5px;color:#555}
+footer{padding:38px 7%;border-top:1px solid #eee;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;color:#858a90;font-size:10px}
+footer strong{font-size:17px;letter-spacing:4px;color:#111}
+footer a:hover{color:#111}
+@media(max-width:850px){
+header{height:74px;padding:0 5%}
+.logo{font-size:20px;letter-spacing:3px}
+.menu-btn{display:block}
+nav{display:none;position:absolute;top:74px;left:0;right:0;background:white;padding:28px 7%;flex-direction:column;align-items:flex-start;gap:25px;border-bottom:1px solid #eee}
+nav.open{display:flex}
+.right{gap:12px}
+.contact-btn{padding:10px 10px;font-size:9px}
+.hero{min-height:520px;padding:90px 7%}
+.section{padding:85px 7%}
+.identity-grid{gap:35px}
+.position-grid{grid-template-columns:1fr}
+.position-card{border-right:0;border-bottom:1px solid #343a40;margin:0;padding:30px 0}
+.position-card:last-child{border-bottom:0}
+.statement{padding:85px 7%}
+.founder{grid-template-columns:1fr;gap:45px}
+.founder-visual{min-height:300px}
+}
+@media(max-width:480px){
+header{padding:0 4%}
+.logo{font-size:18px;letter-spacing:2px}
+.right{gap:9px}
+.contact-btn{padding:9px 7px;font-size:8px;letter-spacing:.3px}
+.lang{font-size:10px}
+.menu-btn{font-size:10px}
+.hero{min-height:490px}
+.hero h1{font-size:17vw}
+.hero p{font-size:13px}
+.identity-grid{grid-template-columns:1fr;gap:35px}
+.section{padding:75px 7%}
+.founder-visual{min-height:240px}
+footer{align-items:flex-start;flex-direction:column}
+}
+</style>
+</head>
+
+<body>
 <header>
   <a class="logo" href="index.html">KZETRAL</a>
-  <button class="menu-btn" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
-  <nav>
-    <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
-    <a href="entreprise.html" class="active" data-fr="Entreprise" data-en="Company">Entreprise</a>
-    <a href="vision.html" data-fr="Notre vision" data-en="Our vision">Notre vision</a>
-    <a href="contact.html" data-fr="Contact" data-en="Contact">Contact</a>
+
+  <nav id="mainNav">
+    <a href="index.html" data-fr="ACCUEIL" data-en="HOME">ACCUEIL</a>
+    <a href="vision.html" data-fr="NOTRE VISION" data-en="OUR VISION">NOTRE VISION</a>
+    <a href="entreprise.html" class="active" data-fr="ENTREPRISE" data-en="COMPANY">ENTREPRISE</a>
   </nav>
+
   <div class="right">
-    <button class="lang" onclick="toggleLanguage()">FR / EN</button>
-    <a class="contact-btn" href="contact.html" data-fr="Nous contacter ↗" data-en="Contact us ↗">Nous contacter ↗</a>
+    <button class="lang" id="languageButton">EN</button>
+    <a class="contact-btn" href="contact.html" data-fr="CONTACTEZ-NOUS" data-en="CONTACT US">CONTACTEZ-NOUS</a>
+    <button class="menu-btn" id="menuButton" aria-label="Ouvrir le menu" aria-expanded="false">Menu</button>
   </div>
 </header>
 
 <main>
   <section class="hero">
-    <div class="eyebrow" data-fr="À propos de KZETRAL" data-en="About KZETRAL">À propos de KZETRAL</div>
-    <h1 data-fr="UNE NOUVELLE<br>AMBITION." data-en="A NEW<br>AMBITION.">UNE NOUVELLE<br>AMBITION.</h1>
-    <p data-fr="KZETRAL est un projet de constructeur automobile qui explore de nouvelles possibilités pour la mobilité de demain." data-en="KZETRAL is an automotive manufacturer project exploring new possibilities for the mobility of tomorrow.">KZETRAL est un projet de constructeur automobile qui explore de nouvelles possibilités pour la mobilité de demain.</p>
+    <div class="eyebrow" data-fr="L'UNIVERS KZETRAL" data-en="THE KZETRAL UNIVERSE">L'UNIVERS KZETRAL</div>
+    <h1>KZETRAL<span data-fr="UNE AMBITION AUTOMOBILE" data-en="AN AUTOMOTIVE AMBITION">UNE AMBITION AUTOMOBILE</span></h1>
+    <p data-fr="Un projet né d'une ambition : explorer de nouvelles voies pour l'automobile et participer à la réflexion sur les mobilités de demain." data-en="A project born from an ambition: to explore new directions for the automotive industry and contribute to the thinking behind tomorrow's mobility.">Un projet né d'une ambition : explorer de nouvelles voies pour l'automobile et participer à la réflexion sur les mobilités de demain.</p>
+    <div class="hero-index">KZETRAL — ABOUT US / 001</div>
   </section>
 
-  <section class="section">
-    <div class="section-label" data-fr="Notre identité" data-en="Our identity">Notre identité</div>
-    <h2 data-fr="Construire une marque tournée vers l'avenir." data-en="Building a brand focused on the future.">Construire une marque tournée vers l'avenir.</h2>
-    <p class="lead" data-fr="Notre ambition est de développer une identité automobile forte, fondée sur l'innovation, l'exigence de conception et une vision internationale. KZETRAL est aujourd'hui un projet en phase de réflexion, d'étude et de développement de concepts." data-en="Our ambition is to develop a strong automotive identity based on innovation, high design standards and an international outlook. KZETRAL is currently a project in its research, study and concept development phase.">Notre ambition est de développer une identité automobile forte, fondée sur l'innovation, l'exigence de conception et une vision internationale. KZETRAL est aujourd'hui un projet en phase de réflexion, d'étude et de développement de concepts.</p>
+  <section class="section" id="identity">
+    <div class="section-label">01 — KZETRAL</div>
+    <h2 data-fr="Qui on est ?" data-en="Who are we?">Qui on est ?</h2>
+    <p class="lead" data-fr="KZETRAL est un projet de constructeur automobile tourné vers l'innovation. Notre ambition est d'explorer des solutions de mobilité associant design distinctif, motorisation électrique et technologies hydrogène. Aujourd'hui, le projet se concentre sur la recherche, l'étude de faisabilité et le développement de concepts." data-en="KZETRAL is an automotive manufacturer project focused on innovation. Our ambition is to explore mobility solutions combining distinctive design, electric propulsion and hydrogen technologies. Today, the project focuses on research, feasibility studies and concept development.">KZETRAL est un projet de constructeur automobile tourné vers l'innovation. Notre ambition est d'explorer des solutions de mobilité associant design distinctif, motorisation électrique et technologies hydrogène. Aujourd'hui, le projet se concentre sur la recherche, l'étude de faisabilité et le développement de concepts.</p>
+
+    <div class="identity-grid">
+      <article class="identity-item">
+        <span>01 / NOTRE IDENTITÉ</span>
+        <h3 data-fr="Une vision indépendante" data-en="An independent vision">Une vision indépendante</h3>
+        <p data-fr="Construire progressivement une identité automobile reconnaissable, avec une attention particulière portée au design, à la technologie et à l'expérience à bord." data-en="Gradually building a recognizable automotive identity, with particular attention to design, technology and the onboard experience.">Construire progressivement une identité automobile reconnaissable, avec une attention particulière portée au design, à la technologie et à l'expérience à bord.</p>
+      </article>
+      <article class="identity-item">
+        <span>02 / NOTRE DÉMARCHE</span>
+        <h3 data-fr="Étudier avant de développer" data-en="Study before developing">Étudier avant de développer</h3>
+        <p data-fr="Chaque idée doit être confrontée aux réalités techniques, industrielles, économiques et environnementales avant de pouvoir devenir une solution concrète." data-en="Every idea must be assessed against technical, industrial, economic and environmental realities before it can become a practical solution.">Chaque idée doit être confrontée aux réalités techniques, industrielles, économiques et environnementales avant de pouvoir devenir une solution concrète.</p>
+      </article>
+    </div>
   </section>
 
-  <section class="section dark">
-    <div class="section-label" data-fr="Nos axes de développement" data-en="Our development priorities">Nos axes de développement</div>
-    <h2 data-fr="Une ambition. Plusieurs domaines d'exploration." data-en="One ambition. Several areas to explore.">Une ambition. Plusieurs domaines d'exploration.</h2>
-    <div class="columns">
-      <div class="item">
-        <h3 data-fr="Ingénierie automobile" data-en="Automotive engineering">Ingénierie automobile</h3>
-        <p data-fr="Étudier des architectures de véhicules, leurs performances, leur conception et les contraintes techniques liées à leur développement." data-en="Exploring vehicle architectures, performance, design and the technical challenges involved in their development.">Étudier des architectures de véhicules, leurs performances, leur conception et les contraintes techniques liées à leur développement.</p>
-      </div>
-      <div class="item">
-        <h3 data-fr="Technologies énergétiques" data-en="Energy technologies">Technologies énergétiques</h3>
-        <p data-fr="Explorer les possibilités offertes par l'association de la propulsion électrique et de la pile à combustible hydrogène." data-en="Exploring the possibilities of combining electric propulsion with hydrogen fuel-cell technology.">Explorer les possibilités offertes par l'association de la propulsion électrique et de la pile à combustible hydrogène.</p>
-      </div>
-      <div class="item">
-        <h3 data-fr="Sécurité et conception" data-en="Safety and design">Sécurité et conception</h3>
-        <p data-fr="Placer la sécurité, l'ergonomie et la qualité de conception au cœur des réflexions sur nos futurs véhicules." data-en="Putting safety, ergonomics and design quality at the heart of our thinking about future vehicles.">Placer la sécurité, l'ergonomie et la qualité de conception au cœur des réflexions sur nos futurs véhicules.</p>
-      </div>
-      <div class="item">
-        <h3 data-fr="Ouverture internationale" data-en="International outlook">Ouverture internationale</h3>
-        <p data-fr="Développer progressivement des échanges avec des experts, des partenaires techniques et des acteurs industriels." data-en="Gradually building relationships with experts, technical partners and industry stakeholders.">Développer progressivement des échanges avec des experts, des partenaires techniques et des acteurs industriels.</p>
-      </div>
+  <section class="section dark" id="position">
+    <div class="section-label">02 — OUR POSITION</div>
+    <h2 data-fr="Notre position sur l'avenir de la mobilité." data-en="Our position on the future of mobility.">Notre position sur l'avenir de la mobilité.</h2>
+    <p class="lead" data-fr="L'avenir de l'automobile ne reposera pas sur une seule réponse. Il dépendra de la recherche, des usages, des infrastructures et de la capacité à développer des technologies adaptées à chaque besoin." data-en="The future of automotive will not rely on a single answer. It will depend on research, real-world needs, infrastructure and the ability to develop technologies suited to each use.">L'avenir de l'automobile ne reposera pas sur une seule réponse. Il dépendra de la recherche, des usages, des infrastructures et de la capacité à développer des technologies adaptées à chaque besoin.</p>
+
+    <div class="position-grid">
+      <article class="position-card">
+        <span class="number">01 / TECHNOLOGIE</span>
+        <h3 data-fr="Explorer plusieurs solutions" data-en="Explore different solutions">Explorer plusieurs solutions</h3>
+        <p data-fr="Nous nous intéressons aux motorisations électriques et aux technologies hydrogène, en étudiant leurs avantages, leurs limites et les conditions nécessaires à leur utilisation." data-en="We are interested in electric powertrains and hydrogen technologies, studying their benefits, limitations and the conditions required for their use.">Nous nous intéressons aux motorisations électriques et aux technologies hydrogène, en étudiant leurs avantages, leurs limites et les conditions nécessaires à leur utilisation.</p>
+      </article>
+      <article class="position-card">
+        <span class="number">02 / RESPONSABILITÉ</span>
+        <h3 data-fr="Penser à l'ensemble du cycle" data-en="Consider the entire lifecycle">Penser à l'ensemble du cycle</h3>
+        <p data-fr="Une mobilité plus responsable doit prendre en compte la fabrication, les matériaux, la production de l'énergie, l'utilisation et la fin de vie des véhicules." data-en="More responsible mobility must consider manufacturing, materials, energy production, vehicle use and end-of-life management.">Une mobilité plus responsable doit prendre en compte la fabrication, les matériaux, la production de l'énergie, l'utilisation et la fin de vie des véhicules.</p>
+      </article>
+      <article class="position-card">
+        <span class="number">03 / SÉCURITÉ</span>
+        <h3 data-fr="Placer l'humain au centre" data-en="Put people at the center">Placer l'humain au centre</h3>
+        <p data-fr="La sécurité, la fiabilité, le confort et la facilité d'utilisation doivent rester des priorités dans la réflexion autour de chaque futur véhicule." data-en="Safety, reliability, comfort and ease of use must remain priorities in the development of every future vehicle.">La sécurité, la fiabilité, le confort et la facilité d'utilisation doivent rester des priorités dans la réflexion autour de chaque futur véhicule.</p>
+      </article>
     </div>
   </section>
 
   <section class="statement">
-    <p data-fr="Nous ne voulons pas simplement imaginer la voiture de demain. Nous voulons étudier comment la rendre possible." data-en="We don't just want to imagine tomorrow's car. We want to explore how to make it possible.">Nous ne voulons pas simplement imaginer la voiture de demain. Nous voulons étudier comment la rendre possible.</p>
+    <p data-fr="L'innovation n'a de valeur que lorsqu'elle répond à un besoin réel et peut être rendue possible." data-en="Innovation only has value when it meets a real need and can be made possible.">L'innovation n'a de valeur que lorsqu'elle répond à un besoin réel et peut être rendue possible.</p>
+  </section>
+
+  <section class="section founder" id="founder">
+    <div class="founder-visual"><span>KZETRAL</span></div>
+    <div class="founder-copy">
+      <div class="section-label">03 — THE FOUNDER</div>
+      <h2 data-fr="Fondateur" data-en="Founder">Fondateur</h2>
+      <p data-fr="KZETRAL est porté par son fondateur, à l'origine de l'idée et de la direction du projet. Animé par l'intérêt pour l'automobile, les nouvelles technologies et l'entrepreneuriat, il souhaite faire évoluer cette ambition étape par étape : de la réflexion initiale à l'étude technique, puis à la recherche de partenaires capables de contribuer à son développement." data-en="KZETRAL is led by its founder, who initiated the idea and defines the project's direction. Driven by an interest in automotive innovation, new technologies and entrepreneurship, he aims to move this ambition forward step by step: from initial research to technical feasibility studies, and then to finding partners who can contribute to its development.">KZETRAL est porté par son fondateur, à l'origine de l'idée et de la direction du projet. Animé par l'intérêt pour l'automobile, les nouvelles technologies et l'entrepreneuriat, il souhaite faire évoluer cette ambition étape par étape : de la réflexion initiale à l'étude technique, puis à la recherche de partenaires capables de contribuer à son développement.</p>
+      <span class="founder-tag" data-fr="FONDATEUR DE KZETRAL" data-en="FOUNDER OF KZETRAL">FONDATEUR DE KZETRAL</span>
+    </div>
   </section>
 </main>
 
 <footer>
   <strong>KZETRAL</strong>
-  <span data-fr="Projet automobile en développement." data-en="Automotive project in development.">Projet automobile en développement.</span>
+  <span data-fr="Projet automobile en phase d'étude et de développement." data-en="Automotive project in its research and development phase.">Projet automobile en phase d'étude et de développement.</span>
+  <a href="contact.html" data-fr="Nous contacter ↗" data-en="Contact us ↗">Nous contacter ↗</a>
   <span>© <span id="year"></span> KZETRAL</span>
 </footer>
 
 <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("year").textContent=new Date().getFullYear();
 
-  let language = localStorage.getItem("kzetral-language") || "fr";
+let language=localStorage.getItem("kzetral-language")||"fr";
+const languageButton=document.getElementById("languageButton");
 
-  function applyLanguage() {
-    document.querySelectorAll("[data-fr]").forEach(element => {
-      element.innerHTML = element.dataset[language];
-    });
-    document.documentElement.lang = language;
-  }
-
-  function toggleLanguage() {
-    language = language === "fr" ? "en" : "fr";
-    localStorage.setItem("kzetral-language", language);
-    applyLanguage();
-  }
-
+function applyLanguage(){
+  document.querySelectorAll("[data-fr][data-en]").forEach(el=>{
+    el.innerHTML=el.dataset[language];
+  });
+  document.documentElement.lang=language;
+  languageButton.textContent=language==="fr"?"EN":"FR";
+}
+languageButton.addEventListener("click",()=>{
+  language=language==="fr"?"en":"fr";
+  localStorage.setItem("kzetral-language",language);
   applyLanguage();
+});
+applyLanguage();
+
+const menuButton=document.getElementById("menuButton");
+const mainNav=document.getElementById("mainNav");
+
+function closeMenu(){
+  mainNav.classList.remove("open");
+  menuButton.textContent="Menu";
+  menuButton.setAttribute("aria-expanded","false");
+}
+menuButton.addEventListener("click",()=>{
+  const open=mainNav.classList.toggle("open");
+  menuButton.textContent=open?"Fermer":"Menu";
+  menuButton.setAttribute("aria-expanded",String(open));
+});
+mainNav.querySelectorAll("a").forEach(link=>link.addEventListener("click",closeMenu));
 </script>
 </body>
 </html>
