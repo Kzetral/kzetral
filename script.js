@@ -93,6 +93,15 @@ if ("IntersectionObserver" in window) {
 }
 
 
+// ANIMATION DES CARACTERISTIQUES EH-X
+
+const specificationCards = document.querySelectorAll(".specifications div");
+
+specificationCards.forEach((card, index) => {
+    card.classList.add("reveal");
+    card.style.transitionDelay = `${index * 150}ms`;
+});
+
 // ANIMATION DES LIENS INTERNES
 
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
