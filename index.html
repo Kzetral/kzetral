@@ -1,385 +1,19 @@
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>KZETRAL — Beyond Mobility</title>
     <meta name="description" content="KZETRAL, projet de constructeur automobile explorant la mobilité hydrogène et électrique.">
+
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        /* HOME PAGE DESIGN */
-        .home-hero {
-            min-height: 760px;
-            padding: 100px 8% 55px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background: #fff;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .home-hero::before {
-            content: "";
-            position: absolute;
-            width: 550px;
-            height: 550px;
-            border-radius: 50%;
-            background: #f7f7f7;
-            filter: blur(80px);
-            right: -100px;
-            top: 50px;
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 850px;
-        }
-
-        .hero-label {
-            font-size: 11px;
-            letter-spacing: 4px;
-            color: #777;
-            margin-bottom: 25px;
-        }
-
-        .home-hero h1 {
-            font-size: clamp(55px, 8vw, 105px);
-            line-height: .98;
-            letter-spacing: -6px;
-            font-weight: 500;
-            color: #111;
-            max-width: 900px;
-        }
-
-        .home-hero h1 span {
-            color: #999;
-        }
-
-        .hero-description {
-            font-size: 15px;
-            color: #666;
-            max-width: 480px;
-            margin-top: 28px;
-            line-height: 1.9;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 35px;
-            flex-wrap: wrap;
-        }
-
-        .outline-button {
-            display: inline-block;
-            padding: 14px 24px;
-            border: 1px solid #ddd;
-            font-size: 12px;
-            transition: .3s;
-        }
-
-        .outline-button:hover {
-            border-color: #111;
-            background: #f7f7f7;
-        }
-
-        .hero-bottom {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 100px;
-            padding-top: 20px;
-            border-top: 1px solid #eaeaea;
-            color: #888;
-            font-size: 10px;
-            letter-spacing: 2px;
-        }
-
-        /* VEHICLE FEATURE */
-        .ehx-section {
-            padding: 110px 8%;
-            background: #f8f8f8;
-        }
-
-        .ehx-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: end;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .ehx-top h2 {
-            font-size: clamp(42px, 6vw, 75px);
-            font-weight: 500;
-            letter-spacing: -4px;
-            margin: 0;
-        }
-
-        .ehx-number {
-            color: #aaa;
-            font-size: 12px;
-            letter-spacing: 3px;
-        }
-
-        .ehx-visual {
-            width: 100%;
-            min-height: 440px;
-            position: relative;
-            overflow: hidden;
-            background: #ededed;
-        }
-
-        .ehx-visual img {
-            width: 100%;
-            height: 100%;
-            min-height: 440px;
-            object-fit: cover;
-            display: block;
-            transition: transform 1s ease;
-        }
-
-        .ehx-visual:hover img {
-            transform: scale(1.025);
-        }
-
-        .ehx-caption {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            padding: 22px 0;
-            border-bottom: 1px solid #ddd;
-            font-size: 11px;
-            color: #777;
-            letter-spacing: 1px;
-        }
-
-        /* SPECS */
-        .spec-section {
-            padding: 90px 8%;
-            background: white;
-        }
-
-        .spec-heading {
-            margin-bottom: 40px;
-        }
-
-        .spec-heading h2 {
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 500;
-            letter-spacing: -2px;
-        }
-
-        .spec-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            border-top: 1px solid #e8e8e8;
-            border-bottom: 1px solid #e8e8e8;
-        }
-
-        .spec-item {
-            padding: 35px 20px;
-            border-right: 1px solid #e8e8e8;
-            transition: background .3s;
-        }
-
-        .spec-item:last-child {
-            border-right: none;
-        }
-
-        .spec-item:hover {
-            background: #fafafa;
-        }
-
-        .spec-item strong {
-            font-size: 30px;
-            font-weight: 500;
-            display: block;
-        }
-
-        .spec-item span {
-            display: block;
-            font-size: 10px;
-            letter-spacing: 2px;
-            color: #888;
-            margin-top: 10px;
-        }
-
-        .spec-disclaimer {
-            font-size: 11px;
-            color: #999;
-            margin-top: 20px;
-        }
-
-        /* VISION */
-        .vision-section {
-            padding: 130px 8%;
-            background: white;
-        }
-
-        .vision-inner {
-            max-width: 900px;
-        }
-
-        .vision-inner h2 {
-            font-size: clamp(40px, 6vw, 72px);
-            font-weight: 500;
-            letter-spacing: -3px;
-            line-height: 1.1;
-            margin: 20px 0;
-        }
-
-        .vision-inner p {
-            color: #666;
-            max-width: 600px;
-            line-height: 1.9;
-        }
-
-        /* TECHNOLOGY */
-        .technology-section {
-            padding: 110px 8%;
-            background: #f8f8f8;
-        }
-
-        .technology-heading {
-            max-width: 700px;
-            margin-bottom: 55px;
-        }
-
-        .technology-heading h2 {
-            font-size: clamp(35px, 5vw, 60px);
-            font-weight: 500;
-            letter-spacing: -2px;
-        }
-
-        .technology-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .technology-card {
-            background: white;
-            border: 1px solid #eaeaea;
-            padding: 38px 30px;
-            min-height: 220px;
-            transition: .4s;
-        }
-
-        .technology-card:hover {
-            transform: translateY(-7px);
-            border-color: #aaa;
-        }
-
-        .technology-card .card-number {
-            font-size: 11px;
-            color: #999;
-            letter-spacing: 2px;
-        }
-
-        .technology-card h3 {
-            font-size: 21px;
-            font-weight: 500;
-            margin: 30px 0 12px;
-        }
-
-        .technology-card p {
-            color: #777;
-            font-size: 13px;
-            line-height: 1.8;
-        }
-
-        /* FINAL CTA */
-        .final-section {
-            padding: 120px 8%;
-            background: white;
-            text-align: center;
-        }
-
-        .final-section h2 {
-            font-size: clamp(40px, 6vw, 70px);
-            font-weight: 500;
-            letter-spacing: -3px;
-        }
-
-        .final-section p {
-            color: #777;
-            margin: 20px auto 0;
-            max-width: 500px;
-        }
-
-        /* RESPONSIVE */
-        @media(max-width: 850px) {
-            .spec-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .spec-item:nth-child(2) {
-                border-right: none;
-            }
-
-            .spec-item:nth-child(-n+2) {
-                border-bottom: 1px solid #e8e8e8;
-            }
-
-            .technology-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media(max-width: 600px) {
-            .home-hero {
-                min-height: 650px;
-                padding: 100px 6% 35px;
-            }
-
-            .home-hero h1 {
-                letter-spacing: -3px;
-            }
-
-            .hero-bottom {
-                margin-top: 70px;
-            }
-
-            .ehx-section,
-            .spec-section,
-            .vision-section,
-            .technology-section,
-            .final-section {
-                padding: 75px 6%;
-            }
-
-            .ehx-visual,
-            .ehx-visual img {
-                min-height: 260px;
-            }
-
-            .spec-item {
-                padding: 25px 12px;
-            }
-
-            .spec-item strong {
-                font-size: 24px;
-            }
-        }
-    </style>
 </head>
 
-<body>
+<body id="top">
 
-<header>
-    <a href="index.html" class="logo">
-        KZETRAL<span>®</span>
-    </a>
+<header class="site-header">
+    <a href="index.html" class="logo">KZETRAL<span>®</span></a>
 
     <nav class="main-nav">
         <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
@@ -393,12 +27,10 @@
     <button id="language" class="language-button" type="button">EN</button>
 </header>
 
-
 <main>
 
     <!-- HERO -->
     <section class="home-hero">
-
         <div class="hero-content">
 
             <div class="hero-label"
@@ -431,16 +63,13 @@
                     Notre vision
                 </a>
             </div>
-
         </div>
 
         <div class="hero-bottom">
             <span>KZETRAL AUTOMOTIVE PROJECT</span>
             <span>01 / 04 — CONCEPT</span>
         </div>
-
     </section>
-
 
     <!-- EH-X -->
     <section class="ehx-section" id="ehx">
@@ -458,7 +87,11 @@
             <img
                 src="images/ehx-concept.jpg"
                 alt="Concept SUV KZETRAL EH-X"
-                onerror="this.style.display='none';">
+                onerror="this.style.display='none'; this.parentElement.classList.add('no-image');">
+            <div class="image-placeholder">
+                <span>KZETRAL</span>
+                <p>EH-X — DESIGN CONCEPT</p>
+            </div>
         </div>
 
         <div class="ehx-caption">
@@ -468,8 +101,7 @@
 
     </section>
 
-
-    <!-- SPECS -->
+    <!-- SPECIFICATIONS -->
     <section class="spec-section">
 
         <div class="spec-heading">
@@ -517,7 +149,6 @@
 
     </section>
 
-
     <!-- VISION -->
     <section class="vision-section">
 
@@ -548,7 +179,6 @@
         </div>
 
     </section>
-
 
     <!-- TECHNOLOGY -->
     <section class="technology-section" id="technology">
@@ -601,8 +231,7 @@
 
     </section>
 
-
-    <!-- FINAL CONTACT -->
+    <!-- CONTACT CTA -->
     <section class="final-section">
 
         <div class="eyebrow"
@@ -631,15 +260,20 @@
 
 </main>
 
-
+<!-- FOOTER -->
 <footer class="site-footer">
+
     <div class="footer-main">
+
         <div class="footer-brand">
             <a href="index.html" class="logo">KZETRAL<span>®</span></a>
+
             <p data-fr="Imaginer la mobilité de demain."
                data-en="Imagining tomorrow's mobility.">
                 Imaginer la mobilité de demain.
             </p>
+
+            <div class="footer-brand-note">BEYOND MOBILITY.</div>
         </div>
 
         <div class="footer-column">
@@ -654,48 +288,25 @@
             <a href="company.html" data-fr="L'entreprise" data-en="The company">L'entreprise</a>
             <a href="contact.html" data-fr="Nous contacter" data-en="Contact us">Nous contacter</a>
         </div>
+
     </div>
 
     <div class="footer-bottom">
         <span>© <span id="year"></span> KZETRAL</span>
+
         <span data-fr="Projet automobile en développement"
               data-en="Automotive project in development">
             Projet automobile en développement
         </span>
+
         <a href="#top" data-fr="RETOUR EN HAUT ↑" data-en="BACK TO TOP ↑">
             RETOUR EN HAUT ↑
         </a>
     </div>
-</footer>
 
+</footer>
 
 <script src="script.js"></script>
 
-<script>
-    // Animation d'apparition au défilement
-    const animatedSections = document.querySelectorAll(
-        ".vision-section, .ehx-section, .spec-section, .technology-section, .final-section"
-    );
-
-    animatedSections.forEach(section => {
-        section.style.opacity = "0";
-        section.style.transform = "translateY(25px)";
-        section.style.transition = "opacity .8s ease, transform .8s ease";
-    });
-
-    const sectionObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
-                sectionObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.12 });
-
-    animatedSections.forEach(section => sectionObserver.observe(section));
-</script>
-
 </body>
 </html>
-
