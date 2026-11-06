@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,16 +13,18 @@
 <body>
 
 <header>
-  <a href="#home" class="logo">KZETRAL<span>®</span></a>
+  <a href="index.html" class="logo">KZETRAL<span>®</span></a>
 
   <nav>
-    <a href="#vision" data-fr="Entreprise" data-en="Company">Entreprise</a>
+    <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+    <a href="about.html" data-fr="Qui sommes-nous ?" data-en="About us">Qui sommes-nous ?</a>
+    <a href="company.html" data-fr="Entreprise" data-en="Company">Entreprise</a>
     <a href="#ehx">EH-X</a>
     <a href="#technology" data-fr="Technologie" data-en="Technology">Technologie</a>
-    <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
+    <a href="contact.html" data-fr="Contact" data-en="Contact">Contact</a>
   </nav>
 
-  <button id="language">FR / EN</button>
+  <button id="language" type="button">EN</button>
 </header>
 
 <main>
@@ -71,6 +74,12 @@
      data-en="The project is currently at the concept and feasibility-study stage.">
      Le projet est actuellement en phase de concept et d'étude.
   </p>
+
+  <a href="about.html" class="button secondary-button"
+     data-fr="DÉCOUVRIR NOTRE HISTOIRE ↗"
+     data-en="DISCOVER OUR STORY ↗">
+     DÉCOUVRIR NOTRE HISTOIRE ↗
+  </a>
 </section>
 
 <section class="vehicle" id="ehx">
@@ -162,7 +171,7 @@
   </div>
 </section>
 
-<section class="contact" id="contact">
+<section class="contact">
   <p class="section-label">04 — CONTACT</p>
 
   <h2 data-fr="Construisons la suite."
@@ -175,19 +184,22 @@
      Vous souhaitez échanger au sujet du projet KZETRAL ? Contactez notre équipe.
   </p>
 
-  <a href="mailto:contact@kzetral.com" class="email">
-    contact@kzetral.com ↗
+  <a href="contact.html" class="button"
+     data-fr="NOUS CONTACTER ↗"
+     data-en="CONTACT US ↗">
+     NOUS CONTACTER ↗
   </a>
-  <p class="note">Adresse provisoire à remplacer avant publication.</p>
 </section>
 
 </main>
 
 <footer>
-  <a href="#home" class="logo">KZETRAL®</a>
+  <a href="index.html" class="logo">KZETRAL®</a>
   <p>© <span id="year"></span> KZETRAL — All rights reserved.</p>
+  <a href="contact.html" data-fr="Contact" data-en="Contact">Contact</a>
 </footer>
 
 <script src="script.js"></script>
 </body>
 </html>
+
