@@ -1,283 +1,676 @@
 
+
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>KZETRAL | The Future of Mobility</title>
-
-    <meta name="description" content="KZETRAL est un projet de constructeur automobile qui explore une nouvelle vision de la mobilité hydrogène et électrique.">
-
+    <title>KZETRAL — Beyond Mobility</title>
+    <meta name="description" content="KZETRAL, projet de constructeur automobile explorant la mobilité hydrogène et électrique.">
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* HOME PAGE DESIGN */
+        .home-hero {
+            min-height: 760px;
+            padding: 100px 8% 55px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-hero::before {
+            content: "";
+            position: absolute;
+            width: 550px;
+            height: 550px;
+            border-radius: 50%;
+            background: #f7f7f7;
+            filter: blur(80px);
+            right: -100px;
+            top: 50px;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 850px;
+        }
+
+        .hero-label {
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .home-hero h1 {
+            font-size: clamp(55px, 8vw, 105px);
+            line-height: .98;
+            letter-spacing: -6px;
+            font-weight: 500;
+            color: #111;
+            max-width: 900px;
+        }
+
+        .home-hero h1 span {
+            color: #999;
+        }
+
+        .hero-description {
+            font-size: 15px;
+            color: #666;
+            max-width: 480px;
+            margin-top: 28px;
+            line-height: 1.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .outline-button {
+            display: inline-block;
+            padding: 14px 24px;
+            border: 1px solid #ddd;
+            font-size: 12px;
+            transition: .3s;
+        }
+
+        .outline-button:hover {
+            border-color: #111;
+            background: #f7f7f7;
+        }
+
+        .hero-bottom {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 100px;
+            padding-top: 20px;
+            border-top: 1px solid #eaeaea;
+            color: #888;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        /* VEHICLE FEATURE */
+        .ehx-section {
+            padding: 110px 8%;
+            background: #f8f8f8;
+        }
+
+        .ehx-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .ehx-top h2 {
+            font-size: clamp(42px, 6vw, 75px);
+            font-weight: 500;
+            letter-spacing: -4px;
+            margin: 0;
+        }
+
+        .ehx-number {
+            color: #aaa;
+            font-size: 12px;
+            letter-spacing: 3px;
+        }
+
+        .ehx-visual {
+            width: 100%;
+            min-height: 440px;
+            position: relative;
+            overflow: hidden;
+            background: #ededed;
+        }
+
+        .ehx-visual img {
+            width: 100%;
+            height: 100%;
+            min-height: 440px;
+            object-fit: cover;
+            display: block;
+            transition: transform 1s ease;
+        }
+
+        .ehx-visual:hover img {
+            transform: scale(1.025);
+        }
+
+        .ehx-caption {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 22px 0;
+            border-bottom: 1px solid #ddd;
+            font-size: 11px;
+            color: #777;
+            letter-spacing: 1px;
+        }
+
+        /* SPECS */
+        .spec-section {
+            padding: 90px 8%;
+            background: white;
+        }
+
+        .spec-heading {
+            margin-bottom: 40px;
+        }
+
+        .spec-heading h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 500;
+            letter-spacing: -2px;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .spec-item {
+            padding: 35px 20px;
+            border-right: 1px solid #e8e8e8;
+            transition: background .3s;
+        }
+
+        .spec-item:last-child {
+            border-right: none;
+        }
+
+        .spec-item:hover {
+            background: #fafafa;
+        }
+
+        .spec-item strong {
+            font-size: 30px;
+            font-weight: 500;
+            display: block;
+        }
+
+        .spec-item span {
+            display: block;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        .spec-disclaimer {
+            font-size: 11px;
+            color: #999;
+            margin-top: 20px;
+        }
+
+        /* VISION */
+        .vision-section {
+            padding: 130px 8%;
+            background: white;
+        }
+
+        .vision-inner {
+            max-width: 900px;
+        }
+
+        .vision-inner h2 {
+            font-size: clamp(40px, 6vw, 72px);
+            font-weight: 500;
+            letter-spacing: -3px;
+            line-height: 1.1;
+            margin: 20px 0;
+        }
+
+        .vision-inner p {
+            color: #666;
+            max-width: 600px;
+            line-height: 1.9;
+        }
+
+        /* TECHNOLOGY */
+        .technology-section {
+            padding: 110px 8%;
+            background: #f8f8f8;
+        }
+
+        .technology-heading {
+            max-width: 700px;
+            margin-bottom: 55px;
+        }
+
+        .technology-heading h2 {
+            font-size: clamp(35px, 5vw, 60px);
+            font-weight: 500;
+            letter-spacing: -2px;
+        }
+
+        .technology-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .technology-card {
+            background: white;
+            border: 1px solid #eaeaea;
+            padding: 38px 30px;
+            min-height: 220px;
+            transition: .4s;
+        }
+
+        .technology-card:hover {
+            transform: translateY(-7px);
+            border-color: #aaa;
+        }
+
+        .technology-card .card-number {
+            font-size: 11px;
+            color: #999;
+            letter-spacing: 2px;
+        }
+
+        .technology-card h3 {
+            font-size: 21px;
+            font-weight: 500;
+            margin: 30px 0 12px;
+        }
+
+        .technology-card p {
+            color: #777;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* FINAL CTA */
+        .final-section {
+            padding: 120px 8%;
+            background: white;
+            text-align: center;
+        }
+
+        .final-section h2 {
+            font-size: clamp(40px, 6vw, 70px);
+            font-weight: 500;
+            letter-spacing: -3px;
+        }
+
+        .final-section p {
+            color: #777;
+            margin: 20px auto 0;
+            max-width: 500px;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width: 850px) {
+            .spec-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .spec-item:nth-child(2) {
+                border-right: none;
+            }
+
+            .spec-item:nth-child(-n+2) {
+                border-bottom: 1px solid #e8e8e8;
+            }
+
+            .technology-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 600px) {
+            .home-hero {
+                min-height: 650px;
+                padding: 100px 6% 35px;
+            }
+
+            .home-hero h1 {
+                letter-spacing: -3px;
+            }
+
+            .hero-bottom {
+                margin-top: 70px;
+            }
+
+            .ehx-section,
+            .spec-section,
+            .vision-section,
+            .technology-section,
+            .final-section {
+                padding: 75px 6%;
+            }
+
+            .ehx-visual,
+            .ehx-visual img {
+                min-height: 260px;
+            }
+
+            .spec-item {
+                padding: 25px 12px;
+            }
+
+            .spec-item strong {
+                font-size: 24px;
+            }
+        }
+    </style>
 </head>
 
-<body class="pageAppear">
+<body>
 
-    <!-- HEADER -->
-    <header>
+<header>
+    <a href="index.html" class="logo">KZETRAL<span>®</span></a>
 
-        <a href="index.html" class="logo">KZETRAL<span>®</span></a>
+    <nav>
+        <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+        <a href="about.html" data-fr="À propos" data-en="About">À propos</a>
+        <a href="company.html" data-fr="Entreprise" data-en="Company">Entreprise</a>
+        <a href="#ehx">EH-X</a>
+        <a href="#technology" data-fr="Technologie" data-en="Technology">Technologie</a>
+        <a href="contact.html" data-fr="Contact" data-en="Contact">Contact</a>
+    </nav>
 
-        <nav>
-            <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
-
-            <a href="about.html" data-fr="Qui sommes-nous" data-en="About us">Qui sommes-nous</a>
-
-            <a href="company.html" data-fr="Entreprise" data-en="Company">Entreprise</a>
-
-            <a href="#ehx">EH-X</a>
-
-            <a href="#technology" data-fr="Technologie" data-en="Technology">Technologie</a>
-
-            <a href="contact.html" data-fr="Contact" data-en="Contact">Contact</a>
-        </nav>
-
-        <button id="language" class="language-button">EN</button>
-
-    </header>
+    <button id="language" class="language-button">EN</button>
+</header>
 
 
-    <main>
+<main>
 
-        <!-- HERO -->
-        <section class="hero">
+    <!-- HERO -->
+    <section class="home-hero">
 
-            <p class="eyebrow"
-               data-fr="UNE NOUVELLE VISION DE L'AUTOMOBILE"
-               data-en="A NEW VISION OF THE AUTOMOBILE">
-                UNE NOUVELLE VISION DE L'AUTOMOBILE
-            </p>
+        <div class="hero-content">
 
-            <h1 data-fr="L'avenir ne se conduit pas comme hier."
-                data-en="The future is not driven like yesterday.">
-                L'avenir ne se conduit pas comme hier.
+            <div class="hero-label"
+                 data-fr="L'AVENIR DE LA MOBILITÉ"
+                 data-en="THE FUTURE OF MOBILITY">
+                L'AVENIR DE LA MOBILITÉ
+            </div>
+
+            <h1 data-fr="DRIVE<br><span>BEYOND.</span>"
+                data-en="DRIVE<br><span>BEYOND.</span>">
+                DRIVE<br><span>BEYOND.</span>
             </h1>
 
-            <p data-fr="KZETRAL explore de nouvelles perspectives automobiles en associant design, innovation et technologies de mobilité alternatives."
-               data-en="KZETRAL explores new automotive perspectives by combining design, innovation and alternative mobility technologies.">
-                KZETRAL explore de nouvelles perspectives automobiles en associant design, innovation et technologies de mobilité alternatives.
+            <p class="hero-description"
+               data-fr="Une nouvelle vision de l'automobile, portée par l'innovation, le design et l'exploration des technologies énergétiques de demain."
+               data-en="A new vision of the automobile, driven by innovation, design and the exploration of tomorrow's energy technologies.">
+                Une nouvelle vision de l'automobile, portée par l'innovation, le design et l'exploration des technologies énergétiques de demain.
             </p>
 
-            <a href="#ehx" class="button"
-               data-fr="Découvrir notre premier concept"
-               data-en="Discover our first concept">
-                Découvrir notre premier concept
-            </a>
+            <div class="hero-actions">
+                <a href="#ehx" class="button"
+                   data-fr="Découvrir le EH-X"
+                   data-en="Discover the EH-X">
+                    Découvrir le EH-X
+                </a>
 
-        </section>
+                <a href="about.html" class="outline-button"
+                   data-fr="Notre vision"
+                   data-en="Our vision">
+                    Notre vision
+                </a>
+            </div>
+
+        </div>
+
+        <div class="hero-bottom">
+            <span>KZETRAL AUTOMOTIVE PROJECT</span>
+            <span>01 / 04 — CONCEPT</span>
+        </div>
+
+    </section>
 
 
-        <!-- INTRODUCTION -->
-        <section class="vision reveal" id="vision">
+    <!-- EH-X -->
+    <section class="ehx-section" id="ehx">
 
-            <p class="eyebrow"
-               data-fr="NOTRE AMBITION"
-               data-en="OUR AMBITION">
-                NOTRE AMBITION
-            </p>
+        <div class="ehx-top">
+            <div>
+                <div class="eyebrow">FIRST AUTOMOTIVE CONCEPT</div>
+                <h2>KZETRAL EH-X</h2>
+            </div>
 
-            <h2 data-fr="Penser la mobilité autrement."
-                data-en="Rethinking mobility.">
-                Penser la mobilité autrement.
+            <div class="ehx-number">EH-X / 001</div>
+        </div>
+
+        <div class="ehx-visual">
+            <img
+                src="images/ehx-concept.jpg"
+                alt="Concept SUV KZETRAL EH-X"
+                onerror="this.style.display='none';">
+        </div>
+
+        <div class="ehx-caption">
+            <span>PREMIUM SUV — 5 SEATS</span>
+            <span>HYDROGEN × ELECTRIC</span>
+        </div>
+
+    </section>
+
+
+    <!-- SPECS -->
+    <section class="spec-section">
+
+        <div class="spec-heading">
+            <div class="eyebrow"
+                 data-fr="OBJECTIFS DU CONCEPT"
+                 data-en="CONCEPT TARGETS">
+                OBJECTIFS DU CONCEPT
+            </div>
+
+            <h2 data-fr="Une ambition technique."
+                data-en="A technical ambition.">
+                Une ambition technique.
+            </h2>
+        </div>
+
+        <div class="spec-grid">
+
+            <div class="spec-item">
+                <strong>400 ch</strong>
+                <span data-fr="PUISSANCE VISÉE" data-en="TARGET POWER">PUISSANCE VISÉE</span>
+            </div>
+
+            <div class="spec-item">
+                <strong>700–800</strong>
+                <span data-fr="KM D'AUTONOMIE VISÉE" data-en="TARGET RANGE IN KM">KM D'AUTONOMIE VISÉE</span>
+            </div>
+
+            <div class="spec-item">
+                <strong>5</strong>
+                <span data-fr="PLACES" data-en="SEATS">PLACES</span>
+            </div>
+
+            <div class="spec-item">
+                <strong>H₂ + EV</strong>
+                <span data-fr="ÉNERGIE ENVISAGÉE" data-en="PROPOSED POWERTRAIN">ÉNERGIE ENVISAGÉE</span>
+            </div>
+
+        </div>
+
+        <p class="spec-disclaimer"
+           data-fr="Données prévisionnelles du concept. Ces objectifs restent à confirmer par des études de faisabilité et des essais."
+           data-en="Preliminary concept targets. These objectives remain subject to feasibility studies and testing.">
+            Données prévisionnelles du concept. Ces objectifs restent à confirmer par des études de faisabilité et des essais.
+        </p>
+
+    </section>
+
+
+    <!-- VISION -->
+    <section class="vision-section">
+
+        <div class="vision-inner">
+
+            <div class="eyebrow"
+                 data-fr="LA VISION KZETRAL"
+                 data-en="THE KZETRAL VISION">
+                LA VISION KZETRAL
+            </div>
+
+            <h2 data-fr="Ne pas suivre le futur. Le concevoir."
+                data-en="Don't follow the future. Design it.">
+                Ne pas suivre le futur. Le concevoir.
             </h2>
 
-            <p data-fr="Nous développons une vision automobile tournée vers les technologies de demain. Notre démarche repose sur trois priorités : concevoir des véhicules au design affirmé, explorer de nouvelles solutions énergétiques et placer la sécurité au centre de notre réflexion."
-               data-en="We are developing an automotive vision focused on tomorrow's technologies. Our approach is based on three priorities: creating vehicles with distinctive design, exploring new energy solutions and putting safety at the centre of our thinking.">
-                Nous développons une vision automobile tournée vers les technologies de demain. Notre démarche repose sur trois priorités : concevoir des véhicules au design affirmé, explorer de nouvelles solutions énergétiques et placer la sécurité au centre de notre réflexion.
-            </p>
-
-        </section>
-
-
-        <!-- EH-X -->
-        <section class="vehicle reveal" id="ehx">
-
-            <p class="eyebrow">KZETRAL — FIRST CONCEPT</p>
-
-            <h2>KZETRAL EH-X</h2>
-
-            <p data-fr="Un SUV premium cinq places qui explore l'association de l'hydrogène et de l'électricité."
-               data-en="A five-seat premium SUV exploring the combination of hydrogen and electricity.">
-                Un SUV premium cinq places qui explore l'association de l'hydrogène et de l'électricité.
-            </p>
-
-            <div class="vehicle-image">
-                <img
-                    src="images/ehx-concept.jpg"
-                    alt="Illustration du concept SUV KZETRAL EH-X"
-                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;padding:50px;text-align:center;color:#777&quot;><h2>KZETRAL EH-X</h2><p>Concept automobile en développement</p></div>';"
-                >
-            </div>
-
-            <div class="specifications">
-
-                <div>
-                    <strong>5</strong>
-                    <span data-fr="PLACES" data-en="SEATS">PLACES</span>
-                </div>
-
-                <div>
-                    <strong>400 ch</strong>
-                    <span data-fr="PUISSANCE VISÉE" data-en="TARGET POWER">PUISSANCE VISÉE</span>
-                </div>
-
-                <div>
-                    <strong>700–800 km</strong>
-                    <span data-fr="AUTONOMIE VISÉE" data-en="TARGET RANGE">AUTONOMIE VISÉE</span>
-                </div>
-
-                <div>
-                    <strong>H₂ + EV</strong>
-                    <span data-fr="ARCHITECTURE ENVISAGÉE" data-en="PROPOSED ARCHITECTURE">ARCHITECTURE ENVISAGÉE</span>
-                </div>
-
-            </div>
-
-            <p class="footer-note"
-               data-fr="Caractéristiques prévisionnelles du concept. Elles ne sont pas encore validées techniquement."
-               data-en="Preliminary concept targets. They have not yet been technically validated.">
-                Caractéristiques prévisionnelles du concept. Elles ne sont pas encore validées techniquement.
+            <p data-fr="KZETRAL est un projet de constructeur automobile qui ambitionne d'explorer de nouvelles approches de la mobilité. Notre réflexion associe performance, sécurité, design et recherche de solutions énergétiques alternatives."
+               data-en="KZETRAL is an automotive manufacturer project aiming to explore new approaches to mobility. Our vision brings together performance, safety, design and research into alternative energy solutions.">
+                KZETRAL est un projet de constructeur automobile qui ambitionne d'explorer de nouvelles approches de la mobilité. Notre réflexion associe performance, sécurité, design et recherche de solutions énergétiques alternatives.
             </p>
 
             <a href="about.html" class="button"
-               data-fr="Découvrir KZETRAL"
-               data-en="Discover KZETRAL">
-                Découvrir KZETRAL
+               data-fr="En savoir plus"
+               data-en="Learn more">
+                En savoir plus
             </a>
 
-        </section>
+        </div>
+
+    </section>
 
 
-        <!-- TECHNOLOGY -->
-        <section class="technology reveal" id="technology">
+    <!-- TECHNOLOGY -->
+    <section class="technology-section" id="technology">
 
-            <p class="eyebrow"
-               data-fr="RECHERCHE & INNOVATION"
-               data-en="RESEARCH & INNOVATION">
-                RECHERCHE & INNOVATION
-            </p>
+        <div class="technology-heading">
 
-            <h2 data-fr="Explorer les technologies de demain."
-                data-en="Exploring tomorrow's technologies.">
-                Explorer les technologies de demain.
-            </h2>
-
-            <div class="tech-grid">
-
-                <article>
-                    <h3 data-fr="Hydrogène" data-en="Hydrogen">Hydrogène</h3>
-
-                    <p data-fr="Étudier le potentiel de la pile à combustible hydrogène pour alimenter une motorisation électrique."
-                       data-en="Explore the potential of hydrogen fuel cells to power an electric drivetrain.">
-                        Étudier le potentiel de la pile à combustible hydrogène pour alimenter une motorisation électrique.
-                    </p>
-                </article>
-
-                <article>
-                    <h3 data-fr="Électrification" data-en="Electrification">Électrification</h3>
-
-                    <p data-fr="Explorer des architectures électriques adaptées aux performances et aux exigences de mobilité."
-                       data-en="Explore electric architectures designed for performance and mobility requirements.">
-                        Explorer des architectures électriques adaptées aux performances et aux exigences de mobilité.
-                    </p>
-                </article>
-
-                <article>
-                    <h3 data-fr="Sécurité & Design" data-en="Safety & Design">Sécurité & Design</h3>
-
-                    <p data-fr="Intégrer la sécurité, l'aérodynamisme et l'expérience utilisateur dès la conception."
-                       data-en="Integrate safety, aerodynamics and user experience from the earliest design stages.">
-                        Intégrer la sécurité, l'aérodynamisme et l'expérience utilisateur dès la conception.
-                    </p>
-                </article>
-
+            <div class="eyebrow"
+                 data-fr="RECHERCHE & DÉVELOPPEMENT"
+                 data-en="RESEARCH & DEVELOPMENT">
+                RECHERCHE & DÉVELOPPEMENT
             </div>
 
-        </section>
-
-
-        <!-- COMPANY -->
-        <section class="vision reveal">
-
-            <p class="eyebrow"
-               data-fr="L'UNIVERS KZETRAL"
-               data-en="THE KZETRAL VISION">
-                L'UNIVERS KZETRAL
-            </p>
-
-            <h2 data-fr="Une ambition qui regarde loin."
-                data-en="An ambition looking ahead.">
-                Une ambition qui regarde loin.
+            <h2 data-fr="Explorer de nouvelles possibilités."
+                data-en="Exploring new possibilities.">
+                Explorer de nouvelles possibilités.
             </h2>
 
-            <p data-fr="KZETRAL souhaite construire progressivement un projet automobile à vocation internationale, en s'appuyant sur la recherche, la faisabilité technique et le développement de solutions innovantes."
-               data-en="KZETRAL aims to gradually build an automotive project with international ambitions, relying on research, technical feasibility and the development of innovative solutions.">
-                KZETRAL souhaite construire progressivement un projet automobile à vocation internationale, en s'appuyant sur la recherche, la faisabilité technique et le développement de solutions innovantes.
-            </p>
+        </div>
 
-            <a href="company.html" class="button"
-               data-fr="En savoir plus sur le projet"
-               data-en="Learn more about the project">
-                En savoir plus sur le projet
-            </a>
+        <div class="technology-grid">
 
-        </section>
+            <article class="technology-card">
+                <div class="card-number">01 / ENERGY</div>
+                <h3 data-fr="Hydrogène" data-en="Hydrogen">Hydrogène</h3>
+                <p data-fr="Étudier le potentiel de la pile à combustible hydrogène dans une architecture automobile électrique."
+                   data-en="Explore the potential of hydrogen fuel cells in an electric automotive architecture.">
+                    Étudier le potentiel de la pile à combustible hydrogène dans une architecture automobile électrique.
+                </p>
+            </article>
 
+            <article class="technology-card">
+                <div class="card-number">02 / POWER</div>
+                <h3 data-fr="Motorisation électrique" data-en="Electric powertrain">Motorisation électrique</h3>
+                <p data-fr="Explorer des solutions de motorisation adaptées aux performances et aux exigences du véhicule."
+                   data-en="Explore powertrain solutions suited to the vehicle's performance and requirements.">
+                    Explorer des solutions de motorisation adaptées aux performances et aux exigences du véhicule.
+                </p>
+            </article>
 
-        <!-- CONTACT -->
-        <section class="contact reveal">
+            <article class="technology-card">
+                <div class="card-number">03 / ENGINEERING</div>
+                <h3 data-fr="Sécurité & ingénierie" data-en="Safety & engineering">Sécurité & ingénierie</h3>
+                <p data-fr="Intégrer les enjeux de sécurité, d'aérodynamisme et de conception dès les premières études."
+                   data-en="Integrate safety, aerodynamics and design considerations from the earliest studies.">
+                    Intégrer les enjeux de sécurité, d'aérodynamisme et de conception dès les premières études.
+                </p>
+            </article>
 
-            <p class="eyebrow"
-               data-fr="ENTRER EN CONTACT"
-               data-en="GET IN TOUCH">
-                ENTRER EN CONTACT
-            </p>
+        </div>
 
-            <h2 data-fr="Construisons la suite."
-                data-en="Let's build what's next.">
-                Construisons la suite.
-            </h2>
-
-            <p data-fr="Vous souhaitez échanger avec KZETRAL au sujet du projet ou d'une éventuelle collaboration ?"
-               data-en="Would you like to discuss the KZETRAL project or a potential collaboration?">
-                Vous souhaitez échanger avec KZETRAL au sujet du projet ou d'une éventuelle collaboration ?
-            </p>
-
-            <a href="contact.html" class="button"
-               data-fr="Nous contacter"
-               data-en="Contact us">
-                Nous contacter
-            </a>
-
-        </section>
-
-    </main>
+    </section>
 
 
-    <!-- FOOTER -->
-    <footer>
+    <!-- FINAL CONTACT -->
+    <section class="final-section">
 
-        <div class="logo">KZETRAL<span>®</span></div>
+        <div class="eyebrow"
+             data-fr="L'AVENTURE COMMENCE ICI"
+             data-en="THE JOURNEY STARTS HERE">
+            L'AVENTURE COMMENCE ICI
+        </div>
 
-        <p data-fr="Imaginer la mobilité de demain."
-           data-en="Imagining tomorrow's mobility.">
-            Imaginer la mobilité de demain.
+        <h2 data-fr="Construisons la suite."
+            data-en="Let's build what's next.">
+            Construisons la suite.
+        </h2>
+
+        <p data-fr="Découvrez le projet KZETRAL et échangeons autour de notre vision de l'automobile."
+           data-en="Discover the KZETRAL project and discuss our vision for the automobile.">
+            Découvrez le projet KZETRAL et échangeons autour de notre vision de l'automobile.
         </p>
 
-        <p class="footer-note">
-            © <span id="year"></span> KZETRAL —
-            <span data-fr="Projet en développement"
-                  data-en="Project in development">
-                Projet en développement
-            </span>
-        </p>
+        <a href="contact.html" class="button"
+           data-fr="Nous contacter"
+           data-en="Contact us">
+            Nous contacter
+        </a>
 
-    </footer>
+    </section>
+
+</main>
 
 
-    <script src="script.js"></script>
+<footer>
+    <div class="logo">KZETRAL<span>®</span></div>
+
+    <p data-fr="Imaginer la mobilité de demain."
+       data-en="Imagining tomorrow's mobility.">
+        Imaginer la mobilité de demain.
+    </p>
+
+    <p class="footer-note">
+        © <span id="year"></span> KZETRAL — Projet en développement
+    </p>
+</footer>
+
+
+<script src="script.js"></script>
+
+<script>
+    // Animation d'apparition au défilement
+    const animatedSections = document.querySelectorAll(
+        ".vision-section, .ehx-section, .spec-section, .technology-section, .final-section"
+    );
+
+    animatedSections.forEach(section => {
+        section.style.opacity = "0";
+        section.style.transform = "translateY(25px)";
+        section.style.transition = "opacity .8s ease, transform .8s ease";
+    });
+
+    const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+                sectionObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    animatedSections.forEach(section => sectionObserver.observe(section));
+</script>
 
 </body>
 </html>
+
