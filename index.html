@@ -1,312 +1,245 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>KZETRAL — Beyond Mobility</title>
-    <meta name="description" content="KZETRAL, projet de constructeur automobile explorant la mobilité hydrogène et électrique.">
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KZETRAL — Une nouvelle vision de la mobilité. Découvrez notre vision de l'automobile et le concept EH-X.">
+  <title>KZETRAL — Move Beyond</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 
-<body id="top">
+<body>
 
-<header class="site-header">
-    <a href="index.html" class="logo">KZETRAL<span>®</span></a>
+  <header class="header" id="top">
+    <a class="logo" href="#top" aria-label="KZETRAL, accueil">KZETRAL<span>®</span></a>
 
-    <nav class="main-nav">
-        <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
-        <a href="about.html" data-fr="À propos" data-en="About">À propos</a>
-        <a href="company.html" data-fr="Entreprise" data-en="Company">Entreprise</a>
-        <a href="#ehx">EH-X</a>
-        <a href="#technology" data-fr="Technologie" data-en="Technology">Technologie</a>
-        <a href="contact.html" data-fr="Contact" data-en="Contact">Contact</a>
+    <nav class="nav" id="mainNav">
+      <a href="#models" data-fr="Modèles" data-en="Models">Modèles</a>
+      <a href="#technology" data-fr="Technologie" data-en="Technology">Technologie</a>
+      <a href="#vision" data-fr="Notre vision" data-en="Our vision">Notre vision</a>
+      <a href="#company" data-fr="Entreprise" data-en="Company">Entreprise</a>
     </nav>
 
-    <button id="language" class="language-button" type="button">EN</button>
-</header>
+    <div class="header-actions">
+      <button class="language-button" id="language" type="button">EN</button>
+      <a href="#contact" class="header-cta" data-fr="Nous contacter" data-en="Contact us">Nous contacter</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-<main>
+  <main>
 
     <!-- HERO -->
-    <section class="home-hero">
-        <div class="hero-content">
+    <section class="hero">
+      <div class="hero-image"></div>
+      <div class="hero-shade"></div>
 
-            <div class="hero-label"
-                 data-fr="L'AVENIR DE LA MOBILITÉ"
-                 data-en="THE FUTURE OF MOBILITY">
-                L'AVENIR DE LA MOBILITÉ
-            </div>
-
-            <h1 data-fr="DRIVE<br><span>BEYOND.</span>"
-                data-en="DRIVE<br><span>BEYOND.</span>">
-                DRIVE<br><span>BEYOND.</span>
-            </h1>
-
-            <p class="hero-description"
-               data-fr="Une nouvelle vision de l'automobile, portée par l'innovation, le design et l'exploration des technologies énergétiques de demain."
-               data-en="A new vision of the automobile, driven by innovation, design and the exploration of tomorrow's energy technologies.">
-                Une nouvelle vision de l'automobile, portée par l'innovation, le design et l'exploration des technologies énergétiques de demain.
-            </p>
-
-            <div class="hero-actions">
-                <a href="#ehx" class="button"
-                   data-fr="Découvrir le EH-X"
-                   data-en="Discover the EH-X">
-                    Découvrir le EH-X
-                </a>
-
-                <a href="about.html" class="outline-button"
-                   data-fr="Notre vision"
-                   data-en="Our vision">
-                    Notre vision
-                </a>
-            </div>
-        </div>
-
-        <div class="hero-bottom">
-            <span>KZETRAL AUTOMOTIVE PROJECT</span>
-            <span>01 / 04 — CONCEPT</span>
-        </div>
-    </section>
-
-    <!-- EH-X -->
-    <section class="ehx-section" id="ehx">
-
-        <div class="ehx-top">
-            <div>
-                <div class="eyebrow">FIRST AUTOMOTIVE CONCEPT</div>
-                <h2>KZETRAL EH-X</h2>
-            </div>
-
-            <div class="ehx-number">EH-X / 001</div>
-        </div>
-
-        <div class="ehx-visual">
-            <img
-                src="images/ehx-concept.jpg"
-                alt="Concept SUV KZETRAL EH-X"
-                onerror="this.style.display='none'; this.parentElement.classList.add('no-image');">
-            <div class="image-placeholder">
-                <span>KZETRAL</span>
-                <p>EH-X — DESIGN CONCEPT</p>
-            </div>
-        </div>
-
-        <div class="ehx-caption">
-            <span>PREMIUM SUV — 5 SEATS</span>
-            <span>HYDROGEN × ELECTRIC</span>
-        </div>
-
-    </section>
-
-    <!-- SPECIFICATIONS -->
-    <section class="spec-section">
-
-        <div class="spec-heading">
-            <div class="eyebrow"
-                 data-fr="OBJECTIFS DU CONCEPT"
-                 data-en="CONCEPT TARGETS">
-                OBJECTIFS DU CONCEPT
-            </div>
-
-            <h2 data-fr="Une ambition technique."
-                data-en="A technical ambition.">
-                Une ambition technique.
-            </h2>
-        </div>
-
-        <div class="spec-grid">
-
-            <div class="spec-item">
-                <strong>400 ch</strong>
-                <span data-fr="PUISSANCE VISÉE" data-en="TARGET POWER">PUISSANCE VISÉE</span>
-            </div>
-
-            <div class="spec-item">
-                <strong>700–800</strong>
-                <span data-fr="KM D'AUTONOMIE VISÉE" data-en="TARGET RANGE IN KM">KM D'AUTONOMIE VISÉE</span>
-            </div>
-
-            <div class="spec-item">
-                <strong>5</strong>
-                <span data-fr="PLACES" data-en="SEATS">PLACES</span>
-            </div>
-
-            <div class="spec-item">
-                <strong>H₂ + EV</strong>
-                <span data-fr="ÉNERGIE ENVISAGÉE" data-en="PROPOSED POWERTRAIN">ÉNERGIE ENVISAGÉE</span>
-            </div>
-
-        </div>
-
-        <p class="spec-disclaimer"
-           data-fr="Données prévisionnelles du concept. Ces objectifs restent à confirmer par des études de faisabilité et des essais."
-           data-en="Preliminary concept targets. These objectives remain subject to feasibility studies and testing.">
-            Données prévisionnelles du concept. Ces objectifs restent à confirmer par des études de faisabilité et des essais.
+      <div class="hero-content">
+        <p class="eyebrow light" data-fr="L'AUTOMOBILE, AUTREMENT" data-en="A DIFFERENT KIND OF AUTOMOTIVE">L'AUTOMOBILE, AUTREMENT</p>
+        <h1 data-fr="MOVE<br>BEYOND." data-en="MOVE<br>BEYOND.">MOVE<br>BEYOND.</h1>
+        <p class="hero-description" data-fr="Une nouvelle vision de la mobilité, portée par l'innovation, l'ambition et la technologie." data-en="A new vision of mobility, driven by innovation, ambition and technology.">
+          Une nouvelle vision de la mobilité, portée par l'innovation, l'ambition et la technologie.
         </p>
+        <div class="hero-buttons">
+          <a href="#models" class="button button-light" data-fr="Découvrir nos modèles" data-en="Explore our models">Découvrir nos modèles</a>
+          <a href="#vision" class="button button-outline-light" data-fr="Notre vision" data-en="Our vision">Notre vision</a>
+        </div>
+      </div>
 
+      <div class="hero-bottom">
+        <span data-fr="L'avenir commence ici." data-en="The future starts here.">L'avenir commence ici.</span>
+        <a href="#intro" class="scroll-link"><span data-fr="DÉFILER" data-en="SCROLL">DÉFILER</span><span class="scroll-line"></span></a>
+      </div>
     </section>
 
-    <!-- VISION -->
-    <section class="vision-section">
+    <!-- INTRO -->
+    <section class="intro section" id="intro">
+      <div class="intro-label">
+        <span class="eyebrow">01 / KZETRAL</span>
+      </div>
+      <div class="intro-main reveal">
+        <p class="eyebrow" data-fr="REPENSER LES POSSIBILITÉS" data-en="RETHINKING POSSIBILITIES">REPENSER LES POSSIBILITÉS</p>
+        <h2 data-fr="Nous ne voulons pas simplement suivre l'évolution de l'automobile. Nous voulons contribuer à la façonner." data-en="We don't simply want to follow the evolution of mobility. We want to help shape it.">
+          Nous ne voulons pas simplement suivre l'évolution de l'automobile. Nous voulons contribuer à la façonner.
+        </h2>
+        <a href="#vision" class="text-link"><span data-fr="Découvrir KZETRAL" data-en="Discover KZETRAL">Découvrir KZETRAL</span><span>↗</span></a>
+      </div>
+    </section>
 
-        <div class="vision-inner">
+    <!-- MODEL -->
+    <section class="model-section" id="models">
+      <div class="model-image"></div>
+      <div class="model-overlay"></div>
+      <div class="model-content reveal">
+        <p class="eyebrow light" data-fr="NOTRE PREMIER CONCEPT" data-en="OUR FIRST CONCEPT">NOTRE PREMIER CONCEPT</p>
+        <h2>KZETRAL<br><span>EH-X</span></h2>
+        <p data-fr="Un SUV cinq places imaginé autour d'une nouvelle approche de la mobilité électrique et de l'hydrogène." data-en="A five-seat SUV concept imagined around a new approach to electric and hydrogen mobility.">
+          Un SUV cinq places imaginé autour d'une nouvelle approche de la mobilité électrique et de l'hydrogène.
+        </p>
+        <a href="#technology" class="button button-light" data-fr="Explorer le concept" data-en="Explore the concept">Explorer le concept</a>
+        <span class="model-note" data-fr="CONCEPT EN DÉVELOPPEMENT" data-en="CONCEPT IN DEVELOPMENT">CONCEPT EN DÉVELOPPEMENT</span>
+      </div>
+      <div class="model-index">EH-X <span> / 01</span></div>
+    </section>
 
-            <div class="eyebrow"
-                 data-fr="LA VISION KZETRAL"
-                 data-en="THE KZETRAL VISION">
-                LA VISION KZETRAL
-            </div>
+    <!-- FIGURES -->
+    <section class="figures section">
+      <div class="section-heading reveal">
+        <p class="eyebrow" data-fr="LES OBJECTIFS DU CONCEPT" data-en="CONCEPT TARGETS">LES OBJECTIFS DU CONCEPT</p>
+        <h2 data-fr="L'ambition en quelques chiffres." data-en="Ambition, in numbers.">L'ambition en quelques chiffres.</h2>
+        <p class="muted" data-fr="Des objectifs de conception, encore à valider lors des études techniques." data-en="Design targets, still to be validated through engineering studies.">
+          Des objectifs de conception, encore à valider lors des études techniques.
+        </p>
+      </div>
 
-            <h2 data-fr="Ne pas suivre le futur. Le concevoir."
-                data-en="Don't follow the future. Design it.">
-                Ne pas suivre le futur. Le concevoir.
-            </h2>
-
-            <p data-fr="KZETRAL est un projet de constructeur automobile qui ambitionne d'explorer de nouvelles approches de la mobilité. Notre réflexion associe performance, sécurité, design et recherche de solutions énergétiques alternatives."
-               data-en="KZETRAL is an automotive manufacturer project aiming to explore new approaches to mobility. Our vision brings together performance, safety, design and research into alternative energy solutions.">
-                KZETRAL est un projet de constructeur automobile qui ambitionne d'explorer de nouvelles approches de la mobilité. Notre réflexion associe performance, sécurité, design et recherche de solutions énergétiques alternatives.
-            </p>
-
-            <a href="about.html" class="button"
-               data-fr="En savoir plus"
-               data-en="Learn more">
-                En savoir plus
-            </a>
-
+      <div class="figures-grid">
+        <div class="figure reveal">
+          <strong>400</strong><span>ch</span>
+          <p data-fr="Puissance visée" data-en="Target power">Puissance visée</p>
         </div>
-
+        <div class="figure reveal">
+          <strong>700–800</strong><span>km</span>
+          <p data-fr="Autonomie visée" data-en="Target range">Autonomie visée</p>
+        </div>
+        <div class="figure reveal">
+          <strong>5</strong><span data-fr="places" data-en="seats">places</span>
+          <p data-fr="Configuration intérieure" data-en="Interior configuration">Configuration intérieure</p>
+        </div>
+        <div class="figure reveal">
+          <strong>H₂</strong><span>+</span><strong>EV</strong>
+          <p data-fr="Architecture envisagée" data-en="Proposed architecture">Architecture envisagée</p>
+        </div>
+      </div>
+      <p class="disclaimer" data-fr="* Valeurs indicatives correspondant aux objectifs actuels du projet. Elles ne constituent pas des caractéristiques homologuées." data-en="* Indicative figures reflecting current project targets. They are not certified specifications.">
+        * Valeurs indicatives correspondant aux objectifs actuels du projet. Elles ne constituent pas des caractéristiques homologuées.
+      </p>
     </section>
 
     <!-- TECHNOLOGY -->
-    <section class="technology-section" id="technology">
+    <section class="technology section" id="technology">
+      <div class="section-heading reveal">
+        <p class="eyebrow" data-fr="INNOVATION & INGÉNIERIE" data-en="INNOVATION & ENGINEERING">INNOVATION & INGÉNIERIE</p>
+        <h2 data-fr="Explorer de nouvelles voies." data-en="Exploring new possibilities.">Explorer de nouvelles voies.</h2>
+      </div>
 
-        <div class="technology-heading">
+      <div class="tech-grid">
+        <article class="tech-card tech-card-large reveal">
+          <div class="tech-image tech-image-one"></div>
+          <div class="tech-card-text">
+            <span class="card-number">01 / ÉNERGIE</span>
+            <h3 data-fr="Hydrogène & électrique" data-en="Hydrogen & electric">Hydrogène & électrique</h3>
+            <p data-fr="Étudier la complémentarité entre pile à combustible et motorisation électrique." data-en="Exploring the potential of combining fuel-cell technology with electric propulsion.">
+              Étudier la complémentarité entre pile à combustible et motorisation électrique.
+            </p>
+          </div>
+        </article>
 
-            <div class="eyebrow"
-                 data-fr="RECHERCHE & DÉVELOPPEMENT"
-                 data-en="RESEARCH & DEVELOPMENT">
-                RECHERCHE & DÉVELOPPEMENT
-            </div>
+        <article class="tech-card reveal">
+          <div class="tech-image tech-image-two"></div>
+          <div class="tech-card-text">
+            <span class="card-number">02 / DESIGN</span>
+            <h3 data-fr="Une identité affirmée" data-en="A distinctive identity">Une identité affirmée</h3>
+            <p data-fr="Imaginer des véhicules reconnaissables, fonctionnels et tournés vers demain." data-en="Creating distinctive, functional vehicles designed for tomorrow.">
+              Imaginer des véhicules reconnaissables, fonctionnels et tournés vers demain.
+            </p>
+          </div>
+        </article>
 
-            <h2 data-fr="Explorer de nouvelles possibilités."
-                data-en="Exploring new possibilities.">
-                Explorer de nouvelles possibilités.
-            </h2>
+        <article class="tech-card reveal">
+          <div class="tech-image tech-image-three"></div>
+          <div class="tech-card-text">
+            <span class="card-number">03 / SÉCURITÉ</span>
+            <h3 data-fr="La sécurité comme priorité" data-en="Safety comes first">La sécurité comme priorité</h3>
+            <p data-fr="Placer la protection des occupants et des autres usagers au cœur de la réflexion." data-en="Putting the protection of occupants and other road users at the heart of our thinking.">
+              Placer la protection des occupants et des autres usagers au cœur de la réflexion.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
 
-        </div>
+    <!-- VISION -->
+    <section class="vision" id="vision">
+      <div class="vision-image"></div>
+      <div class="vision-content reveal">
+        <p class="eyebrow light" data-fr="NOTRE PHILOSOPHIE" data-en="OUR PHILOSOPHY">NOTRE PHILOSOPHIE</p>
+        <h2 data-fr="L'innovation n'a de sens que si elle ouvre de nouvelles perspectives." data-en="Innovation matters when it opens up new possibilities.">
+          L'innovation n'a de sens que si elle ouvre de nouvelles perspectives.
+        </h2>
+        <p data-fr="KZETRAL est un projet de constructeur automobile qui explore de nouvelles solutions de mobilité. Notre ambition : associer technologie, design et responsabilité." data-en="KZETRAL is an automotive manufacturer project exploring new mobility solutions. Our ambition is to bring together technology, design and responsibility.">
+          KZETRAL est un projet de constructeur automobile qui explore de nouvelles solutions de mobilité. Notre ambition : associer technologie, design et responsabilité.
+        </p>
+      </div>
+    </section>
 
-        <div class="technology-grid">
-
-            <article class="technology-card">
-                <div class="card-number">01 / ENERGY</div>
-                <h3 data-fr="Hydrogène" data-en="Hydrogen">Hydrogène</h3>
-                <p data-fr="Étudier le potentiel de la pile à combustible hydrogène dans une architecture automobile électrique."
-                   data-en="Explore the potential of hydrogen fuel cells in an electric automotive architecture.">
-                    Étudier le potentiel de la pile à combustible hydrogène dans une architecture automobile électrique.
-                </p>
-            </article>
-
-            <article class="technology-card">
-                <div class="card-number">02 / POWER</div>
-                <h3 data-fr="Motorisation électrique" data-en="Electric powertrain">Motorisation électrique</h3>
-                <p data-fr="Explorer des solutions de motorisation adaptées aux performances et aux exigences du véhicule."
-                   data-en="Explore powertrain solutions suited to the vehicle's performance and requirements.">
-                    Explorer des solutions de motorisation adaptées aux performances et aux exigences du véhicule.
-                </p>
-            </article>
-
-            <article class="technology-card">
-                <div class="card-number">03 / ENGINEERING</div>
-                <h3 data-fr="Sécurité & ingénierie" data-en="Safety & engineering">Sécurité & ingénierie</h3>
-                <p data-fr="Intégrer les enjeux de sécurité, d'aérodynamisme et de conception dès les premières études."
-                   data-en="Integrate safety, aerodynamics and design considerations from the earliest studies.">
-                    Intégrer les enjeux de sécurité, d'aérodynamisme et de conception dès les premières études.
-                </p>
-            </article>
-
-        </div>
-
+    <!-- COMPANY -->
+    <section class="company section" id="company">
+      <div class="company-top reveal">
+        <p class="eyebrow" data-fr="À PROPOS DE KZETRAL" data-en="ABOUT KZETRAL">À PROPOS DE KZETRAL</p>
+        <h2 data-fr="Construire aujourd'hui<br>la mobilité de demain." data-en="Building tomorrow's<br>mobility, today.">
+          Construire aujourd'hui<br>la mobilité de demain.
+        </h2>
+      </div>
+      <div class="company-bottom reveal">
+        <p data-fr="KZETRAL est né d'une ambition : imaginer une nouvelle génération de véhicules et explorer des technologies capables de faire évoluer notre rapport à la mobilité." data-en="KZETRAL was born from an ambition: to imagine a new generation of vehicles and explore technologies that could transform the way we move.">
+          KZETRAL est né d'une ambition : imaginer une nouvelle génération de véhicules et explorer des technologies capables de faire évoluer notre rapport à la mobilité.
+        </p>
+        <a href="#contact" class="text-link"><span data-fr="Entrer en contact" data-en="Get in touch">Entrer en contact</span><span>↗</span></a>
+      </div>
     </section>
 
     <!-- CONTACT CTA -->
-    <section class="final-section">
-
-        <div class="eyebrow"
-             data-fr="L'AVENTURE COMMENCE ICI"
-             data-en="THE JOURNEY STARTS HERE">
-            L'AVENTURE COMMENCE ICI
-        </div>
-
-        <h2 data-fr="Construisons la suite."
-            data-en="Let's build what's next.">
-            Construisons la suite.
-        </h2>
-
-        <p data-fr="Découvrez le projet KZETRAL et échangeons autour de notre vision de l'automobile."
-           data-en="Discover the KZETRAL project and discuss our vision for the automobile.">
-            Découvrez le projet KZETRAL et échangeons autour de notre vision de l'automobile.
-        </p>
-
-        <a href="contact.html" class="button"
-           data-fr="Nous contacter"
-           data-en="Contact us">
-            Nous contacter
-        </a>
-
+    <section class="contact-banner" id="contact">
+      <div class="contact-banner-image"></div>
+      <div class="contact-banner-content reveal">
+        <p class="eyebrow light" data-fr="ÉCRIVONS LA SUITE" data-en="LET'S SHAPE WHAT'S NEXT">ÉCRIVONS LA SUITE</p>
+        <h2 data-fr="L'avenir se construit ensemble." data-en="The future is built together.">L'avenir se construit ensemble.</h2>
+        <a href="mailto:contact@kzetral.com" class="button button-light" data-fr="Nous contacter" data-en="Contact us">Nous contacter</a>
+      </div>
     </section>
 
-</main>
+  </main>
 
-<!-- FOOTER -->
-<footer class="site-footer">
-
+  <footer class="footer">
     <div class="footer-main">
+      <div class="footer-brand">
+        <a class="logo footer-logo" href="#top">KZETRAL<span>®</span></a>
+        <p data-fr="Une nouvelle vision de la mobilité." data-en="A new vision of mobility.">Une nouvelle vision de la mobilité.</p>
+      </div>
 
-        <div class="footer-brand">
-            <a href="index.html" class="logo">KZETRAL<span>®</span></a>
+      <div class="footer-column">
+        <h4 data-fr="EXPLORER" data-en="EXPLORE">EXPLORER</h4>
+        <a href="#models" data-fr="EH-X" data-en="EH-X">EH-X</a>
+        <a href="#technology" data-fr="Technologie" data-en="Technology">Technologie</a>
+        <a href="#vision" data-fr="Notre vision" data-en="Our vision">Notre vision</a>
+      </div>
 
-            <p data-fr="Imaginer la mobilité de demain."
-               data-en="Imagining tomorrow's mobility.">
-                Imaginer la mobilité de demain.
-            </p>
+      <div class="footer-column">
+        <h4 data-fr="KZETRAL" data-en="KZETRAL">KZETRAL</h4>
+        <a href="#company" data-fr="À propos" data-en="About us">À propos</a>
+        <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
+      </div>
 
-            <div class="footer-brand-note">BEYOND MOBILITY.</div>
-        </div>
-
-        <div class="footer-column">
-            <h3 data-fr="EXPLORER" data-en="EXPLORE">EXPLORER</h3>
-            <a href="about.html" data-fr="Notre vision" data-en="Our vision">Notre vision</a>
-            <a href="#ehx">KZETRAL EH-X</a>
-            <a href="#technology" data-fr="Technologie" data-en="Technology">Technologie</a>
-        </div>
-
-        <div class="footer-column">
-            <h3 data-fr="KZETRAL" data-en="KZETRAL">KZETRAL</h3>
-            <a href="company.html" data-fr="L'entreprise" data-en="The company">L'entreprise</a>
-            <a href="contact.html" data-fr="Nous contacter" data-en="Contact us">Nous contacter</a>
-        </div>
-
+      <div class="footer-column">
+        <h4 data-fr="SUIVRE LE PROJET" data-en="FOLLOW THE PROJECT">SUIVRE LE PROJET</h4>
+        <a href="#contact">Instagram ↗</a>
+        <a href="#contact">LinkedIn ↗</a>
+      </div>
     </div>
 
     <div class="footer-bottom">
-        <span>© <span id="year"></span> KZETRAL</span>
-
-        <span data-fr="Projet automobile en développement"
-              data-en="Automotive project in development">
-            Projet automobile en développement
-        </span>
-
-        <a href="#top" data-fr="RETOUR EN HAUT ↑" data-en="BACK TO TOP ↑">
-            RETOUR EN HAUT ↑
-        </a>
+      <span>© <span id="year"></span> KZETRAL. <span data-fr="Tous droits réservés." data-en="All rights reserved.">Tous droits réservés.</span></span>
+      <span class="footer-note" data-fr="EH-X : concept en développement." data-en="EH-X: concept in development.">EH-X : concept en développement.</span>
+      <a href="#top" data-fr="RETOUR EN HAUT ↑" data-en="BACK TO TOP ↑">RETOUR EN HAUT ↑</a>
     </div>
-
-</footer>
-
-<script src="script.js"></script>
+  </footer>
 
 </body>
 </html>
+
