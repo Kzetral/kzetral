@@ -229,11 +229,10 @@ header:focus-within {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0;
     background: #111318;
 }
 
-/* Conteneur vidéo */
+/* Vidéo plein écran */
 
 .hero-video-wrap {
     position: absolute;
@@ -243,8 +242,6 @@ header:focus-within {
     z-index: 0;
     overflow: hidden;
 }
-
-/* Vidéo plein écran */
 
 .hero-video {
     position: absolute;
@@ -258,7 +255,7 @@ header:focus-within {
     background: #111318;
 }
 
-/* Voile léger pour améliorer la lisibilité */
+/* Voile léger sur la vidéo */
 
 .hero::after {
     content: "";
@@ -267,38 +264,93 @@ header:focus-within {
     z-index: 1;
     background: linear-gradient(
         to bottom,
-        rgba(0,0,0,.12),
-        transparent 35%,
-        transparent 65%,
-        rgba(0,0,0,.25)
+        rgba(0,0,0,.20),
+        rgba(0,0,0,.04) 40%,
+        rgba(0,0,0,.12) 65%,
+        rgba(0,0,0,.35)
     );
     pointer-events: none;
+}
+
+/* Contenu central */
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    animation: heroAppear 1.1s ease both;
+}
+
+.hero-content h1 {
+    font-size: clamp(70px, 10vw, 125px);
+    font-weight: 600;
+    letter-spacing: 10px;
+    line-height: 1;
+    margin-bottom: 22px;
+}
+
+.hero-content p {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 38px;
 }
 
 /* Bouton découvrir */
 
 .hero-discover {
-    position: absolute;
-    z-index: 2;
-    bottom: 105px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
-    background: rgba(255,255,255,.95);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    min-width: 245px;
+    padding: 17px 25px;
+    border: 1px solid rgba(255,255,255,.95);
+    border-radius: 5px;
+    background: rgba(255,255,255,.96);
     color: #111318;
-    border-color: white;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    transition:
+        background .35s ease,
+        color .35s ease,
+        border-color .35s ease,
+        transform .35s ease,
+        box-shadow .35s ease;
+}
+
+.hero-discover span {
+    font-size: 15px;
+    transition: transform .35s ease;
 }
 
 .hero-discover:hover {
     background: var(--blue);
     border-color: var(--blue);
     color: white;
-    transform: translate(-50%, -4px);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,.15);
 }
 
-/* Informations en bas de la vidéo */
+.hero-discover:hover span {
+    transform: translate(3px,-3px);
+}
+
+.hero-discover:active {
+    transform: translateY(-1px);
+}
+
+/* Informations en bas */
 
 .hero-bottom {
     position: absolute;
@@ -314,11 +366,7 @@ header:focus-within {
     pointer-events: none;
 }
 
-.hero-bottom span:last-child {
-    color: white;
-}
-
-/* Bouton circulaire lecture / pause */
+/* Bouton lecture / pause */
 
 .video-control {
     position: absolute;
@@ -340,6 +388,7 @@ header:focus-within {
     -webkit-backdrop-filter: blur(10px);
     transition:
         background .3s ease,
+        color .3s ease,
         transform .3s ease,
         border-color .3s ease;
 }
@@ -358,6 +407,17 @@ header:focus-within {
 .video-control span {
     display: block;
     line-height: 1;
+}
+
+@keyframes heroAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* =========================
@@ -873,11 +933,6 @@ footer {
     }
 }
 
-@keyframes buttonPulse {
-    0% { box-shadow: 0 0 0 0 rgba(41,75,112,.18); }
-    100% { box-shadow: 0 0 0 8px rgba(41,75,112,0); }
-}
-
 /* =========================
    MOBILE
 ========================= */
@@ -1020,9 +1075,28 @@ footer {
         object-position: center;
     }
 
+    .hero-content {
+        padding: 15px;
+        margin-top: 10px;
+    }
+
+    .hero-content h1 {
+        font-size: 65px;
+        letter-spacing: 6px;
+        margin-bottom: 17px;
+    }
+
+    .hero-content p {
+        font-size: 9px;
+        letter-spacing: 2px;
+        line-height: 1.8;
+        margin-bottom: 30px;
+    }
+
     .hero-discover {
-        bottom: 105px;
-        min-width: 175px;
+        min-width: 215px;
+        padding: 15px 20px;
+        font-size: 9px;
     }
 
     .video-control {
@@ -1146,7 +1220,7 @@ footer {
 <main>
 
 <!-- =========================
-     HERO — VIDEO EN ARRIÈRE-PLAN
+     HERO — VIDEO + EH-X
 ========================= -->
 
 <section class="hero" id="home">
@@ -1171,12 +1245,29 @@ footer {
 
     </div>
 
-    <a href="#models"
-       class="button hero-discover"
-       data-fr="DÉCOUVRIR EH-X"
-       data-en="DISCOVER EH-X">
-       DÉCOUVRIR EH-X
-    </a>
+    <div class="hero-content">
+
+        <h1>EH-X</h1>
+
+        <p
+            data-fr="LE SUV 100 % À HYDROGÈNE"
+            data-en="THE 100% HYDROGEN SUV">
+            LE SUV 100 % À HYDROGÈNE
+        </p>
+
+        <a href="#models" class="hero-discover">
+
+            <span
+                data-fr="DÉCOUVRIR LE EH-X"
+                data-en="DISCOVER THE EH-X">
+                DÉCOUVRIR LE EH-X
+            </span>
+
+            <span aria-hidden="true">↗</span>
+
+        </a>
+
+    </div>
 
     <button
         class="video-control"
@@ -1536,8 +1627,7 @@ function closeMenu() {
 
     mobileNav.classList.remove("open");
 
-    menuButton.textContent =
-        language === "fr" ? "MENU" : "MENU";
+    menuButton.textContent = "MENU";
 
     menuButton.setAttribute("aria-expanded", "false");
 
@@ -1566,7 +1656,7 @@ mobileNav.querySelectorAll("a").forEach(link => {
 });
 
 /* =========================
-   CONTRÔLE VIDÉO — LECTURE / PAUSE
+   VIDÉO — LECTURE / PAUSE
 ========================= */
 
 const heroVideo = document.getElementById("heroVideo");
@@ -1615,8 +1705,6 @@ videoControl.addEventListener("click", () => {
 
 heroVideo.addEventListener("play", updateVideoButton);
 heroVideo.addEventListener("pause", updateVideoButton);
-
-/* Met à jour le bouton selon l'état réel de la vidéo */
 
 updateVideoButton();
 
@@ -1675,9 +1763,6 @@ document.addEventListener("click", event => {
 });
 
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
