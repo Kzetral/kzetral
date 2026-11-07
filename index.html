@@ -7,33 +7,31 @@
 
 <title>KZETRAL — Automotive</title>
 <meta name="description" content="KZETRAL — Un projet de constructeur automobile tourné vers l'innovation et les mobilités de demain.">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#080A0D">
 
+<!-- POLICE QUEStrial -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================
-   KZETRAL — PREMIUM IDENTITY
-========================= */
-
 :root {
-    --black: #111318;
-    --grey: #777D86;
-    --light: #F6F7F9;
+    --black: #080A0D;
+    --dark: #101318;
     --white: #FFFFFF;
-    --blue: #294B70;
-    --blue-light: #EAF0F6;
-    --border: #E9EBEF;
-    --font: 'Manrope', Arial, sans-serif;
+    --grey: #858C96;
+    --light: #F5F6F8;
+    --blue: #7899BB;
+    --blue-soft: #DCE7F2;
+    --border: #E7E9ED;
+    --font: 'Questrial', Arial, sans-serif;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: var(--font);
 }
 
 html {
@@ -54,7 +52,7 @@ a {
 }
 
 button {
-    font-family: inherit;
+    font-family: var(--font);
 }
 
 ::selection {
@@ -62,42 +60,36 @@ button {
     color: white;
 }
 
-button:focus-visible,
-a:focus-visible {
+a:focus-visible,
+button:focus-visible {
     outline: 2px solid var(--blue);
     outline-offset: 5px;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 82px;
+    height: 84px;
     padding: 0 6%;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     z-index: 1000;
-    background: transparent;
-    border-bottom: 1px solid transparent;
-    transition:
-        background .4s ease,
-        border-color .4s ease,
-        box-shadow .4s ease;
+    background: rgba(8,10,13,.12);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    transition: .4s ease;
 }
 
 header:hover,
 header:focus-within {
-    background: rgba(255,255,255,.94);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom-color: rgba(41,75,112,.10);
-    box-shadow: 0 5px 25px rgba(15,25,40,.035);
+    background: rgba(255,255,255,.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom-color: var(--border);
 }
 
 .nav-left,
@@ -114,11 +106,19 @@ header:focus-within {
 .nav-left a,
 .nav-right a {
     position: relative;
+    color: white;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 1px;
     white-space: nowrap;
     transition: color .3s ease;
+}
+
+header:hover .nav-left a,
+header:hover .nav-right a,
+header:focus-within .nav-left a,
+header:focus-within .nav-right a {
+    color: var(--black);
 }
 
 .nav-left a::after,
@@ -130,7 +130,7 @@ header:focus-within {
     width: 0;
     height: 1px;
     background: var(--blue);
-    transition: width .35s ease;
+    transition: width .3s ease;
 }
 
 .nav-left a:hover::after,
@@ -140,7 +140,7 @@ header:focus-within {
 
 .nav-left a:hover,
 .nav-right a:hover {
-    color: var(--blue);
+    color: var(--blue) !important;
 }
 
 .brand {
@@ -148,190 +148,156 @@ header:focus-within {
     align-items: center;
     justify-content: center;
     width: 180px;
-    transition: opacity .3s ease;
-}
-
-.brand:hover {
-    opacity: .75;
 }
 
 .brand img {
+    display: block;
     max-width: 100%;
     max-height: 43px;
     object-fit: contain;
-    display: block;
 }
 
 .language {
-    position: relative;
     background: transparent;
     border: none;
+    color: white;
     font-size: 10px;
     font-weight: 800;
     cursor: pointer;
-    color: var(--black);
     transition: color .3s ease;
 }
 
+header:hover .language,
+header:focus-within .language {
+    color: var(--black);
+}
+
 .language:hover {
-    color: var(--blue);
+    color: var(--blue) !important;
 }
 
 .contact-button {
-    border: 1px solid #20242B;
-    padding: 11px 17px;
-    transition:
-        background .35s ease,
-        color .35s ease,
-        border-color .35s ease,
-        transform .35s ease;
+    border: 1px solid rgba(255,255,255,.8);
+    padding: 11px 18px;
+    transition: .3s ease;
+}
+
+header:hover .contact-button,
+header:focus-within .contact-button {
+    border-color: var(--black);
 }
 
 .contact-button:hover {
-    background: var(--blue);
-    border-color: var(--blue);
+    background: var(--black);
+    border-color: var(--black);
     color: white !important;
-    transform: translateY(-2px);
 }
 
 .menu-button {
     display: none;
-    background: white;
-    border: 1px solid #DCE0E6;
+    background: transparent;
+    border: 1px solid var(--border);
     padding: 10px 13px;
-    cursor: pointer;
     font-size: 10px;
     font-weight: 700;
-    transition: all .3s ease;
-}
-
-.menu-button:hover {
-    border-color: var(--blue);
-    color: var(--blue);
+    cursor: pointer;
 }
 
 .mobile-nav {
     display: none;
 }
 
-/* =========================
-   HERO — VIDEO EN ARRIÈRE-PLAN
-========================= */
+/* HERO */
 
 .hero {
     position: relative;
     width: 100%;
     height: 100vh;
     height: 100svh;
-    min-height: 600px;
-    overflow: hidden;
+    min-height: 650px;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    background: #111318;
-}
-
-/* Vidéo plein écran */
-
-.hero-video-wrap {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
     overflow: hidden;
+    background: var(--black);
+    color: white;
+    text-align: center;
 }
 
-.hero-video {
+/* Image principale : images/ehx-hero.jpg */
+
+.hero-image {
     position: absolute;
     inset: 0;
-    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
-    border: none;
-    background: #111318;
+    z-index: 0;
+    animation: heroZoom 18s ease-in-out infinite alternate;
 }
-
-/* Voile léger sur la vidéo */
 
 .hero::after {
     content: "";
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,.20),
-        rgba(0,0,0,.04) 40%,
-        rgba(0,0,0,.12) 65%,
-        rgba(0,0,0,.35)
-    );
-    pointer-events: none;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.38),
+            rgba(0,0,0,.08) 35%,
+            rgba(0,0,0,.18) 65%,
+            rgba(0,0,0,.55)
+        );
 }
-
-/* Contenu central */
 
 .hero-content {
     position: relative;
     z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
     padding: 20px;
-    margin-top: 20px;
-    animation: heroAppear 1.1s ease both;
+    margin-top: 35px;
+    animation: heroContentIn 1.2s ease both;
+}
+
+.hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 5px;
+    font-weight: 600;
+    color: rgba(255,255,255,.8);
+    margin-bottom: 25px;
 }
 
 .hero-content h1 {
-    font-size: clamp(70px, 10vw, 125px);
+    font-size: clamp(75px, 12vw, 145px);
+    line-height: .95;
     font-weight: 600;
     letter-spacing: 10px;
-    line-height: 1;
     margin-bottom: 22px;
 }
 
 .hero-content p {
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 4px;
-    margin-bottom: 38px;
+    margin-bottom: 40px;
+    color: rgba(255,255,255,.9);
 }
-
-/* Bouton découvrir */
 
 .hero-discover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 22px;
-    min-width: 245px;
-    padding: 17px 25px;
-    border: 1px solid rgba(255,255,255,.95);
-    border-radius: 5px;
-    background: rgba(255,255,255,.96);
-    color: #111318;
+    min-width: 235px;
+    padding: 17px 27px;
+    background: white;
+    color: var(--black);
+    border: 1px solid white;
+    border-radius: 3px;
     font-size: 10px;
     font-weight: 800;
-    letter-spacing: 1.3px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    transition:
-        background .35s ease,
-        color .35s ease,
-        border-color .35s ease,
-        transform .35s ease,
-        box-shadow .35s ease;
-}
-
-.hero-discover span {
-    font-size: 15px;
-    transition: transform .35s ease;
+    letter-spacing: 1.4px;
+    transition: .35s ease;
 }
 
 .hero-discover:hover {
@@ -339,18 +305,7 @@ header:focus-within {
     border-color: var(--blue);
     color: white;
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0,0,0,.15);
 }
-
-.hero-discover:hover span {
-    transform: translate(3px,-3px);
-}
-
-.hero-discover:active {
-    transform: translateY(-1px);
-}
-
-/* Informations en bas */
 
 .hero-bottom {
     position: absolute;
@@ -360,120 +315,28 @@ header:focus-within {
     right: 6%;
     display: flex;
     justify-content: space-between;
-    color: white;
+    color: rgba(255,255,255,.85);
     font-size: 9px;
-    letter-spacing: 1.5px;
-    pointer-events: none;
+    letter-spacing: 2px;
 }
 
-/* Bouton lecture / pause */
-
-.video-control {
-    position: absolute;
-    z-index: 5;
-    right: 6%;
-    bottom: 75px;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(255,255,255,.8);
-    border-radius: 50%;
-    background: rgba(15,19,24,.28);
-    color: white;
-    font-size: 17px;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    transition:
-        background .3s ease,
-        color .3s ease,
-        transform .3s ease,
-        border-color .3s ease;
-}
-
-.video-control:hover {
-    background: rgba(255,255,255,.95);
-    color: #111318;
-    border-color: white;
-    transform: scale(1.08);
-}
-
-.video-control:active {
-    transform: scale(.94);
-}
-
-.video-control span {
-    display: block;
-    line-height: 1;
-}
-
-@keyframes heroAppear {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* =========================
-   BUTTONS
-========================= */
-
-.hero-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
+/* BOUTONS */
 
 .button {
-    position: relative;
-    overflow: hidden;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    min-width: 185px;
-    padding: 16px 22px;
+    min-width: 190px;
+    padding: 16px 23px;
+    border: 1px solid var(--black);
     font-size: 10px;
     font-weight: 800;
     letter-spacing: 1px;
-    border: 1px solid #111318;
-    transition:
-        background .35s ease,
-        color .35s ease,
-        border-color .35s ease,
-        transform .35s cubic-bezier(.2,.8,.2,1),
-        box-shadow .35s ease;
-}
-
-.button::after {
-    content: "↗";
-    margin-left: 9px;
-    font-size: 12px;
-    transition: transform .35s ease;
-}
-
-.button:hover::after {
-    transform: translate(3px,-3px);
-}
-
-.button:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 9px 22px rgba(25,48,75,.10);
-}
-
-.button:active {
-    transform: translateY(-1px) scale(.98);
-    box-shadow: none;
+    transition: .35s ease;
 }
 
 .button-black {
-    background: #111318;
+    background: var(--black);
     color: white;
 }
 
@@ -481,25 +344,25 @@ header:focus-within {
     background: var(--blue);
     border-color: var(--blue);
     color: white;
+    transform: translateY(-3px);
 }
 
 .button-white {
     background: white;
-    color: #111318;
+    color: var(--black);
 }
 
 .button-white:hover {
     background: var(--blue);
     border-color: var(--blue);
     color: white;
+    transform: translateY(-3px);
 }
 
-/* =========================
-   INTRODUCTION
-========================= */
+/* INTRODUCTION */
 
 .intro {
-    padding: 130px 10%;
+    padding: 140px 10%;
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 70px;
@@ -513,7 +376,7 @@ header:focus-within {
 }
 
 .intro-content h2 {
-    font-size: clamp(35px, 5vw, 65px);
+    font-size: clamp(36px, 5vw, 66px);
     font-weight: 600;
     letter-spacing: -3px;
     line-height: 1.15;
@@ -521,24 +384,22 @@ header:focus-within {
 }
 
 .intro-content p {
-    max-width: 570px;
+    max-width: 600px;
     font-size: 13px;
     line-height: 2;
     color: var(--grey);
 }
 
-/* =========================
-   EH-X
-========================= */
+/* EH-X */
 
 .ehx {
     position: relative;
     min-height: 650px;
-    background: #F5F6F8;
+    padding: 110px 10%;
     display: flex;
     align-items: center;
-    padding: 100px 10%;
     overflow: hidden;
+    background: #F3F5F7;
 }
 
 .ehx::before {
@@ -549,7 +410,7 @@ header:focus-within {
     width: 3px;
     height: 100%;
     background: var(--blue);
-    opacity: .35;
+    opacity: .6;
 }
 
 .ehx-content {
@@ -559,7 +420,7 @@ header:focus-within {
 }
 
 .ehx-content h2 {
-    font-size: clamp(80px, 12vw, 135px);
+    font-size: clamp(85px, 12vw, 140px);
     font-weight: 800;
     letter-spacing: -9px;
     line-height: .9;
@@ -576,7 +437,7 @@ header:focus-within {
 }
 
 .ehx-content p {
-    max-width: 420px;
+    max-width: 430px;
     font-size: 13px;
     color: var(--grey);
     line-height: 2;
@@ -592,12 +453,10 @@ header:focus-within {
     color: var(--blue);
 }
 
-/* =========================
-   OBJECTIFS
-========================= */
+/* OBJECTIFS */
 
 .numbers {
-    padding: 120px 9%;
+    padding: 125px 9%;
 }
 
 .numbers-heading {
@@ -625,7 +484,6 @@ header:focus-within {
 }
 
 .number-card {
-    position: relative;
     padding: 40px 10px;
     text-align: center;
     border-right: 1px solid #DDE1E6;
@@ -637,7 +495,7 @@ header:focus-within {
 }
 
 .number-card:last-child {
-    border: none;
+    border-right: none;
 }
 
 .number-card strong {
@@ -667,13 +525,11 @@ header:focus-within {
     margin-top: 25px;
 }
 
-/* =========================
-   TECHNOLOGIE
-========================= */
+/* TECHNOLOGIE */
 
 .technology {
-    padding: 120px 9%;
-    background: #F6F7F9;
+    padding: 125px 9%;
+    background: #F5F6F8;
 }
 
 .tech-heading {
@@ -692,7 +548,7 @@ header:focus-within {
 }
 
 .tech-heading p {
-    max-width: 300px;
+    max-width: 320px;
     color: var(--grey);
     font-size: 12px;
     line-height: 2;
@@ -713,10 +569,7 @@ header:focus-within {
     justify-content: flex-end;
     background: white;
     border: 1px solid #E8EBEF;
-    transition:
-        transform .45s ease,
-        border-color .45s ease,
-        box-shadow .45s ease;
+    transition: .4s ease;
 }
 
 .tech-card::before {
@@ -727,7 +580,7 @@ header:focus-within {
     width: 0;
     height: 2px;
     background: var(--blue);
-    transition: width .45s ease;
+    transition: width .4s ease;
 }
 
 .tech-card:hover::before {
@@ -737,7 +590,7 @@ header:focus-within {
 .tech-card:hover {
     transform: translateY(-6px);
     border-color: #D5DFE9;
-    box-shadow: 0 15px 35px rgba(25,48,75,.045);
+    box-shadow: 0 15px 35px rgba(25,48,75,.05);
 }
 
 .tech-card span {
@@ -759,12 +612,10 @@ header:focus-within {
     max-width: 400px;
 }
 
-/* =========================
-   VISION
-========================= */
+/* VISION */
 
 .vision {
-    padding: 120px 10%;
+    padding: 125px 10%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
@@ -774,33 +625,33 @@ header:focus-within {
 .vision-image {
     position: relative;
     min-height: 380px;
-    background: #F5F6F8;
+    background: #F1F3F6;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
 }
 
-.vision-image::before,
+.vision-image::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 65px;
+    height: 1px;
+    background: var(--blue);
+    opacity: .7;
+}
+
 .vision-image::after {
     content: "";
     position: absolute;
-    background: var(--blue);
-    opacity: .18;
-}
-
-.vision-image::before {
-    width: 65px;
-    height: 1px;
     top: 30px;
     left: 30px;
-}
-
-.vision-image::after {
     width: 1px;
     height: 65px;
-    top: 30px;
-    left: 30px;
+    background: var(--blue);
+    opacity: .7;
 }
 
 .vision-image span {
@@ -828,13 +679,12 @@ header:focus-within {
     color: var(--grey);
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer {
-    padding: 70px 8% 25px;
-    border-top: 1px solid var(--border);
+    padding: 75px 8% 25px;
+    background: #080A0D;
+    color: white;
 }
 
 .footer-top {
@@ -856,7 +706,7 @@ footer {
 }
 
 .footer-brand p {
-    color: var(--grey);
+    color: #9299A3;
     font-size: 11px;
     margin-top: 15px;
 }
@@ -876,45 +726,35 @@ footer {
 
 .footer-column a {
     font-size: 11px;
-    color: #555;
-    transition:
-        color .3s ease,
-        transform .3s ease;
+    color: #B5BAC2;
+    transition: .3s ease;
 }
 
 .footer-column a:hover {
-    color: var(--blue);
+    color: white;
     transform: translateX(3px);
 }
 
 .footer-bottom {
-    border-top: 1px solid var(--border);
+    border-top: 1px solid rgba(255,255,255,.13);
     padding-top: 22px;
     display: flex;
     justify-content: space-between;
     gap: 20px;
     font-size: 9px;
-    color: #999;
-}
-
-.footer-bottom a {
-    transition: color .3s ease;
+    color: #9299A3;
 }
 
 .footer-bottom a:hover {
-    color: var(--blue);
+    color: white;
 }
 
-/* =========================
-   ANIMATIONS
-========================= */
+/* ANIMATIONS */
 
 .reveal {
     opacity: 0;
     transform: translateY(22px);
-    transition:
-        opacity .85s ease,
-        transform .85s cubic-bezier(.2,.8,.2,1);
+    transition: opacity .8s ease, transform .8s ease;
 }
 
 .reveal.visible {
@@ -922,10 +762,15 @@ footer {
     transform: translateY(0);
 }
 
-@keyframes fadeIn {
+@keyframes heroZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.06); }
+}
+
+@keyframes heroContentIn {
     from {
         opacity: 0;
-        transform: translateY(22px);
+        transform: translateY(25px);
     }
     to {
         opacity: 1;
@@ -933,17 +778,15 @@ footer {
     }
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* TABLETTES */
 
 @media(max-width:850px) {
-
     header {
         padding: 0 4%;
     }
 
-    .nav-left {
+    .nav-left,
+    .nav-right {
         gap: 14px;
     }
 
@@ -958,10 +801,6 @@ footer {
 
     .brand img {
         max-height: 36px;
-    }
-
-    .nav-right {
-        gap: 12px;
     }
 
     .intro {
@@ -1007,8 +846,9 @@ footer {
     }
 }
 
-@media(max-width:600px) {
+/* MOBILES */
 
+@media(max-width:600px) {
     header {
         height: 72px;
         grid-template-columns: 1fr auto 1fr;
@@ -1035,6 +875,14 @@ footer {
 
     .menu-button {
         display: block;
+        color: white;
+        border-color: rgba(255,255,255,.6);
+    }
+
+    header:hover .menu-button,
+    header:focus-within .menu-button {
+        color: var(--black);
+        border-color: var(--border);
     }
 
     .mobile-nav {
@@ -1045,21 +893,21 @@ footer {
         padding: 25px 8%;
         background: rgba(255,255,255,.98);
         backdrop-filter: blur(12px);
-        border-bottom: 1px solid #E8EBEF;
+        border-bottom: 1px solid var(--border);
         flex-direction: column;
         gap: 22px;
     }
 
     .mobile-nav.open {
         display: flex;
-        animation: fadeIn .3s ease;
+        animation: heroContentIn .3s ease;
     }
 
     .mobile-nav a {
+        color: var(--black);
         font-size: 11px;
         font-weight: 700;
         letter-spacing: 1px;
-        transition: color .3s ease;
     }
 
     .mobile-nav a:hover {
@@ -1067,43 +915,31 @@ footer {
     }
 
     .hero {
-        min-height: 550px;
-        height: 100svh;
+        min-height: 600px;
     }
 
-    .hero-video {
+    .hero-image {
         object-position: center;
     }
 
-    .hero-content {
-        padding: 15px;
-        margin-top: 10px;
-    }
-
     .hero-content h1 {
-        font-size: 65px;
-        letter-spacing: 6px;
-        margin-bottom: 17px;
+        font-size: 72px;
+        letter-spacing: 5px;
     }
 
     .hero-content p {
         font-size: 9px;
         letter-spacing: 2px;
-        line-height: 1.8;
-        margin-bottom: 30px;
+    }
+
+    .hero-eyebrow {
+        font-size: 8px;
+        letter-spacing: 3px;
     }
 
     .hero-discover {
-        min-width: 215px;
+        min-width: 205px;
         padding: 15px 20px;
-        font-size: 9px;
-    }
-
-    .video-control {
-        right: 5%;
-        bottom: 70px;
-        width: 44px;
-        height: 44px;
     }
 
     .hero-bottom {
@@ -1115,6 +951,7 @@ footer {
 
     .intro {
         display: block;
+        padding: 90px 8%;
     }
 
     .intro-content {
@@ -1152,11 +989,9 @@ footer {
     }
 }
 
-/* =========================
-   ACCESSIBILITY
-========================= */
+/* ACCESSIBILITÉ */
 
-@media (prefers-reduced-motion: reduce) {
+@media(prefers-reduced-motion: reduce) {
     *,
     *::before,
     *::after {
@@ -1170,15 +1005,10 @@ footer {
         transform: none;
     }
 }
-
 </style>
 </head>
 
 <body>
-
-<!-- =========================
-     HEADER
-========================= -->
 
 <header id="header">
 
@@ -1192,20 +1022,14 @@ footer {
     </a>
 
     <div class="nav-right">
-
         <a href="entreprise.html" data-fr="ENTREPRISE" data-en="COMPANY">ENTREPRISE</a>
-
         <button class="language" id="language" aria-label="Change language">EN</button>
-
-        <a href="contact.html" class="contact-button"
-           data-fr="CONTACT" data-en="CONTACT">CONTACT</a>
+        <a href="contact.html" class="contact-button" data-fr="CONTACT" data-en="CONTACT">CONTACT</a>
 
         <button class="menu-button" id="menuButton"
-                aria-expanded="false"
-                aria-controls="mobileNav">
+                aria-expanded="false" aria-controls="mobileNav">
             MENU
         </button>
-
     </div>
 
     <nav class="mobile-nav" id="mobileNav">
@@ -1214,93 +1038,58 @@ footer {
         <a href="entreprise.html" data-fr="ENTREPRISE" data-en="COMPANY">ENTREPRISE</a>
         <a href="contact.html" data-fr="CONTACT" data-en="CONTACT">CONTACT</a>
     </nav>
-
 </header>
 
 <main>
 
-<!-- =========================
-     HERO — VIDEO + EH-X
-========================= -->
+<!-- ACCUEIL -->
 
 <section class="hero" id="home">
 
-    <div class="hero-video-wrap">
-
-        <video
-            class="hero-video"
-            id="heroVideo"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="auto"
-            aria-label="Vidéo de présentation du concept KZETRAL EH-X">
-
-            <source src="videos/kzetral-presentation.mp4" type="video/mp4">
-
-            Votre navigateur ne prend pas en charge la lecture vidéo.
-
-        </video>
-
-    </div>
+    <img
+        class="hero-image"
+        src="images/ehx-hero.jpg"
+        alt="KZETRAL EH-X"
+        fetchpriority="high">
 
     <div class="hero-content">
+        <div class="hero-eyebrow"
+             data-fr="KZETRAL — NOUVELLE GÉNÉRATION"
+             data-en="KZETRAL — NEXT GENERATION">
+            KZETRAL — NOUVELLE GÉNÉRATION
+        </div>
 
         <h1>EH-X</h1>
 
-        <p
-            data-fr="LE SUV 100 % À HYDROGÈNE"
-            data-en="THE 100% HYDROGEN SUV">
-            LE SUV 100 % À HYDROGÈNE
+        <p data-fr="LE SUV À HYDROGÈNE"
+           data-en="THE HYDROGEN SUV">
+            LE SUV À HYDROGÈNE
         </p>
 
-        <a href="#models" class="hero-discover">
-
-            <span
-                data-fr="DÉCOUVRIR LE EH-X"
-                data-en="DISCOVER THE EH-X">
-                DÉCOUVRIR LE EH-X
-            </span>
-
-            <span aria-hidden="true">↗</span>
-
+        <a href="#models" class="hero-discover"
+           data-fr="DÉCOUVRIR LE EH-X"
+           data-en="DISCOVER THE EH-X">
+            DÉCOUVRIR LE EH-X
         </a>
-
     </div>
-
-    <button
-        class="video-control"
-        id="videoControl"
-        type="button"
-        aria-label="Mettre la vidéo en pause"
-        aria-pressed="false">
-
-        <span id="videoControlIcon" aria-hidden="true">Ⅱ</span>
-
-    </button>
 
     <div class="hero-bottom">
         <span>KZETRAL</span>
-
         <span data-fr="DÉFILER POUR EXPLORER"
               data-en="SCROLL TO EXPLORE">
-              DÉFILER POUR EXPLORER
+            DÉFILER POUR EXPLORER
         </span>
     </div>
 
 </section>
 
-<!-- =========================
-     INTRODUCTION
-========================= -->
+<!-- INTRODUCTION -->
 
 <section class="intro reveal">
 
     <div class="section-label">01 — KZETRAL</div>
 
     <div class="intro-content">
-
         <h2 data-fr="Une nouvelle génération automobile. Une nouvelle ambition."
             data-en="A new generation of automotive. A new ambition.">
             Une nouvelle génération automobile.
@@ -1309,55 +1098,45 @@ footer {
 
         <p data-fr="KZETRAL est un projet de constructeur automobile qui explore les possibilités offertes par les nouvelles technologies. Notre ambition est de concevoir des véhicules qui associent design, innovation et mobilité de demain."
            data-en="KZETRAL is an automotive manufacturer project exploring the possibilities offered by emerging technologies. Our ambition is to develop vehicles that bring together design, innovation and tomorrow's mobility.">
-           KZETRAL est un projet de constructeur automobile qui explore
-           les possibilités offertes par les nouvelles technologies.
-           Notre ambition est de concevoir des véhicules qui associent
-           design, innovation et mobilité de demain.
+            KZETRAL est un projet de constructeur automobile qui explore
+            les possibilités offertes par les nouvelles technologies.
+            Notre ambition est de concevoir des véhicules qui associent
+            design, innovation et mobilité de demain.
         </p>
-
     </div>
-
 </section>
 
-<!-- =========================
-     EH-X
-========================= -->
+<!-- EH-X -->
 
 <section class="ehx" id="models">
 
     <div class="ehx-content reveal">
-
         <div class="section-label">02 — FIRST CONCEPT</div>
 
         <h2>KZETRAL<span>EH-X</span></h2>
 
         <p data-fr="Un SUV cinq places imaginé autour d'une architecture hydrogène et électrique. Le premier chapitre de notre vision automobile."
            data-en="A five-seat SUV imagined around a hydrogen-electric architecture. The first chapter of our automotive vision.">
-           Un SUV cinq places imaginé autour d'une architecture
-           hydrogène et électrique. Le premier chapitre de notre
-           vision automobile.
+            Un SUV cinq places imaginé autour d'une architecture
+            hydrogène et électrique. Le premier chapitre de notre
+            vision automobile.
         </p>
 
         <a href="#technology" class="button button-black"
            data-fr="DÉCOUVRIR LE CONCEPT"
            data-en="DISCOVER THE CONCEPT">
-           DÉCOUVRIR LE CONCEPT
+            DÉCOUVRIR LE CONCEPT
         </a>
-
     </div>
 
     <div class="ehx-number">EH-X / 001</div>
-
 </section>
 
-<!-- =========================
-     OBJECTIFS
-========================= -->
+<!-- OBJECTIFS -->
 
 <section class="numbers">
 
     <div class="numbers-heading reveal">
-
         <div class="section-label">EH-X — OBJECTIFS DU PROJET</div>
 
         <h2 data-fr="L'ambition prend forme."
@@ -1367,9 +1146,8 @@ footer {
 
         <p data-fr="Les objectifs actuellement étudiés pour le concept EH-X."
            data-en="Current development targets for the EH-X concept.">
-           Les objectifs actuellement étudiés pour le concept EH-X.
+            Les objectifs actuellement étudiés pour le concept EH-X.
         </p>
-
     </div>
 
     <div class="numbers-grid">
@@ -1377,17 +1155,13 @@ footer {
         <div class="number-card reveal">
             <strong>400</strong>
             <span data-fr="CH — PUISSANCE VISÉE"
-                  data-en="HP — TARGET POWER">
-                  CH — PUISSANCE VISÉE
-            </span>
+                  data-en="HP — TARGET POWER">CH — PUISSANCE VISÉE</span>
         </div>
 
         <div class="number-card reveal">
             <strong>700–800</strong>
             <span data-fr="KM — AUTONOMIE VISÉE"
-                  data-en="KM — TARGET RANGE">
-                  KM — AUTONOMIE VISÉE
-            </span>
+                  data-en="KM — TARGET RANGE">KM — AUTONOMIE VISÉE</span>
         </div>
 
         <div class="number-card reveal">
@@ -1398,9 +1172,7 @@ footer {
         <div class="number-card reveal">
             <strong>H₂ + EV</strong>
             <span data-fr="ARCHITECTURE ENVISAGÉE"
-                  data-en="PROPOSED ARCHITECTURE">
-                  ARCHITECTURE ENVISAGÉE
-            </span>
+                  data-en="PROPOSED ARCHITECTURE">ARCHITECTURE ENVISAGÉE</span>
         </div>
 
     </div>
@@ -1408,22 +1180,17 @@ footer {
     <p class="disclaimer"
        data-fr="* Objectifs de conception non validés. Ces valeurs ne sont pas des caractéristiques techniques homologuées."
        data-en="* Unvalidated design targets. These figures are not certified technical specifications.">
-       * Objectifs de conception non validés. Ces valeurs ne sont pas des caractéristiques techniques homologuées.
+        * Objectifs de conception non validés. Ces valeurs ne sont pas des caractéristiques techniques homologuées.
     </p>
-
 </section>
 
-<!-- =========================
-     TECHNOLOGIE
-========================= -->
+<!-- TECHNOLOGIE -->
 
 <section class="technology" id="technology">
 
     <div class="tech-heading reveal">
-
         <div>
             <div class="section-label">03 — TECHNOLOGY</div>
-
             <h2 data-fr="Penser<br>plus loin."
                 data-en="Think<br>beyond.">
                 Penser<br>plus loin.
@@ -1432,56 +1199,44 @@ footer {
 
         <p data-fr="L'innovation ne se limite pas à une technologie. Elle commence par une vision et se construit à travers la recherche."
            data-en="Innovation is not limited to technology. It begins with a vision and takes shape through research.">
-           L'innovation ne se limite pas à une technologie.
-           Elle commence par une vision et se construit
-           à travers la recherche.
+            L'innovation ne se limite pas à une technologie.
+            Elle commence par une vision et se construit
+            à travers la recherche.
         </p>
-
     </div>
 
     <div class="tech-grid">
 
         <article class="tech-card reveal">
-
             <span>01 / ENERGY</span>
-
             <h3 data-fr="Hydrogène & électrique"
                 data-en="Hydrogen & electric">
                 Hydrogène & électrique
             </h3>
-
             <p data-fr="Explorer la complémentarité entre pile à combustible et motorisation électrique."
                data-en="Exploring the combination of fuel-cell technology and electric propulsion.">
-               Explorer la complémentarité entre pile à combustible
-               et motorisation électrique.
+                Explorer la complémentarité entre pile à combustible
+                et motorisation électrique.
             </p>
-
         </article>
 
         <article class="tech-card reveal">
-
             <span>02 / DESIGN</span>
-
             <h3 data-fr="Design & identité"
                 data-en="Design & identity">
                 Design & identité
             </h3>
-
             <p data-fr="Créer une signature visuelle forte et imaginer une nouvelle expérience automobile."
                data-en="Creating a distinctive visual signature and imagining a new automotive experience.">
-               Créer une signature visuelle forte et imaginer
-               une nouvelle expérience automobile.
+                Créer une signature visuelle forte et imaginer
+                une nouvelle expérience automobile.
             </p>
-
         </article>
 
     </div>
-
 </section>
 
-<!-- =========================
-     VISION
-========================= -->
+<!-- VISION -->
 
 <section class="vision">
 
@@ -1490,7 +1245,6 @@ footer {
     </div>
 
     <div class="vision-content reveal">
-
         <div class="section-label">04 — OUR VISION</div>
 
         <h2 data-fr="Ne pas attendre demain. Le concevoir."
@@ -1501,20 +1255,16 @@ footer {
 
         <p data-fr="Nous croyons que l'avenir de l'automobile se construit par l'audace, la recherche et la volonté d'explorer de nouvelles solutions."
            data-en="We believe the future of automotive is shaped by ambition, research and the willingness to explore new solutions.">
-           Nous croyons que l'avenir de l'automobile se construit
-           par l'audace, la recherche et la volonté d'explorer
-           de nouvelles solutions.
+            Nous croyons que l'avenir de l'automobile se construit
+            par l'audace, la recherche et la volonté d'explorer
+            de nouvelles solutions.
         </p>
-
     </div>
-
 </section>
 
 </main>
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- FOOTER -->
 
 <footer>
 
@@ -1540,40 +1290,34 @@ footer {
 
         <div class="footer-column">
             <h4>CONTACT</h4>
-            <a href="contact.html" data-fr="Nous contacter ↗" data-en="Contact us ↗">
-                Nous contacter ↗
+            <a href="contact.html" data-fr="Nous contacter" data-en="Contact us">
+                Nous contacter
             </a>
         </div>
 
     </div>
 
     <div class="footer-bottom">
-
         <span>© <span id="year"></span> KZETRAL — ALL RIGHTS RESERVED</span>
 
         <span data-fr="EH-X : CONCEPT EN DÉVELOPPEMENT"
               data-en="EH-X: CONCEPT IN DEVELOPMENT">
-              EH-X : CONCEPT EN DÉVELOPPEMENT
+            EH-X : CONCEPT EN DÉVELOPPEMENT
         </span>
 
         <a href="#home">BACK TO TOP ↑</a>
-
     </div>
 
 </footer>
 
 <script>
 
-/* =========================
-   ANNÉE AUTOMATIQUE
-========================= */
+/* ANNÉE AUTOMATIQUE */
 
 document.getElementById("year").textContent =
     new Date().getFullYear();
 
-/* =========================
-   LANGUES FR / EN
-========================= */
+/* LANGUES FR / EN */
 
 let language = "fr";
 
@@ -1586,7 +1330,6 @@ try {
 const languageButton = document.getElementById("language");
 
 function applyLanguage() {
-
     document.querySelectorAll("[data-fr][data-en]").forEach(el => {
         el.innerHTML = el.dataset[language];
     });
@@ -1603,7 +1346,6 @@ function applyLanguage() {
 }
 
 languageButton.addEventListener("click", () => {
-
     language = language === "fr" ? "en" : "fr";
 
     try {
@@ -1611,147 +1353,36 @@ languageButton.addEventListener("click", () => {
     } catch (error) {}
 
     applyLanguage();
-
 });
 
 applyLanguage();
 
-/* =========================
-   MENU MOBILE
-========================= */
+/* MENU MOBILE */
 
 const menuButton = document.getElementById("menuButton");
 const mobileNav = document.getElementById("mobileNav");
 
 function closeMenu() {
-
     mobileNav.classList.remove("open");
-
     menuButton.textContent = "MENU";
-
     menuButton.setAttribute("aria-expanded", "false");
-
 }
 
 menuButton.addEventListener("click", () => {
-
     const isOpen = mobileNav.classList.toggle("open");
 
-    menuButton.textContent =
-        isOpen
-            ? (language === "fr" ? "FERMER" : "CLOSE")
-            : "MENU";
+    menuButton.textContent = isOpen
+        ? (language === "fr" ? "FERMER" : "CLOSE")
+        : "MENU";
 
-    menuButton.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-    );
-
+    menuButton.setAttribute("aria-expanded", String(isOpen));
 });
 
 mobileNav.querySelectorAll("a").forEach(link => {
-
     link.addEventListener("click", closeMenu);
-
 });
-
-/* =========================
-   VIDÉO — LECTURE / PAUSE
-========================= */
-
-const heroVideo = document.getElementById("heroVideo");
-const videoControl = document.getElementById("videoControl");
-const videoControlIcon = document.getElementById("videoControlIcon");
-
-function updateVideoButton() {
-
-    if (heroVideo.paused) {
-
-        videoControlIcon.textContent = "▶";
-        videoControl.setAttribute("aria-label", "Lire la vidéo");
-        videoControl.setAttribute("aria-pressed", "true");
-
-    } else {
-
-        videoControlIcon.textContent = "Ⅱ";
-        videoControl.setAttribute("aria-label", "Mettre la vidéo en pause");
-        videoControl.setAttribute("aria-pressed", "false");
-
-    }
-
-}
-
-videoControl.addEventListener("click", () => {
-
-    if (heroVideo.paused) {
-
-        const playPromise = heroVideo.play();
-
-        if (playPromise !== undefined) {
-            playPromise.catch(() => {
-                updateVideoButton();
-            });
-        }
-
-    } else {
-
-        heroVideo.pause();
-
-    }
-
-    updateVideoButton();
-
-});
-
-heroVideo.addEventListener("play", updateVideoButton);
-heroVideo.addEventListener("pause", updateVideoButton);
-
-updateVideoButton();
-
-/* =========================
-   APPARITION DES SECTIONS
-========================= */
-
-const revealItems = document.querySelectorAll(".reveal");
-
-if ("IntersectionObserver" in window) {
-
-    const observer = new IntersectionObserver(entries => {
-
-        entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-                entry.target.classList.add("visible");
-
-                observer.unobserve(entry.target);
-
-            }
-
-        });
-
-    }, {
-        threshold: 0.12
-    });
-
-    revealItems.forEach(item => {
-        observer.observe(item);
-    });
-
-} else {
-
-    revealItems.forEach(item => {
-        item.classList.add("visible");
-    });
-
-}
-
-/* =========================
-   FERMETURE DU MENU AU CLIC EXTERNE
-========================= */
 
 document.addEventListener("click", event => {
-
     if (
         mobileNav.classList.contains("open") &&
         !mobileNav.contains(event.target) &&
@@ -1759,8 +1390,28 @@ document.addEventListener("click", event => {
     ) {
         closeMenu();
     }
-
 });
+
+/* APPARITION DES SECTIONS */
+
+const revealItems = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.12
+    });
+
+    revealItems.forEach(item => observer.observe(item));
+} else {
+    revealItems.forEach(item => item.classList.add("visible"));
+}
 
 </script>
 
