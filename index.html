@@ -1,1419 +1,475 @@
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>KZETRAL — Automotive</title>
-<meta name="description" content="KZETRAL — Un projet de constructeur automobile tourné vers l'innovation et les mobilités de demain.">
-<meta name="theme-color" content="#080A0D">
-
-<!-- POLICE QUEStrial -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
-
-<style>
-:root {
-    --black: #080A0D;
-    --dark: #101318;
-    --white: #FFFFFF;
-    --grey: #858C96;
-    --light: #F5F6F8;
-    --blue: #7899BB;
-    --blue-soft: #DCE7F2;
-    --border: #E7E9ED;
-    --font: 'Questrial', Arial, sans-serif;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: var(--font);
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 85px;
-}
-
-body {
-    font-family: var(--font);
-    color: var(--black);
-    background: var(--white);
-    overflow-x: hidden;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button {
-    font-family: var(--font);
-}
-
-::selection {
-    background: var(--blue);
-    color: white;
-}
-
-a:focus-visible,
-button:focus-visible {
-    outline: 2px solid var(--blue);
-    outline-offset: 5px;
-}
-
-/* HEADER */
-
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 84px;
-    padding: 0 6%;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    z-index: 1000;
-    background: rgba(8,10,13,.12);
-    border-bottom: 1px solid rgba(255,255,255,.08);
-    transition: .4s ease;
-}
-
-header:hover,
-header:focus-within {
-    background: rgba(255,255,255,.96);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom-color: var(--border);
-}
-
-.nav-left,
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
-.nav-right {
-    justify-content: flex-end;
-}
-
-.nav-left a,
-.nav-right a {
-    position: relative;
-    color: white;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    white-space: nowrap;
-    transition: color .3s ease;
-}
-
-header:hover .nav-left a,
-header:hover .nav-right a,
-header:focus-within .nav-left a,
-header:focus-within .nav-right a {
-    color: var(--black);
-}
-
-.nav-left a::after,
-.nav-right > a:not(.contact-button)::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -7px;
-    width: 0;
-    height: 1px;
-    background: var(--blue);
-    transition: width .3s ease;
-}
-
-.nav-left a:hover::after,
-.nav-right > a:not(.contact-button):hover::after {
-    width: 100%;
-}
-
-.nav-left a:hover,
-.nav-right a:hover {
-    color: var(--blue) !important;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 180px;
-}
-
-.brand img {
-    display: block;
-    max-width: 100%;
-    max-height: 43px;
-    object-fit: contain;
-}
-
-.language {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 10px;
-    font-weight: 800;
-    cursor: pointer;
-    transition: color .3s ease;
-}
-
-header:hover .language,
-header:focus-within .language {
-    color: var(--black);
-}
-
-.language:hover {
-    color: var(--blue) !important;
-}
-
-.contact-button {
-    border: 1px solid rgba(255,255,255,.8);
-    padding: 11px 18px;
-    transition: .3s ease;
-}
-
-header:hover .contact-button,
-header:focus-within .contact-button {
-    border-color: var(--black);
-}
-
-.contact-button:hover {
-    background: var(--black);
-    border-color: var(--black);
-    color: white !important;
-}
-
-.menu-button {
-    display: none;
-    background: transparent;
-    border: 1px solid var(--border);
-    padding: 10px 13px;
-    font-size: 10px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.mobile-nav {
-    display: none;
-}
-
-/* HERO */
-
-.hero {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    height: 100svh;
-    min-height: 650px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: var(--black);
-    color: white;
-    text-align: center;
-}
-
-/* Image principale : images/ehx-hero.jpg */
-
-.hero-image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 0;
-    animation: heroZoom 18s ease-in-out infinite alternate;
-}
-
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(0,0,0,.38),
-            rgba(0,0,0,.08) 35%,
-            rgba(0,0,0,.18) 65%,
-            rgba(0,0,0,.55)
-        );
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 20px;
-    margin-top: 35px;
-    animation: heroContentIn 1.2s ease both;
-}
-
-.hero-eyebrow {
-    font-size: 10px;
-    letter-spacing: 5px;
-    font-weight: 600;
-    color: rgba(255,255,255,.8);
-    margin-bottom: 25px;
-}
-
-.hero-content h1 {
-    font-size: clamp(75px, 12vw, 145px);
-    line-height: .95;
-    font-weight: 600;
-    letter-spacing: 10px;
-    margin-bottom: 22px;
-}
-
-.hero-content p {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 4px;
-    margin-bottom: 40px;
-    color: rgba(255,255,255,.9);
-}
-
-.hero-discover {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 235px;
-    padding: 17px 27px;
-    background: white;
-    color: var(--black);
-    border: 1px solid white;
-    border-radius: 3px;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1.4px;
-    transition: .35s ease;
-}
-
-.hero-discover:hover {
-    background: var(--blue);
-    border-color: var(--blue);
-    color: white;
-    transform: translateY(-4px);
-}
-
-.hero-bottom {
-    position: absolute;
-    z-index: 2;
-    bottom: 30px;
-    left: 6%;
-    right: 6%;
-    display: flex;
-    justify-content: space-between;
-    color: rgba(255,255,255,.85);
-    font-size: 9px;
-    letter-spacing: 2px;
-}
-
-/* BOUTONS */
-
-.button {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 190px;
-    padding: 16px 23px;
-    border: 1px solid var(--black);
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    transition: .35s ease;
-}
-
-.button-black {
-    background: var(--black);
-    color: white;
-}
-
-.button-black:hover {
-    background: var(--blue);
-    border-color: var(--blue);
-    color: white;
-    transform: translateY(-3px);
-}
-
-.button-white {
-    background: white;
-    color: var(--black);
-}
-
-.button-white:hover {
-    background: var(--blue);
-    border-color: var(--blue);
-    color: white;
-    transform: translateY(-3px);
-}
-
-/* INTRODUCTION */
-
-.intro {
-    padding: 140px 10%;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 70px;
-}
-
-.section-label {
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    color: var(--blue);
-}
-
-.intro-content h2 {
-    font-size: clamp(36px, 5vw, 66px);
-    font-weight: 600;
-    letter-spacing: -3px;
-    line-height: 1.15;
-    margin-bottom: 30px;
-}
-
-.intro-content p {
-    max-width: 600px;
-    font-size: 13px;
-    line-height: 2;
-    color: var(--grey);
-}
-
-/* EH-X */
-
-.ehx {
-    position: relative;
-    min-height: 650px;
-    padding: 110px 10%;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    background: #F3F5F7;
-}
-
-.ehx::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3px;
-    height: 100%;
-    background: var(--blue);
-    opacity: .6;
-}
-
-.ehx-content {
-    max-width: 580px;
-    position: relative;
-    z-index: 1;
-}
-
-.ehx-content h2 {
-    font-size: clamp(85px, 12vw, 140px);
-    font-weight: 800;
-    letter-spacing: -9px;
-    line-height: .9;
-    margin: 30px 0;
-}
-
-.ehx-content h2 span {
-    display: block;
-    font-size: .32em;
-    letter-spacing: 7px;
-    font-weight: 500;
-    margin-top: 20px;
-    color: var(--blue);
-}
-
-.ehx-content p {
-    max-width: 430px;
-    font-size: 13px;
-    color: var(--grey);
-    line-height: 2;
-    margin-bottom: 30px;
-}
-
-.ehx-number {
-    position: absolute;
-    right: 7%;
-    bottom: 35px;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--blue);
-}
-
-/* OBJECTIFS */
-
-.numbers {
-    padding: 125px 9%;
-}
-
-.numbers-heading {
-    text-align: center;
-    margin-bottom: 65px;
-}
-
-.numbers-heading h2 {
-    font-size: clamp(35px, 5vw, 60px);
-    letter-spacing: -3px;
-    margin-top: 20px;
-}
-
-.numbers-heading p {
-    font-size: 12px;
-    color: var(--grey);
-    margin-top: 15px;
-}
-
-.numbers-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    border-top: 1px solid #DDE1E6;
-    border-bottom: 1px solid #DDE1E6;
-}
-
-.number-card {
-    padding: 40px 10px;
-    text-align: center;
-    border-right: 1px solid #DDE1E6;
-    transition: background .35s ease;
-}
-
-.number-card:hover {
-    background: #F8FAFC;
-}
-
-.number-card:last-child {
-    border-right: none;
-}
-
-.number-card strong {
-    display: block;
-    font-size: clamp(30px, 4vw, 55px);
-    font-weight: 600;
-    letter-spacing: -3px;
-    transition: color .35s ease;
-}
-
-.number-card:hover strong {
-    color: var(--blue);
-}
-
-.number-card span {
-    display: block;
-    margin-top: 12px;
-    font-size: 10px;
-    color: var(--grey);
-    letter-spacing: 1px;
-}
-
-.disclaimer {
-    text-align: center;
-    font-size: 10px;
-    color: #999;
-    margin-top: 25px;
-}
-
-/* TECHNOLOGIE */
-
-.technology {
-    padding: 125px 9%;
-    background: #F5F6F8;
-}
-
-.tech-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    gap: 30px;
-    margin-bottom: 55px;
-}
-
-.tech-heading h2 {
-    font-size: clamp(40px, 5vw, 65px);
-    letter-spacing: -3px;
-    line-height: 1.1;
-    margin-top: 20px;
-}
-
-.tech-heading p {
-    max-width: 320px;
-    color: var(--grey);
-    font-size: 12px;
-    line-height: 2;
-}
-
-.tech-grid {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 18px;
-}
-
-.tech-card {
-    position: relative;
-    min-height: 330px;
-    padding: 35px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    background: white;
-    border: 1px solid #E8EBEF;
-    transition: .4s ease;
-}
-
-.tech-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--blue);
-    transition: width .4s ease;
-}
-
-.tech-card:hover::before {
-    width: 100%;
-}
-
-.tech-card:hover {
-    transform: translateY(-6px);
-    border-color: #D5DFE9;
-    box-shadow: 0 15px 35px rgba(25,48,75,.05);
-}
-
-.tech-card span {
-    color: var(--blue);
-    font-size: 9px;
-    letter-spacing: 2px;
-}
-
-.tech-card h3 {
-    font-size: 25px;
-    margin: 15px 0;
-    letter-spacing: -1px;
-}
-
-.tech-card p {
-    font-size: 12px;
-    line-height: 1.9;
-    color: var(--grey);
-    max-width: 400px;
-}
-
-/* VISION */
-
-.vision {
-    padding: 125px 10%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-}
-
-.vision-image {
-    position: relative;
-    min-height: 380px;
-    background: #F1F3F6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.vision-image::before {
-    content: "";
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    width: 65px;
-    height: 1px;
-    background: var(--blue);
-    opacity: .7;
-}
-
-.vision-image::after {
-    content: "";
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    width: 1px;
-    height: 65px;
-    background: var(--blue);
-    opacity: .7;
-}
-
-.vision-image span {
-    font-size: clamp(35px, 5vw, 65px);
-    font-weight: 800;
-    letter-spacing: -4px;
-    color: #D2D5DA;
-    transition: color .4s ease;
-}
-
-.vision-image:hover span {
-    color: #AAB8C8;
-}
-
-.vision-content h2 {
-    font-size: clamp(35px, 4.5vw, 58px);
-    line-height: 1.15;
-    letter-spacing: -3px;
-    margin: 25px 0;
-}
-
-.vision-content p {
-    font-size: 13px;
-    line-height: 2;
-    color: var(--grey);
-}
-
-/* FOOTER */
-
-footer {
-    padding: 75px 8% 25px;
-    background: #080A0D;
-    color: white;
-}
-
-.footer-top {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 45px;
-    padding-bottom: 65px;
-}
-
-.footer-logo {
-    font-size: 25px;
-    font-weight: 800;
-    letter-spacing: 4px;
-    transition: color .3s ease;
-}
-
-.footer-logo:hover {
-    color: var(--blue);
-}
-
-.footer-brand p {
-    color: #9299A3;
-    font-size: 11px;
-    margin-top: 15px;
-}
-
-.footer-column {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.footer-column h4 {
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: var(--blue);
-    margin-bottom: 8px;
-}
-
-.footer-column a {
-    font-size: 11px;
-    color: #B5BAC2;
-    transition: .3s ease;
-}
-
-.footer-column a:hover {
-    color: white;
-    transform: translateX(3px);
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(255,255,255,.13);
-    padding-top: 22px;
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    font-size: 9px;
-    color: #9299A3;
-}
-
-.footer-bottom a:hover {
-    color: white;
-}
-
-/* ANIMATIONS */
-
-.reveal {
-    opacity: 0;
-    transform: translateY(22px);
-    transition: opacity .8s ease, transform .8s ease;
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-@keyframes heroZoom {
-    from { transform: scale(1); }
-    to { transform: scale(1.06); }
-}
-
-@keyframes heroContentIn {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* TABLETTES */
-
-@media(max-width:850px) {
-    header {
-        padding: 0 4%;
-    }
-
-    .nav-left,
-    .nav-right {
-        gap: 14px;
-    }
-
-    .nav-left a,
-    .nav-right a {
-        font-size: 8px;
-    }
-
-    .brand {
-        width: 130px;
-    }
-
-    .brand img {
-        max-height: 36px;
-    }
-
-    .intro {
-        padding: 100px 8%;
-        gap: 35px;
-    }
-
-    .ehx {
-        padding: 90px 8%;
-    }
-
-    .numbers-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .number-card:nth-child(2) {
-        border-right: none;
-    }
-
-    .number-card:nth-child(-n+2) {
-        border-bottom: 1px solid #DDE1E6;
-    }
-
-    .technology {
-        padding: 100px 7%;
-    }
-
-    .tech-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .vision {
-        padding: 90px 8%;
-        gap: 40px;
-    }
-
-    .footer-top {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .footer-brand {
-        grid-column: span 2;
-    }
-}
-
-/* MOBILES */
-
-@media(max-width:600px) {
-    header {
-        height: 72px;
-        grid-template-columns: 1fr auto 1fr;
-    }
-
-    .nav-left {
-        display: none;
-    }
-
-    .brand {
-        grid-column: 2;
-        width: 115px;
-    }
-
-    .nav-right {
-        grid-column: 3;
-        gap: 10px;
-    }
-
-    .nav-right > a:first-child,
-    .contact-button {
-        display: none;
-    }
-
-    .menu-button {
-        display: block;
-        color: white;
-        border-color: rgba(255,255,255,.6);
-    }
-
-    header:hover .menu-button,
-    header:focus-within .menu-button {
-        color: var(--black);
-        border-color: var(--border);
-    }
-
-    .mobile-nav {
-        position: absolute;
-        top: 72px;
-        left: 0;
-        width: 100%;
-        padding: 25px 8%;
-        background: rgba(255,255,255,.98);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--border);
-        flex-direction: column;
-        gap: 22px;
-    }
-
-    .mobile-nav.open {
-        display: flex;
-        animation: heroContentIn .3s ease;
-    }
-
-    .mobile-nav a {
-        color: var(--black);
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 1px;
-    }
-
-    .mobile-nav a:hover {
-        color: var(--blue);
-    }
-
-    .hero {
-        min-height: 600px;
-    }
-
-    .hero-image {
-        object-position: center;
-    }
-
-    .hero-content h1 {
-        font-size: 72px;
-        letter-spacing: 5px;
-    }
-
-    .hero-content p {
-        font-size: 9px;
-        letter-spacing: 2px;
-    }
-
-    .hero-eyebrow {
-        font-size: 8px;
-        letter-spacing: 3px;
-    }
-
-    .hero-discover {
-        min-width: 205px;
-        padding: 15px 20px;
-    }
-
-    .hero-bottom {
-        font-size: 7px;
-        left: 5%;
-        right: 5%;
-        bottom: 25px;
-    }
-
-    .intro {
-        display: block;
-        padding: 90px 8%;
-    }
-
-    .intro-content {
-        margin-top: 35px;
-    }
-
-    .ehx {
-        min-height: 570px;
-    }
-
-    .ehx-content h2 {
-        font-size: 85px;
-        letter-spacing: -6px;
-    }
-
-    .tech-heading {
-        display: block;
-    }
-
-    .tech-heading p {
-        margin-top: 25px;
-    }
-
-    .vision {
-        grid-template-columns: 1fr;
-    }
-
-    .vision-image {
-        min-height: 280px;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        line-height: 1.8;
-    }
-}
-
-/* ACCESSIBILITÉ */
-
-@media(prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
-    }
-
-    .reveal {
-        opacity: 1;
-        transform: none;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KZETRAL — EH-X</title>
+
+    <meta name="description" content="Découvrez KZETRAL EH-X, notre projet de berline européenne 100 % électrique à batterie sodium-ion.">
+
+    <!-- POLICE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================
+           BASE
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: #08090b;
+            --text: #ffffff;
+            --secondary: #a5a8ad;
+            --border: rgba(255,255,255,0.18);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--background);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            padding: 0 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+        }
+
+        .brand {
+            font-size: 23px;
+            font-weight: 700;
+            letter-spacing: 4px;
+        }
+
+        .navigation {
+            display: flex;
+            align-items: center;
+            gap: 42px;
+        }
+
+        .navigation a {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            color: #d3d4d7;
+            transition: color .25s ease;
+        }
+
+        .navigation a:hover {
+            color: #ffffff;
+        }
+
+        /* MENU MOBILE */
+
+        .menu-button {
+            display: none;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        /* =========================
+           PAGE D'ACCUEIL
+        ========================= */
+
+        .hero {
+            position: relative;
+            min-height: 100svh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 130px 7% 80px;
+            text-align: center;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    ellipse at center,
+                    rgba(55,65,82,0.20) 0%,
+                    rgba(8,9,11,0.05) 48%,
+                    rgba(8,9,11,1) 100%
+                ),
+                #08090b;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 650px;
+            height: 650px;
+            border: 1px solid rgba(255,255,255,0.025);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1100px;
+            width: 100%;
+            margin: auto;
+            animation: appear 1s ease forwards;
+        }
+
+        /* =========================
+           TITRE EH-X
+        ========================= */
+
+        .hero h1 {
+            font-size: clamp(100px, 17vw, 225px);
+            font-weight: 600;
+            line-height: 0.95;
+            letter-spacing: -0.105em;
+            margin-bottom: 34px;
+
+            background: linear-gradient(
+                180deg,
+                #ffffff 15%,
+                #c8cbd0 100%
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* =========================
+           DESCRIPTION
+        ========================= */
+
+        .hero-description {
+            max-width: 760px;
+            margin: 0 auto;
+            color: #c5c8cd;
+            font-size: clamp(15px, 1.5vw, 19px);
+            font-weight: 400;
+            line-height: 1.7;
+            letter-spacing: 0.1px;
+        }
+
+        .hero-description strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* =========================
+           BOUTONS
+        ========================= */
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 43px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            min-width: 205px;
+            padding: 16px 25px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.1px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition:
+                background .25s ease,
+                color .25s ease,
+                border-color .25s ease,
+                transform .25s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            background: #ffffff;
+            color: #090a0c;
+            border: 1px solid #ffffff;
+        }
+
+        .button-primary:hover {
+            background: #dfe1e5;
+            border-color: #dfe1e5;
+        }
+
+        .button-secondary {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255,255,255,0.35);
+        }
+
+        .button-secondary:hover {
+            background: rgba(255,255,255,0.10);
+            border-color: #ffffff;
+        }
+
+        /* =========================
+           ANIMATION
+        ========================= */
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           RESPONSIVE MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                height: 80px;
+                padding: 0 6%;
+            }
+
+            .brand {
+                font-size: 19px;
+                letter-spacing: 3px;
+            }
+
+            .menu-button {
+                display: block;
+            }
+
+            .navigation {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                padding: 28px 6%;
+                background: rgba(8,9,11,0.98);
+                border-bottom: 1px solid var(--border);
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 25px;
+            }
+
+            .navigation.open {
+                display: flex;
+            }
+
+            .navigation a {
+                font-size: 14px;
+            }
+
+            .hero {
+                padding: 100px 6% 60px;
+            }
+
+            .hero h1 {
+                font-size: 23vw;
+                letter-spacing: -0.10em;
+                margin-bottom: 28px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+                max-width: 440px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 32px;
+            }
+
+            .button {
+                width: 100%;
+                max-width: 290px;
+                padding: 15px 20px;
+            }
+
+            .hero::before {
+                width: 380px;
+                height: 380px;
+            }
+        }
+
+        /* ACCESSIBILITÉ */
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
 
-<header id="header">
+    <!-- HEADER -->
 
-    <nav class="nav-left">
-        <a href="#technology" data-fr="TECHNOLOGIE" data-en="TECHNOLOGY">TECHNOLOGIE</a>
-        <a href="vision.html" data-fr="NOTRE VISION" data-en="OUR VISION">NOTRE VISION</a>
-    </nav>
+    <header>
 
-    <a href="index.html" class="brand">
-        <img src="images/logo-kzetral.png" alt="KZETRAL">
-    </a>
-
-    <div class="nav-right">
-        <a href="entreprise.html" data-fr="ENTREPRISE" data-en="COMPANY">ENTREPRISE</a>
-        <button class="language" id="language" aria-label="Change language">EN</button>
-        <a href="contact.html" class="contact-button" data-fr="CONTACT" data-en="CONTACT">CONTACT</a>
-
-        <button class="menu-button" id="menuButton"
-                aria-expanded="false" aria-controls="mobileNav">
-            MENU
-        </button>
-    </div>
-
-    <nav class="mobile-nav" id="mobileNav">
-        <a href="#technology" data-fr="TECHNOLOGIE" data-en="TECHNOLOGY">TECHNOLOGIE</a>
-        <a href="vision.html" data-fr="NOTRE VISION" data-en="OUR VISION">NOTRE VISION</a>
-        <a href="entreprise.html" data-fr="ENTREPRISE" data-en="COMPANY">ENTREPRISE</a>
-        <a href="contact.html" data-fr="CONTACT" data-en="CONTACT">CONTACT</a>
-    </nav>
-</header>
-
-<main>
-
-<!-- ACCUEIL -->
-
-<section class="hero" id="home">
-
-    <img
-        class="hero-image"
-        src="images/ehx-hero.jpg"
-        alt="KZETRAL EH-X"
-        fetchpriority="high">
-
-    <div class="hero-content">
-        <div class="hero-eyebrow"
-             data-fr="KZETRAL — NOUVELLE GÉNÉRATION"
-             data-en="KZETRAL — NEXT GENERATION">
-            KZETRAL — NOUVELLE GÉNÉRATION
-        </div>
-
-        <h1>EH-X</h1>
-
-        <p data-fr="LE SUV À HYDROGÈNE"
-           data-en="THE HYDROGEN SUV">
-            LE SUV À HYDROGÈNE
-        </p>
-
-        <a href="#models" class="hero-discover"
-           data-fr="DÉCOUVRIR LE EH-X"
-           data-en="DISCOVER THE EH-X">
-            DÉCOUVRIR LE EH-X
+        <a href="index.html" class="brand">
+            KZETRAL
         </a>
-    </div>
 
-    <div class="hero-bottom">
-        <span>KZETRAL</span>
-        <span data-fr="DÉFILER POUR EXPLORER"
-              data-en="SCROLL TO EXPLORE">
-            DÉFILER POUR EXPLORER
-        </span>
-    </div>
+        <nav class="navigation" id="navigation">
 
-</section>
-
-<!-- INTRODUCTION -->
-
-<section class="intro reveal">
-
-    <div class="section-label">01 — KZETRAL</div>
-
-    <div class="intro-content">
-        <h2 data-fr="Une nouvelle génération automobile. Une nouvelle ambition."
-            data-en="A new generation of automotive. A new ambition.">
-            Une nouvelle génération automobile.
-            Une nouvelle ambition.
-        </h2>
-
-        <p data-fr="KZETRAL est un projet de constructeur automobile qui explore les possibilités offertes par les nouvelles technologies. Notre ambition est de concevoir des véhicules qui associent design, innovation et mobilité de demain."
-           data-en="KZETRAL is an automotive manufacturer project exploring the possibilities offered by emerging technologies. Our ambition is to develop vehicles that bring together design, innovation and tomorrow's mobility.">
-            KZETRAL est un projet de constructeur automobile qui explore
-            les possibilités offertes par les nouvelles technologies.
-            Notre ambition est de concevoir des véhicules qui associent
-            design, innovation et mobilité de demain.
-        </p>
-    </div>
-</section>
-
-<!-- EH-X -->
-
-<section class="ehx" id="models">
-
-    <div class="ehx-content reveal">
-        <div class="section-label">02 — FIRST CONCEPT</div>
-
-        <h2>KZETRAL<span>EH-X</span></h2>
-
-        <p data-fr="Un SUV cinq places imaginé autour d'une architecture hydrogène et électrique. Le premier chapitre de notre vision automobile."
-           data-en="A five-seat SUV imagined around a hydrogen-electric architecture. The first chapter of our automotive vision.">
-            Un SUV cinq places imaginé autour d'une architecture
-            hydrogène et électrique. Le premier chapitre de notre
-            vision automobile.
-        </p>
-
-        <a href="#technology" class="button button-black"
-           data-fr="DÉCOUVRIR LE CONCEPT"
-           data-en="DISCOVER THE CONCEPT">
-            DÉCOUVRIR LE CONCEPT
-        </a>
-    </div>
-
-    <div class="ehx-number">EH-X / 001</div>
-</section>
-
-<!-- OBJECTIFS -->
-
-<section class="numbers">
-
-    <div class="numbers-heading reveal">
-        <div class="section-label">EH-X — OBJECTIFS DU PROJET</div>
-
-        <h2 data-fr="L'ambition prend forme."
-            data-en="Ambition takes shape.">
-            L'ambition prend forme.
-        </h2>
-
-        <p data-fr="Les objectifs actuellement étudiés pour le concept EH-X."
-           data-en="Current development targets for the EH-X concept.">
-            Les objectifs actuellement étudiés pour le concept EH-X.
-        </p>
-    </div>
-
-    <div class="numbers-grid">
-
-        <div class="number-card reveal">
-            <strong>400</strong>
-            <span data-fr="CH — PUISSANCE VISÉE"
-                  data-en="HP — TARGET POWER">CH — PUISSANCE VISÉE</span>
-        </div>
-
-        <div class="number-card reveal">
-            <strong>700–800</strong>
-            <span data-fr="KM — AUTONOMIE VISÉE"
-                  data-en="KM — TARGET RANGE">KM — AUTONOMIE VISÉE</span>
-        </div>
-
-        <div class="number-card reveal">
-            <strong>05</strong>
-            <span data-fr="PLACES" data-en="SEATS">PLACES</span>
-        </div>
-
-        <div class="number-card reveal">
-            <strong>H₂ + EV</strong>
-            <span data-fr="ARCHITECTURE ENVISAGÉE"
-                  data-en="PROPOSED ARCHITECTURE">ARCHITECTURE ENVISAGÉE</span>
-        </div>
-
-    </div>
-
-    <p class="disclaimer"
-       data-fr="* Objectifs de conception non validés. Ces valeurs ne sont pas des caractéristiques techniques homologuées."
-       data-en="* Unvalidated design targets. These figures are not certified technical specifications.">
-        * Objectifs de conception non validés. Ces valeurs ne sont pas des caractéristiques techniques homologuées.
-    </p>
-</section>
-
-<!-- TECHNOLOGIE -->
-
-<section class="technology" id="technology">
-
-    <div class="tech-heading reveal">
-        <div>
-            <div class="section-label">03 — TECHNOLOGY</div>
-            <h2 data-fr="Penser<br>plus loin."
-                data-en="Think<br>beyond.">
-                Penser<br>plus loin.
-            </h2>
-        </div>
-
-        <p data-fr="L'innovation ne se limite pas à une technologie. Elle commence par une vision et se construit à travers la recherche."
-           data-en="Innovation is not limited to technology. It begins with a vision and takes shape through research.">
-            L'innovation ne se limite pas à une technologie.
-            Elle commence par une vision et se construit
-            à travers la recherche.
-        </p>
-    </div>
-
-    <div class="tech-grid">
-
-        <article class="tech-card reveal">
-            <span>01 / ENERGY</span>
-            <h3 data-fr="Hydrogène & électrique"
-                data-en="Hydrogen & electric">
-                Hydrogène & électrique
-            </h3>
-            <p data-fr="Explorer la complémentarité entre pile à combustible et motorisation électrique."
-               data-en="Exploring the combination of fuel-cell technology and electric propulsion.">
-                Explorer la complémentarité entre pile à combustible
-                et motorisation électrique.
-            </p>
-        </article>
-
-        <article class="tech-card reveal">
-            <span>02 / DESIGN</span>
-            <h3 data-fr="Design & identité"
-                data-en="Design & identity">
-                Design & identité
-            </h3>
-            <p data-fr="Créer une signature visuelle forte et imaginer une nouvelle expérience automobile."
-               data-en="Creating a distinctive visual signature and imagining a new automotive experience.">
-                Créer une signature visuelle forte et imaginer
-                une nouvelle expérience automobile.
-            </p>
-        </article>
-
-    </div>
-</section>
-
-<!-- VISION -->
-
-<section class="vision">
-
-    <div class="vision-image">
-        <span>KZETRAL</span>
-    </div>
-
-    <div class="vision-content reveal">
-        <div class="section-label">04 — OUR VISION</div>
-
-        <h2 data-fr="Ne pas attendre demain. Le concevoir."
-            data-en="Don't wait for tomorrow. Engineer it.">
-            Ne pas attendre demain.
-            Le concevoir.
-        </h2>
-
-        <p data-fr="Nous croyons que l'avenir de l'automobile se construit par l'audace, la recherche et la volonté d'explorer de nouvelles solutions."
-           data-en="We believe the future of automotive is shaped by ambition, research and the willingness to explore new solutions.">
-            Nous croyons que l'avenir de l'automobile se construit
-            par l'audace, la recherche et la volonté d'explorer
-            de nouvelles solutions.
-        </p>
-    </div>
-</section>
-
-</main>
-
-<!-- FOOTER -->
-
-<footer>
-
-    <div class="footer-top">
-
-        <div class="footer-brand">
-            <a href="index.html" class="footer-logo">KZETRAL®</a>
-            <p>The future of motion.</p>
-        </div>
-
-        <div class="footer-column">
-            <h4>DISCOVER</h4>
-            <a href="#models">EH-X</a>
-            <a href="#technology" data-fr="Technologie" data-en="Technology">Technologie</a>
-            <a href="vision.html" data-fr="Notre vision" data-en="Our vision">Notre vision</a>
-        </div>
-
-        <div class="footer-column">
-            <h4>KZETRAL</h4>
-            <a href="entreprise.html" data-fr="Entreprise" data-en="Company">Entreprise</a>
-            <a href="contact.html">Contact</a>
-        </div>
-
-        <div class="footer-column">
-            <h4>CONTACT</h4>
-            <a href="contact.html" data-fr="Nous contacter" data-en="Contact us">
-                Nous contacter
+            <a href="entreprise.html">
+                Qui nous sommes
             </a>
-        </div>
 
-    </div>
+            <a href="vision.html">
+                Notre vision
+            </a>
 
-    <div class="footer-bottom">
-        <span>© <span id="year"></span> KZETRAL — ALL RIGHTS RESERVED</span>
+        </nav>
 
-        <span data-fr="EH-X : CONCEPT EN DÉVELOPPEMENT"
-              data-en="EH-X: CONCEPT IN DEVELOPMENT">
-            EH-X : CONCEPT EN DÉVELOPPEMENT
-        </span>
+        <button
+            class="menu-button"
+            id="menuButton"
+            aria-expanded="false"
+            aria-controls="navigation"
+            aria-label="Ouvrir le menu">
 
-        <a href="#home">BACK TO TOP ↑</a>
-    </div>
+            MENU
 
-</footer>
+        </button>
 
-<script>
+    </header>
 
-/* ANNÉE AUTOMATIQUE */
 
-document.getElementById("year").textContent =
-    new Date().getFullYear();
+    <!-- PAGE D'ACCUEIL -->
 
-/* LANGUES FR / EN */
+    <main>
 
-let language = "fr";
+        <section class="hero">
 
-try {
-    language = localStorage.getItem("kzetral-language") || "fr";
-} catch (error) {
-    language = "fr";
-}
+            <div class="hero-content">
 
-const languageButton = document.getElementById("language");
+                <h1>EH-X</h1>
 
-function applyLanguage() {
-    document.querySelectorAll("[data-fr][data-en]").forEach(el => {
-        el.innerHTML = el.dataset[language];
-    });
+                <p class="hero-description">
+                    Notre ambition : développer
+                    <strong>le premier véhicule européen 100 % électrique</strong>
+                    utilisant une batterie en sodium-ion.
+                </p>
 
-    document.documentElement.lang = language;
+                <div class="hero-buttons">
 
-    languageButton.textContent =
-        language === "fr" ? "EN" : "FR";
+                    <a
+                        href="eh-x.html"
+                        class="button button-primary">
 
-    languageButton.setAttribute(
-        "aria-label",
-        language === "fr" ? "Switch to English" : "Passer en français"
-    );
-}
+                        Découvrir le EH-X
 
-languageButton.addEventListener("click", () => {
-    language = language === "fr" ? "en" : "fr";
+                    </a>
 
-    try {
-        localStorage.setItem("kzetral-language", language);
-    } catch (error) {}
+                    <a
+                        href="contact.html"
+                        class="button button-secondary">
 
-    applyLanguage();
-});
+                        Contactez-nous
 
-applyLanguage();
+                    </a>
 
-/* MENU MOBILE */
+                </div>
 
-const menuButton = document.getElementById("menuButton");
-const mobileNav = document.getElementById("mobileNav");
+            </div>
 
-function closeMenu() {
-    mobileNav.classList.remove("open");
-    menuButton.textContent = "MENU";
-    menuButton.setAttribute("aria-expanded", "false");
-}
+        </section>
 
-menuButton.addEventListener("click", () => {
-    const isOpen = mobileNav.classList.toggle("open");
+    </main>
 
-    menuButton.textContent = isOpen
-        ? (language === "fr" ? "FERMER" : "CLOSE")
-        : "MENU";
 
-    menuButton.setAttribute("aria-expanded", String(isOpen));
-});
+    <!-- MENU MOBILE -->
 
-mobileNav.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", closeMenu);
-});
+    <script>
 
-document.addEventListener("click", event => {
-    if (
-        mobileNav.classList.contains("open") &&
-        !mobileNav.contains(event.target) &&
-        !menuButton.contains(event.target)
-    ) {
-        closeMenu();
-    }
-});
+        const menuButton = document.getElementById("menuButton");
+        const navigation = document.getElementById("navigation");
 
-/* APPARITION DES SECTIONS */
+        menuButton.addEventListener("click", function () {
 
-const revealItems = document.querySelectorAll(".reveal");
+            const isOpen = navigation.classList.toggle("open");
 
-if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                observer.unobserve(entry.target);
-            }
+            menuButton.setAttribute("aria-expanded", isOpen);
+
+            menuButton.textContent = isOpen ? "FERMER" : "MENU";
+
         });
-    }, {
-        threshold: 0.12
-    });
 
-    revealItems.forEach(item => observer.observe(item));
-} else {
-    revealItems.forEach(item => item.classList.add("visible"));
-}
+        navigation.querySelectorAll("a").forEach(link => {
 
-</script>
+            link.addEventListener("click", function () {
+
+                navigation.classList.remove("open");
+
+                menuButton.setAttribute("aria-expanded", "false");
+
+                menuButton.textContent = "MENU";
+
+            });
+
+        });
+
+    </script>
 
 </body>
 </html>
