@@ -273,95 +273,7 @@
         }
     }
 
-    /* Décorations orbitales */
-
-    .orbit {
-        position: absolute;
-        z-index: -1;
-
-        left: 50%;
-        top: 45%;
-
-        width: 690px;
-        height: 690px;
-
-        transform: translate(-50%, -50%);
-        border: 1px solid rgba(91,137,190,.075);
-        border-radius: 50%;
-
-        animation: orbitRotate 55s linear infinite;
-    }
-
-    .orbit::before {
-        content: "";
-        position: absolute;
-        inset: 42px;
-        border: 1px solid rgba(91,137,190,.07);
-        border-radius: 50%;
-    }
-
-    .orbit::after {
-        content: "";
-        position: absolute;
-        inset: 95px;
-        border: 1px solid rgba(91,137,190,.055);
-        border-radius: 50%;
-    }
-
-    @keyframes orbitRotate {
-        to {
-            transform: translate(-50%, -50%) rotate(360deg);
-        }
-    }
-
-    /* Lumières flottantes */
-
-    .light {
-        position: absolute;
-        z-index: -1;
-
-        width: 7px;
-        height: 7px;
-
-        border-radius: 50%;
-        background: #ffffff;
-
-        box-shadow:
-            0 0 15px rgba(125,175,230,.7),
-            0 0 35px rgba(125,175,230,.35);
-
-        animation: floatLight 6s ease-in-out infinite;
-    }
-
-    .light-one {
-        left: 18%;
-        top: 36%;
-    }
-
-    .light-two {
-        right: 19%;
-        top: 57%;
-        animation-delay: 1.5s;
-    }
-
-    .light-three {
-        left: 28%;
-        bottom: 19%;
-        animation-delay: 3s;
-    }
-
-    @keyframes floatLight {
-        0%, 100% {
-            transform: translateY(0);
-            opacity: .4;
-        }
-
-        50% {
-            transform: translateY(-18px);
-            opacity: 1;
-        }
-    }
-
+   
     /* =====================================
        04 — CONTENU CENTRAL
     ===================================== */
@@ -948,15 +860,14 @@
 
                 <div class="title-line"></div>
 
-                <p class="hero-description">
-                    Notre ambition : développer
-                    <strong>le premier véhicule européen
+
+                    <strong>Le premier véhicule européen
                     100 % électrique</strong>
                     utilisant une batterie en sodium-ion.
                 </p>
 
                 <div class="project-status">
-                    <span class="status-dot"></span>
+                    
                     Programme en développement
                 </div>
 
@@ -969,7 +880,7 @@
 
                         Découvrir le EH-X
 
-                        <span class="button-arrow">↗</span>
+                        <span class="button-arrow"></span>
 
                     </a>
 
@@ -978,7 +889,7 @@
 
                         Contactez-nous
 
-                        <span class="button-arrow">↗</span>
+                        <span class="button-arrow"></span>
 
                     </a>
 
