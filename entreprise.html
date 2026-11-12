@@ -4,23 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#ffffff">
-  <title>Qui nous sommes — KZETRAL</title>
-
+  <title>Qui nous sommes — Kzetral</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --ink: #101722;
-      --muted: #697586;
       --white: #ffffff;
-      --blue: #8ebce9;
-      --soft: #f4f5f6;
-      --line: #e8ebef;
-      --glass: rgba(255, 255, 255, 0.78);
-      --glass-border: rgba(16, 23, 34, 0.08);
+      --black: #101722;
+      --grey: #f4f5f6;
+      --muted: #68717d;
+      --accent: #8ebce9;
     }
 
     * {
@@ -29,396 +24,302 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Sora', sans-serif;
-      color: var(--ink);
+      color: var(--black);
       background: var(--white);
       overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* NAVIGATION */
+    a { color: inherit; text-decoration: none; }
 
     .navbar {
       position: fixed;
-      top: 22px;
+      z-index: 1000;
+      top: 18px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 1000;
-      width: min(920px, calc(100% - 40px));
-      height: 76px;
-      padding: 0 32px;
-      display: flex;
+      width: calc(100% - 64px);
+      max-width: 1040px;
+      height: 82px;
+      padding: 8px 30px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      justify-content: space-between;
-      border: 1px solid var(--glass-border);
-      border-radius: 18px;
-      background: var(--glass);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      transition: background 0.3s ease, border-color 0.3s ease;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 38px;
-      width: 40%;
-    }
-
-    .nav-links.right {
-      justify-content: flex-end;
-    }
-
-    .nav-links a {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--ink);
-      transition: opacity 0.25s ease;
-    }
-
-    .nav-links a:hover {
-      opacity: 0.55;
-    }
-
-    .nav-logo {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav-logo img {
-      width: 52px;
-      height: 52px;
-      object-fit: contain;
-      transition: filter 0.3s ease;
+      border: 1px solid rgba(16, 23, 34, 0.08);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
     }
 
     .navbar.scrolled {
-      background: rgba(16, 23, 34, 0.94);
-      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(16, 23, 34, 0.96);
+      border-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
     }
 
-    .navbar.scrolled .nav-links a {
-      color: #ffffff;
+    .nav-link {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--black);
+      transition: opacity 0.25s ease, color 0.3s ease;
+    }
+
+    .nav-link:hover { opacity: 0.6; }
+    .nav-right { text-align: right; }
+    .navbar.scrolled .nav-link { color: white; }
+
+    .nav-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .nav-logo img {
+      display: block;
+      width: 88px;
+      height: 88px;
+      object-fit: contain;
+      transition: filter 0.3s ease;
     }
 
     .navbar.scrolled .nav-logo img {
       filter: brightness(0) invert(1);
     }
 
-    .mobile-menu-button {
+    .mobile-menu {
       display: none;
-      border: none;
+      position: relative;
+      justify-self: end;
+    }
+
+    .menu-button {
+      border: 0;
       background: transparent;
-      color: var(--ink);
+      color: var(--black);
       font-family: inherit;
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.12em;
       cursor: pointer;
     }
 
-    .navbar.scrolled .mobile-menu-button {
-      color: #ffffff;
-    }
+    .navbar.scrolled .menu-button { color: white; }
 
-    .mobile-menu {
+    .mobile-dropdown {
       display: none;
       position: absolute;
-      top: 86px;
-      left: 0;
       right: 0;
-      padding: 18px;
-      border: 1px solid var(--glass-border);
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.97);
-      box-shadow: 0 16px 40px rgba(16, 23, 34, 0.08);
+      top: 34px;
+      min-width: 180px;
+      padding: 12px;
+      border: 1px solid rgba(16, 23, 34, 0.08);
+      border-radius: 14px;
+      background: white;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
     }
 
-    .mobile-menu.open {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
+    .mobile-dropdown.open {
+      display: grid;
+      gap: 14px;
     }
 
-    .mobile-menu a {
-      color: var(--ink);
-      font-size: 13px;
-      font-weight: 500;
+    .mobile-dropdown a {
+      color: var(--black);
+      font-size: 12px;
+      padding: 5px;
     }
-
-    /* HERO */
 
     .hero {
-      min-height: 75vh;
-      padding: 190px 24px 110px;
+      min-height: 78vh;
+      padding: 190px 24px 100px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: var(--white);
-    }
-
-    .hero-content {
-      max-width: 900px;
-      margin: 0 auto;
+      background: white;
     }
 
     .hero h1 {
-      margin-bottom: 28px;
-      font-size: clamp(48px, 8vw, 88px);
-      line-height: 1.08;
+      font-size: clamp(48px, 8vw, 92px);
+      font-weight: 400;
       letter-spacing: -0.075em;
-      font-weight: 700;
-      color: var(--ink);
+      line-height: 1.1;
     }
 
-    .hero-description {
-      max-width: 650px;
-      margin: 0 auto;
+    .hero p {
+      max-width: 680px;
+      margin-top: 28px;
       color: var(--muted);
-      font-size: 15px;
-      font-weight: 300;
+      font-size: 14px;
       line-height: 1.9;
+      font-weight: 300;
     }
-
-    /* SECTION FONCÉE */
 
     .dark-section {
-      padding: 110px 24px;
-      color: #ffffff;
-      background: var(--ink);
-    }
-
-    .dark-inner {
-      max-width: 1050px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      align-items: start;
-      gap: 90px;
+      padding: 120px 24px;
+      background: var(--black);
+      color: white;
+      text-align: center;
     }
 
     .dark-section h2 {
-      max-width: 400px;
-      font-size: clamp(34px, 5vw, 55px);
-      line-height: 1.15;
+      max-width: 850px;
+      margin: 0 auto;
+      font-size: clamp(32px, 5vw, 58px);
+      font-weight: 400;
       letter-spacing: -0.06em;
-      font-weight: 600;
+      line-height: 1.2;
     }
 
-    .dark-copy p {
-      margin-bottom: 22px;
-      color: rgba(255, 255, 255, 0.72);
+    .dark-section p {
+      max-width: 720px;
+      margin: 28px auto 0;
+      color: rgba(255, 255, 255, 0.68);
       font-size: 14px;
-      font-weight: 300;
       line-height: 2;
+      font-weight: 300;
     }
-
-    .dark-copy p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* NOTRE APPROCHE */
 
     .statement {
-      padding: 115px 24px;
+      padding: 120px 24px;
       text-align: center;
-      background: var(--soft);
-    }
-
-    .statement-inner {
-      max-width: 900px;
-      margin: 0 auto;
+      background: var(--grey);
     }
 
     .statement h2 {
-      margin-bottom: 24px;
-      font-size: clamp(35px, 6vw, 64px);
-      line-height: 1.15;
-      letter-spacing: -0.07em;
-      font-weight: 600;
-      color: var(--ink);
+      max-width: 850px;
+      margin: auto;
+      font-size: clamp(32px, 5vw, 58px);
+      font-weight: 400;
+      letter-spacing: -0.06em;
+      line-height: 1.2;
     }
 
     .statement p {
       max-width: 650px;
-      margin: 0 auto;
+      margin: 25px auto 0;
       color: var(--muted);
       font-size: 14px;
-      line-height: 2;
+      line-height: 1.9;
       font-weight: 300;
     }
 
-    /* FONDATEUR */
-
-    .founder-section {
-      padding: 120px 24px;
-      background: var(--white);
-    }
-
-    .founder-inner {
-      max-width: 1050px;
-      margin: 0 auto;
+    .founder {
+      max-width: 1120px;
+      margin: auto;
+      padding: 110px 24px;
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
-      gap: 90px;
+      gap: 70px;
       align-items: center;
     }
 
     .founder-visual {
-      min-height: 420px;
+      min-height: 360px;
+      border-radius: 22px;
+      background: var(--grey);
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--soft);
-      border: 1px solid var(--line);
-      border-radius: 4px;
     }
 
     .founder-visual span {
-      font-size: clamp(40px, 7vw, 72px);
-      font-weight: 700;
-      letter-spacing: -0.09em;
-      color: var(--ink);
+      font-size: clamp(45px, 7vw, 76px);
+      font-weight: 500;
+      letter-spacing: -0.08em;
+      color: rgba(16, 23, 34, 0.16);
     }
 
-    .founder-copy h2 {
-      margin-bottom: 24px;
-      font-size: clamp(34px, 5vw, 52px);
-      line-height: 1.15;
+    .founder-content h2 {
+      font-size: clamp(30px, 4vw, 46px);
+      font-weight: 400;
       letter-spacing: -0.06em;
-      font-weight: 600;
-      color: var(--ink);
+      line-height: 1.2;
     }
 
-    .founder-copy p {
-      margin-bottom: 18px;
+    .founder-content p {
+      margin-top: 22px;
       color: var(--muted);
       font-size: 14px;
-      line-height: 2;
+      line-height: 1.9;
       font-weight: 300;
     }
 
-    .founder-name {
-      margin-top: 30px;
-      color: var(--ink);
-      font-size: 13px;
+    .signature {
+      margin-top: 34px;
+      font-size: 11px;
       font-weight: 600;
+      letter-spacing: 0.08em;
     }
-
-    /* FOOTER */
 
     footer {
-      padding: 35px 24px;
-      border-top: 1px solid var(--line);
-      background: #ffffff;
-    }
-
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
+      padding: 35px 7%;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 20px;
-    }
-
-    .footer-inner p,
-    .footer-inner a {
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(16, 23, 34, 0.08);
       color: var(--muted);
       font-size: 10px;
-      font-weight: 400;
     }
 
-    .footer-inner a:hover {
-      color: var(--ink);
+    footer a:hover { color: var(--black); }
+
+    .footer-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
     }
 
-    .footer-brand {
-      color: var(--ink) !important;
-      font-weight: 600 !important;
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 750px) {
+    @media (max-width: 700px) {
       .navbar {
-        top: 14px;
+        top: 12px;
         width: calc(100% - 28px);
-        height: 66px;
-        padding: 0 20px;
+        height: 70px;
+        padding: 6px 18px;
+        border-radius: 18px;
+        grid-template-columns: 1fr auto 1fr;
       }
 
-      .navbar > .nav-links {
-        display: none;
-      }
-
-      .mobile-menu-button {
-        display: block;
-      }
+      .navbar > .nav-link { display: none; }
 
       .nav-logo img {
-        width: 46px;
-        height: 46px;
+        width: 70px;
+        height: 70px;
       }
+
+      .mobile-menu { display: block; }
 
       .hero {
-        min-height: 65vh;
-        padding: 155px 22px 85px;
-      }
-
-      .hero-description {
-        font-size: 13px;
+        min-height: 72vh;
+        padding-top: 150px;
       }
 
       .dark-section,
-      .statement,
-      .founder-section {
-        padding: 80px 23px;
+      .statement {
+        padding: 85px 22px;
       }
 
-      .dark-inner,
-      .founder-inner {
+      .founder {
         grid-template-columns: 1fr;
         gap: 35px;
+        padding: 80px 22px;
       }
 
-      .dark-section h2,
-      .founder-copy h2 {
-        max-width: 100%;
-      }
+      .founder-visual { min-height: 250px; }
 
-      .founder-visual {
-        min-height: 280px;
-      }
-
-      .footer-inner {
+      footer {
         flex-direction: column;
-        text-align: center;
-        gap: 14px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
+        align-items: flex-start;
+        padding: 30px 22px;
       }
     }
   </style>
@@ -427,145 +328,102 @@
 <body>
 
   <nav class="navbar" id="navbar">
-    <div class="nav-links">
-      <a href="entreprise.html">Qui nous sommes</a>
-    </div>
+    <a href="entreprise.html" class="nav-link">Qui nous sommes</a>
 
-    <a href="index.html" class="nav-logo" aria-label="KZETRAL - Accueil">
-      <img src="images/logo-kzetral.png" alt="Logo KZETRAL">
+    <a href="index.html" class="nav-logo" aria-label="Accueil Kzetral">
+      <img src="images/logo-kzetral.png" alt="Kzetral">
     </a>
 
-    <div class="nav-links right">
-      <a href="vision.html">Notre vision</a>
-    </div>
+    <a href="eh-x.html" class="nav-link nav-right">Notre vision</a>
 
-    <button class="mobile-menu-button" id="menuButton" aria-expanded="false">
-      MENU
-    </button>
-
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="entreprise.html">Qui nous sommes</a>
-      <a href="vision.html">Notre vision</a>
+    <div class="mobile-menu">
+      <button class="menu-button" id="menuButton">MENU</button>
+      <div class="mobile-dropdown" id="mobileDropdown">
+        <a href="entreprise.html">Qui nous sommes</a>
+        <a href="eh-x.html">Notre vision</a>
+      </div>
     </div>
   </nav>
 
   <main>
-
     <section class="hero">
-      <div class="hero-content">
-        <h1>Qui nous sommes</h1>
-
-        <p class="hero-description">
-          KZETRAL est un projet automobile qui ambitionne de repenser
-          la mobilité électrique à travers l'innovation, la recherche
-          et une approche tournée vers l'avenir.
-        </p>
-      </div>
+      <h1>Qui nous sommes</h1>
+      <p>
+        Kzetral est un projet automobile indépendant qui ambitionne de
+        repenser certains aspects de la mobilité. À travers la recherche,
+        l'innovation et le développement technologique, le projet explore
+        de nouvelles possibilités pour l'automobile de demain.
+      </p>
     </section>
 
     <section class="dark-section">
-      <div class="dark-inner">
-
-        <h2>Construire une nouvelle vision de l'automobile.</h2>
-
-        <div class="dark-copy">
-          <p>
-            KZETRAL est né d'une ambition : imaginer une nouvelle génération
-            de véhicules électriques, en explorant des technologies capables
-            de répondre aux enjeux de la mobilité de demain.
-          </p>
-
-          <p>
-            Notre démarche repose sur la recherche, le développement
-            et l'étude de solutions innovantes. Nous souhaitons associer
-            technologie, sécurité et expérience de conduite dans un même projet.
-          </p>
-
-          <p>
-            À travers notre premier programme, le EH-X, nous travaillons
-            sur une approche différente de la mobilité électrique,
-            notamment autour de la technologie des batteries sodium-ion.
-          </p>
-        </div>
-
-      </div>
+      <h2>Construire une nouvelle vision de l'automobile.</h2>
+      <p>
+        Kzetral place la recherche et le développement au centre de sa démarche.
+        Le projet étudie différentes solutions technologiques afin d'imaginer
+        des véhicules adaptés aux enjeux de demain. Cette ambition s'appuie
+        notamment sur le programme EH-X, avec une attention particulière portée
+        à la mobilité électrique, aux nouvelles technologies de batteries et
+        à la sécurité.
+      </p>
     </section>
 
     <section class="statement">
-      <div class="statement-inner">
-        <h2>L'innovation comme point de départ.</h2>
+      <h2>L'innovation comme point de départ.</h2>
+      <p>
+        Notre démarche repose sur une volonté constante d'explorer, de comprendre
+        et de développer des solutions nouvelles. Chaque étape du projet vise
+        à transformer une idée en une proposition concrète et cohérente.
+      </p>
+    </section>
 
+    <section class="founder">
+      <div class="founder-visual">
+        <span>Kzetral</span>
+      </div>
+
+      <div class="founder-content">
+        <h2>À l'origine du projet.</h2>
         <p>
-          Nous considérons que l'automobile doit évoluer pour accompagner
-          les transformations technologiques et environnementales.
-          Notre objectif est d'explorer de nouvelles possibilités
-          et de développer des solutions pensées pour les générations futures.
+          Kzetral est né d'une ambition : imaginer une nouvelle approche
+          de l'automobile, portée par l'innovation et une vision tournée
+          vers l'avenir. Le projet se développe progressivement autour
+          de recherches, d'idées et de concepts technologiques.
         </p>
+        <div class="signature">
+          DAOUD Mustafa — Fondateur de Kzetral
+        </div>
       </div>
     </section>
-
-    <section class="founder-section">
-      <div class="founder-inner">
-
-        <div class="founder-visual">
-          <span>KZETRAL</span>
-        </div>
-
-        <div class="founder-copy">
-          <h2>À l'origine du projet.</h2>
-
-          <p>
-            KZETRAL est porté par une volonté d'entreprendre,
-            d'innover et de participer à l'évolution du secteur automobile.
-          </p>
-
-          <p>
-            Le projet est construit autour d'une vision ambitieuse :
-            faire émerger une marque automobile tournée vers les nouvelles
-            technologies, la sécurité et une mobilité plus responsable.
-          </p>
-
-          <div class="founder-name">
-            DAOUD Mustafa — Fondateur de KZETRAL
-          </div>
-        </div>
-
-      </div>
-    </section>
-
   </main>
 
   <footer>
-    <div class="footer-inner">
+    <div class="footer-links">
+      <a href="entreprise.html">Qui nous sommes</a>
+      <a href="eh-x.html">EH-X</a>
       <a href="mentions-legales.html">Mentions légales</a>
-      <p class="footer-brand">KZETRAL © 2026</p>
-      <p>Penser à covoiturer #SeDéplacerMoinsPolluer</p>
     </div>
+    <span>Kzetral © 2026</span>
+    <span>Penser à covoiturer #SeDéplacerMoinsPolluer</span>
   </footer>
 
   <script>
-    const navbar = document.getElementById("navbar");
-    const menuButton = document.getElementById("menuButton");
-    const mobileMenu = document.getElementById("mobileMenu");
+    const navbar = document.getElementById('navbar');
+    const menuButton = document.getElementById('menuButton');
+    const mobileDropdown = document.getElementById('mobileDropdown');
 
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 40) {
-        navbar.classList.add("scrolled");
-      } else {
-        navbar.classList.remove("scrolled");
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    menuButton.addEventListener('click', () => {
+      mobileDropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.mobile-menu')) {
+        mobileDropdown.classList.remove('open');
       }
-    });
-
-    menuButton.addEventListener("click", () => {
-      const isOpen = mobileMenu.classList.toggle("open");
-      menuButton.setAttribute("aria-expanded", isOpen);
-    });
-
-    mobileMenu.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.remove("open");
-        menuButton.setAttribute("aria-expanded", "false");
-      });
     });
   </script>
 
