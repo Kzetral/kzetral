@@ -47,35 +47,33 @@
 
     .navbar {
       position: fixed;
+      top: 0;
+      left: 0;
       z-index: 1000;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
 
-      width: 620px;
-      max-width: calc(100% - 40px);
-      height: 72px;
-      padding: 0 38px;
+      width: 100%;
+      height: 92px;
+      padding: 0 7%;
 
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
 
-      border: 1px solid rgba(16, 23, 34, 0.08);
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.90);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      background: rgba(255, 255, 255, 0.98);
+      border-bottom: 1px solid rgba(16, 23, 34, 0.08);
 
-      transition: background 0.3s ease, box-shadow 0.3s ease;
+      transition:
+        background 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
     }
 
     .nav-link {
       font-size: 12px;
       font-weight: 500;
-      white-space: nowrap;
       color: var(--black);
-      transition: opacity 0.3s ease;
+      white-space: nowrap;
+      transition: color 0.35s ease, opacity 0.25s ease;
     }
 
     .nav-link:hover {
@@ -91,30 +89,41 @@
     }
 
     .nav-logo {
+      grid-column: 2;
       display: flex;
       align-items: center;
       justify-content: center;
-      grid-column: 2;
     }
 
     .nav-logo img {
       display: block;
-      width: 88px;
-      height: 88px;
+      width: 100px;
+      height: 100px;
       object-fit: contain;
+      transition: filter 0.35s ease;
     }
+
+    /* NAVBAR AU DEFILEMENT */
 
     .navbar.scrolled {
-      background: rgba(16, 23, 34, 0.96);
-      border-color: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      background: rgba(255, 255, 255, 0.98);
+      border-bottom-color: rgba(16, 23, 34, 0.07);
+      box-shadow: 0 5px 22px rgba(0, 0, 0, 0.055);
     }
 
-    .navbar.scrolled .nav-link {
+    /* NAVBAR SUR LE FOOTER SOMBRE */
+
+    .navbar.dark-mode {
+      background: rgba(16, 23, 34, 0.98);
+      border-bottom-color: rgba(255, 255, 255, 0.10);
+      box-shadow: 0 5px 22px rgba(0, 0, 0, 0.12);
+    }
+
+    .navbar.dark-mode .nav-link {
       color: white;
     }
 
-    .navbar.scrolled .nav-logo img {
+    .navbar.dark-mode .nav-logo img {
       filter: brightness(0) invert(1);
     }
 
@@ -232,10 +241,12 @@
 
     .ehx-section {
       padding: 120px 9%;
+
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
       gap: 90px;
+
       background: var(--white);
     }
 
@@ -334,14 +345,11 @@
     /* MOBILE */
 
     @media (max-width: 700px) {
+
       .navbar {
-        top: 12px;
-        width: calc(100% - 28px);
-        max-width: 460px;
-        height: 62px;
-        padding: 0 18px;
+        height: 76px;
+        padding: 0 22px;
         grid-template-columns: 1fr auto 1fr;
-        border-radius: 15px;
       }
 
       .navbar > .nav-link {
@@ -354,43 +362,46 @@
       }
 
       .nav-logo img {
-        width: 76px;
-        height: 76px;
+        width: 82px;
+        height: 82px;
       }
 
       .mobile-menu {
         display: block;
         grid-column: 3;
         justify-self: end;
+
+        background: none;
         border: none;
-        background: transparent;
         color: var(--black);
+
         font-family: inherit;
         font-size: 10px;
         font-weight: 600;
         letter-spacing: 0.08em;
         cursor: pointer;
+
+        transition: color 0.35s ease;
       }
 
-      .navbar.scrolled .mobile-menu {
+      .navbar.dark-mode .mobile-menu {
         color: white;
       }
 
       .mobile-dropdown {
         position: fixed;
         z-index: 999;
-        top: 82px;
-        left: 14px;
-        right: 14px;
+        top: 76px;
+        left: 0;
+        right: 0;
 
-        padding: 20px;
-        border-radius: 14px;
+        padding: 25px 24px;
         background: white;
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.10);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
 
         display: none;
         flex-direction: column;
-        gap: 20px;
+        gap: 22px;
       }
 
       .mobile-dropdown.open {
@@ -400,6 +411,7 @@
       .mobile-dropdown a {
         font-size: 12px;
         font-weight: 500;
+        color: var(--black);
       }
 
       .hero {
@@ -498,6 +510,7 @@
       </p>
 
       <div class="hero-buttons">
+
         <a href="eh-x.html" class="button button-dark">
           Découvrir le EH-X
         </a>
@@ -505,6 +518,7 @@
         <a href="contact.html" class="button button-light">
           Nous contacter
         </a>
+
       </div>
 
     </section>
@@ -559,7 +573,7 @@
 
   <!-- FOOTER -->
 
-  <footer>
+  <footer id="footer">
 
     <div class="footer-top">
 
@@ -586,20 +600,43 @@
 
   </footer>
 
+  <!-- JAVASCRIPT -->
+
   <script>
     const navbar = document.getElementById("navbar");
     const mobileMenu = document.getElementById("mobileMenu");
     const mobileDropdown = document.getElementById("mobileDropdown");
+    const footer = document.getElementById("footer");
 
-    // Changement de navbar au défilement
+    // Changement d'apparence au défilement
 
-    window.addEventListener("scroll", () => {
+    function updateNavbar() {
       if (window.scrollY > 40) {
         navbar.classList.add("scrolled");
       } else {
         navbar.classList.remove("scrolled");
       }
+    }
+
+    window.addEventListener("scroll", updateNavbar);
+    updateNavbar();
+
+    // Passage en mode sombre lorsque le footer approche
+
+    const footerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navbar.classList.add("dark-mode");
+        } else {
+          navbar.classList.remove("dark-mode");
+        }
+      });
+    }, {
+      threshold: 0,
+      rootMargin: "0px 0px -85% 0px"
     });
+
+    footerObserver.observe(footer);
 
     // Menu mobile
 
@@ -610,7 +647,7 @@
         mobileDropdown.classList.contains("open") ? "FERMER" : "MENU";
     });
 
-    // Fermeture du menu après sélection
+    // Fermeture après sélection
 
     mobileDropdown.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => {
