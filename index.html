@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kzetral — EH-X</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -42,107 +43,137 @@
 
     /* NAVIGATION */
 
- .navbar {
-  position: fixed;
-  z-index: 1000;
-  top: 18px;
-  left: 50%;
-  transform: translateX(-50%);
+    .navbar {
+      position: fixed;
+      z-index: 1000;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
 
-  width: fit-content;
-  max-width: calc(100% - 32px);
-  height: 76px;
-  padding: 4px 24px;
+      width: auto;
+      height: 62px;
+      padding: 0 25px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
 
-  border: 1px solid rgba(16, 23, 34, 0.08);
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(16, 23, 34, 0.08);
+      border-radius: 18px;
 
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-}
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
 
-.nav-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.nav-logo img {
-  display: block;
-  width: 88px;
-  height: 88px;
-  object-fit: contain;
-}
+    .nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-.nav-link {
-  white-space: nowrap;
-  font-size: 12px;
-  font-weight: 500;
-}
+      white-space: nowrap;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
 
-.nav-right {
-  text-align: center;
-}
+      color: var(--black);
+      transition: opacity 0.25s ease, color 0.3s ease;
+    }
 
-.navbar.scrolled {
-  background: rgba(16, 23, 34, 0.96);
-  border-color: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
-}
+    .nav-link:hover {
+      opacity: 0.6;
+    }
 
-.navbar.scrolled .nav-link {
-  color: white;
-}
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
 
-.navbar.scrolled .nav-logo img {
-  filter: brightness(0) invert(1);
-}
+    .nav-logo img {
+      display: block;
+      width: 88px;
+      height: 88px;
+      object-fit: contain;
+    }
 
-@media (max-width: 700px) {
-  .navbar {
-    top: 12px;
-    width: auto;
-    min-width: 250px;
-    height: 66px;
-    padding: 2px 17px;
-    gap: 0;
-    justify-content: space-between;
-    border-radius: 18px;
-  }
+    .navbar.scrolled {
+      background: rgba(16, 23, 34, 0.96);
+      border-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
 
-  .navbar > .nav-link {
-    display: none;
-  }
+    .navbar.scrolled .nav-link {
+      color: white;
+    }
 
-  .nav-logo img {
-    width: 72px;
-    height: 72px;
-  }
+    .navbar.scrolled .nav-logo img {
+      filter: brightness(0) invert(1);
+    }
 
-  .mobile-menu {
-    display: block;
-    position: relative;
-    margin-left: 18px;
-  }
-}
+    /* MENU MOBILE */
+
+    .mobile-menu {
+      display: none;
+      position: relative;
+    }
+
+    .menu-button {
+      border: none;
+      background: transparent;
+      color: var(--black);
+      font-family: inherit;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+    }
+
+    .navbar.scrolled .menu-button {
+      color: white;
+    }
+
+    .mobile-dropdown {
+      display: none;
+      position: absolute;
+      top: 38px;
+      right: 0;
+
+      min-width: 175px;
+      padding: 14px;
+
+      border: 1px solid rgba(16, 23, 34, 0.08);
+      border-radius: 13px;
+      background: white;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-dropdown.open {
+      display: grid;
+      gap: 14px;
+    }
+
+    .mobile-dropdown a {
+      color: var(--black);
+      font-size: 12px;
+      padding: 4px;
+    }
 
     /* HERO */
 
     .hero {
       min-height: 100vh;
       padding: 190px 24px 110px;
+
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+
       text-align: center;
       background: var(--white);
     }
@@ -157,6 +188,7 @@
     .hero p {
       max-width: 650px;
       margin-top: 30px;
+
       color: var(--muted);
       font-size: 15px;
       line-height: 1.9;
@@ -165,9 +197,9 @@
 
     .hero-actions {
       display: flex;
-      gap: 12px;
       justify-content: center;
       flex-wrap: wrap;
+      gap: 12px;
       margin-top: 42px;
     }
 
@@ -175,11 +207,14 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+
       min-height: 48px;
       padding: 0 24px;
+
       border-radius: 30px;
       font-size: 11px;
       font-weight: 500;
+
       transition: transform 0.25s ease, background 0.25s ease;
     }
 
@@ -209,6 +244,7 @@
     .intro h2 {
       max-width: 850px;
       margin: 0 auto;
+
       font-size: clamp(30px, 5vw, 58px);
       font-weight: 400;
       letter-spacing: -0.055em;
@@ -218,26 +254,31 @@
     .intro p {
       max-width: 650px;
       margin: 26px auto 0;
+
       color: var(--muted);
       font-size: 14px;
       line-height: 1.9;
       font-weight: 300;
     }
 
+    /* EH-X SECTION */
+
     .ehx-section {
+      max-width: 1180px;
+      margin: auto;
       padding: 120px 24px;
+
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 70px;
       align-items: center;
-      max-width: 1180px;
-      margin: auto;
     }
 
     .ehx-visual {
       min-height: 390px;
       border-radius: 24px;
       background: var(--grey);
+
       display: flex;
       align-items: center;
       justify-content: center;
@@ -274,11 +315,13 @@
 
     footer {
       padding: 35px 7%;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
       flex-wrap: wrap;
+      gap: 20px;
+
       border-top: 1px solid rgba(16, 23, 34, 0.08);
       color: var(--muted);
       font-size: 10px;
@@ -294,30 +337,31 @@
       flex-wrap: wrap;
     }
 
+    /* RESPONSIVE */
+
     @media (max-width: 700px) {
+
       .navbar {
         top: 12px;
-        width: calc(100% - 28px);
-        height: 70px;
-        padding: 6px 18px;
-        border-radius: 18px;
+        width: auto;
+        height: 58px;
+        padding: 0 17px;
+        gap: 0;
+        border-radius: 16px;
       }
 
       .navbar > .nav-link {
         display: none;
       }
 
-      .navbar {
-        grid-template-columns: 1fr auto 1fr;
-      }
-
       .nav-logo img {
-        width: 70px;
-        height: 70px;
+        width: 76px;
+        height: 76px;
       }
 
       .mobile-menu {
         display: block;
+        margin-left: 12px;
       }
 
       .hero {
@@ -349,45 +393,61 @@
         padding: 30px 22px;
       }
     }
+
   </style>
 </head>
 
 <body>
 
   <nav class="navbar" id="navbar">
-    <a href="entreprise.html" class="nav-link">Qui nous sommes</a>
+
+    <a href="entreprise.html" class="nav-link">
+      Qui nous sommes
+    </a>
 
     <a href="index.html" class="nav-logo" aria-label="Accueil Kzetral">
       <img src="images/logo-kzetral.png" alt="Kzetral">
     </a>
 
-    <a href="eh-x.html" class="nav-link nav-right">Notre vision</a>
+    <a href="eh-x.html" class="nav-link">
+      Notre vision
+    </a>
 
     <div class="mobile-menu">
       <button class="menu-button" id="menuButton">MENU</button>
+
       <div class="mobile-dropdown" id="mobileDropdown">
         <a href="entreprise.html">Qui nous sommes</a>
         <a href="eh-x.html">Notre vision</a>
       </div>
     </div>
+
   </nav>
 
   <main>
+
     <section class="hero">
       <h1>EH-X</h1>
+
       <p>
         Le premier véhicule européen 100 % électrique utilisant une batterie
         en sodium-ion. Une nouvelle approche de la mobilité, imaginée par Kzetral.
       </p>
 
       <div class="hero-actions">
-        <a href="eh-x.html" class="button button-dark">Découvrir le EH-X</a>
-        <a href="contact.html" class="button button-light">Nous contacter</a>
+        <a href="eh-x.html" class="button button-dark">
+          Découvrir le EH-X
+        </a>
+
+        <a href="contact.html" class="button button-light">
+          Nous contacter
+        </a>
       </div>
     </section>
 
     <section class="intro">
       <h2>Penser autrement la mobilité de demain.</h2>
+
       <p>
         Kzetral explore de nouvelles pistes technologiques pour imaginer
         une automobile électrique différente, en plaçant l'innovation,
@@ -396,31 +456,42 @@
     </section>
 
     <section class="ehx-section">
+
       <div class="ehx-visual">
         <span>EH-X</span>
       </div>
 
       <div class="ehx-content">
         <h2>Une nouvelle vision de l'automobile électrique.</h2>
+
         <p>
           Le programme EH-X représente la première étape du projet automobile
           Kzetral. Il s'appuie sur l'étude de technologies de batteries
           alternatives, notamment le sodium-ion, et sur une réflexion autour
           de la mobilité de demain.
         </p>
-        <a href="eh-x.html" class="button button-dark">Explorer le programme</a>
+
+        <a href="eh-x.html" class="button button-dark">
+          Explorer le programme
+        </a>
       </div>
+
     </section>
+
   </main>
 
   <footer>
+
     <div class="footer-links">
       <a href="entreprise.html">Qui nous sommes</a>
       <a href="eh-x.html">EH-X</a>
       <a href="mentions-legales.html">Mentions légales</a>
     </div>
+
     <span>Kzetral © 2026</span>
+
     <span>Penser à covoiturer #SeDéplacerMoinsPolluer</span>
+
   </footer>
 
   <script>
