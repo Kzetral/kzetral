@@ -43,37 +43,58 @@
       text-decoration: none;
     }
 
-    /* NAVBAR */
+    /* =========================
+       NAVBAR KZETRAL
+    ========================= */
 
     .navbar {
       position: fixed;
-      top: 0;
-      left: 0;
       z-index: 1000;
 
-      width: 100%;
-      height: 92px;
-      padding: 0 7%;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: calc(100% - 64px);
+      max-width: 1440px;
+      height: 76px;
+
+      padding: 0 38px;
 
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      grid-template-columns: 1fr 120px 1fr;
       align-items: center;
 
-      background: rgba(255, 255, 255, 0.98);
-      border-bottom: 1px solid rgba(16, 23, 34, 0.08);
+      background: rgba(255, 255, 255, 0.97);
+      border: 1px solid rgba(16, 23, 34, 0.08);
+      border-top: none;
+      border-radius: 0 0 18px 18px;
+
+      box-shadow: 0 5px 22px rgba(16, 23, 34, 0.035);
 
       transition:
         background 0.35s ease,
-        border-color 0.35s ease,
-        box-shadow 0.35s ease;
+        color 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
     }
 
     .nav-link {
+      display: inline-flex;
+      align-items: center;
+
+      width: fit-content;
+
       font-size: 12px;
       font-weight: 500;
+      letter-spacing: 0.01em;
       color: var(--black);
+
       white-space: nowrap;
-      transition: color 0.35s ease, opacity 0.25s ease;
+
+      transition:
+        color 0.3s ease,
+        opacity 0.3s ease;
     }
 
     .nav-link:hover {
@@ -90,42 +111,45 @@
 
     .nav-logo {
       grid-column: 2;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
+      width: 120px;
+      height: 100%;
     }
 
     .nav-logo img {
       display: block;
-      width: 100px;
-      height: 100px;
+
+      width: 92px;
+      height: 92px;
+
       object-fit: contain;
+
       transition: filter 0.35s ease;
     }
 
-    /* NAVBAR AU DEFILEMENT */
+    /* MODE SOMBRE AU DÉFILEMENT */
 
     .navbar.scrolled {
-      background: rgba(255, 255, 255, 0.98);
-      border-bottom-color: rgba(16, 23, 34, 0.07);
-      box-shadow: 0 5px 22px rgba(0, 0, 0, 0.055);
+      background: rgba(16, 23, 34, 0.97);
+      border-color: rgba(255, 255, 255, 0.09);
+      border-top: none;
+
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.13);
     }
 
-    /* NAVBAR SUR LE FOOTER SOMBRE */
-
-    .navbar.dark-mode {
-      background: rgba(16, 23, 34, 0.98);
-      border-bottom-color: rgba(255, 255, 255, 0.10);
-      box-shadow: 0 5px 22px rgba(0, 0, 0, 0.12);
+    .navbar.scrolled .nav-link {
+      color: #FFFFFF;
     }
 
-    .navbar.dark-mode .nav-link {
-      color: white;
-    }
-
-    .navbar.dark-mode .nav-logo img {
+    .navbar.scrolled .nav-logo img {
       filter: brightness(0) invert(1);
     }
+
+    /* MENU MOBILE */
 
     .mobile-menu {
       display: none;
@@ -135,18 +159,21 @@
       display: none;
     }
 
-    /* HERO */
+    /* =========================
+       HERO
+    ========================= */
 
     .hero {
       min-height: 100vh;
-      padding: 180px 8% 110px;
+
+      padding: 160px 8% 100px;
 
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
 
+      text-align: center;
       background: var(--white);
     }
 
@@ -155,14 +182,17 @@
       font-weight: 500;
       letter-spacing: -0.09em;
       line-height: 1;
+
       margin-bottom: 30px;
     }
 
     .hero p {
       max-width: 680px;
+
       font-size: 15px;
       line-height: 1.9;
       font-weight: 300;
+
       color: var(--text);
     }
 
@@ -172,12 +202,14 @@
       align-items: center;
       gap: 14px;
       flex-wrap: wrap;
+
       margin-top: 38px;
     }
 
     .button {
       min-height: 48px;
       padding: 0 25px;
+
       border-radius: 7px;
 
       display: inline-flex;
@@ -186,6 +218,7 @@
 
       font-size: 11px;
       font-weight: 500;
+
       transition: 0.3s ease;
     }
 
@@ -209,7 +242,9 @@
       transform: translateY(-2px);
     }
 
-    /* INTRODUCTION */
+    /* =========================
+       INTRODUCTION
+    ========================= */
 
     .intro {
       padding: 125px 10%;
@@ -219,6 +254,7 @@
 
     .intro h2 {
       max-width: 850px;
+
       margin: 0 auto 25px;
 
       font-size: clamp(32px, 5vw, 55px);
@@ -232,12 +268,15 @@
       margin: 0 auto;
 
       color: var(--text);
+
       font-size: 14px;
       font-weight: 300;
       line-height: 2;
     }
 
-    /* EH-X SECTION */
+    /* =========================
+       EH-X SECTION
+    ========================= */
 
     .ehx-section {
       padding: 120px 9%;
@@ -252,6 +291,7 @@
 
     .ehx-visual {
       min-height: 430px;
+
       border-radius: 5px;
       background: var(--grey);
 
@@ -282,12 +322,15 @@
       margin-bottom: 30px;
 
       color: var(--text);
+
       font-size: 14px;
       font-weight: 300;
       line-height: 2;
     }
 
-    /* FOOTER */
+    /* =========================
+       FOOTER
+    ========================= */
 
     footer {
       padding: 55px 9%;
@@ -301,6 +344,7 @@
       align-items: center;
       gap: 30px;
       flex-wrap: wrap;
+
       padding-bottom: 35px;
     }
 
@@ -319,6 +363,7 @@
     .footer-links a {
       font-size: 11px;
       color: rgba(255, 255, 255, 0.7);
+
       transition: color 0.3s ease;
     }
 
@@ -342,14 +387,21 @@
       color: rgba(255, 255, 255, 0.45);
     }
 
-    /* MOBILE */
+    /* =========================
+       RESPONSIVE MOBILE
+    ========================= */
 
     @media (max-width: 700px) {
 
       .navbar {
-        height: 76px;
-        padding: 0 22px;
-        grid-template-columns: 1fr auto 1fr;
+        width: calc(100% - 24px);
+        height: 68px;
+
+        padding: 0 18px;
+
+        grid-template-columns: 1fr 90px 1fr;
+
+        border-radius: 0 0 15px 15px;
       }
 
       .navbar > .nav-link {
@@ -359,11 +411,13 @@
       .nav-logo {
         grid-column: 2;
         justify-self: center;
+
+        width: 90px;
       }
 
       .nav-logo img {
-        width: 82px;
-        height: 82px;
+        width: 78px;
+        height: 78px;
       }
 
       .mobile-menu {
@@ -371,33 +425,41 @@
         grid-column: 3;
         justify-self: end;
 
-        background: none;
+        padding: 10px 0;
+
+        background: transparent;
         border: none;
+
         color: var(--black);
 
         font-family: inherit;
         font-size: 10px;
         font-weight: 600;
         letter-spacing: 0.08em;
+
         cursor: pointer;
 
-        transition: color 0.35s ease;
+        transition: color 0.3s ease;
       }
 
-      .navbar.dark-mode .mobile-menu {
+      .navbar.scrolled .mobile-menu {
         color: white;
       }
 
       .mobile-dropdown {
         position: fixed;
         z-index: 999;
-        top: 76px;
-        left: 0;
-        right: 0;
 
-        padding: 25px 24px;
+        top: 68px;
+        left: 12px;
+        right: 12px;
+
+        padding: 24px;
+
         background: white;
-        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+        border-radius: 0 0 15px 15px;
+
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.09);
 
         display: none;
         flex-direction: column;
@@ -416,7 +478,7 @@
 
       .hero {
         min-height: 90vh;
-        padding: 150px 7% 90px;
+        padding: 140px 7% 80px;
       }
 
       .hero h1 {
@@ -433,6 +495,7 @@
 
       .ehx-section {
         padding: 80px 7%;
+
         grid-template-columns: 1fr;
         gap: 45px;
       }
@@ -461,6 +524,17 @@
       .footer-bottom {
         flex-direction: column;
         align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .navbar {
+        padding: 0 12px;
+      }
+
+      .nav-logo img {
+        width: 70px;
+        height: 70px;
       }
     }
   </style>
@@ -495,7 +569,7 @@
     <a href="eh-x.html">Notre vision</a>
   </div>
 
-  <!-- HERO -->
+  <!-- CONTENU PRINCIPAL -->
 
   <main>
 
@@ -573,7 +647,7 @@
 
   <!-- FOOTER -->
 
-  <footer id="footer">
+  <footer>
 
     <div class="footer-top">
 
@@ -606,48 +680,25 @@
     const navbar = document.getElementById("navbar");
     const mobileMenu = document.getElementById("mobileMenu");
     const mobileDropdown = document.getElementById("mobileDropdown");
-    const footer = document.getElementById("footer");
 
-    // Changement d'apparence au défilement
+    // Mode clair en haut, mode sombre dès le défilement
 
     function updateNavbar() {
-      if (window.scrollY > 40) {
-        navbar.classList.add("scrolled");
-      } else {
-        navbar.classList.remove("scrolled");
-      }
+      navbar.classList.toggle("scrolled", window.scrollY > 40);
     }
 
-    window.addEventListener("scroll", updateNavbar);
+    window.addEventListener("scroll", updateNavbar, { passive: true });
     updateNavbar();
-
-    // Passage en mode sombre lorsque le footer approche
-
-    const footerObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navbar.classList.add("dark-mode");
-        } else {
-          navbar.classList.remove("dark-mode");
-        }
-      });
-    }, {
-      threshold: 0,
-      rootMargin: "0px 0px -85% 0px"
-    });
-
-    footerObserver.observe(footer);
 
     // Menu mobile
 
     mobileMenu.addEventListener("click", () => {
-      mobileDropdown.classList.toggle("open");
+      const isOpen = mobileDropdown.classList.toggle("open");
 
-      mobileMenu.textContent =
-        mobileDropdown.classList.contains("open") ? "FERMER" : "MENU";
+      mobileMenu.textContent = isOpen ? "FERMER" : "MENU";
     });
 
-    // Fermeture après sélection
+    // Fermer le menu après avoir choisi une page
 
     mobileDropdown.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => {
@@ -656,7 +707,7 @@
       });
     });
 
-    // Fermeture en cliquant en dehors
+    // Fermer le menu si on clique à l'extérieur
 
     document.addEventListener("click", (event) => {
       if (
