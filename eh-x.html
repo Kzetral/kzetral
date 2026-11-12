@@ -2,790 +2,681 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>KZETRAL EH-X — Le véhicule</title>
-
-    <meta name="description" content="Découvrez le KZETRAL EH-X, un véhicule 100 % électrique développée autour de la technologie sodium-ion.">
-
-    <!-- TYPOGRAPHIE -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --ink: #101722;
-            --muted: #697586;
-            --white: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Sora', sans-serif;
-            background: #f7f9fc;
-            color: var(--ink);
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* =====================================
-           BARRE DE NAVIGATION
-        ===================================== */
-
-        .site-header {
-            position: fixed;
-            z-index: 1000;
-            top: 18px;
-            left: 50%;
-            transform: translateX(-50%);
-
-            width: min(1380px, calc(100% - 64px));
-            height: 76px;
-
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            align-items: center;
-
-            padding: 0 34px;
-
-            border-radius: 18px;
-            border: 1px solid rgba(255,255,255,.72);
-
-            background: rgba(255,255,255,.42);
-            backdrop-filter: blur(22px);
-            -webkit-backdrop-filter: blur(22px);
-
-            box-shadow: 0 8px 35px rgba(27,42,64,.045);
-
-            transition:
-                background .45s ease,
-                border-color .45s ease,
-                box-shadow .45s ease,
-                height .45s ease,
-                top .45s ease;
-        }
-
-        .nav-left,
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 35px;
-        }
-
-        .nav-right {
-            justify-content: flex-end;
-        }
-
-        .nav-link {
-            position: relative;
-            font-size: 12px;
-            font-weight: 500;
-            color: #202b3a;
-            transition: color .35s ease;
-        }
-
-        .nav-link::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -7px;
-            width: 0;
-            height: 1px;
-            background: currentColor;
-            transition: width .3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* LOGO CENTRÉ */
-
-        .brand {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 180px;
-            height: 60px;
-        }
-
-        .brand img {
-            display: block;
-            width: 138px;
-            max-height: 44px;
-            object-fit: contain;
-            filter: brightness(0);
-            transition: filter .45s ease, transform .4s ease;
-        }
-
-        .brand:hover img {
-            transform: scale(1.035);
-        }
-
-        /* NAVIGATION AU DÉFILEMENT */
-
-        .site-header.is-scrolled {
-            top: 12px;
-            height: 68px;
-            background: rgba(12, 19, 31, .78);
-            border-color: rgba(255,255,255,.12);
-            box-shadow: 0 12px 40px rgba(5,12,25,.16);
-        }
-
-        .site-header.is-scrolled .nav-link {
-            color: #ffffff;
-        }
-
-        .site-header.is-scrolled .brand img {
-            filter: brightness(0) invert(1);
-        }
-
-        .menu-button {
-            display: none;
-            color: #172234;
-            background: rgba(255,255,255,.48);
-            border: 1px solid rgba(255,255,255,.8);
-            border-radius: 9px;
-            padding: 10px 15px;
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            cursor: pointer;
-            backdrop-filter: blur(15px);
-        }
-
-        .site-header.is-scrolled .menu-button {
-            color: white;
-            background: rgba(255,255,255,.10);
-            border-color: rgba(255,255,255,.23);
-        }
-
-        .mobile-nav {
-            display: none;
-        }
-
-        /* =====================================
-           INTRODUCTION EH-X
-        ===================================== */
-
-        .hero {
-            min-height: 690px;
-            min-height: 100svh;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            padding: 150px 7% 100px;
-            text-align: center;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #ffffff 0%,
-                    #f1f5fa 50%,
-                    #ffffff 100%
-                );
-        }
-
-        .hero-content {
-            width: 100%;
-            max-width: 1050px;
-            animation: appear 1s ease both;
-        }
-
-        @keyframes appear {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .eyebrow {
-            display: inline-block;
-            margin-bottom: 25px;
-
-            color: #71839a;
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-        .hero h1 {
-            font-size: clamp(75px, 15vw, 180px);
-            font-weight: 600;
-            line-height: .95;
-            letter-spacing: -.09em;
-            padding-right: .09em;
-
-            background: linear-gradient(
-                180deg,
-                #101c2c 10%,
-                #526a86 65%,
-                #9aabba 100%
-            );
-
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .title-line {
-            width: 65px;
-            height: 3px;
-            margin: 32px auto 25px;
-            border-radius: 10px;
-            background: linear-gradient(90deg, #bad9fa, #547da8);
-        }
-
-        .hero-description {
-            max-width: 720px;
-            margin: 0 auto;
-
-            color: #586779;
-            font-size: clamp(14px, 1.5vw, 18px);
-            font-weight: 400;
-            line-height: 1.9;
-        }
-
-        .hero-description strong {
-            color: #172438;
-            font-weight: 600;
-        }
-
-        .project-status {
-            margin-top: 25px;
-            color: #8795a6;
-            font-size: 9px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* =====================================
-           PRÉSENTATION DU VÉHICULE
-        ===================================== */
-
-        .presentation {
-            padding: 115px 8%;
-            background: #ffffff;
-        }
-
-        .presentation-inner {
-            max-width: 1180px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            color: #8193a8;
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            margin-bottom: 22px;
-        }
-
-        .presentation h2 {
-            max-width: 760px;
-            font-size: clamp(30px, 5vw, 55px);
-            font-weight: 500;
-            line-height: 1.2;
-            letter-spacing: -2px;
-            color: #142033;
-        }
-
-        .presentation-text {
-            max-width: 760px;
-            margin-top: 25px;
-            color: #697586;
-            font-size: 15px;
-            line-height: 1.9;
-        }
-
-        /* =====================================
-           CARACTÉRISTIQUES PRINCIPALES
-        ===================================== */
-
-        .technology {
-            padding: 95px 8% 110px;
-            background: #f3f6fa;
-        }
-
-        .technology-inner {
-            max-width: 1180px;
-            margin: 0 auto;
-        }
-
-        .technology h2 {
-            font-size: clamp(28px, 4vw, 42px);
-            font-weight: 500;
-            letter-spacing: -1.5px;
-            margin-bottom: 55px;
-        }
-
-        .technology-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            border-top: 1px solid #dce3ec;
-        }
-
-        .technology-item {
-            padding: 30px 28px 15px 0;
-            border-right: 1px solid #dce3ec;
-        }
-
-        .technology-item:not(:first-child) {
-            padding-left: 28px;
-        }
-
-        .technology-item:last-child {
-            border-right: none;
-        }
-
-        .technology-number {
-            display: block;
-            color: #91a9c5;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 22px;
-        }
-
-        .technology-item h3 {
-            color: #172438;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 13px;
-        }
-
-        .technology-item p {
-            color: #697586;
-            font-size: 13px;
-            line-height: 1.8;
-        }
-
-        /* =====================================
-           PIED DE PAGE
-        ===================================== */
-
-        footer {
-            padding: 35px 8%;
-            background: #101722;
-            color: rgba(255,255,255,.65);
-            text-align: center;
-            font-size: 10px;
-            letter-spacing: 1px;
-        }
-
-        /* =====================================
-           RESPONSIVE
-        ===================================== */
-
-        @media (max-width: 760px) {
-            .site-header {
-                width: calc(100% - 28px);
-                top: 12px;
-                height: 66px;
-                padding: 0 17px;
-                grid-template-columns: 1fr auto 1fr;
-                border-radius: 14px;
-            }
-
-            .site-header.is-scrolled {
-                top: 8px;
-                height: 62px;
-            }
-
-            .nav-left,
-            .nav-right {
-                display: none;
-            }
-
-            .brand {
-                grid-column: 2;
-                width: 140px;
-            }
-
-            .brand img {
-                width: 116px;
-                max-height: 38px;
-            }
-
-            .menu-button {
-                display: block;
-                grid-column: 3;
-                justify-self: end;
-            }
-
-            .mobile-nav {
-                position: absolute;
-                top: calc(100% + 9px);
-                left: 0;
-                width: 100%;
-
-                display: flex;
-                flex-direction: column;
-
-                border-radius: 15px;
-                overflow: hidden;
-
-                background: rgba(255,255,255,.83);
-                backdrop-filter: blur(22px);
-                -webkit-backdrop-filter: blur(22px);
-
-                border: 1px solid rgba(255,255,255,.9);
-                box-shadow: 0 15px 35px rgba(20,39,62,.10);
-
-                opacity: 0;
-                visibility: hidden;
-                transform: translateY(-9px);
-
-                transition:
-                    opacity .3s ease,
-                    transform .3s ease,
-                    visibility .3s ease;
-            }
-
-            .mobile-nav.open {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-            }
-
-            .mobile-nav a {
-                padding: 19px 22px;
-                color: #172438;
-                font-size: 12px;
-                font-weight: 600;
-                border-bottom: 1px solid rgba(30,50,75,.07);
-            }
-
-            .site-header.is-scrolled .mobile-nav {
-                background: rgba(12,19,31,.93);
-                border-color: rgba(255,255,255,.12);
-            }
-
-            .site-header.is-scrolled .mobile-nav a {
-                color: white;
-                border-color: rgba(255,255,255,.1);
-            }
-
-            .hero {
-                min-height: 100svh;
-                padding: 130px 6% 90px;
-            }
-
-            .hero h1 {
-                font-size: 23vw;
-            }
-
-            .eyebrow {
-                font-size: 8px;
-                letter-spacing: 2px;
-            }
-
-            .hero-description {
-                font-size: 13px;
-                line-height: 1.85;
-            }
-
-            .presentation {
-                padding: 85px 7%;
-            }
-
-            .technology {
-                padding: 75px 7%;
-            }
-
-            .technology-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .technology-item,
-            .technology-item:not(:first-child) {
-                padding: 25px 0;
-                border-right: none;
-                border-bottom: 1px solid #dce3ec;
-            }
-
-            .technology-item:last-child {
-                border-bottom: none;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: .01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: .01ms !important;
-                scroll-behavior: auto !important;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>EH-X — KZETRAL</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #101722;
+      --muted: #697586;
+      --white: #ffffff;
+      --blue: #8ebce9;
+      --soft: #f4f5f6;
+      --line: #e8ebef;
+      --glass: rgba(255, 255, 255, 0.78);
+      --glass-border: rgba(16, 23, 34, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Sora', sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVIGATION */
+
+    .navbar {
+      position: fixed;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      width: min(920px, calc(100% - 40px));
+      height: 76px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+      width: 40%;
+    }
+
+    .nav-links.right {
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink);
+      transition: opacity 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.55;
+    }
+
+    .nav-logo {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      transition: filter 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(16, 23, 34, 0.94);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .navbar.scrolled .nav-links a {
+      color: #ffffff;
+    }
+
+    .navbar.scrolled .nav-logo img {
+      filter: brightness(0) invert(1);
+    }
+
+    .mobile-menu-button {
+      display: none;
+      border: none;
+      background: transparent;
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .navbar.scrolled .mobile-menu-button {
+      color: #ffffff;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 86px;
+      left: 0;
+      right: 0;
+      padding: 18px;
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.97);
+      box-shadow: 0 16px 40px rgba(16, 23, 34, 0.08);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .mobile-menu a {
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 88vh;
+      padding: 180px 24px 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--white);
+    }
+
+    .hero-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      margin-bottom: 28px;
+      font-size: clamp(90px, 17vw, 190px);
+      line-height: 0.95;
+      letter-spacing: -0.1em;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .hero-description {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    .hero-description strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 36px;
+    }
+
+    .button {
+      min-height: 53px;
+      padding: 0 25px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9px;
+      font-size: 12px;
+      font-weight: 600;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: #ffffff;
+      background: var(--ink);
+      border: 1px solid var(--ink);
+    }
+
+    .button-primary:hover {
+      background: #263446;
+      border-color: #263446;
+    }
+
+    .button-secondary {
+      color: var(--ink);
+      background: #ffffff;
+      border: 1px solid #dfe3e8;
+    }
+
+    .button-secondary:hover {
+      background: var(--soft);
+    }
+
+    /* PRÉSENTATION */
+
+    .presentation {
+      padding: 110px 24px;
+      background: var(--soft);
+    }
+
+    .presentation-inner {
+      max-width: 1050px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .presentation h2 {
+      font-size: clamp(35px, 5vw, 58px);
+      line-height: 1.15;
+      letter-spacing: -0.07em;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .presentation-copy p {
+      margin-bottom: 20px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 2;
+      font-weight: 300;
+    }
+
+    .presentation-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* TECHNOLOGIE */
+
+    .technology {
+      padding: 115px 24px;
+      background: var(--white);
+    }
+
+    .technology-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .technology h2 {
+      max-width: 700px;
+      margin-bottom: 55px;
+      font-size: clamp(35px, 5vw, 58px);
+      line-height: 1.15;
+      letter-spacing: -0.07em;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .technology-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .technology-card {
+      min-height: 245px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .technology-card:hover {
+      transform: translateY(-4px);
+      background: #eef0f2;
+    }
+
+    .technology-number {
+      color: #9aa3ad;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+    }
+
+    .technology-card h3 {
+      margin-bottom: 13px;
+      color: var(--ink);
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+    }
+
+    .technology-card p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.9;
+      font-weight: 300;
+    }
+
+    /* OBJECTIF */
+
+    .objective {
+      padding: 110px 24px;
+      text-align: center;
+      color: #ffffff;
+      background: var(--ink);
+    }
+
+    .objective-inner {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .objective h2 {
+      margin-bottom: 25px;
+      font-size: clamp(36px, 6vw, 65px);
+      line-height: 1.15;
+      letter-spacing: -0.07em;
+      font-weight: 600;
+    }
+
+    .objective p {
+      max-width: 650px;
+      margin: 0 auto;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 14px;
+      line-height: 2;
+      font-weight: 300;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 35px 24px;
+      border-top: 1px solid var(--line);
+      background: #ffffff;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-inner p,
+    .footer-inner a {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 400;
+    }
+
+    .footer-inner a:hover {
+      color: var(--ink);
+    }
+
+    .footer-brand {
+      color: var(--ink) !important;
+      font-weight: 600 !important;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 750px) {
+      .navbar {
+        top: 14px;
+        width: calc(100% - 28px);
+        height: 66px;
+        padding: 0 20px;
+      }
+
+      .navbar > .nav-links {
+        display: none;
+      }
+
+      .mobile-menu-button {
+        display: block;
+      }
+
+      .nav-logo img {
+        width: 46px;
+        height: 46px;
+      }
+
+      .hero {
+        min-height: 80vh;
+        padding: 150px 22px 90px;
+      }
+
+      .hero h1 {
+        font-size: clamp(76px, 20vw, 125px);
+      }
+
+      .hero-description {
+        font-size: 13px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        gap: 11px;
+      }
+
+      .button {
+        width: 100%;
+        max-width: 310px;
+      }
+
+      .presentation,
+      .technology,
+      .objective {
+        padding: 80px 23px;
+      }
+
+      .presentation-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .technology h2 {
+        margin-bottom: 32px;
+      }
+
+      .technology-grid {
+        grid-template-columns: 1fr;
+        gap: 13px;
+      }
+
+      .technology-card {
+        min-height: 205px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- BARRE DE NAVIGATION -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-links">
+      <a href="entreprise.html">Qui nous sommes</a>
+    </div>
 
-    <header class="site-header" id="siteHeader">
+    <a href="index.html" class="nav-logo" aria-label="KZETRAL - Accueil">
+      <img src="images/logo-kzetral.png" alt="Logo KZETRAL">
+    </a>
 
-        <nav class="nav-left">
-            <a href="entreprise.html" class="nav-link">
-                Qui nous sommes
-            </a>
-        </nav>
+    <div class="nav-links right">
+      <a href="vision.html">Notre vision</a>
+    </div>
 
-        <a href="index.html" class="brand" aria-label="Accueil KZETRAL">
-            <img src="images/logo-kzetral.png" alt="KZETRAL">
-        </a>
+    <button class="mobile-menu-button" id="menuButton" aria-expanded="false">
+      MENU
+    </button>
 
-        <nav class="nav-right">
-            <a href="vision.html" class="nav-link">
-                Notre vision
-            </a>
-        </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="entreprise.html">Qui nous sommes</a>
+      <a href="vision.html">Notre vision</a>
+    </div>
+  </nav>
 
-        <!-- MENU MOBILE -->
+  <main>
 
-        <button
-            class="menu-button"
-            id="menuButton"
-            aria-expanded="false"
-            aria-controls="mobileNav">
-            MENU
-        </button>
+    <section class="hero">
+      <div class="hero-content">
 
-        <nav class="mobile-nav" id="mobileNav">
-            <a href="entreprise.html">Qui nous sommes</a>
-            <a href="vision.html">Notre vision</a>
-        </nav>
+        <h1>EH-X</h1>
 
-    </header>
+        <p class="hero-description">
+          Une nouvelle approche de la mobilité électrique.
+          Le KZETRAL EH-X est un projet de véhicule
+          <strong>100 % électrique</strong> développé autour
+          de la technologie des batteries sodium-ion.
+        </p>
 
+        <div class="hero-buttons">
+          <a href="#presentation" class="button button-primary">
+            Découvrir le projet
+          </a>
 
-    <main>
+          <a href="contact.html" class="button button-secondary">
+            Nous contacter
+          </a>
+        </div>
 
-        <!-- INTRODUCTION -->
+      </div>
+    </section>
 
-        <section class="hero">
+    <section class="presentation" id="presentation">
+      <div class="presentation-inner">
 
-            <div class="hero-content">
+        <h2>Un véhicule pensé autour d'une nouvelle technologie électrique.</h2>
 
-                <div class="eyebrow">
-                    KZETRAL · ELECTRIC MOBILITY
-                </div>
+        <div class="presentation-copy">
+          <p>
+            Le EH-X représente le premier programme automobile de KZETRAL.
+            Il s'inscrit dans une démarche de recherche et de développement
+            autour des nouvelles solutions de mobilité électrique.
+          </p>
 
-                <h1>EH-X</h1>
+          <p>
+            Le projet explore notamment le potentiel des batteries sodium-ion,
+            une technologie qui pourrait contribuer à diversifier les solutions
+            de stockage de l'énergie.
+          </p>
 
-                <div class="title-line"></div>
+          <p>
+            Notre ambition est d'étudier une architecture automobile associant
+            innovation technologique, sécurité et expérience de conduite.
+          </p>
+        </div>
 
-                <p class="hero-description">
-                    Une nouvelle approche de la mobilité électrique.
-                    <strong>Le KZETRAL EH-X</strong> est un projet d'un véhicule
-                    100 % électrique développé autour de la technologie
-                    des batteries sodium-ion.
-                </p>
+      </div>
+    </section>
 
+    <section class="technology">
+      <div class="technology-inner">
 
-                </div>
+        <h2>Trois éléments au cœur du projet.</h2>
 
+        <div class="technology-grid">
+
+          <article class="technology-card">
+            <span class="technology-number">01 — MOTORISATION</span>
+
+            <div>
+              <h3>100 % électrique</h3>
+              <p>
+                Une architecture entièrement électrique,
+                pensée pour une mobilité sans moteur thermique.
+              </p>
             </div>
+          </article>
 
-        </section>
+          <article class="technology-card">
+            <span class="technology-number">02 — ÉNERGIE</span>
 
-
-        <!-- PRÉSENTATION -->
-
-        <section class="presentation">
-
-            <div class="presentation-inner">
-
-                <div class="section-label">
-                    Présentation du véhicule
-                </div>
-
-                <h2>
-                    Un véhicule pensée autour d'une nouvelle technologie électrique.
-                </h2>
-
-                <p class="presentation-text">
-                    Avec le EH-X, KZETRAL souhaite développer un véhicule
-                    associant design sportif, positionnement premium et
-                    motorisation entièrement électrique. Le projet repose
-                    sur l'intégration d'une batterie sodium-ion, une
-                    technologie au cœur de notre démarche d'innovation.
-                </p>
-
+            <div>
+              <h3>Sodium-ion</h3>
+              <p>
+                Une technologie de batterie étudiée pour explorer
+                de nouvelles possibilités de stockage énergétique.
+              </p>
             </div>
+          </article>
 
-        </section>
+          <article class="technology-card">
+            <span class="technology-number">03 — DESIGN</span>
 
-
-        <!-- TECHNOLOGIE -->
-
-        <section class="technology">
-
-            <div class="technology-inner">
-
-
-                </div>
-
-                <h2>Trois éléments au cœur du projet.</h2>
-
-                <div class="technology-grid">
-
-                    <article class="technology-item">
-
-                        <span class="technology-number">01</span>
-
-                        <h3>100 % électrique</h3>
-
-                        <p>
-                            Une motorisation entièrement électrique,
-                            sans moteur thermique.
-                        </p>
-
-                    </article>
-
-                    <article class="technology-item">
-
-                        <span class="technology-number">02</span>
-
-                        <h3>Sodium-ion</h3>
-
-                        <p>
-                            Une batterie reposant sur la technologie
-                            sodium-ion, au centre du développement du véhicule.
-                        </p>
-
-                    </article>
-
-                    <article class="technology-item">
-
-                        <span class="technology-number">03</span>
-
-                        <h3>Berline premium</h3>
-
-                        <p>
-                            Un projet de véhicule premium au caractère sportif et familiale,
-                            avec une approche orientée vers le confort
-                            et la technologie.
-                        </p>
-
-                    </article>
-
-                </div>
-
+            <div>
+              <h3>Berline premium</h3>
+              <p>
+                Une identité automobile au caractère sportif
+                et familial, associant confort et modernité.
+              </p>
             </div>
+          </article>
 
-        </section>
+        </div>
+      </div>
+    </section>
 
-    </main>
+    <section class="objective">
+      <div class="objective-inner">
 
+        <h2>Imaginer la mobilité de demain.</h2>
 
-    <footer>
-        KZETRAL — EH-X · PROGRAMME EN DÉVELOPPEMENT
-        Pensez à covoiturer #SeDéplacerMoinsPolluer
+        <p>
+          Le EH-X est actuellement un programme en développement.
+          KZETRAL souhaite approfondir les études techniques,
+          évaluer la faisabilité du projet et construire progressivement
+          les bases de son futur véhicule.
+        </p>
 
-Kzetral © 2026
-Mentions légales
-Contact
-Actualités
-Découvrir
-    </footer>
+      </div>
+    </section>
 
+  </main>
 
-    <!-- JAVASCRIPT -->
+  <footer>
+    <div class="footer-inner">
+      <a href="mentions-legales.html">Mentions légales</a>
+      <p class="footer-brand">KZETRAL © 2026</p>
+      <p>Penser à covoiturer #SeDéplacerMoinsPolluer</p>
+    </div>
+  </footer>
 
-    <script>
+  <script>
+    const navbar = document.getElementById("navbar");
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
 
-        /* BARRE AU DÉFILEMENT */
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 40) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
 
-        const siteHeader = document.getElementById("siteHeader");
+    menuButton.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", isOpen);
+    });
 
-        function updateHeader() {
-            if (window.scrollY > 35) {
-                siteHeader.classList.add("is-scrolled");
-            } else {
-                siteHeader.classList.remove("is-scrolled");
-            }
-        }
-
-        window.addEventListener("scroll", updateHeader, {
-            passive: true
-        });
-
-        updateHeader();
-
-
-        /* MENU MOBILE */
-
-        const menuButton = document.getElementById("menuButton");
-        const mobileNav = document.getElementById("mobileNav");
-
-        menuButton.addEventListener("click", function () {
-
-            const isOpen = mobileNav.classList.toggle("open");
-
-            menuButton.setAttribute("aria-expanded", isOpen);
-            menuButton.textContent = isOpen ? "FERMER" : "MENU";
-
-        });
-
-
-        /* FERMER LE MENU APRÈS NAVIGATION */
-
-        mobileNav.querySelectorAll("a").forEach(link => {
-
-            link.addEventListener("click", function () {
-
-                mobileNav.classList.remove("open");
-                menuButton.setAttribute("aria-expanded", "false");
-                menuButton.textContent = "MENU";
-
-            });
-
-        });
-
-
-        /* FERMER AVEC ÉCHAP */
-
-        document.addEventListener("keydown", function(event) {
-
-            if (event.key === "Escape") {
-
-                mobileNav.classList.remove("open");
-                menuButton.setAttribute("aria-expanded", "false");
-                menuButton.textContent = "MENU";
-
-            }
-
-        });
-
-    </script>
+    mobileMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+    });
+  </script>
 
 </body>
 </html>
