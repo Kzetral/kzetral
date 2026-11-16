@@ -4,429 +4,279 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Qui nous sommes — Kzetral</title>
+  <title>Entreprise — Kzetral</title>
+  <meta name="description" content="Découvrez Kzetral, son ambition et sa vision de la mobilité.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --white: #ffffff;
-      --black: #101722;
-      --grey: #f4f5f6;
-      --muted: #68717d;
-      --accent: #8ebce9;
+      --white:#fff; --grey:#f4f5f6; --black:#101722;
+      --text:#505967; --blue:#8ebce9;
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Sora', sans-serif;
-      color: var(--black);
-      background: var(--white);
-      overflow-x: hidden;
-    }
-
-    a { color: inherit; text-decoration: none; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Sora',sans-serif; background:var(--white); color:var(--black); overflow-x:hidden; }
+    a { color:inherit; text-decoration:none; }
 
     .navbar {
-      position: fixed;
-      z-index: 1000;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: calc(100% - 64px);
-      max-width: 1040px;
-      height: 82px;
-      padding: 8px 30px;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      border: 1px solid rgba(16, 23, 34, 0.08);
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      transition: background 0.3s ease, box-shadow 0.3s ease;
+      position:fixed; z-index:1000; top:20px; left:50%;
+      transform:translateX(-50%); width:calc(100% - 100px);
+      max-width:1450px; height:76px; padding:0 30px 0 38px;
+      display:flex; align-items:center; justify-content:space-between;
+      background:rgba(255,255,255,.94); border:1px solid rgba(16,23,34,.10);
+      border-radius:17px; backdrop-filter:blur(22px); -webkit-backdrop-filter:blur(22px);
+      box-shadow:0 8px 30px rgba(16,23,34,.055),inset 0 1px 0 rgba(255,255,255,.9);
+      transition:background .4s ease,border-color .4s ease,box-shadow .4s ease;
+      animation:navbarAppear .8s ease both;
     }
-
-    .navbar.scrolled {
-      background: rgba(16, 23, 34, 0.96);
-      border-color: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+    .navbar::before {
+      content:""; position:absolute; top:-1px; left:12%; width:76%; height:1px;
+      background:linear-gradient(90deg,transparent,rgba(142,188,233,.85),transparent);
+      opacity:.7;
     }
-
+    .nav-left { display:flex; align-items:center; gap:38px; height:100%; }
     .nav-link {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      color: var(--black);
-      transition: opacity 0.25s ease, color 0.3s ease;
+      position:relative; display:inline-flex; align-items:center; height:100%;
+      color:var(--black); font-size:11px; font-weight:500; letter-spacing:.025em;
+      white-space:nowrap; transition:color .35s ease;
+    }
+    .nav-link::after {
+      content:""; position:absolute; left:0; bottom:21px; width:0; height:2px;
+      background:var(--blue); border-radius:5px;
+      transition:width .35s cubic-bezier(.2,.8,.2,1);
+    }
+    .nav-link:hover::after { width:100%; }
+    .nav-link::before {
+      content:""; position:absolute; left:-11px; top:50%; width:4px; height:4px;
+      border-radius:50%; background:var(--blue); opacity:0;
+      transform:translateY(-50%) scale(.3); transition:.3s ease;
+    }
+    .nav-link:hover::before { opacity:1; transform:translateY(-50%) scale(1); }
+    .nav-brand {
+      display:flex; align-items:center; justify-content:center; height:100%;
+      padding-left:28px; border-left:1px solid rgba(16,23,34,.09);
+    }
+    .nav-brand img {
+      display:block; width:112px; height:112px; object-fit:contain;
+      transition:filter .4s ease,transform .4s ease;
+    }
+    .nav-brand:hover img { transform:scale(1.045); }
+    .navbar.scrolled {
+      background:rgba(13,19,29,.96); border-color:rgba(255,255,255,.11);
+      box-shadow:0 12px 35px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .navbar.scrolled .nav-link { color:#fff; }
+    .navbar.scrolled .nav-brand { border-left-color:rgba(255,255,255,.14); }
+    .navbar.scrolled .nav-brand img { filter:brightness(0) invert(1); }
+    .navbar.scrolled::before { opacity:1; }
+    @keyframes navbarAppear {
+      from { opacity:0; transform:translate(-50%,-15px); }
+      to { opacity:1; transform:translate(-50%,0); }
+    }
+    .mobile-menu,.mobile-dropdown { display:none; }
+
+    .container { width:min(1180px,calc(100% - 80px)); margin:auto; }
+    .section { padding:120px 0; }
+    .grey { background:var(--grey); }
+    h1,h2,h3 { font-weight:500; letter-spacing:-.055em; }
+    p { color:var(--text); font-size:14px; line-height:2; font-weight:300; }
+
+    .hero { min-height:730px; padding:210px 0 130px; display:flex; align-items:center; }
+    .hero-content { max-width:850px; }
+    .hero h1 { font-size:clamp(58px,9vw,110px); line-height:1.05; margin-bottom:30px; }
+    .hero p { max-width:650px; font-size:16px; }
+
+    .dark-section { background:var(--black); color:white; }
+    .dark-section h2 { max-width:850px; font-size:clamp(40px,6vw,72px); line-height:1.13; margin-bottom:28px; }
+    .dark-section p { color:rgba(255,255,255,.65); max-width:650px; }
+
+    .vision-grid { display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:center; }
+    .vision-grid h2 { font-size:clamp(36px,5vw,58px); line-height:1.15; margin-bottom:25px; }
+    .visual {
+      min-height:420px; background:#e9edf1; display:flex;
+      align-items:center; justify-content:center; position:relative;
+    }
+    .visual::after { content:""; position:absolute; inset:20px; border:1px solid rgba(16,23,34,.08); }
+    .visual span { font-size:clamp(50px,8vw,90px); font-weight:600; letter-spacing:-.09em; color:rgba(16,23,34,.13); }
+
+    .founder-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:90px; align-items:center; }
+    .founder-grid h2 { font-size:clamp(36px,5vw,56px); line-height:1.15; margin-bottom:25px; }
+    .founder-card {
+      min-height:370px; background:#e9edf1; display:flex;
+      justify-content:center; align-items:center; position:relative;
+    }
+    .founder-card span { font-size:65px; font-weight:600; letter-spacing:-.08em; color:rgba(16,23,34,.14); }
+    .signature { margin-top:28px; color:var(--black); font-size:11px; font-weight:600; letter-spacing:.04em; }
+
+    .cta { background:var(--grey); }
+    .cta h2 { font-size:clamp(40px,6vw,68px); line-height:1.15; max-width:760px; margin-bottom:25px; }
+    .cta p { max-width:600px; }
+    .button {
+      display:inline-flex; align-items:center; justify-content:center; min-height:52px;
+      padding:0 25px; border-radius:5px; font-size:11px; font-weight:500;
+      background:var(--black); color:white; margin-top:32px; transition:.3s ease;
+    }
+    .button:hover { background:#29384a; transform:translateY(-3px); }
+
+    footer { background:#0b111a; color:white; padding:55px 0 30px; }
+    .footer-top { display:flex; justify-content:space-between; gap:35px; padding-bottom:45px; }
+    .footer-brand { font-size:24px; font-weight:600; letter-spacing:-.06em; }
+    .footer-links { display:flex; gap:30px; flex-wrap:wrap; }
+    .footer-links a { color:rgba(255,255,255,.65); font-size:11px; transition:color .3s; }
+    .footer-links a:hover { color:white; }
+    .footer-bottom {
+      border-top:1px solid rgba(255,255,255,.12); padding-top:25px;
+      display:flex; justify-content:space-between; gap:20px;
+      color:rgba(255,255,255,.4); font-size:10px;
     }
 
-    .nav-link:hover { opacity: 0.6; }
-    .nav-right { text-align: right; }
-    .navbar.scrolled .nav-link { color: white; }
-
-    .nav-logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
+    @media(max-width:800px) {
+      .container { width:calc(100% - 42px); }
+      .section { padding:85px 0; }
+      .vision-grid,.founder-grid { grid-template-columns:1fr; gap:45px; }
+      .visual { min-height:300px; }
+      .founder-card { min-height:280px; }
+      .footer-top { flex-direction:column; }
+      .footer-bottom { flex-direction:column; }
     }
-
-    .nav-logo img {
-      display: block;
-      width: 88px;
-      height: 88px;
-      object-fit: contain;
-      transition: filter 0.3s ease;
-    }
-
-    .navbar.scrolled .nav-logo img {
-      filter: brightness(0) invert(1);
-    }
-
-    .mobile-menu {
-      display: none;
-      position: relative;
-      justify-self: end;
-    }
-
-    .menu-button {
-      border: 0;
-      background: transparent;
-      color: var(--black);
-      font-family: inherit;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      cursor: pointer;
-    }
-
-    .navbar.scrolled .menu-button { color: white; }
-
-    .mobile-dropdown {
-      display: none;
-      position: absolute;
-      right: 0;
-      top: 34px;
-      min-width: 180px;
-      padding: 12px;
-      border: 1px solid rgba(16, 23, 34, 0.08);
-      border-radius: 14px;
-      background: white;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
-    }
-
-    .mobile-dropdown.open {
-      display: grid;
-      gap: 14px;
-    }
-
-    .mobile-dropdown a {
-      color: var(--black);
-      font-size: 12px;
-      padding: 5px;
-    }
-
-    .hero {
-      min-height: 78vh;
-      padding: 190px 24px 100px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: white;
-    }
-
-    .hero h1 {
-      font-size: clamp(48px, 8vw, 92px);
-      font-weight: 400;
-      letter-spacing: -0.075em;
-      line-height: 1.1;
-    }
-
-    .hero p {
-      max-width: 680px;
-      margin-top: 28px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.9;
-      font-weight: 300;
-    }
-
-    .dark-section {
-      padding: 120px 24px;
-      background: var(--black);
-      color: white;
-      text-align: center;
-    }
-
-    .dark-section h2 {
-      max-width: 850px;
-      margin: 0 auto;
-      font-size: clamp(32px, 5vw, 58px);
-      font-weight: 400;
-      letter-spacing: -0.06em;
-      line-height: 1.2;
-    }
-
-    .dark-section p {
-      max-width: 720px;
-      margin: 28px auto 0;
-      color: rgba(255, 255, 255, 0.68);
-      font-size: 14px;
-      line-height: 2;
-      font-weight: 300;
-    }
-
-    .statement {
-      padding: 120px 24px;
-      text-align: center;
-      background: var(--grey);
-    }
-
-    .statement h2 {
-      max-width: 850px;
-      margin: auto;
-      font-size: clamp(32px, 5vw, 58px);
-      font-weight: 400;
-      letter-spacing: -0.06em;
-      line-height: 1.2;
-    }
-
-    .statement p {
-      max-width: 650px;
-      margin: 25px auto 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.9;
-      font-weight: 300;
-    }
-
-    .founder {
-      max-width: 1120px;
-      margin: auto;
-      padding: 110px 24px;
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 70px;
-      align-items: center;
-    }
-
-    .founder-visual {
-      min-height: 360px;
-      border-radius: 22px;
-      background: var(--grey);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .founder-visual span {
-      font-size: clamp(45px, 7vw, 76px);
-      font-weight: 500;
-      letter-spacing: -0.08em;
-      color: rgba(16, 23, 34, 0.16);
-    }
-
-    .founder-content h2 {
-      font-size: clamp(30px, 4vw, 46px);
-      font-weight: 400;
-      letter-spacing: -0.06em;
-      line-height: 1.2;
-    }
-
-    .founder-content p {
-      margin-top: 22px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.9;
-      font-weight: 300;
-    }
-
-    .signature {
-      margin-top: 34px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-    }
-
-    footer {
-      padding: 35px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      border-top: 1px solid rgba(16, 23, 34, 0.08);
-      color: var(--muted);
-      font-size: 10px;
-    }
-
-    footer a:hover { color: var(--black); }
-
-    .footer-links {
-      display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 700px) {
-      .navbar {
-        top: 12px;
-        width: calc(100% - 28px);
-        height: 70px;
-        padding: 6px 18px;
-        border-radius: 18px;
-        grid-template-columns: 1fr auto 1fr;
+    @media(max-width:700px) {
+      .navbar { top:12px; width:calc(100% - 28px); height:68px; padding:0 18px; border-radius:15px; }
+      .nav-left { display:none; }
+      .nav-brand { margin-left:auto; padding-left:0; border-left:none; }
+      .nav-brand img { width:82px; height:82px; }
+      .mobile-menu {
+        display:block; order:-1; background:none; border:none; color:var(--black);
+        font-family:inherit; font-size:10px; font-weight:600; letter-spacing:.1em; cursor:pointer;
       }
-
-      .navbar > .nav-link { display: none; }
-
-      .nav-logo img {
-        width: 70px;
-        height: 70px;
+      .navbar.scrolled .mobile-menu { color:white; }
+      .mobile-dropdown {
+        position:fixed; z-index:999; top:90px; left:14px; right:14px; padding:24px;
+        background:white; border:1px solid rgba(16,23,34,.08); border-radius:14px;
+        box-shadow:0 15px 35px rgba(0,0,0,.10); display:none; flex-direction:column; gap:22px;
       }
-
-      .mobile-menu { display: block; }
-
-      .hero {
-        min-height: 72vh;
-        padding-top: 150px;
-      }
-
-      .dark-section,
-      .statement {
-        padding: 85px 22px;
-      }
-
-      .founder {
-        grid-template-columns: 1fr;
-        gap: 35px;
-        padding: 80px 22px;
-      }
-
-      .founder-visual { min-height: 250px; }
-
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 30px 22px;
-      }
+      .mobile-dropdown.open { display:flex; animation:dropdownAppear .25s ease both; }
+      .mobile-dropdown a { font-size:12px; font-weight:500; color:var(--black); }
+      @keyframes dropdownAppear { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+      .hero { min-height:630px; padding:170px 0 90px; }
+      .hero h1 { font-size:clamp(50px,14vw,78px); }
     }
   </style>
 </head>
 
 <body>
-
   <nav class="navbar" id="navbar">
-    <a href="entreprise.html" class="nav-link">Qui nous sommes</a>
-
-    <a href="index.html" class="nav-logo" aria-label="Accueil Kzetral">
+    <div class="nav-left">
+      <a href="index.html" class="nav-link">Accueil</a>
+      <a href="eh-x.html" class="nav-link">Notre vision</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <button class="mobile-menu" id="mobileMenu" type="button">MENU</button>
+    <a href="index.html" class="nav-brand">
       <img src="images/logo-kzetral.png" alt="Kzetral">
     </a>
-
-    <a href="eh-x.html" class="nav-link nav-right">Notre vision</a>
-
-    <div class="mobile-menu">
-      <button class="menu-button" id="menuButton">MENU</button>
-      <div class="mobile-dropdown" id="mobileDropdown">
-        <a href="entreprise.html">Qui nous sommes</a>
-        <a href="eh-x.html">Notre vision</a>
-      </div>
-    </div>
   </nav>
+
+  <div class="mobile-dropdown" id="mobileDropdown">
+    <a href="index.html">Accueil</a>
+    <a href="eh-x.html">Notre vision</a>
+    <a href="contact.html">Contact</a>
+  </div>
 
   <main>
     <section class="hero">
-      <h1>Qui nous sommes</h1>
-      <p>
-        Kzetral est un projet automobile indépendant qui ambitionne de
-        repenser certains aspects de la mobilité. À travers la recherche,
-        l'innovation et le développement technologique, le projet explore
-        de nouvelles possibilités pour l'automobile de demain.
-      </p>
-    </section>
-
-    <section class="dark-section">
-      <h2>Construire une nouvelle vision de l'automobile.</h2>
-      <p>
-        Kzetral place la recherche et le développement au centre de sa démarche.
-        Le projet étudie différentes solutions technologiques afin d'imaginer
-        des véhicules adaptés aux enjeux de demain. Cette ambition s'appuie
-        notamment sur le programme EH-X, avec une attention particulière portée
-        à la mobilité électrique, aux nouvelles technologies de batteries et
-        à la sécurité.
-      </p>
-    </section>
-
-    <section class="statement">
-      <h2>L'innovation comme point de départ.</h2>
-      <p>
-        Notre démarche repose sur une volonté constante d'explorer, de comprendre
-        et de développer des solutions nouvelles. Chaque étape du projet vise
-        à transformer une idée en une proposition concrète et cohérente.
-      </p>
-    </section>
-
-    <section class="founder">
-      <div class="founder-visual">
-        <span>Kzetral</span>
+      <div class="container hero-content">
+        <h1>Qui nous sommes.</h1>
+        <p>Kzetral est un projet automobile européen qui ambitionne de proposer une nouvelle approche de la mobilité électrique, en associant innovation technologique, réflexion industrielle et vision à long terme.</p>
       </div>
+    </section>
 
-      <div class="founder-content">
-        <h2>À l'origine du projet.</h2>
-        <p>
-          Kzetral est né d'une ambition : imaginer une nouvelle approche
-          de l'automobile, portée par l'innovation et une vision tournée
-          vers l'avenir. Le projet se développe progressivement autour
-          de recherches, d'idées et de concepts technologiques.
-        </p>
-        <div class="signature">
-          DAOUD Mustafa — Fondateur de Kzetral
+    <section class="section dark-section">
+      <div class="container">
+        <h2>Construire une nouvelle vision de l'automobile.</h2>
+        <p>À travers ses projets, Kzetral souhaite explorer les évolutions de l'industrie automobile et contribuer à imaginer les véhicules de demain. Le programme EH-X incarne cette ambition avec une approche centrée sur l'électrique et les technologies de batteries sodium-ion.</p>
+      </div>
+    </section>
+
+    <section class="section grey">
+      <div class="container vision-grid">
+        <div>
+          <h2>L'innovation comme point de départ.</h2>
+          <p>Notre démarche repose sur la recherche de nouvelles possibilités techniques, l'étude de solutions alternatives et la volonté de développer une identité automobile européenne. Chaque étape du projet doit permettre de transformer une idée en une proposition concrète.</p>
         </div>
+        <div class="visual"><span>KZETRAL</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container founder-grid">
+        <div class="founder-card"><span>Kzetral</span></div>
+        <div>
+          <h2>À l'origine du projet.</h2>
+          <p>Kzetral est né d'une ambition : imaginer une nouvelle vision de l'automobile et explorer des solutions technologiques capables de faire évoluer la mobilité électrique. Le projet se construit progressivement autour du programme EH-X.</p>
+          <div class="signature">DAOUD Mustafa — Fondateur de Kzetral</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <div class="container">
+        <h2>Une ambition tournée vers l'avenir.</h2>
+        <p>Découvrez le programme EH-X et les orientations technologiques qui guident le projet Kzetral.</p>
+        <a href="eh-x.html" class="button">Découvrir le EH-X</a>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="footer-links">
-      <a href="entreprise.html">Qui nous sommes</a>
-      <a href="eh-x.html">EH-X</a>
-      <a href="mentions-legales.html">Mentions légales</a>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">Kzetral</div>
+        <div class="footer-links">
+          <a href="index.html">Accueil</a>
+          <a href="entreprise.html">Entreprise</a>
+          <a href="eh-x.html">EH-X</a>
+          <a href="contact.html">Contact</a>
+          <a href="mentions-legales.html">Mentions légales</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Kzetral. Tous droits réservés.</span>
+        <span>Penser à covoiturer — #SeDéplacerMoinsPolluer</span>
+      </div>
     </div>
-    <span>Kzetral © 2026</span>
-    <span>Penser à covoiturer #SeDéplacerMoinsPolluer</span>
   </footer>
 
   <script>
-    const navbar = document.getElementById('navbar');
-    const menuButton = document.getElementById('menuButton');
-    const mobileDropdown = document.getElementById('mobileDropdown');
+    const navbar = document.getElementById("navbar");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const mobileDropdown = document.getElementById("mobileDropdown");
 
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    function updateNavbar() {
+      navbar.classList.toggle("scrolled", window.scrollY > 40);
+    }
+    window.addEventListener("scroll", updateNavbar, { passive: true });
+    updateNavbar();
+
+    mobileMenu.addEventListener("click", () => {
+      const open = mobileDropdown.classList.toggle("open");
+      mobileMenu.textContent = open ? "FERMER" : "MENU";
     });
 
-    menuButton.addEventListener('click', () => {
-      mobileDropdown.classList.toggle('open');
+    mobileDropdown.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileDropdown.classList.remove("open");
+        mobileMenu.textContent = "MENU";
+      });
     });
 
-    document.addEventListener('click', (event) => {
-      if (!event.target.closest('.mobile-menu')) {
-        mobileDropdown.classList.remove('open');
+    document.addEventListener("click", event => {
+      if (!navbar.contains(event.target) && !mobileDropdown.contains(event.target)) {
+        mobileDropdown.classList.remove("open");
+        mobileMenu.textContent = "MENU";
       }
     });
   </script>
-
 </body>
 </html>
-
