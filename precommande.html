@@ -1,24 +1,28 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Manifester son intérêt — KZETRAL EH-X</title>
-<meta name="description" content="Découvrez le programme KZETRAL EH-X et manifestez votre intérêt pour être informé de son évolution.">
+<title>Précommande — KZETRAL EH-X</title>
+<meta name="description" content="Manifestez votre intérêt pour le KZETRAL EH-X.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+<!-- Sélecteur international de téléphone -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/css/intlTelInput.css">
+
 <style>
 :root {
   --white: #ffffff;
-  --grey: #f4f5f6;
+  --grey: #f4f6f8;
   --black: #101722;
-  --text: #505967;
+  --text: #657080;
   --blue: #8ebce9;
-  --line: rgba(16,23,34,.10);
+  --border: rgba(16,23,34,.12);
 }
 
 * {
@@ -33,8 +37,8 @@ html {
 
 body {
   font-family: 'Sora', sans-serif;
-  background: var(--white);
   color: var(--black);
+  background: var(--white);
   overflow-x: hidden;
 }
 
@@ -43,13 +47,9 @@ a {
   text-decoration: none;
 }
 
-button, input, select {
-  font: inherit;
-}
-
-/* =================================
-   NAVIGATION KZETRAL
-================================= */
+/* =========================
+   NAVIGATION
+========================= */
 
 .navbar {
   position: fixed;
@@ -61,7 +61,6 @@ button, input, select {
   width: calc(100% - 100px);
   max-width: 1450px;
   height: 76px;
-
   padding: 0 30px 0 38px;
 
   display: flex;
@@ -69,59 +68,39 @@ button, input, select {
   justify-content: space-between;
 
   background: rgba(255,255,255,.94);
-  border: 1px solid rgba(16,23,34,.10);
+  border: 1px solid var(--border);
   border-radius: 17px;
 
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
 
-  box-shadow:
-    0 8px 30px rgba(16,23,34,.055),
-    inset 0 1px 0 rgba(255,255,255,.9);
-
-  transition: background .4s ease, border-color .4s ease;
-}
-
-.navbar::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: 12%;
-  width: 76%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(142,188,233,.85), transparent);
+  box-shadow: 0 8px 30px rgba(16,23,34,.055);
+  transition: .35s ease;
 }
 
 .nav-left {
   display: flex;
   align-items: center;
   gap: 38px;
-  height: 100%;
 }
 
 .nav-link {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  height: 100%;
-  color: var(--black);
   font-size: 11px;
   font-weight: 500;
-  letter-spacing: .025em;
-  white-space: nowrap;
-  transition: color .35s ease;
+  color: var(--black);
+  transition: .3s;
 }
 
 .nav-link::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 21px;
+  bottom: -8px;
   width: 0;
   height: 2px;
   background: var(--blue);
-  border-radius: 5px;
-  transition: width .35s ease;
+  transition: width .3s ease;
 }
 
 .nav-link:hover::after {
@@ -129,298 +108,244 @@ button, input, select {
 }
 
 .nav-contact {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 40px;
-  padding: 0 19px;
   margin-left: auto;
-  border: 1px solid rgba(16,23,34,.18);
+  padding: 12px 19px;
+  border: 1px solid var(--border);
   border-radius: 6px;
-  color: var(--black);
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: .04em;
-  white-space: nowrap;
-  transition: .3s ease;
+  transition: .3s;
 }
 
 .nav-contact:hover {
   background: var(--black);
-  border-color: var(--black);
   color: white;
 }
 
 .nav-brand {
+  height: 100%;
+  margin-left: 28px;
+  padding-left: 25px;
+  border-left: 1px solid var(--border);
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding-left: 28px;
-  border-left: 1px solid rgba(16,23,34,.09);
 }
 
 .nav-brand img {
-  display: block;
-  width: 112px;
-  height: 112px;
+  width: 105px;
+  height: 105px;
   object-fit: contain;
-  transition: filter .4s ease, transform .4s ease;
-}
-
-.nav-brand:hover img {
-  transform: scale(1.045);
 }
 
 .navbar.scrolled {
   background: rgba(13,19,29,.96);
-  border-color: rgba(255,255,255,.11);
-  box-shadow: 0 12px 35px rgba(0,0,0,.20);
+  border-color: rgba(255,255,255,.12);
 }
 
-.navbar.scrolled .nav-link {
+.navbar.scrolled .nav-link,
+.navbar.scrolled .nav-contact {
   color: white;
 }
 
+.navbar.scrolled .nav-contact {
+  border-color: rgba(255,255,255,.3);
+}
+
+.navbar.scrolled .nav-contact:hover {
+  background: white;
+  color: var(--black);
+}
+
 .navbar.scrolled .nav-brand {
-  border-left-color: rgba(255,255,255,.14);
+  border-color: rgba(255,255,255,.15);
 }
 
 .navbar.scrolled .nav-brand img {
   filter: brightness(0) invert(1);
 }
 
-.navbar.scrolled .nav-contact {
-  border-color: rgba(255,255,255,.35);
-  color: white;
-}
-
-.navbar.scrolled .nav-contact:hover {
-  background: white;
-  border-color: white;
-  color: var(--black);
-}
-
 .mobile-menu {
   display: none;
-  background: none;
   border: none;
-  color: var(--black);
+  background: none;
+  font-family: inherit;
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: .1em;
   cursor: pointer;
-}
-
-.navbar.scrolled .mobile-menu {
-  color: white;
+  color: var(--black);
 }
 
 .mobile-dropdown {
   display: none;
 }
 
-/* =================================
+/* =========================
    INTRODUCTION
-================================= */
+========================= */
 
-.page-intro {
-  position: relative;
+.hero {
   padding: 190px 8% 85px;
   text-align: center;
+
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(142,188,233,.13), transparent 55%),
-    var(--white);
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(142,188,233,.16),
+      transparent 58%
+    ),
+    white;
 }
 
-.intro-label {
+.hero-label {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 28px;
-  color: #667384;
+  margin-bottom: 25px;
+
+  color: #72849a;
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: .16em;
+  letter-spacing: .19em;
   text-transform: uppercase;
 }
 
-.intro-label::before {
+.hero-label::before {
   content: "";
-  width: 24px;
+  width: 22px;
   height: 1px;
   background: var(--blue);
 }
 
-.intro-label::after {
-  content: "";
-  width: 24px;
-  height: 1px;
-  background: var(--blue);
-}
-
-.page-intro h1 {
-  max-width: 900px;
-  margin: 0 auto 25px;
-  font-size: clamp(42px, 7vw, 82px);
+.hero h1 {
+  font-size: clamp(43px, 7vw, 82px);
   font-weight: 400;
   letter-spacing: -.075em;
-  line-height: 1.08;
+  line-height: 1.12;
+  margin-bottom: 25px;
 }
 
-.page-intro h1 span {
-  color: #83acd5;
+.hero h1 span {
+  color: #83add7;
 }
 
-.page-intro p {
+.hero-description {
   max-width: 650px;
   margin: 0 auto;
+
   color: var(--text);
   font-size: 14px;
   font-weight: 300;
   line-height: 2;
 }
 
-/* =================================
-   BANDEAU EH-X
-================================= */
+.hero-reference {
+  display: inline-block;
+  margin-top: 34px;
+  padding: 12px 18px;
 
-.programme-strip {
-  width: min(1120px, 84%);
-  margin: 0 auto 80px;
-  padding: 24px 30px;
+  border: 1px solid rgba(142,188,233,.45);
+  border-radius: 5px;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 25px;
+  color: #526b85;
+  background: rgba(255,255,255,.7);
 
-  background: #f5f8fb;
-  border: 1px solid rgba(142,188,233,.28);
-  border-radius: 10px;
-}
-
-.strip-title {
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 10px;
+  font-weight: 500;
   letter-spacing: .04em;
 }
 
-.strip-description {
-  margin-top: 6px;
-  color: var(--text);
-  font-size: 10px;
-  line-height: 1.7;
+/* =========================
+   FORMULAIRE
+========================= */
+
+.registration-section {
+  padding: 25px 7% 110px;
+  background: white;
 }
 
-.strip-tag {
-  flex-shrink: 0;
-  padding: 9px 13px;
-  border: 1px solid rgba(142,188,233,.55);
-  border-radius: 5px;
-  color: #52799e;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-/* =================================
-   SECTION FORMULAIRE
-================================= */
-
-.interest-section {
-  padding: 0 8% 120px;
-}
-
-.interest-layout {
-  width: min(1120px, 100%);
+.registration-layout {
+  width: 100%;
+  max-width: 1120px;
   margin: 0 auto;
 
   display: grid;
   grid-template-columns: .85fr 1.15fr;
-  gap: 75px;
+  gap: 55px;
   align-items: start;
 }
 
-/* Colonne explicative */
+/* Colonne informations */
 
-.interest-info {
-  padding-top: 12px;
+.information {
+  padding-top: 20px;
 }
 
-.interest-info h2 {
-  max-width: 400px;
+.information h2 {
+  max-width: 390px;
   margin-bottom: 22px;
-  font-size: clamp(30px, 3.5vw, 43px);
+
+  font-size: clamp(29px, 3.5vw, 43px);
   font-weight: 400;
-  letter-spacing: -.06em;
+  letter-spacing: -.065em;
   line-height: 1.2;
 }
 
-.interest-info > p {
-  max-width: 410px;
+.information > p {
+  max-width: 390px;
   color: var(--text);
   font-size: 13px;
   font-weight: 300;
   line-height: 2;
 }
 
-.info-separator {
-  width: 45px;
-  height: 2px;
-  margin: 30px 0;
-  background: var(--blue);
-}
-
-.steps {
+.information-list {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 22px;
+  margin-top: 42px;
 }
 
-.step {
+.information-item {
   display: flex;
+  gap: 15px;
   align-items: flex-start;
-  gap: 16px;
 }
 
-.step-number {
-  width: 32px;
-  height: 32px;
+.information-number {
+  width: 33px;
+  height: 33px;
   flex-shrink: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border: 1px solid rgba(142,188,233,.65);
+  border: 1px solid rgba(142,188,233,.55);
   border-radius: 50%;
 
-  color: #668eb5;
-  font-size: 10px;
-  font-weight: 600;
-}
-
-.step-content strong {
-  display: block;
-  margin: 2px 0 6px;
+  color: #6689ad;
   font-size: 11px;
   font-weight: 600;
 }
 
-.step-content p {
+.information-item h3 {
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.information-item p {
   color: var(--text);
-  font-size: 10px;
-  line-height: 1.8;
+  font-size: 11px;
   font-weight: 300;
+  line-height: 1.8;
 }
 
 /* Carte formulaire */
 
 .form-card {
-  padding: 38px;
-  background: white;
+  padding: 42px;
+  background: #fff;
   border: 1px solid rgba(16,23,34,.09);
   border-radius: 12px;
 
@@ -431,56 +356,67 @@ button, input, select {
 
 .form-heading {
   padding-bottom: 25px;
-  margin-bottom: 28px;
-  border-bottom: 1px solid var(--line);
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(16,23,34,.09);
+}
+
+.form-heading span {
+  display: block;
+  margin-bottom: 10px;
+
+  color: #7b9dbc;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
 }
 
 .form-heading h2 {
-  margin-bottom: 9px;
-  font-size: 21px;
+  font-size: 25px;
   font-weight: 500;
   letter-spacing: -.045em;
 }
 
 .form-heading p {
+  margin-top: 9px;
   color: var(--text);
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.8;
-  font-weight: 300;
 }
 
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 21px 16px;
+  gap: 22px 16px;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
+.field {
+  min-width: 0;
 }
 
-.form-group.full {
+.field.full {
   grid-column: 1 / -1;
 }
 
-.form-group label {
-  color: var(--black);
+.field label {
+  display: block;
+  margin-bottom: 10px;
+
+  color: #303b49;
   font-size: 10px;
   font-weight: 600;
+  letter-spacing: .025em;
 }
 
-.form-group label span {
-  color: #84909d;
-  font-weight: 400;
+.required {
+  color: #779fc7;
+  margin-left: 3px;
 }
 
-.form-group input,
-.form-group select {
+.field input {
   width: 100%;
-  height: 48px;
-  padding: 0 14px;
+  height: 51px;
+  padding: 0 15px;
 
   border: 1px solid rgba(16,23,34,.14);
   border-radius: 6px;
@@ -488,167 +424,241 @@ button, input, select {
 
   background: #fff;
   color: var(--black);
-  font-size: 11px;
 
-  transition: border-color .25s ease, box-shadow .25s ease;
+  font-family: inherit;
+  font-size: 12px;
+
+  transition: border-color .25s, box-shadow .25s;
 }
 
-.form-group input::placeholder {
-  color: #a0a8b2;
+.field input::placeholder {
+  color: #a6afb9;
+  font-weight: 300;
 }
 
-.form-group input:focus,
-.form-group select:focus {
+.field input:focus {
   border-color: #8ebce9;
   box-shadow: 0 0 0 3px rgba(142,188,233,.13);
 }
 
-.form-group select {
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%23505967' stroke-width='1.2'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 14px center;
-  padding-right: 35px;
+/* Téléphone international */
+
+.phone-wrapper {
+  width: 100%;
 }
 
-.form-note {
-  margin-top: 22px;
-  padding: 15px;
-  background: #f5f8fb;
-  border-left: 2px solid var(--blue);
-  border-radius: 3px;
+.iti {
+  width: 100%;
+  display: block;
+}
 
-  color: #5e6b79;
+.iti__tel-input {
+  width: 100% !important;
+  height: 51px !important;
+  padding-left: 105px !important;
+
+  border: 1px solid rgba(16,23,34,.14) !important;
+  border-radius: 6px !important;
+
+  font-family: inherit !important;
+  font-size: 12px !important;
+  color: var(--black) !important;
+
+  outline: none !important;
+  transition: border-color .25s, box-shadow .25s !important;
+}
+
+.iti__tel-input:focus {
+  border-color: #8ebce9 !important;
+  box-shadow: 0 0 0 3px rgba(142,188,233,.13) !important;
+}
+
+.iti__country-container {
+  padding: 4px;
+}
+
+.iti__selected-country {
+  padding: 0 9px;
+  border-radius: 5px;
+  background: #f6f8fa;
+}
+
+.iti__selected-country-primary {
+  gap: 7px;
+}
+
+.iti__selected-dial-code {
+  color: #344255;
+  font-family: 'Sora', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.iti__arrow {
+  border-top-color: #7f8b98;
+}
+
+.iti__dropdown-content {
+  border: 1px solid rgba(16,23,34,.1);
+  border-radius: 9px;
+  box-shadow: 0 15px 45px rgba(16,23,34,.14);
+  overflow: hidden;
+}
+
+.iti__search-input {
+  width: calc(100% - 20px);
+  margin: 10px;
+  padding: 12px;
+
+  border: 1px solid rgba(16,23,34,.12);
+  border-radius: 5px;
+
+  font-family: 'Sora', sans-serif;
+  font-size: 11px;
+  outline: none;
+}
+
+.iti__country-list {
+  font-family: 'Sora', sans-serif;
+  font-size: 11px;
+}
+
+.iti__country {
+  padding: 10px 13px;
+}
+
+.iti__country:hover,
+.iti__country.iti__highlight {
+  background: #f0f6fc;
+}
+
+.iti__country-name {
+  color: #263344;
+}
+
+.iti__dial-code {
+  color: #8190a0;
+}
+
+/* Consentement */
+
+.consent-area {
+  margin-top: 25px;
+}
+
+.consent-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  color: var(--text);
   font-size: 10px;
   line-height: 1.8;
 }
 
-.consent {
-  display: flex;
-  align-items: flex-start;
-  gap: 11px;
-  margin-top: 22px;
-}
-
-.consent input {
+.consent-line input {
   width: 15px;
   height: 15px;
-  flex-shrink: 0;
   margin-top: 2px;
-  accent-color: #648fb8;
+  flex-shrink: 0;
+  accent-color: #7da8d2;
   cursor: pointer;
 }
 
-.consent label {
-  color: var(--text);
-  font-size: 9px;
-  line-height: 1.8;
-  cursor: pointer;
+.consent-line a {
+  color: #5c84ad;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-.submit-button {
+.form-button {
   width: 100%;
-  min-height: 52px;
-  margin-top: 24px;
-  border: 1px solid var(--black);
+  min-height: 54px;
+  margin-top: 25px;
+  padding: 0 20px;
+
+  border: none;
   border-radius: 6px;
 
   background: var(--black);
   color: white;
 
+  font-family: inherit;
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: .025em;
+  letter-spacing: .035em;
 
   cursor: pointer;
   transition: .3s ease;
 }
 
-.submit-button:hover {
-  background: #29384b;
+.form-button:hover {
+  background: #26384d;
   transform: translateY(-2px);
+  box-shadow: 0 9px 24px rgba(16,23,34,.13);
 }
 
-.submit-button:disabled {
-  opacity: .55;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.form-status {
-  display: none;
+.form-note {
   margin-top: 16px;
-  padding: 14px;
-  border-radius: 6px;
-  background: #f5f8fb;
-  color: #52677c;
-  font-size: 10px;
-  line-height: 1.8;
-}
-
-.form-status.visible {
-  display: block;
-}
-
-/* =================================
-   ENGAGEMENT
-================================= */
-
-.commitment {
-  padding: 85px 8%;
-  background: var(--grey);
   text-align: center;
-}
-
-.commitment h2 {
-  max-width: 650px;
-  margin: 0 auto 18px;
-  font-size: clamp(27px, 4vw, 42px);
-  font-weight: 400;
-  letter-spacing: -.06em;
-  line-height: 1.2;
-}
-
-.commitment > p {
-  max-width: 660px;
-  margin: 0 auto;
-  color: var(--text);
-  font-size: 12px;
-  line-height: 2;
-  font-weight: 300;
-}
-
-.commitment-details {
-  display: flex;
-  justify-content: center;
-  gap: 45px;
-  flex-wrap: wrap;
-  margin-top: 38px;
-}
-
-.commitment-item {
-  max-width: 190px;
-}
-
-.commitment-item strong {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 11px;
-  font-weight: 600;
-}
-
-.commitment-item span {
-  color: var(--text);
+  color: #8b96a3;
   font-size: 9px;
   line-height: 1.8;
 }
 
-/* =================================
+.form-message {
+  display: none;
+  margin-top: 18px;
+  padding: 14px;
+
+  border: 1px solid rgba(190,139,70,.3);
+  border-radius: 6px;
+
+  background: #fffaf2;
+  color: #806039;
+
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+/* =========================
+   INFORMATIONS IMPORTANTES
+========================= */
+
+.notice-section {
+  padding: 75px 8%;
+  background: var(--grey);
+}
+
+.notice-inner {
+  max-width: 950px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.notice-inner h2 {
+  margin-bottom: 17px;
+  font-size: 27px;
+  font-weight: 400;
+  letter-spacing: -.045em;
+}
+
+.notice-inner p {
+  max-width: 750px;
+  margin: 0 auto;
+
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 2;
+}
+
+/* =========================
    FOOTER
-================================= */
+========================= */
 
 footer {
-  padding: 55px 9%;
+  padding: 45px 9%;
   background: var(--black);
   color: white;
 }
@@ -657,21 +667,27 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 30px;
+  gap: 25px;
   flex-wrap: wrap;
-  padding-bottom: 35px;
+  padding-bottom: 30px;
+}
+
+.footer-brand {
+  font-size: 23px;
+  font-weight: 600;
+  letter-spacing: -.06em;
 }
 
 .footer-links {
   display: flex;
-  gap: 28px;
+  gap: 25px;
   flex-wrap: wrap;
 }
 
 .footer-links a {
-  font-size: 11px;
   color: rgba(255,255,255,.7);
-  transition: color .3s ease;
+  font-size: 10px;
+  transition: color .3s;
 }
 
 .footer-links a:hover {
@@ -679,43 +695,44 @@ footer {
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255,255,255,.12);
-  padding-top: 25px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   gap: 15px;
   flex-wrap: wrap;
+
+  padding-top: 23px;
+  border-top: 1px solid rgba(255,255,255,.12);
 }
 
 .footer-bottom p {
-  font-size: 10px;
   color: rgba(255,255,255,.45);
+  font-size: 9px;
 }
 
-/* =================================
+/* =========================
    RESPONSIVE
-================================= */
+========================= */
 
 @media (max-width: 900px) {
-  .interest-layout {
+  .registration-layout {
     grid-template-columns: 1fr;
-    gap: 50px;
-  }
-
-  .interest-info {
+    gap: 35px;
     max-width: 650px;
   }
 
-  .interest-info h2,
-  .interest-info > p {
-    max-width: 650px;
+  .information {
+    padding-top: 0;
   }
 
-  .steps {
+  .information h2,
+  .information > p {
+    max-width: 600px;
+  }
+
+  .information-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 22px;
+    gap: 20px;
   }
 }
 
@@ -724,8 +741,7 @@ footer {
     top: 12px;
     width: calc(100% - 28px);
     height: 68px;
-    padding: 0 18px;
-    border-radius: 15px;
+    padding: 0 15px;
   }
 
   .nav-left {
@@ -733,21 +749,20 @@ footer {
   }
 
   .nav-contact {
-    min-height: 36px;
-    padding: 0 12px;
     margin-left: auto;
+    padding: 10px 12px;
     font-size: 9px;
   }
 
   .nav-brand {
-    margin-left: 14px;
+    margin-left: 13px;
     padding-left: 0;
     border-left: none;
   }
 
   .nav-brand img {
-    width: 82px;
-    height: 82px;
+    width: 80px;
+    height: 80px;
   }
 
   .mobile-menu {
@@ -764,9 +779,9 @@ footer {
 
     padding: 24px;
     background: white;
-    border: 1px solid rgba(16,23,34,.08);
-    border-radius: 14px;
-    box-shadow: 0 15px 35px rgba(0,0,0,.10);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.1);
 
     display: none;
     flex-direction: column;
@@ -780,99 +795,74 @@ footer {
   .mobile-dropdown a {
     font-size: 12px;
     font-weight: 500;
-    color: var(--black);
   }
 
-  .page-intro {
-    padding: 150px 7% 65px;
+  .hero {
+    padding: 155px 7% 65px;
   }
 
-  .page-intro h1 {
-    font-size: clamp(43px, 12vw, 65px);
+  .hero h1 {
+    font-size: clamp(42px, 12vw, 65px);
   }
 
-  .page-intro p {
+  .hero-description {
     font-size: 12px;
   }
 
-  .programme-strip {
-    width: 86%;
-    margin-bottom: 65px;
-    padding: 20px;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .interest-section {
-    padding: 0 7% 85px;
-  }
-
-  .interest-info h2 {
-    font-size: 34px;
-  }
-
-  .steps {
-    grid-template-columns: 1fr;
+  .registration-section {
+    padding: 20px 5% 75px;
   }
 
   .form-card {
-    padding: 25px 20px;
+    padding: 27px 21px;
   }
 
-  .form-grid {
+  .information-list {
     grid-template-columns: 1fr;
+    margin-top: 28px;
   }
 
-  .form-group.full {
-    grid-column: auto;
+  .notice-section {
+    padding: 60px 7%;
   }
 
-  .commitment {
-    padding: 70px 7%;
-  }
-
-  .commitment-details {
-    gap: 28px;
+  .notice-inner h2 {
+    font-size: 24px;
   }
 
   footer {
-    padding: 45px 7%;
+    padding: 40px 7%;
   }
 
   .footer-top {
-    flex-direction: column;
     align-items: flex-start;
+    flex-direction: column;
   }
 
   .footer-links {
-    gap: 18px;
+    gap: 16px;
   }
 
   .footer-bottom {
     flex-direction: column;
-    align-items: flex-start;
   }
 }
 
-@media (max-width: 380px) {
-  .navbar {
-    padding: 0 14px;
+@media (max-width: 430px) {
+  .form-grid {
+    grid-template-columns: 1fr;
   }
 
-  .nav-brand img {
-    width: 72px;
-    height: 72px;
+  .field.full {
+    grid-column: auto;
   }
 
-  .nav-contact {
-    min-height: 34px;
-    padding: 0 9px;
-    font-size: 8px;
+  .form-card {
+    padding: 25px 17px;
   }
 
-  .nav-brand {
-    margin-left: 9px;
+  .iti__tel-input {
+    font-size: 11px !important;
   }
 }
 </style>
@@ -896,7 +886,7 @@ footer {
   </button>
 
   <a href="index.html" class="nav-brand">
-    <img src="images/logo-kzetral.png" alt="Kzetral">
+    <img src="images/logo-kzetral.png" alt="KZETRAL">
   </a>
 
 </nav>
@@ -910,95 +900,77 @@ footer {
 
   <!-- INTRODUCTION -->
 
-  <section class="page-intro">
+  <section class="hero">
 
-    <div class="intro-label">Programme EH-X · KZETRAL</div>
-
-    <h1>
-      Et si vous faisiez partie<br>
-      de la <span>mobilité de demain.</span>
-    </h1>
-
-    <p>
-      Le programme EH-X marque une nouvelle étape dans notre
-      réflexion autour de la mobilité électrique. Manifestez
-      votre intérêt et soyez informé des prochaines avancées
-      du projet KZETRAL.
-    </p>
-
-  </section>
-
-  <!-- BANDEAU PROGRAMME -->
-
-  <section class="programme-strip">
-
-    <div>
-      <div class="strip-title">KZETRAL EH-X</div>
-      <p class="strip-description">
-        Programme de développement d'une berline 100 % électrique
-        explorant la technologie de batterie sodium-ion.
-      </p>
+    <div class="hero-label">
+      KZETRAL · EH-X
     </div>
 
-    <div class="strip-tag">Manifestation d'intérêt</div>
+    <h1>
+      Le prochain chapitre<br>
+      <span>commence ici.</span>
+    </h1>
+
+    <p class="hero-description">
+      Découvrez le programme EH-X et manifestez votre intérêt
+      pour notre vision de la mobilité électrique.
+      Inscrivez vos coordonnées afin de recevoir les prochaines
+      informations relatives au développement du véhicule.
+    </p>
+
+    <div class="hero-reference">
+      EH-X — Programme automobile KZETRAL
+    </div>
 
   </section>
 
   <!-- FORMULAIRE -->
 
-  <section class="interest-section">
+  <section class="registration-section" id="formulaire">
 
-    <div class="interest-layout">
+    <div class="registration-layout">
 
-      <!-- INFORMATIONS À GAUCHE -->
-
-      <div class="interest-info">
+      <div class="information">
 
         <h2>
-          Votre intérêt compte dans le développement du EH-X.
+          Faites partie des premiers informés.
         </h2>
 
         <p>
-          En laissant vos coordonnées, vous permettez à KZETRAL
-          de mieux comprendre l'intérêt suscité par son premier
-          programme automobile et d'identifier les personnes
-          souhaitant suivre son évolution.
+          En renseignant vos coordonnées, vous permettez à
+          KZETRAL de mieux connaître les personnes intéressées
+          par le programme EH-X et de vous tenir informé de
+          ses prochaines évolutions.
         </p>
 
-        <div class="info-separator"></div>
+        <div class="information-list">
 
-        <div class="steps">
-
-          <div class="step">
-            <div class="step-number">01</div>
-            <div class="step-content">
-              <strong>Vous manifestez votre intérêt</strong>
+          <div class="information-item">
+            <div class="information-number">01</div>
+            <div>
+              <h3>Manifestez votre intérêt</h3>
               <p>
-                Vous renseignez quelques informations afin
-                d'indiquer que le programme EH-X vous intéresse.
+                Renseignez vos informations dans le formulaire.
               </p>
             </div>
           </div>
 
-          <div class="step">
-            <div class="step-number">02</div>
-            <div class="step-content">
-              <strong>KZETRAL étudie les demandes</strong>
+          <div class="information-item">
+            <div class="information-number">02</div>
+            <div>
+              <h3>Restez informé</h3>
               <p>
-                Les manifestations d'intérêt permettront
-                d'observer l'intérêt potentiel pour le projet.
+                Recevez des informations sur les avancées du programme.
               </p>
             </div>
           </div>
 
-          <div class="step">
-            <div class="step-number">03</div>
-            <div class="step-content">
-              <strong>Vous suivez les avancées</strong>
+          <div class="information-item">
+            <div class="information-number">03</div>
+            <div>
+              <h3>Suivez le développement</h3>
               <p>
-                Vous pourrez être informé des prochaines étapes
-                du programme lorsque les modalités de contact
-                seront mises en place.
+                Découvrez les prochaines étapes du projet EH-X.
               </p>
             </div>
           </div>
@@ -1007,15 +979,13 @@ footer {
 
       </div>
 
-      <!-- FORMULAIRE À DROITE -->
-
       <div class="form-card">
 
         <div class="form-heading">
-          <h2>Manifester mon intérêt</h2>
+          <span>Manifestation d'intérêt</span>
+          <h2>Vos coordonnées</h2>
           <p>
-            Complétez les informations ci-dessous.
-            Les champs marqués d'un astérisque sont obligatoires.
+            Tous les champs marqués d'un astérisque sont obligatoires.
           </p>
         </div>
 
@@ -1023,8 +993,10 @@ footer {
 
           <div class="form-grid">
 
-            <div class="form-group">
-              <label for="firstName">Prénom *</label>
+            <div class="field">
+              <label for="firstName">
+                PRÉNOM<span class="required">*</span>
+              </label>
               <input
                 type="text"
                 id="firstName"
@@ -1035,8 +1007,10 @@ footer {
               >
             </div>
 
-            <div class="form-group">
-              <label for="lastName">Nom *</label>
+            <div class="field">
+              <label for="lastName">
+                NOM<span class="required">*</span>
+              </label>
               <input
                 type="text"
                 id="lastName"
@@ -1047,8 +1021,10 @@ footer {
               >
             </div>
 
-            <div class="form-group full">
-              <label for="email">Adresse e-mail *</label>
+            <div class="field full">
+              <label for="email">
+                ADRESSE E-MAIL<span class="required">*</span>
+              </label>
               <input
                 type="email"
                 id="email"
@@ -1059,65 +1035,62 @@ footer {
               >
             </div>
 
-            <div class="form-group">
-              <label for="country">Pays de résidence *</label>
-              <select id="country" name="country" required>
-                <option value="" disabled selected>Choisir un pays</option>
-                <option value="France">France</option>
-                <option value="Belgique">Belgique</option>
-                <option value="Suisse">Suisse</option>
-                <option value="Luxembourg">Luxembourg</option>
-                <option value="Allemagne">Allemagne</option>
-                <option value="Espagne">Espagne</option>
-                <option value="Italie">Italie</option>
-                <option value="Pays-Bas">Pays-Bas</option>
-                <option value="Royaume-Uni">Royaume-Uni</option>
-                <option value="Autre">Autre pays</option>
-              </select>
-            </div>
+            <div class="field full">
+              <label for="phone">
+                NUMÉRO DE TÉLÉPHONE<span class="required">*</span>
+              </label>
 
-            <div class="form-group">
-              <label for="profile">Vous êtes *</label>
-              <select id="profile" name="profile" required>
-                <option value="" disabled selected>Choisir un profil</option>
-                <option value="Particulier">Un particulier</option>
-                <option value="Entreprise">Une entreprise</option>
-                <option value="Professionnel automobile">Un professionnel automobile</option>
-                <option value="Autre">Autre</option>
-              </select>
+              <div class="phone-wrapper">
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  autocomplete="tel"
+                  placeholder="Votre numéro de téléphone"
+                  required
+                >
+              </div>
             </div>
 
           </div>
 
-          <div class="form-note">
-            <strong>À savoir :</strong>
-            cette démarche constitue uniquement une manifestation
-            d'intérêt. Elle ne représente pas une commande ferme,
-            ne réserve pas de véhicule et n'entraîne aucun paiement.
-            Les caractéristiques et les modalités commerciales
-            du EH-X ne sont pas encore définitives.
-          </div>
+          <div class="consent-area">
 
-          <div class="consent">
-            <input
-              type="checkbox"
-              id="consent"
-              name="consent"
-              required
-            >
+            <label class="consent-line">
+              <input
+                type="checkbox"
+                id="consent"
+                name="consent"
+                required
+              >
 
-            <label for="consent">
-              J'accepte que les informations renseignées soient
-              utilisées par KZETRAL afin de traiter ma manifestation
-              d'intérêt concernant le programme EH-X. *
+              <span>
+                J'accepte que KZETRAL utilise les informations
+                renseignées afin de traiter ma manifestation
+                d'intérêt et de me contacter au sujet du programme
+                EH-X. Je comprends que je peux retirer mon
+                consentement à tout moment.
+              </span>
             </label>
+
           </div>
 
-          <button class="submit-button" type="submit">
-            Envoyer ma manifestation d'intérêt
+          <button class="form-button" type="submit">
+            Valider ma manifestation d'intérêt
           </button>
 
-          <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+          <p class="form-note">
+            Aucun paiement n'est demandé à ce stade.
+            Cette démarche ne constitue pas une commande ferme
+            et ne garantit pas une livraison.
+          </p>
+
+          <div class="form-message" id="formMessage" role="status">
+            Le formulaire est actuellement en préparation.
+            Aucune demande n'a été envoyée. La réception des
+            inscriptions sera activée lorsque KZETRAL aura
+            connecté son système de collecte.
+          </div>
 
         </form>
 
@@ -1127,37 +1100,22 @@ footer {
 
   </section>
 
-  <!-- ENGAGEMENT -->
+  <!-- INFORMATION IMPORTANTE -->
 
-  <section class="commitment">
+  <section class="notice-section">
 
-    <h2>
-      Une démarche simple.<br>
-      Sans engagement.
-    </h2>
+    <div class="notice-inner">
 
-    <p>
-      Le programme EH-X est actuellement en phase de développement.
-      Cette démarche permet à KZETRAL d'évaluer l'intérêt potentiel
-      pour son projet avant toute éventuelle ouverture commerciale.
-    </p>
+      <h2>Une démarche sans engagement.</h2>
 
-    <div class="commitment-details">
-
-      <div class="commitment-item">
-        <strong>Aucun paiement</strong>
-        <span>Aucun règlement n'est demandé dans le cadre de cette démarche.</span>
-      </div>
-
-      <div class="commitment-item">
-        <strong>Aucune commande ferme</strong>
-        <span>Cette manifestation d'intérêt ne constitue pas un contrat de vente.</span>
-      </div>
-
-      <div class="commitment-item">
-        <strong>Un projet en développement</strong>
-        <span>Les caractéristiques du véhicule pourront évoluer.</span>
-      </div>
+      <p>
+        Le programme EH-X est actuellement en phase de développement.
+        Cette inscription permet uniquement de manifester votre intérêt
+        et de recevoir des informations sur son évolution. Elle ne
+        constitue ni une commande ferme, ni une réservation contractuelle,
+        ni une promesse de commercialisation ou de livraison.
+        Aucun paiement ne vous sera demandé dans le cadre de cette démarche.
+      </p>
 
     </div>
 
@@ -1171,6 +1129,8 @@ footer {
 
   <div class="footer-top">
 
+    <div class="footer-brand">KZETRAL</div>
+
     <div class="footer-links">
       <a href="entreprise.html">Entreprise</a>
       <a href="eh-x.html">EH-X</a>
@@ -1181,16 +1141,22 @@ footer {
   </div>
 
   <div class="footer-bottom">
-    <p>© 2026 Kzetral. Tous droits réservés.</p>
+    <p>© 2026 KZETRAL. Tous droits réservés.</p>
     <p>Imaginer la mobilité de demain.</p>
   </div>
 
 </footer>
 
+<!-- SCRIPTS -->
+
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/intlTelInput.min.js"></script>
+
 <script>
-/* NAVIGATION AU DÉFILEMENT */
+/* NAVIGATION */
 
 const navbar = document.getElementById("navbar");
+const mobileMenu = document.getElementById("mobileMenu");
+const mobileDropdown = document.getElementById("mobileDropdown");
 
 function updateNavbar() {
   navbar.classList.toggle("scrolled", window.scrollY > 40);
@@ -1199,14 +1165,9 @@ function updateNavbar() {
 window.addEventListener("scroll", updateNavbar, { passive: true });
 updateNavbar();
 
-/* MENU MOBILE */
-
-const mobileMenu = document.getElementById("mobileMenu");
-const mobileDropdown = document.getElementById("mobileDropdown");
-
 mobileMenu.addEventListener("click", () => {
-  const isOpen = mobileDropdown.classList.toggle("open");
-  mobileMenu.textContent = isOpen ? "FERMER" : "MENU";
+  const open = mobileDropdown.classList.toggle("open");
+  mobileMenu.textContent = open ? "FERMER" : "MENU";
 });
 
 mobileDropdown.querySelectorAll("a").forEach(link => {
@@ -1226,23 +1187,58 @@ document.addEventListener("click", event => {
   }
 });
 
-/* FORMULAIRE : MODE APERÇU */
+/* SÉLECTEUR INTERNATIONAL DE TÉLÉPHONE */
 
-const interestForm = document.getElementById("interestForm");
-const formStatus = document.getElementById("formStatus");
+const phoneInput = document.querySelector("#phone");
 
-interestForm.addEventListener("submit", event => {
+const phoneControl = window.intlTelInput(phoneInput, {
+  initialCountry: "fr",
+  separateDialCode: true,
+  nationalMode: true,
+  autoPlaceholder: "aggressive",
+  countrySearch: true,
+  showFlags: true,
+  useFullscreenPopup: true,
+  preferredCountries: ["fr", "be", "ch", "lu", "de", "gb", "us"],
+  loadUtils: () =>
+    import("https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/utils.js")
+});
+
+/* FORMULAIRE - CONNEXION À ACTIVER */
+
+const form = document.getElementById("interestForm");
+const formMessage = document.getElementById("formMessage");
+
+form.addEventListener("submit", event => {
   event.preventDefault();
 
-  formStatus.textContent =
-    "Le formulaire est actuellement en phase de préparation. " +
-    "Aucune information n'a été envoyée ni enregistrée. " +
-    "La collecte sera activée lorsque le système de réception " +
-    "et les informations relatives aux données personnelles seront configurés.";
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
 
-  formStatus.classList.add("visible");
+  if (!phoneControl.isValidNumber()) {
+    phoneInput.setCustomValidity(
+      "Veuillez saisir un numéro de téléphone valide pour le pays sélectionné."
+    );
+    phoneInput.reportValidity();
+    phoneInput.setCustomValidity("");
+    return;
+  }
+
+  /*
+    Le formulaire n'est pas encore relié à un service de collecte.
+    La connexion sera ajoutée ultérieurement.
+  */
+
+  formMessage.style.display = "block";
+  formMessage.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
 });
 </script>
 
 </body>
 </html>
+
