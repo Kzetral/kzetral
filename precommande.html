@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,7 +11,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Sélecteur international de téléphone -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/css/intlTelInput.css">
 
 <style>
@@ -47,9 +45,7 @@ a {
   text-decoration: none;
 }
 
-/* =========================
-   NAVIGATION
-========================= */
+/* NAVIGATION */
 
 .navbar {
   position: fixed;
@@ -57,23 +53,18 @@ a {
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-
   width: calc(100% - 100px);
   max-width: 1450px;
   height: 76px;
   padding: 0 30px 0 38px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   background: rgba(255,255,255,.94);
   border: 1px solid var(--border);
   border-radius: 17px;
-
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
-
   box-shadow: 0 8px 30px rgba(16,23,34,.055);
   transition: .35s ease;
 }
@@ -179,14 +170,11 @@ a {
   display: none;
 }
 
-/* =========================
-   INTRODUCTION
-========================= */
+/* INTRODUCTION */
 
 .hero {
   padding: 190px 8% 85px;
   text-align: center;
-
   background:
     radial-gradient(
       ellipse at 50% 0%,
@@ -201,7 +189,6 @@ a {
   align-items: center;
   gap: 10px;
   margin-bottom: 25px;
-
   color: #72849a;
   font-size: 10px;
   font-weight: 600;
@@ -231,7 +218,6 @@ a {
 .hero-description {
   max-width: 650px;
   margin: 0 auto;
-
   color: var(--text);
   font-size: 14px;
   font-weight: 300;
@@ -242,21 +228,16 @@ a {
   display: inline-block;
   margin-top: 34px;
   padding: 12px 18px;
-
   border: 1px solid rgba(142,188,233,.45);
   border-radius: 5px;
-
   color: #526b85;
   background: rgba(255,255,255,.7);
-
   font-size: 10px;
   font-weight: 500;
   letter-spacing: .04em;
 }
 
-/* =========================
-   FORMULAIRE
-========================= */
+/* FORMULAIRE */
 
 .registration-section {
   padding: 25px 7% 110px;
@@ -267,14 +248,13 @@ a {
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
-
   display: grid;
   grid-template-columns: .85fr 1.15fr;
   gap: 55px;
   align-items: start;
 }
 
-/* Colonne informations */
+/* INFORMATIONS */
 
 .information {
   padding-top: 20px;
@@ -283,7 +263,6 @@ a {
 .information h2 {
   max-width: 390px;
   margin-bottom: 22px;
-
   font-size: clamp(29px, 3.5vw, 43px);
   font-weight: 400;
   letter-spacing: -.065em;
@@ -315,14 +294,11 @@ a {
   width: 33px;
   height: 33px;
   flex-shrink: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border: 1px solid rgba(142,188,233,.55);
   border-radius: 50%;
-
   color: #6689ad;
   font-size: 11px;
   font-weight: 600;
@@ -341,14 +317,13 @@ a {
   line-height: 1.8;
 }
 
-/* Carte formulaire */
+/* CARTE FORMULAIRE */
 
 .form-card {
   padding: 42px;
   background: #fff;
   border: 1px solid rgba(16,23,34,.09);
   border-radius: 12px;
-
   box-shadow:
     0 18px 55px rgba(16,23,34,.055),
     0 2px 8px rgba(16,23,34,.025);
@@ -363,7 +338,6 @@ a {
 .form-heading span {
   display: block;
   margin-bottom: 10px;
-
   color: #7b9dbc;
   font-size: 9px;
   font-weight: 600;
@@ -401,7 +375,6 @@ a {
 .field label {
   display: block;
   margin-bottom: 10px;
-
   color: #303b49;
   font-size: 10px;
   font-weight: 600;
@@ -417,17 +390,13 @@ a {
   width: 100%;
   height: 51px;
   padding: 0 15px;
-
   border: 1px solid rgba(16,23,34,.14);
   border-radius: 6px;
   outline: none;
-
   background: #fff;
   color: var(--black);
-
   font-family: inherit;
   font-size: 12px;
-
   transition: border-color .25s, box-shadow .25s;
 }
 
@@ -441,7 +410,7 @@ a {
   box-shadow: 0 0 0 3px rgba(142,188,233,.13);
 }
 
-/* Téléphone international */
+/* TÉLÉPHONE INTERNATIONAL */
 
 .phone-wrapper {
   width: 100%;
@@ -456,14 +425,11 @@ a {
   width: 100% !important;
   height: 51px !important;
   padding-left: 105px !important;
-
   border: 1px solid rgba(16,23,34,.14) !important;
   border-radius: 6px !important;
-
   font-family: inherit !important;
   font-size: 12px !important;
   color: var(--black) !important;
-
   outline: none !important;
   transition: border-color .25s, box-shadow .25s !important;
 }
@@ -509,10 +475,8 @@ a {
   width: calc(100% - 20px);
   margin: 10px;
   padding: 12px;
-
   border: 1px solid rgba(16,23,34,.12);
   border-radius: 5px;
-
   font-family: 'Sora', sans-serif;
   font-size: 11px;
   outline: none;
@@ -540,7 +504,7 @@ a {
   color: #8190a0;
 }
 
-/* Consentement */
+/* CONSENTEMENT */
 
 .consent-area {
   margin-top: 25px;
@@ -550,7 +514,6 @@ a {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-
   color: var(--text);
   font-size: 10px;
   line-height: 1.8;
@@ -571,23 +534,21 @@ a {
   text-underline-offset: 3px;
 }
 
+/* BOUTON */
+
 .form-button {
   width: 100%;
   min-height: 54px;
   margin-top: 25px;
   padding: 0 20px;
-
   border: none;
   border-radius: 6px;
-
   background: var(--black);
   color: white;
-
   font-family: inherit;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: .035em;
-
   cursor: pointer;
   transition: .3s ease;
 }
@@ -598,6 +559,13 @@ a {
   box-shadow: 0 9px 24px rgba(16,23,34,.13);
 }
 
+.form-button:disabled {
+  opacity: .65;
+  cursor: wait;
+  transform: none;
+  box-shadow: none;
+}
+
 .form-note {
   margin-top: 16px;
   text-align: center;
@@ -606,24 +574,32 @@ a {
   line-height: 1.8;
 }
 
+/* MESSAGES */
+
 .form-message {
   display: none;
   margin-top: 18px;
   padding: 14px;
-
-  border: 1px solid rgba(190,139,70,.3);
   border-radius: 6px;
-
-  background: #fffaf2;
-  color: #806039;
-
   font-size: 10px;
   line-height: 1.8;
 }
 
-/* =========================
-   INFORMATIONS IMPORTANTES
-========================= */
+.form-message.success {
+  display: block;
+  border: 1px solid rgba(65,145,105,.25);
+  background: #f1faf5;
+  color: #286b49;
+}
+
+.form-message.error {
+  display: block;
+  border: 1px solid rgba(190,100,90,.25);
+  background: #fff5f3;
+  color: #93483e;
+}
+
+/* INFORMATION IMPORTANTE */
 
 .notice-section {
   padding: 75px 8%;
@@ -646,16 +622,13 @@ a {
 .notice-inner p {
   max-width: 750px;
   margin: 0 auto;
-
   color: var(--text);
   font-size: 12px;
   font-weight: 300;
   line-height: 2;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer {
   padding: 45px 9%;
@@ -699,7 +672,6 @@ footer {
   justify-content: space-between;
   gap: 15px;
   flex-wrap: wrap;
-
   padding-top: 23px;
   border-top: 1px solid rgba(255,255,255,.12);
 }
@@ -709,9 +681,7 @@ footer {
   font-size: 9px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* RESPONSIVE */
 
 @media (max-width: 900px) {
   .registration-layout {
@@ -776,13 +746,11 @@ footer {
     top: 90px;
     left: 14px;
     right: 14px;
-
     padding: 24px;
     background: white;
     border: 1px solid var(--border);
     border-radius: 13px;
     box-shadow: 0 15px 35px rgba(0,0,0,.1);
-
     display: none;
     flex-direction: column;
     gap: 22px;
@@ -1003,6 +971,7 @@ footer {
                 name="firstName"
                 placeholder="Votre prénom"
                 autocomplete="given-name"
+                maxlength="100"
                 required
               >
             </div>
@@ -1017,6 +986,7 @@ footer {
                 name="lastName"
                 placeholder="Votre nom"
                 autocomplete="family-name"
+                maxlength="100"
                 required
               >
             </div>
@@ -1031,6 +1001,7 @@ footer {
                 name="email"
                 placeholder="exemple@email.com"
                 autocomplete="email"
+                maxlength="254"
                 required
               >
             </div>
@@ -1075,7 +1046,7 @@ footer {
 
           </div>
 
-          <button class="form-button" type="submit">
+          <button class="form-button" id="submitButton" type="submit">
             Valider ma manifestation d'intérêt
           </button>
 
@@ -1085,12 +1056,7 @@ footer {
             et ne garantit pas une livraison.
           </p>
 
-          <div class="form-message" id="formMessage" role="status">
-            Le formulaire est actuellement en préparation.
-            Aucune demande n'a été envoyée. La réception des
-            inscriptions sera activée lorsque KZETRAL aura
-            connecté son système de collecte.
-          </div>
+          <div class="form-message" id="formMessage" role="status" aria-live="polite"></div>
 
         </form>
 
@@ -1152,6 +1118,16 @@ footer {
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/intlTelInput.min.js"></script>
 
 <script>
+/* CONFIGURATION SUPABASE */
+
+const SUPABASE_URL = "https://kedjogffzgwbipgbmdst.supabase.co";
+
+const SUPABASE_PUBLIC_KEY = "REMPLACE_PAR_TA_CLE_PUBLIQUE_SUPABASE";
+
+const SUPABASE_FUNCTION_URL =
+  SUPABASE_URL + "/functions/v1/ehx-interest";
+
+
 /* NAVIGATION */
 
 const navbar = document.getElementById("navbar");
@@ -1187,6 +1163,7 @@ document.addEventListener("click", event => {
   }
 });
 
+
 /* SÉLECTEUR INTERNATIONAL DE TÉLÉPHONE */
 
 const phoneInput = document.querySelector("#phone");
@@ -1204,13 +1181,36 @@ const phoneControl = window.intlTelInput(phoneInput, {
     import("https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/utils.js")
 });
 
-/* FORMULAIRE - CONNEXION À ACTIVER */
+
+/* AFFICHAGE DES MESSAGES */
 
 const form = document.getElementById("interestForm");
 const formMessage = document.getElementById("formMessage");
+const submitButton = document.getElementById("submitButton");
 
-form.addEventListener("submit", event => {
+function showMessage(message, type) {
+  formMessage.textContent = message;
+  formMessage.className = "form-message " + type;
+  formMessage.style.display = "block";
+
+  formMessage.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
+}
+
+function hideMessage() {
+  formMessage.textContent = "";
+  formMessage.className = "form-message";
+  formMessage.style.display = "none";
+}
+
+
+/* ENVOI DU FORMULAIRE À SUPABASE */
+
+form.addEventListener("submit", async event => {
   event.preventDefault();
+  hideMessage();
 
   if (!form.checkValidity()) {
     form.reportValidity();
@@ -1226,19 +1226,82 @@ form.addEventListener("submit", event => {
     return;
   }
 
-  /*
-    Le formulaire n'est pas encore relié à un service de collecte.
-    La connexion sera ajoutée ultérieurement.
-  */
+  if (
+    SUPABASE_PUBLIC_KEY ===
+    "REMPLACE_PAR_TA_CLE_PUBLIQUE_SUPABASE"
+  ) {
+    showMessage(
+      "La configuration du formulaire n'est pas terminée. La clé publique Supabase doit être renseignée.",
+      "error"
+    );
+    return;
+  }
 
-  formMessage.style.display = "block";
-  formMessage.scrollIntoView({
-    behavior: "smooth",
-    block: "nearest"
-  });
+  submitButton.disabled = true;
+  submitButton.textContent = "Enregistrement en cours...";
+
+  try {
+    await phoneControl.promise;
+
+    const selectedCountry = phoneControl.getSelectedCountryData();
+
+    const payload = {
+      first_name: document.getElementById("firstName").value.trim(),
+      last_name: document.getElementById("lastName").value.trim(),
+      email: document.getElementById("email").value.trim().toLowerCase(),
+      phone_e164: phoneControl.getNumber(),
+      country_iso2: selectedCountry.iso2.toUpperCase(),
+      country_name: selectedCountry.name,
+      privacy_notice_acknowledged:
+        document.getElementById("consent").checked
+    };
+
+    const response = await fetch(SUPABASE_FUNCTION_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": SUPABASE_PUBLIC_KEY
+      },
+      body: JSON.stringify(payload)
+    });
+
+    let result = {};
+
+    try {
+      result = await response.json();
+    } catch {
+      throw new Error("Le serveur a renvoyé une réponse inattendue.");
+    }
+
+    if (!response.ok || result.success !== true) {
+      throw new Error(
+        result.error || "Impossible d'enregistrer votre demande."
+      );
+    }
+
+    showMessage(
+      "Votre manifestation d'intérêt a bien été enregistrée. Merci pour votre intérêt envers le programme EH-X. KZETRAL pourra vous contacter au sujet de son développement.",
+      "success"
+    );
+
+    form.reset();
+    phoneControl.setCountry("fr");
+
+  } catch (error) {
+    console.error("Erreur du formulaire :", error);
+
+    showMessage(
+      error.message ||
+      "Une erreur est survenue. Veuillez réessayer ultérieurement.",
+      "error"
+    );
+
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = "Valider ma manifestation d'intérêt";
+  }
 });
 </script>
 
 </body>
 </html>
-
