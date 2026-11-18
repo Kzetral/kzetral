@@ -1,0 +1,917 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>Informations légales | KZETRAL</title>
+  <meta name="description" content="Retrouvez les informations légales, la politique de confidentialité et les conditions d'utilisation du site KZETRAL.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #111318;
+      --grey: #666b75;
+      --light-grey: #f5f6f8;
+      --border: #e8e9ed;
+      --blue: #6688bd;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 110px;
+    }
+
+    body {
+      font-family: 'Sora', sans-serif;
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      height: 82px;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1450px;
+      height: 100%;
+      margin: auto;
+      padding: 0 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 700;
+      letter-spacing: 5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #454952;
+    }
+
+    .nav-links a {
+      transition: color .25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--blue);
+    }
+
+    .nav-contact {
+      border: 1px solid var(--black);
+      padding: 11px 19px;
+      border-radius: 3px;
+      color: var(--black);
+      transition: .25s ease;
+    }
+
+    .nav-contact:hover {
+      background: var(--black);
+      color: white;
+    }
+
+    .hero {
+      padding: 105px 6% 85px;
+      background: #f7f8fa;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .hero-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 70px);
+      line-height: 1.13;
+      letter-spacing: -3px;
+      font-weight: 500;
+      max-width: 850px;
+      margin-bottom: 25px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      font-size: 14px;
+      color: var(--grey);
+      line-height: 1.9;
+    }
+
+    .hero-meta {
+      margin-top: 35px;
+      font-size: 11px;
+      color: #858a94;
+    }
+
+    .layout {
+      max-width: 1450px;
+      margin: auto;
+      padding: 75px 6% 110px;
+      display: grid;
+      grid-template-columns: 265px 1fr;
+      gap: 90px;
+      align-items: start;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 115px;
+    }
+
+    .sidebar-title {
+      font-size: 10px;
+      letter-spacing: 2px;
+      font-weight: 600;
+      color: #999da5;
+      margin-bottom: 22px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 12px 15px;
+      border-left: 2px solid transparent;
+      font-size: 12px;
+      color: #696e78;
+      transition: .2s ease;
+    }
+
+    .sidebar a:hover {
+      color: var(--black);
+      background: #f7f8fa;
+      border-left-color: var(--blue);
+    }
+
+    .content {
+      max-width: 850px;
+      min-width: 0;
+    }
+
+    .legal-section {
+      padding-bottom: 60px;
+      margin-bottom: 60px;
+      border-bottom: 1px solid var(--border);
+      scroll-margin-top: 115px;
+    }
+
+    .section-number {
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .legal-section h2 {
+      font-size: 28px;
+      font-weight: 500;
+      letter-spacing: -1px;
+      margin-bottom: 25px;
+    }
+
+    .legal-section h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin: 32px 0 12px;
+    }
+
+    .legal-section p {
+      font-size: 13px;
+      color: #626772;
+      margin-bottom: 16px;
+      line-height: 2;
+    }
+
+    .legal-section ul {
+      padding-left: 20px;
+      margin: 12px 0 20px;
+    }
+
+    .legal-section li {
+      font-size: 13px;
+      color: #626772;
+      padding: 5px 0;
+      line-height: 1.9;
+    }
+
+    .legal-section a {
+      color: #557db6;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .info-card {
+      padding: 25px 28px;
+      background: var(--light-grey);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      margin: 22px 0;
+    }
+
+    .info-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #858b96;
+      margin-bottom: 7px;
+    }
+
+    .info-value {
+      color: var(--black);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .attention {
+      padding: 22px 25px;
+      border-left: 3px solid var(--blue);
+      background: #f4f7fb;
+      margin: 25px 0;
+    }
+
+    .attention p {
+      margin: 0;
+      color: #505a69;
+    }
+
+    .contact-card {
+      background: #111318;
+      color: white;
+      padding: 35px;
+      border-radius: 5px;
+      margin-top: 25px;
+    }
+
+    .contact-card h3 {
+      font-size: 20px;
+      margin: 0 0 12px;
+      font-weight: 500;
+    }
+
+    .contact-card p {
+      color: #b8bdc7;
+    }
+
+    .contact-card a {
+      color: white;
+    }
+
+    .footer {
+      background: #101115;
+      color: white;
+      padding: 55px 6% 30px;
+    }
+
+    .footer-inner {
+      max-width: 1450px;
+      margin: auto;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      padding-bottom: 45px;
+      border-bottom: 1px solid rgba(255,255,255,.13);
+    }
+
+    .footer-logo {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      margin-bottom: 12px;
+    }
+
+    .footer-description {
+      color: #9398a3;
+      font-size: 11px;
+      max-width: 330px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      align-content: start;
+      font-size: 11px;
+      color: #c4c7ce;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 25px;
+      font-size: 10px;
+      color: #777d88;
+    }
+
+    @media(max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4px;
+      }
+
+      .sidebar-title {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media(max-width: 650px) {
+      .navbar {
+        height: 70px;
+      }
+
+      .nav-inner {
+        padding: 0 5%;
+      }
+
+      .logo {
+        font-size: 19px;
+      }
+
+      .nav-links {
+        gap: 0;
+      }
+
+      .nav-links a:not(.nav-contact) {
+        display: none;
+      }
+
+      .nav-contact {
+        font-size: 10px;
+        padding: 9px 13px;
+      }
+
+      .hero {
+        padding: 75px 6% 60px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1.8px;
+      }
+
+      .layout {
+        padding: 50px 6% 70px;
+      }
+
+      .sidebar {
+        grid-template-columns: 1fr;
+      }
+
+      .legal-section {
+        padding-bottom: 40px;
+        margin-bottom: 40px;
+      }
+
+      .legal-section h2 {
+        font-size: 24px;
+      }
+
+      .info-card {
+        padding: 20px;
+      }
+
+      .footer-top,
+      .footer-bottom {
+        flex-direction: column;
+      }
+
+      .footer-links {
+        gap: 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">KZETRAL</a>
+
+      <nav class="nav-links">
+        <a href="index.html">Accueil</a>
+        <a href="eh-x.html">EH-X</a>
+        <a href="entreprise.html">Entreprise</a>
+        <a href="contact.html" class="nav-contact">Nous contacter</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-label">KZETRAL — Informations officielles</div>
+
+      <h1>Informations<br>juridiques.</h1>
+
+      <p>
+        Retrouvez les informations relatives à l'utilisation du site
+        KZETRAL, à la protection des données personnelles, à la propriété
+        intellectuelle et aux conditions applicables à la navigation.
+      </p>
+
+      <div class="hero-meta">
+        Dernière mise à jour : novembre 2026
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <main class="layout">
+
+    <aside class="sidebar">
+      <div class="sidebar-title">ESPACE JURIDIQUE</div>
+
+      <a href="#mentions">Mentions légales</a>
+      <a href="#confidentialite">Confidentialité</a>
+      <a href="#cookies">Cookies</a>
+      <a href="#propriete">Propriété intellectuelle</a>
+      <a href="#utilisation">Conditions d'utilisation</a>
+      <a href="#contact-juridique">Contact juridique</a>
+    </aside>
+
+    <div class="content">
+
+      <!-- 01 MENTIONS LEGALES -->
+      <section class="legal-section" id="mentions">
+        <div class="section-number">01 — IDENTIFICATION</div>
+        <h2>Mentions légales</h2>
+
+        <p>
+          Les présentes informations ont pour objet d'identifier
+          l'éditeur du site KZETRAL et de présenter les conditions
+          générales relatives à sa publication.
+        </p>
+
+        <h3>Éditeur du site</h3>
+
+        <div class="info-card">
+          <span class="info-label">Nom du projet</span>
+          <div class="info-value">KZETRAL</div>
+        </div>
+
+        <!-- À COMPLÉTER AVEC LE RESPONSABLE LÉGAL AVANT PUBLICATION -->
+        <div class="info-card">
+          <span class="info-label">Responsable de la publication</span>
+          <div class="info-value">[IDENTITÉ À COMPLÉTER]</div>
+          <p>
+            Les coordonnées et l'identité du responsable doivent être
+            renseignées conformément au régime juridique applicable
+            à l'éditeur du site.
+          </p>
+        </div>
+
+        <p>
+          KZETRAL est actuellement un projet de développement automobile
+          en cours de structuration. Le projet n'est pas, à la date de
+          mise à jour de la présente page, une société immatriculée.
+        </p>
+
+        <h3>Contact de l'éditeur</h3>
+
+        <p>
+          Adresse électronique :
+          <a href="mailto:kzetral.contact@protonmail.com">
+            kzetral.contact@protonmail.com
+          </a>
+        </p>
+
+        <!-- À COMPLÉTER : ADRESSE ET AUTRES COORDONNÉES REQUISES
+             SELON LE STATUT JURIDIQUE ET LE RÉGIME APPLICABLE. -->
+
+        <h3>Hébergement du site</h3>
+
+        <p>Le site est hébergé par le service GitHub Pages :</p>
+
+        <div class="info-card">
+          <span class="info-label">Hébergeur</span>
+          <div class="info-value">GitHub, Inc.</div>
+          <p>
+            88 Colin P. Kelly Jr. Street<br>
+            San Francisco, CA 94107<br>
+            États-Unis
+          </p>
+          <p>
+            Site officiel :
+            <a href="https://pages.github.com/" target="_blank" rel="noopener">
+              https://pages.github.com/
+            </a>
+          </p>
+          <p>
+            Assistance :
+            <a href="https://support.github.com/" target="_blank" rel="noopener">
+              Centre d'assistance GitHub
+            </a>
+          </p>
+        </div>
+
+        <h3>Statut du projet</h3>
+
+        <p>
+          Les informations présentées sur ce site concernent un projet
+          automobile en développement. Elles ne constituent pas une
+          offre commerciale de vente d'un véhicule, ni une garantie
+          de disponibilité ou de commercialisation du EH-X.
+        </p>
+      </section>
+
+      <!-- 02 CONFIDENTIALITE -->
+      <section class="legal-section" id="confidentialite">
+        <div class="section-number">02 — DONNÉES PERSONNELLES</div>
+        <h2>Politique de confidentialité</h2>
+
+        <p>
+          KZETRAL accorde une importance particulière à la protection
+          des données personnelles communiquées par les visiteurs
+          du site.
+        </p>
+
+        <h3>Responsable du traitement</h3>
+
+        <!-- À COMPLÉTER : IDENTITÉ ET COORDONNÉES DU RESPONSABLE
+             EFFECTIF DU TRAITEMENT. -->
+        <p>
+          Le responsable du traitement est :
+          <strong>[IDENTITÉ ET COORDONNÉES À CONFIRMER]</strong>.
+        </p>
+
+        <h3>Données susceptibles d'être collectées</h3>
+
+        <p>
+          Dans le cadre du formulaire de manifestation d'intérêt
+          relatif au EH-X, les informations suivantes peuvent être
+          demandées :
+        </p>
+
+        <ul>
+          <li>Prénom et nom ;</li>
+          <li>Adresse électronique ;</li>
+          <li>Numéro de téléphone ;</li>
+          <li>Pays et indicatif téléphonique ;</li>
+          <li>Catégorie de profil sélectionnée.</li>
+        </ul>
+
+        <h3>Finalités de la collecte</h3>
+
+        <p>Ces informations sont destinées à :</p>
+
+        <ul>
+          <li>Enregistrer les manifestations d'intérêt relatives au EH-X ;</li>
+          <li>Gérer les demandes transmises par les visiteurs ;</li>
+          <li>Étudier l'intérêt manifesté pour le projet ;</li>
+          <li>Permettre un éventuel contact en lien avec la demande.</li>
+        </ul>
+
+        <p>
+          Le formulaire de manifestation d'intérêt ne constitue pas
+          une commande ferme et ne donne lieu à aucun paiement.
+        </p>
+
+        <h3>Base légale du traitement</h3>
+
+        <!-- À VALIDER : LA BASE LÉGALE DOIT ÊTRE DÉTERMINÉE
+             PAR LE RESPONSABLE DU TRAITEMENT. -->
+        <p>
+          La base légale applicable à chaque finalité doit être
+          déterminée et indiquée par le responsable du traitement
+          avant la mise en production définitive du formulaire.
+        </p>
+
+        <h3>Destinataires des données</h3>
+
+        <p>
+          Les données sont destinées aux personnes autorisées à gérer
+          les demandes liées au projet KZETRAL.
+        </p>
+
+        <p>
+          Le fonctionnement technique du formulaire repose notamment
+          sur Supabase pour le traitement et le stockage des données.
+          Les conditions de sous-traitance, les lieux de stockage
+          et les éventuels transferts internationaux doivent être
+          vérifiés et documentés.
+        </p>
+
+        <h3>Durée de conservation</h3>
+
+        <!-- À COMPLÉTER : DÉFINIR UNE DURÉE OU DES CRITÈRES
+             DE CONSERVATION ADAPTÉS AUX FINALITÉS. -->
+        <p>
+          La durée de conservation des données doit être définie
+          par le responsable du traitement en fonction de la finalité
+          de chaque collecte. Cette durée sera précisée ici avant
+          la publication définitive de la politique.
+        </p>
+
+        <h3>Sécurité des données</h3>
+
+        <p>
+          Des mesures techniques et organisationnelles adaptées
+          doivent être mises en place afin de protéger les données
+          contre les accès non autorisés, les pertes, les altérations
+          ou les divulgations.
+        </p>
+
+        <h3>Droits des personnes</h3>
+
+        <p>
+          Conformément à la réglementation applicable, les personnes
+          concernées peuvent notamment demander l'accès à leurs données,
+          leur rectification, leur effacement ou la limitation de leur
+          traitement. Elles peuvent également exercer leur droit
+          d'opposition ou de portabilité lorsque les conditions légales
+          sont réunies.
+        </p>
+
+        <p>
+          Pour exercer ces droits, une demande peut être adressée à :
+          <a href="mailto:kzetral.contact@protonmail.com">
+            kzetral.contact@protonmail.com
+          </a>.
+        </p>
+
+        <p>
+          Il est également possible d'adresser une réclamation à la
+          Commission nationale de l'informatique et des libertés :
+          <a href="https://www.cnil.fr/" target="_blank" rel="noopener">
+            www.cnil.fr
+          </a>.
+        </p>
+      </section>
+
+      <!-- 03 COOKIES -->
+      <section class="legal-section" id="cookies">
+        <div class="section-number">03 — TRACEURS</div>
+        <h2>Politique relative aux cookies</h2>
+
+        <p>
+          Un cookie ou autre traceur est une technologie susceptible
+          d'être utilisée pour stocker ou lire des informations sur
+          le terminal d'un visiteur.
+        </p>
+
+        <h3>Utilisation des traceurs</h3>
+
+        <p>
+          Les technologies effectivement utilisées par le site doivent
+          être vérifiées afin d'identifier les éventuels cookies,
+          outils de mesure d'audience, contenus intégrés ou services
+          tiers susceptibles de déposer des traceurs.
+        </p>
+
+        <p>
+          Les traceurs soumis au consentement ne doivent être déposés
+          qu'après obtention du consentement requis.
+        </p>
+
+        <h3>Gestion des préférences</h3>
+
+        <p>
+          Lorsque des traceurs soumis au consentement sont utilisés,
+          le visiteur doit pouvoir accepter, refuser ou modifier
+          ses choix dans les conditions prévues par la réglementation.
+        </p>
+
+        <!-- À FINALISER APRÈS AUDIT DES SCRIPTS ET SERVICES
+             EFFECTIVEMENT CHARGÉS SUR LE SITE. -->
+      </section>
+
+      <!-- 04 PROPRIETE INTELLECTUELLE -->
+      <section class="legal-section" id="propriete">
+        <div class="section-number">04 — CONTENUS ET CRÉATIONS</div>
+        <h2>Propriété intellectuelle</h2>
+
+        <p>
+          Le site KZETRAL présente un projet automobile en développement
+          ainsi que son identité visuelle et ses contenus éditoriaux.
+        </p>
+
+        <p>
+          Les éléments créés pour le projet, notamment les textes,
+          logos, visuels, présentations, éléments graphiques et contenus
+          originaux, sont protégés par les dispositions applicables
+          en matière de propriété intellectuelle, dans la mesure où
+          ils remplissent les conditions de protection prévues par la loi.
+        </p>
+
+        <h3>Utilisation des contenus</h3>
+
+        <p>
+          Toute reproduction, représentation, adaptation ou exploitation
+          d'un contenu protégé appartenant au projet KZETRAL nécessite,
+          sauf exception légale, l'autorisation préalable du titulaire
+          des droits concernés.
+        </p>
+
+        <h3>Marques et dénominations</h3>
+
+        <p>
+          Les dénominations KZETRAL et EH-X sont utilisées pour
+          identifier le projet présenté sur ce site. Leur statut
+          éventuel de marque déposée ne doit pas être déduit de leur
+          simple utilisation sur le site.
+        </p>
+
+        <p>
+          Les marques, noms et logos de tiers éventuellement mentionnés
+          restent la propriété de leurs titulaires respectifs.
+        </p>
+
+        <h3>Contenus de tiers</h3>
+
+        <p>
+          Les contenus provenant de tiers restent soumis aux droits
+          et conditions d'utilisation de leurs auteurs ou titulaires.
+        </p>
+      </section>
+
+      <!-- 05 CONDITIONS D'UTILISATION -->
+      <section class="legal-section" id="utilisation">
+        <div class="section-number">05 — NAVIGATION</div>
+        <h2>Conditions d'utilisation</h2>
+
+        <h3>Objet du site</h3>
+
+        <p>
+          Le site KZETRAL a pour objet de présenter le projet KZETRAL,
+          ses orientations, ses réflexions et le développement envisagé
+          du véhicule EH-X.
+        </p>
+
+        <h3>Informations présentées</h3>
+
+        <p>
+          Les informations techniques, performances, caractéristiques,
+          prix envisagés, autonomies et calendriers présentés sur le site
+          peuvent correspondre à des objectifs prévisionnels.
+        </p>
+
+        <p>
+          Ils ne constituent pas des caractéristiques définitivement
+          validées, une garantie de performance, ni un engagement
+          de commercialisation.
+        </p>
+
+        <h3>Manifestation d'intérêt</h3>
+
+        <p>
+          Le formulaire intitulé « Je précommande » permet uniquement
+          de transmettre une manifestation d'intérêt concernant
+          le projet EH-X.
+        </p>
+
+        <p>
+          Cette démarche ne constitue pas un contrat de vente,
+          une réservation ferme ou une commande. Aucun paiement
+          n'est demandé dans le cadre de ce formulaire.
+        </p>
+
+        <h3>Disponibilité du site</h3>
+
+        <p>
+          Le site peut faire l'objet d'opérations de maintenance,
+          de mises à jour ou d'interruptions temporaires liées
+          à son fonctionnement ou à son hébergement.
+        </p>
+
+        <h3>Liens externes</h3>
+
+        <p>
+          Le site peut contenir des liens vers des plateformes
+          ou services externes. KZETRAL ne contrôle pas l'ensemble
+          de leurs contenus, de leurs politiques ou de leurs pratiques.
+        </p>
+
+        <h3>Évolution des informations</h3>
+
+        <p>
+          Les informations et contenus du site peuvent évoluer
+          au fur et à mesure du développement du projet.
+        </p>
+      </section>
+
+      <!-- 06 CONTACT -->
+      <section class="legal-section" id="contact-juridique">
+        <div class="section-number">06 — CONTACT</div>
+        <h2>Contact juridique</h2>
+
+        <p>
+          Pour toute question relative aux présentes informations,
+          à l'utilisation du site ou à la protection des données,
+          vous pouvez contacter KZETRAL.
+        </p>
+
+        <div class="contact-card">
+          <h3>Une question juridique ?</h3>
+          <p>
+            Pour toute demande concernant le site ou les informations
+            présentées dans cet espace :
+          </p>
+          <p>
+            <a href="mailto:kzetral.contact@protonmail.com">
+              kzetral.contact@protonmail.com
+            </a>
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">KZETRAL</div>
+          <p class="footer-description">
+            Imaginer une nouvelle approche de la mobilité électrique.
+            Un projet automobile en cours de développement.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <a href="index.html">Accueil</a>
+          <a href="eh-x.html">EH-X</a>
+          <a href="entreprise.html">Entreprise</a>
+          <a href="contact.html">Contact</a>
+          <a href="precommande.html">Manifestation d'intérêt</a>
+          <a href="legal.html">Informations légales</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 KZETRAL — Tous droits réservés</span>
+        <span>Penser à covoiturer #SeDéplacerMoinsPolluer</span>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
