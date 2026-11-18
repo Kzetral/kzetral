@@ -546,7 +546,7 @@ a { color: inherit; text-decoration: none; }
 .iti__country-name { color: #263344; }
 .iti__dial-code { color: #8190a0; }
 
-/* CONSENTEMENT */
+/* CONSENTEMENT À LA PRISE EN COMPTE */
 
 .consent-area { margin-top: 25px; }
 
@@ -560,6 +560,55 @@ a { color: inherit; text-decoration: none; }
 }
 
 .consent-line input {
+  width: 15px;
+  height: 15px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: #7da8d2;
+  cursor: pointer;
+}
+
+/* PRÉFÉRENCES DE COMMUNICATION */
+
+.communication-section {
+  margin-top: 25px;
+  padding: 20px;
+  border: 1px solid rgba(16,23,34,.10);
+  border-radius: 8px;
+  background: #fafbfd;
+}
+
+.communication-heading {
+  margin-bottom: 8px;
+  color: #303b49;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.communication-description {
+  margin-bottom: 17px;
+  color: #87919e;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.communication-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--text);
+  font-size: 10px;
+  line-height: 1.8;
+  cursor: pointer;
+}
+
+.communication-option + .communication-option {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(16,23,34,.08);
+}
+
+.communication-option input {
   width: 15px;
   height: 15px;
   margin-top: 2px;
@@ -956,6 +1005,10 @@ footer {
   }
 
   .success-profile { padding: 16px; }
+
+  .communication-section {
+    padding: 16px;
+  }
 }
 </style>
 </head>
@@ -986,6 +1039,8 @@ footer {
 <div class="mobile-dropdown" id="mobileDropdown">
   <a href="entreprise.html">Qui nous sommes</a>
   <a href="eh-x.html">Notre vision</a>
+  <a href="contact.html">Nous contacter</a>
+  <a href="precommande.html">Manifester mon intérêt</a>
 </div>
 
 <main>
@@ -1196,7 +1251,7 @@ footer {
 
           </div>
 
-          <!-- CONSENTEMENT -->
+          <!-- PRISE EN COMPTE DE LA DEMANDE -->
 
           <div class="consent-area">
             <label class="consent-line">
@@ -1209,6 +1264,48 @@ footer {
                 consentement à tout moment.
               </span>
             </label>
+          </div>
+
+          <!-- PRÉFÉRENCES DE COMMUNICATION -->
+
+          <div class="communication-section">
+
+            <h3 class="communication-heading">
+              RESTEZ EN CONTACT AVEC KZETRAL
+            </h3>
+
+            <p class="communication-description">
+              Choisissez librement les communications que vous souhaitez recevoir.
+              Ces autorisations sont facultatives et indépendantes de votre inscription.
+              Vous pouvez vous inscrire sans cocher ces cases.
+            </p>
+
+            <label class="communication-option">
+              <input
+                type="checkbox"
+                id="emailMarketingConsent"
+                name="emailMarketingConsent"
+              >
+              <span>
+                J'accepte de recevoir par e-mail les actualités du programme EH-X,
+                les annonces de KZETRAL et ses communications commerciales.
+                Je pourrai retirer mon accord à tout moment.
+              </span>
+            </label>
+
+            <label class="communication-option">
+              <input
+                type="checkbox"
+                id="smsMarketingConsent"
+                name="smsMarketingConsent"
+              >
+              <span>
+                J'accepte de recevoir par SMS les actualités du programme EH-X,
+                les annonces de KZETRAL et ses communications commerciales.
+                Je pourrai retirer mon accord à tout moment.
+              </span>
+            </label>
+
           </div>
 
           <button class="form-button" id="submitButton" type="submit">
@@ -1482,7 +1579,7 @@ form.addEventListener("submit", async event => {
   hideMessage();
 
 
-  /* Vérification des champs */
+  /* VÉRIFICATION DES CHAMPS */
 
   if (!form.checkValidity()) {
     form.reportValidity();
@@ -1490,7 +1587,7 @@ form.addEventListener("submit", async event => {
   }
 
 
-  /* Vérification du profil */
+  /* VÉRIFICATION DU PROFIL */
 
   if (!selectedProfile) {
 
@@ -1508,7 +1605,7 @@ form.addEventListener("submit", async event => {
   }
 
 
-  /* Vérification du téléphone */
+  /* VÉRIFICATION DU TÉLÉPHONE */
 
   if (!phoneControl.isValidNumber()) {
 
@@ -1560,7 +1657,13 @@ form.addEventListener("submit", async event => {
         selectedProfile,
 
       privacy_notice_acknowledged:
-        document.getElementById("consent").checked
+        document.getElementById("consent").checked,
+
+      email_marketing_consent:
+        document.getElementById("emailMarketingConsent").checked,
+
+      sms_marketing_consent:
+        document.getElementById("smsMarketingConsent").checked
 
     };
 
@@ -1637,6 +1740,9 @@ form.addEventListener("submit", async event => {
 });
 
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
