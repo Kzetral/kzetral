@@ -1523,22 +1523,6 @@ form.addEventListener("submit", async event => {
   }
 
 
-  /* Vérification de la configuration */
-
-  if (
-    SUPABASE_PUBLIC_KEY ===
-    "sb_publishable_mgahjpUJkCBpA_IvAuAohg_DyAZZgfV"
-  ) {
-
-    showMessage(
-      "La configuration du formulaire n'est pas terminée. La clé publique Supabase doit être renseignée.",
-      "error"
-    );
-
-    return;
-  }
-
-
   submitButton.disabled = true;
   submitButton.textContent = "Enregistrement en cours...";
 
@@ -1655,6 +1639,4 @@ form.addEventListener("submit", async event => {
 </script>
 
 </body>
-</html>
-
 </html>
