@@ -40,6 +40,7 @@
       background: var(--white);
       line-height: 1.75;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     a {
@@ -47,184 +48,267 @@
       text-decoration: none;
     }
 
-    /* =========================
-       NAVIGATION KZETRAL
-    ========================= */
+    /* =================================
+       NAVBAR FUTURISTE KZETRAL
+       IDENTIQUE À L'ACCUEIL
+    ================================= */
 
     .navbar {
       position: fixed;
-      top: 22px;
+      z-index: 1000;
+      top: 20px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 1000;
 
-      width: min(920px, calc(100% - 40px));
-      height: 84px;
+      width: calc(100% - 100px);
+      max-width: 1450px;
+      height: 76px;
+
+      padding: 0 30px 0 38px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      padding: 0 32px;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(16,23,34,0.10);
+      border-radius: 17px;
 
-      background: rgba(255,255,255,.78);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
 
-      border: 1px solid rgba(255,255,255,.7);
-      border-radius: 0 0 18px 18px;
-
-      box-shadow: 0 8px 35px rgba(0,0,0,.055);
+      box-shadow:
+        0 8px 30px rgba(16,23,34,0.055),
+        inset 0 1px 0 rgba(255,255,255,0.9);
 
       transition:
-        background .35s ease,
-        border-color .35s ease,
-        box-shadow .35s ease;
+        background .4s ease,
+        border-color .4s ease,
+        box-shadow .4s ease,
+        transform .4s ease;
     }
 
-    .nav-side {
+    .navbar::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 12%;
+      width: 76%;
+      height: 1px;
+
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(142,188,233,.85),
+        transparent
+      );
+
+      opacity: .7;
+      transition: opacity .4s ease;
+    }
+
+    /* Navigation gauche */
+
+    .nav-left {
       display: flex;
       align-items: center;
-      gap: 30px;
-      flex: 1;
-    }
-
-    .nav-side.right {
-      justify-content: flex-end;
+      gap: 38px;
+      height: 100%;
     }
 
     .nav-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+
+      color: #101722;
       font-size: 11px;
       font-weight: 500;
-      color: #30343c;
+      letter-spacing: .025em;
       white-space: nowrap;
-      transition: color .3s ease;
+
+      transition: color .35s ease;
     }
 
-    .nav-link:hover {
-      color: var(--blue);
-    }
-
-    .nav-logo {
+    .nav-link::after {
+      content: "";
       position: absolute;
-      left: 50%;
+      left: 0;
+      bottom: 21px;
+
+      width: 0;
+      height: 2px;
+
+      background: #8ebce9;
+      border-radius: 5px;
+
+      transition: width .35s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-link::before {
+      content: "";
+      position: absolute;
+      left: -11px;
       top: 50%;
-      transform: translate(-50%, -50%);
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+
+      background: #8ebce9;
+      opacity: 0;
+
+      transform: translateY(-50%) scale(.3);
+      transition: .3s ease;
     }
 
-    .nav-logo img {
-      width: 72px;
-      height: 72px;
-      object-fit: contain;
-      transition: filter .35s ease, transform .35s ease;
+    .nav-link:hover::before {
+      opacity: 1;
+      transform: translateY(-50%) scale(1);
     }
 
-    .nav-logo:hover img {
-      transform: scale(1.04);
-    }
+    /* Bouton contact */
 
     .nav-contact {
-      border: 1px solid rgba(20,25,35,.55);
-      border-radius: 3px;
-      padding: 10px 17px;
-      transition: all .3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 19px;
+      margin-left: auto;
+
+      border: 1px solid rgba(16,23,34,.18);
+      border-radius: 6px;
+
+      color: #101722;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      white-space: nowrap;
+
+      transition: .3s ease;
     }
 
     .nav-contact:hover {
-      background: #111318;
+      background: #101722;
+      border-color: #101722;
       color: white;
     }
 
-    /* NAVBAR AU SCROLL */
+    .navbar.scrolled .nav-contact {
+      border-color: rgba(255,255,255,.35);
+      color: white;
+    }
+
+    .navbar.scrolled .nav-contact:hover {
+      background: white;
+      border-color: white;
+      color: #101722;
+    }
+
+    /* Logo à droite */
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      height: 100%;
+      padding-left: 28px;
+      margin-left: 28px;
+
+      border-left: 1px solid rgba(16,23,34,.09);
+    }
+
+    .nav-brand img {
+      display: block;
+      width: 112px;
+      height: 112px;
+      object-fit: contain;
+
+      transition:
+        filter .4s ease,
+        transform .4s ease;
+    }
+
+    .nav-brand:hover img {
+      transform: scale(1.045);
+    }
+
+    /* Mode sombre au défilement */
 
     .navbar.scrolled {
-      background: rgba(16,23,34,.94);
-      border-color: rgba(255,255,255,.08);
-      box-shadow: 0 8px 35px rgba(0,0,0,.16);
+      background: rgba(13,19,29,.96);
+      border-color: rgba(255,255,255,.11);
+
+      box-shadow:
+        0 12px 35px rgba(0,0,0,.20),
+        inset 0 1px 0 rgba(255,255,255,.05);
     }
 
     .navbar.scrolled .nav-link {
       color: #ffffff;
     }
 
-    .navbar.scrolled .nav-link:hover {
-      color: #a9c7ed;
+    .navbar.scrolled .nav-brand {
+      border-left-color: rgba(255,255,255,.14);
     }
 
-    .navbar.scrolled .nav-contact {
-      border-color: rgba(255,255,255,.65);
-    }
-
-    .navbar.scrolled .nav-contact:hover {
-      background: white;
-      color: #111318;
-    }
-
-    .navbar.scrolled .nav-logo img {
+    .navbar.scrolled .nav-brand img {
       filter: brightness(0) invert(1);
     }
 
-    /* MENU MOBILE */
-
-    .mobile-menu-button {
-      display: none;
-      background: transparent;
-      border: 0;
-      color: #222630;
-      font-family: inherit;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      cursor: pointer;
-      padding: 10px 0;
+    .navbar.scrolled::before {
+      opacity: 1;
     }
 
-    .navbar.scrolled .mobile-menu-button {
+    /* Animation d'apparition */
+
+    @keyframes navbarAppear {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -15px);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+    }
+
+    .navbar {
+      animation: navbarAppear .8s ease both;
+    }
+
+    /* Menu mobile */
+
+    .mobile-menu {
+      display: none;
+      background: none;
+      border: none;
+      color: #101722;
+      font-family: inherit;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      cursor: pointer;
+    }
+
+    .navbar.scrolled .mobile-menu {
       color: white;
     }
 
     .mobile-dropdown {
       display: none;
-      position: absolute;
-      top: calc(100% + 9px);
-      left: 0;
-      width: 100%;
-
-      padding: 13px;
-
-      background: rgba(255,255,255,.97);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-
-      border: 1px solid var(--border);
-      border-radius: 12px;
-
-      box-shadow: 0 15px 35px rgba(0,0,0,.12);
     }
 
-    .mobile-dropdown.open {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .mobile-dropdown a {
-      padding: 13px 12px;
-      font-size: 12px;
-      color: #252a33;
-      border-bottom: 1px solid #eceef1;
-    }
-
-    .mobile-dropdown a:last-child {
-      border-bottom: 0;
-    }
-
-    /* =========================
+    /* =================================
        HERO
-    ========================= */
+    ================================= */
 
     .hero {
       padding: 190px 6% 85px;
@@ -268,9 +352,9 @@
       color: #858a94;
     }
 
-    /* =========================
+    /* =================================
        CONTENT
-    ========================= */
+    ================================= */
 
     .layout {
       max-width: 1450px;
@@ -419,9 +503,9 @@
       color: white;
     }
 
-    /* =========================
+    /* =================================
        FOOTER
-    ========================= */
+    ================================= */
 
     .footer {
       background: #101115;
@@ -477,9 +561,9 @@
       color: #777d88;
     }
 
-    /* =========================
+    /* =================================
        RESPONSIVE
-    ========================= */
+    ================================= */
 
     @media(max-width: 900px) {
       .layout {
@@ -499,26 +583,81 @@
       }
     }
 
-    @media(max-width: 650px) {
+    @media(max-width: 700px) {
+
       .navbar {
         top: 12px;
-        height: 70px;
-        width: calc(100% - 26px);
-        padding: 0 20px;
+        width: calc(100% - 28px);
+        height: 68px;
+        padding: 0 18px;
+        border-radius: 15px;
       }
 
-      .nav-side {
+      .nav-left {
         display: none;
       }
 
-      .nav-logo img {
-        width: 58px;
-        height: 58px;
+      .nav-contact {
+        min-height: 36px;
+        padding: 0 12px;
+        margin-left: auto;
+        font-size: 9px;
       }
 
-      .mobile-menu-button {
+      .nav-brand {
+        margin-left: 14px;
+        padding-left: 0;
+        border-left: none;
+      }
+
+      .nav-brand img {
+        width: 82px;
+        height: 82px;
+      }
+
+      .mobile-menu {
         display: block;
-        margin-left: auto;
+        order: -1;
+      }
+
+      .mobile-dropdown {
+        position: fixed;
+        z-index: 999;
+        top: 90px;
+        left: 14px;
+        right: 14px;
+
+        padding: 24px;
+        background: white;
+        border: 1px solid rgba(16,23,34,.08);
+        border-radius: 14px;
+        box-shadow: 0 15px 35px rgba(0,0,0,.10);
+
+        display: none;
+        flex-direction: column;
+        gap: 22px;
+      }
+
+      .mobile-dropdown.open {
+        display: flex;
+        animation: dropdownAppear .25s ease both;
+      }
+
+      .mobile-dropdown a {
+        font-size: 12px;
+        font-weight: 500;
+        color: #101722;
+      }
+
+      @keyframes dropdownAppear {
+        from {
+          opacity: 0;
+          transform: translateY(-7px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .hero {
@@ -559,46 +698,68 @@
         gap: 17px;
       }
     }
+
+    @media(max-width: 380px) {
+      .navbar {
+        padding: 0 14px;
+      }
+
+      .nav-brand img {
+        width: 72px;
+        height: 72px;
+      }
+
+      .nav-contact {
+        min-height: 34px;
+        padding: 0 9px;
+        font-size: 8px;
+      }
+
+      .nav-brand {
+        margin-left: 9px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- =========================
-       NAVIGATION
-  ========================= -->
+  <!-- NAVBAR IDENTIQUE À L'ACCUEIL -->
 
   <header class="navbar" id="navbar">
 
-    <div class="nav-side">
-      <a href="entreprise.html" class="nav-link">Qui nous sommes</a>
+    <div class="nav-left">
+      <a href="entreprise.html" class="nav-link">
+        Qui nous sommes
+      </a>
+
+      <a href="eh-x.html" class="nav-link">
+        Notre vision
+      </a>
     </div>
 
-    <a href="index.html" class="nav-logo" aria-label="Accueil KZETRAL">
-      <img src="images/logo-kzetral.png" alt="Logo KZETRAL">
+    <a href="contact.html" class="nav-contact">
+      Nous contacter
     </a>
 
-    <div class="nav-side right">
-      <a href="eh-x.html" class="nav-link">Notre vision</a>
-    </div>
-
-    <button class="mobile-menu-button" id="mobileMenuButton" aria-expanded="false" aria-controls="mobileDropdown">
+    <button class="mobile-menu" id="mobileMenu" type="button" aria-expanded="false" aria-controls="mobileDropdown">
       MENU
     </button>
 
-    <nav class="mobile-dropdown" id="mobileDropdown">
-      <a href="index.html">Accueil</a>
-      <a href="entreprise.html">Qui nous sommes</a>
-      <a href="eh-x.html">Notre vision</a>
-      <a href="contact.html">Nous contacter</a>
-      <a href="precommande.html">Je précommande</a>
-    </nav>
+    <a href="index.html" class="nav-brand" aria-label="Accueil KZETRAL">
+      <img src="images/logo-kzetral.png" alt="Kzetral">
+    </a>
 
   </header>
 
-  <!-- =========================
-       HERO
-  ========================= -->
+  <div class="mobile-dropdown" id="mobileDropdown">
+    <a href="entreprise.html">Qui nous sommes</a>
+    <a href="eh-x.html">Notre vision</a>
+    <a href="contact.html">Nous contacter</a>
+    <a href="precommande.html">Je précommande</a>
+  </div>
+
+  <!-- HERO -->
 
   <section class="hero">
     <div class="hero-inner">
@@ -625,9 +786,7 @@
     </div>
   </section>
 
-  <!-- =========================
-       CONTENT
-  ========================= -->
+  <!-- CONTENT -->
 
   <main class="layout">
 
@@ -1051,9 +1210,7 @@
 
   </main>
 
-  <!-- =========================
-       FOOTER
-  ========================= -->
+  <!-- FOOTER -->
 
   <footer class="footer">
 
@@ -1095,80 +1252,53 @@
 
   </footer>
 
-  <!-- =========================
-       JAVASCRIPT
-  ========================= -->
+  <!-- JAVASCRIPT -->
 
   <script>
-
-    // NAVBAR AU DÉFILEMENT
-
     const navbar = document.getElementById("navbar");
-
-    function updateNavbar() {
-      if (window.scrollY > 35) {
-        navbar.classList.add("scrolled");
-      } else {
-        navbar.classList.remove("scrolled");
-      }
-    }
-
-    window.addEventListener("scroll", updateNavbar);
-    updateNavbar();
-
-
-    // MENU MOBILE
-
-    const mobileMenuButton = document.getElementById("mobileMenuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
     const mobileDropdown = document.getElementById("mobileDropdown");
 
-    mobileMenuButton.addEventListener("click", function() {
+    /* MODE SOMBRE AUTOMATIQUE */
 
-      const isOpen = mobileDropdown.classList.toggle("open");
+    function updateNavbar() {
+      navbar.classList.toggle("scrolled", window.scrollY > 40);
+    }
 
-      mobileMenuButton.setAttribute("aria-expanded", isOpen);
+    window.addEventListener("scroll", updateNavbar, { passive: true });
+    updateNavbar();
 
-      mobileMenuButton.textContent = isOpen ? "FERMER" : "MENU";
+    /* MENU MOBILE */
 
+    mobileMenu.addEventListener("click", () => {
+      const open = mobileDropdown.classList.toggle("open");
+
+      mobileMenu.textContent = open ? "FERMER" : "MENU";
+      mobileMenu.setAttribute("aria-expanded", open);
     });
 
-
-    // FERMETURE DU MENU APRÈS NAVIGATION
+    /* FERMETURE APRÈS NAVIGATION */
 
     mobileDropdown.querySelectorAll("a").forEach(link => {
-
-      link.addEventListener("click", function() {
-
+      link.addEventListener("click", () => {
         mobileDropdown.classList.remove("open");
-
-        mobileMenuButton.textContent = "MENU";
-
-        mobileMenuButton.setAttribute("aria-expanded", "false");
-
+        mobileMenu.textContent = "MENU";
+        mobileMenu.setAttribute("aria-expanded", "false");
       });
-
     });
 
+    /* FERMETURE EN DEHORS DU MENU */
 
-    // FERMETURE EN CLIQUANT À L'EXTÉRIEUR
-
-    document.addEventListener("click", function(event) {
-
+    document.addEventListener("click", event => {
       if (
         !navbar.contains(event.target) &&
-        mobileDropdown.classList.contains("open")
+        !mobileDropdown.contains(event.target)
       ) {
-
         mobileDropdown.classList.remove("open");
-
-        mobileMenuButton.textContent = "MENU";
-
-        mobileMenuButton.setAttribute("aria-expanded", "false");
-
+        mobileMenu.textContent = "MENU";
+        mobileMenu.setAttribute("aria-expanded", "false");
       }
-
     });
-
   </script>
 
 </body>
