@@ -31,7 +31,7 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 110px;
+      scroll-padding-top: 125px;
     }
 
     body {
@@ -47,67 +47,187 @@
       text-decoration: none;
     }
 
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      width: 100%;
-      height: 82px;
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-    }
+    /* =========================
+       NAVIGATION KZETRAL
+    ========================= */
 
-    .nav-inner {
-      max-width: 1450px;
-      height: 100%;
-      margin: auto;
-      padding: 0 6%;
+    .navbar {
+      position: fixed;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+
+      width: min(920px, calc(100% - 40px));
+      height: 84px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      padding: 0 32px;
+
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 0 0 18px 18px;
+
+      box-shadow: 0 8px 35px rgba(0,0,0,.055);
+
+      transition:
+        background .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
     }
 
-    .logo {
-      font-size: 23px;
-      font-weight: 700;
-      letter-spacing: 5px;
-    }
-
-    .nav-links {
+    .nav-side {
       display: flex;
       align-items: center;
-      gap: 32px;
-      font-size: 12px;
+      gap: 30px;
+      flex: 1;
+    }
+
+    .nav-side.right {
+      justify-content: flex-end;
+    }
+
+    .nav-link {
+      font-size: 11px;
       font-weight: 500;
-      color: #454952;
+      color: #30343c;
+      white-space: nowrap;
+      transition: color .3s ease;
     }
 
-    .nav-links a {
-      transition: color .25s ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
+    .nav-link:hover {
       color: var(--blue);
     }
 
+    .nav-logo {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo img {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      transition: filter .35s ease, transform .35s ease;
+    }
+
+    .nav-logo:hover img {
+      transform: scale(1.04);
+    }
+
     .nav-contact {
-      border: 1px solid var(--black);
-      padding: 11px 19px;
+      border: 1px solid rgba(20,25,35,.55);
       border-radius: 3px;
-      color: var(--black);
-      transition: .25s ease;
+      padding: 10px 17px;
+      transition: all .3s ease;
     }
 
     .nav-contact:hover {
-      background: var(--black);
+      background: #111318;
       color: white;
     }
 
+    /* NAVBAR AU SCROLL */
+
+    .navbar.scrolled {
+      background: rgba(16,23,34,.94);
+      border-color: rgba(255,255,255,.08);
+      box-shadow: 0 8px 35px rgba(0,0,0,.16);
+    }
+
+    .navbar.scrolled .nav-link {
+      color: #ffffff;
+    }
+
+    .navbar.scrolled .nav-link:hover {
+      color: #a9c7ed;
+    }
+
+    .navbar.scrolled .nav-contact {
+      border-color: rgba(255,255,255,.65);
+    }
+
+    .navbar.scrolled .nav-contact:hover {
+      background: white;
+      color: #111318;
+    }
+
+    .navbar.scrolled .nav-logo img {
+      filter: brightness(0) invert(1);
+    }
+
+    /* MENU MOBILE */
+
+    .mobile-menu-button {
+      display: none;
+      background: transparent;
+      border: 0;
+      color: #222630;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: pointer;
+      padding: 10px 0;
+    }
+
+    .navbar.scrolled .mobile-menu-button {
+      color: white;
+    }
+
+    .mobile-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 9px);
+      left: 0;
+      width: 100%;
+
+      padding: 13px;
+
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      box-shadow: 0 15px 35px rgba(0,0,0,.12);
+    }
+
+    .mobile-dropdown.open {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-dropdown a {
+      padding: 13px 12px;
+      font-size: 12px;
+      color: #252a33;
+      border-bottom: 1px solid #eceef1;
+    }
+
+    .mobile-dropdown a:last-child {
+      border-bottom: 0;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
     .hero {
-      padding: 105px 6% 85px;
+      padding: 190px 6% 85px;
       background: #f7f8fa;
       border-bottom: 1px solid var(--border);
     }
@@ -148,10 +268,15 @@
       color: #858a94;
     }
 
+    /* =========================
+       CONTENT
+    ========================= */
+
     .layout {
       max-width: 1450px;
       margin: auto;
       padding: 75px 6% 110px;
+
       display: grid;
       grid-template-columns: 265px 1fr;
       gap: 90px;
@@ -160,7 +285,7 @@
 
     .sidebar {
       position: sticky;
-      top: 115px;
+      top: 120px;
     }
 
     .sidebar-title {
@@ -195,7 +320,7 @@
       padding-bottom: 60px;
       margin-bottom: 60px;
       border-bottom: 1px solid var(--border);
-      scroll-margin-top: 115px;
+      scroll-margin-top: 120px;
     }
 
     .section-number {
@@ -272,18 +397,6 @@
       font-weight: 500;
     }
 
-    .attention {
-      padding: 22px 25px;
-      border-left: 3px solid var(--blue);
-      background: #f4f7fb;
-      margin: 25px 0;
-    }
-
-    .attention p {
-      margin: 0;
-      color: #505a69;
-    }
-
     .contact-card {
       background: #111318;
       color: white;
@@ -305,6 +418,10 @@
     .contact-card a {
       color: white;
     }
+
+    /* =========================
+       FOOTER
+    ========================= */
 
     .footer {
       background: #101115;
@@ -360,6 +477,10 @@
       color: #777d88;
     }
 
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
     @media(max-width: 900px) {
       .layout {
         grid-template-columns: 1fr;
@@ -380,32 +501,28 @@
 
     @media(max-width: 650px) {
       .navbar {
+        top: 12px;
         height: 70px;
+        width: calc(100% - 26px);
+        padding: 0 20px;
       }
 
-      .nav-inner {
-        padding: 0 5%;
-      }
-
-      .logo {
-        font-size: 19px;
-      }
-
-      .nav-links {
-        gap: 0;
-      }
-
-      .nav-links a:not(.nav-contact) {
+      .nav-side {
         display: none;
       }
 
-      .nav-contact {
-        font-size: 10px;
-        padding: 9px 13px;
+      .nav-logo img {
+        width: 58px;
+        height: 58px;
+      }
+
+      .mobile-menu-button {
+        display: block;
+        margin-left: auto;
       }
 
       .hero {
-        padding: 75px 6% 60px;
+        padding: 145px 6% 60px;
       }
 
       .hero h1 {
@@ -447,26 +564,53 @@
 
 <body>
 
-  <!-- NAVIGATION -->
-  <header class="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="logo">KZETRAL</a>
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
 
-      <nav class="nav-links">
-        <a href="index.html">Accueil</a>
-        <a href="eh-x.html">EH-X</a>
-        <a href="entreprise.html">Entreprise</a>
-        <a href="contact.html" class="nav-contact">Nous contacter</a>
-      </nav>
+  <header class="navbar" id="navbar">
+
+    <div class="nav-side">
+      <a href="entreprise.html" class="nav-link">Qui nous sommes</a>
     </div>
+
+    <a href="index.html" class="nav-logo" aria-label="Accueil KZETRAL">
+      <img src="images/logo-kzetral.png" alt="Logo KZETRAL">
+    </a>
+
+    <div class="nav-side right">
+      <a href="eh-x.html" class="nav-link">Notre vision</a>
+    </div>
+
+    <button class="mobile-menu-button" id="mobileMenuButton" aria-expanded="false" aria-controls="mobileDropdown">
+      MENU
+    </button>
+
+    <nav class="mobile-dropdown" id="mobileDropdown">
+      <a href="index.html">Accueil</a>
+      <a href="entreprise.html">Qui nous sommes</a>
+      <a href="eh-x.html">Notre vision</a>
+      <a href="contact.html">Nous contacter</a>
+      <a href="precommande.html">Je précommande</a>
+    </nav>
+
   </header>
 
-  <!-- HERO -->
+  <!-- =========================
+       HERO
+  ========================= -->
+
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-label">KZETRAL — Informations officielles</div>
 
-      <h1>Informations<br>juridiques.</h1>
+      <div class="hero-label">
+        KZETRAL — Informations officielles
+      </div>
+
+      <h1>
+        Informations<br>
+        juridiques.
+      </h1>
 
       <p>
         Retrouvez les informations relatives à l'utilisation du site
@@ -477,13 +621,18 @@
       <div class="hero-meta">
         Dernière mise à jour : novembre 2026
       </div>
+
     </div>
   </section>
 
-  <!-- CONTENT -->
+  <!-- =========================
+       CONTENT
+  ========================= -->
+
   <main class="layout">
 
     <aside class="sidebar">
+
       <div class="sidebar-title">ESPACE JURIDIQUE</div>
 
       <a href="#mentions">Mentions légales</a>
@@ -492,13 +641,17 @@
       <a href="#propriete">Propriété intellectuelle</a>
       <a href="#utilisation">Conditions d'utilisation</a>
       <a href="#contact-juridique">Contact juridique</a>
+
     </aside>
 
     <div class="content">
 
       <!-- 01 MENTIONS LEGALES -->
+
       <section class="legal-section" id="mentions">
+
         <div class="section-number">01 — IDENTIFICATION</div>
+
         <h2>Mentions légales</h2>
 
         <p>
@@ -514,15 +667,9 @@
           <div class="info-value">KZETRAL</div>
         </div>
 
-        <!-- À COMPLÉTER AVEC LE RESPONSABLE LÉGAL AVANT PUBLICATION -->
         <div class="info-card">
           <span class="info-label">Responsable de la publication</span>
-          <div class="info-value">[IDENTITÉ À COMPLÉTER]</div>
-          <p>
-            Les coordonnées et l'identité du responsable doivent être
-            renseignées conformément au régime juridique applicable
-            à l'éditeur du site.
-          </p>
+          <div class="info-value">Hugo CHAVALET</div>
         </div>
 
         <p>
@@ -540,33 +687,38 @@
           </a>
         </p>
 
-        <!-- À COMPLÉTER : ADRESSE ET AUTRES COORDONNÉES REQUISES
-             SELON LE STATUT JURIDIQUE ET LE RÉGIME APPLICABLE. -->
-
         <h3>Hébergement du site</h3>
 
-        <p>Le site est hébergé par le service GitHub Pages :</p>
+        <p>
+          Le site est hébergé par le service GitHub Pages.
+        </p>
 
         <div class="info-card">
+
           <span class="info-label">Hébergeur</span>
+
           <div class="info-value">GitHub, Inc.</div>
+
           <p>
             88 Colin P. Kelly Jr. Street<br>
             San Francisco, CA 94107<br>
             États-Unis
           </p>
+
           <p>
             Site officiel :
             <a href="https://pages.github.com/" target="_blank" rel="noopener">
               https://pages.github.com/
             </a>
           </p>
+
           <p>
             Assistance :
             <a href="https://support.github.com/" target="_blank" rel="noopener">
               Centre d'assistance GitHub
             </a>
           </p>
+
         </div>
 
         <h3>Statut du projet</h3>
@@ -577,11 +729,15 @@
           offre commerciale de vente d'un véhicule, ni une garantie
           de disponibilité ou de commercialisation du EH-X.
         </p>
+
       </section>
 
       <!-- 02 CONFIDENTIALITE -->
+
       <section class="legal-section" id="confidentialite">
+
         <div class="section-number">02 — DONNÉES PERSONNELLES</div>
+
         <h2>Politique de confidentialité</h2>
 
         <p>
@@ -592,11 +748,9 @@
 
         <h3>Responsable du traitement</h3>
 
-        <!-- À COMPLÉTER : IDENTITÉ ET COORDONNÉES DU RESPONSABLE
-             EFFECTIF DU TRAITEMENT. -->
         <p>
           Le responsable du traitement est :
-          <strong>[IDENTITÉ ET COORDONNÉES À CONFIRMER]</strong>.
+          <strong>Hugo CHAVALET</strong>.
         </p>
 
         <h3>Données susceptibles d'être collectées</h3>
@@ -633,8 +787,6 @@
 
         <h3>Base légale du traitement</h3>
 
-        <!-- À VALIDER : LA BASE LÉGALE DOIT ÊTRE DÉTERMINÉE
-             PAR LE RESPONSABLE DU TRAITEMENT. -->
         <p>
           La base légale applicable à chaque finalité doit être
           déterminée et indiquée par le responsable du traitement
@@ -658,12 +810,10 @@
 
         <h3>Durée de conservation</h3>
 
-        <!-- À COMPLÉTER : DÉFINIR UNE DURÉE OU DES CRITÈRES
-             DE CONSERVATION ADAPTÉS AUX FINALITÉS. -->
         <p>
           La durée de conservation des données doit être définie
           par le responsable du traitement en fonction de la finalité
-          de chaque collecte. Cette durée sera précisée ici avant
+          de chaque collecte. Cette durée doit être précisée avant
           la publication définitive de la politique.
         </p>
 
@@ -701,11 +851,15 @@
             www.cnil.fr
           </a>.
         </p>
+
       </section>
 
       <!-- 03 COOKIES -->
+
       <section class="legal-section" id="cookies">
+
         <div class="section-number">03 — TRACEURS</div>
+
         <h2>Politique relative aux cookies</h2>
 
         <p>
@@ -736,13 +890,14 @@
           ses choix dans les conditions prévues par la réglementation.
         </p>
 
-        <!-- À FINALISER APRÈS AUDIT DES SCRIPTS ET SERVICES
-             EFFECTIVEMENT CHARGÉS SUR LE SITE. -->
       </section>
 
       <!-- 04 PROPRIETE INTELLECTUELLE -->
+
       <section class="legal-section" id="propriete">
+
         <div class="section-number">04 — CONTENUS ET CRÉATIONS</div>
+
         <h2>Propriété intellectuelle</h2>
 
         <p>
@@ -787,11 +942,15 @@
           Les contenus provenant de tiers restent soumis aux droits
           et conditions d'utilisation de leurs auteurs ou titulaires.
         </p>
+
       </section>
 
       <!-- 05 CONDITIONS D'UTILISATION -->
+
       <section class="legal-section" id="utilisation">
+
         <div class="section-number">05 — NAVIGATION</div>
+
         <h2>Conditions d'utilisation</h2>
 
         <h3>Objet du site</h3>
@@ -852,11 +1011,15 @@
           Les informations et contenus du site peuvent évoluer
           au fur et à mesure du développement du projet.
         </p>
+
       </section>
 
       <!-- 06 CONTACT -->
+
       <section class="legal-section" id="contact-juridique">
+
         <div class="section-number">06 — CONTACT</div>
+
         <h2>Contact juridique</h2>
 
         <p>
@@ -866,29 +1029,41 @@
         </p>
 
         <div class="contact-card">
+
           <h3>Une question juridique ?</h3>
+
           <p>
             Pour toute demande concernant le site ou les informations
             présentées dans cet espace :
           </p>
+
           <p>
             <a href="mailto:kzetral.contact@protonmail.com">
               kzetral.contact@protonmail.com
             </a>
           </p>
+
         </div>
+
       </section>
 
     </div>
+
   </main>
 
-  <!-- FOOTER -->
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
   <footer class="footer">
+
     <div class="footer-inner">
 
       <div class="footer-top">
+
         <div>
           <div class="footer-logo">KZETRAL</div>
+
           <p class="footer-description">
             Imaginer une nouvelle approche de la mobilité électrique.
             Un projet automobile en cours de développement.
@@ -900,18 +1075,101 @@
           <a href="eh-x.html">EH-X</a>
           <a href="entreprise.html">Entreprise</a>
           <a href="contact.html">Contact</a>
-          <a href="precommande.html">Manifestation d'intérêt</a>
-          <a href="legal.html">Informations légales</a>
+          <a href="precommande.html">Je précommande</a>
+          <a href="mentions-legales.html">Informations légales</a>
         </div>
+
       </div>
 
       <div class="footer-bottom">
-        <span>© 2026 KZETRAL — Tous droits réservés</span>
-        <span>Penser à covoiturer #SeDéplacerMoinsPolluer</span>
+
+        <span>Kzetral © 2026</span>
+
+        <span>
+          Penser à covoiturer #SeDéplacerMoinsPolluer
+        </span>
+
       </div>
 
     </div>
+
   </footer>
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    // NAVBAR AU DÉFILEMENT
+
+    const navbar = document.getElementById("navbar");
+
+    function updateNavbar() {
+      if (window.scrollY > 35) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    }
+
+    window.addEventListener("scroll", updateNavbar);
+    updateNavbar();
+
+
+    // MENU MOBILE
+
+    const mobileMenuButton = document.getElementById("mobileMenuButton");
+    const mobileDropdown = document.getElementById("mobileDropdown");
+
+    mobileMenuButton.addEventListener("click", function() {
+
+      const isOpen = mobileDropdown.classList.toggle("open");
+
+      mobileMenuButton.setAttribute("aria-expanded", isOpen);
+
+      mobileMenuButton.textContent = isOpen ? "FERMER" : "MENU";
+
+    });
+
+
+    // FERMETURE DU MENU APRÈS NAVIGATION
+
+    mobileDropdown.querySelectorAll("a").forEach(link => {
+
+      link.addEventListener("click", function() {
+
+        mobileDropdown.classList.remove("open");
+
+        mobileMenuButton.textContent = "MENU";
+
+        mobileMenuButton.setAttribute("aria-expanded", "false");
+
+      });
+
+    });
+
+
+    // FERMETURE EN CLIQUANT À L'EXTÉRIEUR
+
+    document.addEventListener("click", function(event) {
+
+      if (
+        !navbar.contains(event.target) &&
+        mobileDropdown.classList.contains("open")
+      ) {
+
+        mobileDropdown.classList.remove("open");
+
+        mobileMenuButton.textContent = "MENU";
+
+        mobileMenuButton.setAttribute("aria-expanded", "false");
+
+      }
+
+    });
+
+  </script>
 
 </body>
 </html>
