@@ -410,6 +410,104 @@ a {
   box-shadow: 0 0 0 3px rgba(142,188,233,.13);
 }
 
+/* PROFILS EH-X */
+
+.profile-section {
+  margin-bottom: 28px;
+}
+
+.profile-title {
+  display: block;
+  margin-bottom: 8px;
+  color: #303b49;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.profile-description {
+  margin-bottom: 16px;
+  color: #87919e;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.profile-option {
+  position: relative;
+  min-height: 112px;
+  padding: 17px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid rgba(16,23,34,.13);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--black);
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+  transition: .25s ease;
+}
+
+.profile-option:hover {
+  border-color: #8ebce9;
+  background: #f9fbfd;
+  transform: translateY(-2px);
+}
+
+.profile-option.selected {
+  border: 1.5px solid #7da8d2;
+  background: #f2f7fc;
+  box-shadow: 0 0 0 3px rgba(142,188,233,.12);
+}
+
+.profile-option svg {
+  width: 24px;
+  height: 24px;
+  stroke: #648bb2;
+  stroke-width: 1.6;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.profile-option strong {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.profile-option small {
+  display: block;
+  margin-top: 5px;
+  color: #87919e;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.profile-option:focus-visible {
+  outline: 3px solid rgba(142,188,233,.35);
+  outline-offset: 3px;
+}
+
+@media (max-width: 430px) {
+  .profile-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+  }
+
+  .profile-option {
+    min-height: 105px;
+    padding: 13px 11px;
+  }
+}
+
 /* TÉLÉPHONE INTERNATIONAL */
 
 .phone-wrapper {
@@ -959,12 +1057,101 @@ footer {
 
         <form id="interestForm">
 
+          <!-- CHOIX DU PROFIL -->
+
+          <div class="profile-section">
+
+            <label class="profile-title">
+              QUEL EST VOTRE PROFIL ?
+              <span class="required">*</span>
+            </label>
+
+            <p class="profile-description">
+              Sélectionnez le profil qui correspond le mieux à votre situation.
+            </p>
+
+            <div class="profile-grid" id="profileGrid">
+
+              <button
+                type="button"
+                class="profile-option"
+                data-profile="Jeune"
+                aria-pressed="false"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 19h16M6 19V8l6-4 6 4v11M9 19v-5h6v5"/>
+                </svg>
+
+                <span>
+                  <strong>Jeune</strong>
+                  <small>Profil individuel</small>
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="profile-option"
+                data-profile="Adulte"
+                aria-pressed="false"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="7" r="3.5"/>
+                  <path d="M5 21v-2a7 7 0 0 1 14 0v2M8 21h8"/>
+                </svg>
+
+                <span>
+                  <strong>Adulte</strong>
+                  <small>Profil individuel</small>
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="profile-option"
+                data-profile="Famille"
+                aria-pressed="false"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="9" cy="7" r="3"/>
+                  <circle cx="17" cy="9" r="2.5"/>
+                  <path d="M3 20v-2a6 6 0 0 1 12 0v2M15 15a5 5 0 0 1 6 5"/>
+                </svg>
+
+                <span>
+                  <strong>Famille</strong>
+                  <small>Usage familial</small>
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="profile-option"
+                data-profile="Personne âgée"
+                aria-pressed="false"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="10" cy="5" r="2.5"/>
+                  <path d="M10 8v6l-3 3M10 11l4 2 2 6M7 17l-2 4M17 12v9"/>
+                </svg>
+
+                <span>
+                  <strong>Personne âgée</strong>
+                  <small>Confort et accessibilité</small>
+                </span>
+              </button>
+
+            </div>
+          </div>
+
+          <!-- COORDONNÉES -->
+
           <div class="form-grid">
 
             <div class="field">
               <label for="firstName">
                 PRÉNOM<span class="required">*</span>
               </label>
+
               <input
                 type="text"
                 id="firstName"
@@ -980,6 +1167,7 @@ footer {
               <label for="lastName">
                 NOM<span class="required">*</span>
               </label>
+
               <input
                 type="text"
                 id="lastName"
@@ -995,6 +1183,7 @@ footer {
               <label for="email">
                 ADRESSE E-MAIL<span class="required">*</span>
               </label>
+
               <input
                 type="email"
                 id="email"
@@ -1025,9 +1214,12 @@ footer {
 
           </div>
 
+          <!-- CONSENTEMENT -->
+
           <div class="consent-area">
 
             <label class="consent-line">
+
               <input
                 type="checkbox"
                 id="consent"
@@ -1042,6 +1234,7 @@ footer {
                 EH-X. Je comprends que je peux retirer mon
                 consentement à tout moment.
               </span>
+
             </label>
 
           </div>
@@ -1056,7 +1249,12 @@ footer {
             et ne garantit pas une livraison.
           </p>
 
-          <div class="form-message" id="formMessage" role="status" aria-live="polite"></div>
+          <div
+            class="form-message"
+            id="formMessage"
+            role="status"
+            aria-live="polite"
+          ></div>
 
         </form>
 
@@ -1118,6 +1316,7 @@ footer {
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/intlTelInput.min.js"></script>
 
 <script>
+
 /* CONFIGURATION SUPABASE */
 
 const SUPABASE_URL = "https://kedjogffzgwbipgbmdst.supabase.co";
@@ -1182,13 +1381,43 @@ const phoneControl = window.intlTelInput(phoneInput, {
 });
 
 
-/* AFFICHAGE DES MESSAGES */
+/* FORMULAIRE */
 
 const form = document.getElementById("interestForm");
 const formMessage = document.getElementById("formMessage");
 const submitButton = document.getElementById("submitButton");
 
+
+/* SÉLECTION DU PROFIL EH-X */
+
+let selectedProfile = "";
+
+const profileOptions = document.querySelectorAll(".profile-option");
+
+profileOptions.forEach(option => {
+
+  option.addEventListener("click", () => {
+
+    profileOptions.forEach(item => {
+      item.classList.remove("selected");
+      item.setAttribute("aria-pressed", "false");
+    });
+
+    option.classList.add("selected");
+    option.setAttribute("aria-pressed", "true");
+
+    selectedProfile = option.dataset.profile;
+
+    hideMessage();
+  });
+
+});
+
+
+/* AFFICHAGE DES MESSAGES */
+
 function showMessage(message, type) {
+
   formMessage.textContent = message;
   formMessage.className = "form-message " + type;
   formMessage.style.display = "block";
@@ -1197,97 +1426,196 @@ function showMessage(message, type) {
     behavior: "smooth",
     block: "nearest"
   });
+
 }
 
 function hideMessage() {
+
   formMessage.textContent = "";
   formMessage.className = "form-message";
   formMessage.style.display = "none";
+
 }
 
 
 /* ENVOI DU FORMULAIRE À SUPABASE */
 
 form.addEventListener("submit", async event => {
+
   event.preventDefault();
+
   hideMessage();
+
+
+  /* Vérification des champs */
 
   if (!form.checkValidity()) {
     form.reportValidity();
     return;
   }
 
+
+  /* Vérification du profil */
+
+  if (!selectedProfile) {
+
+    showMessage(
+      "Veuillez sélectionner votre profil avant de continuer.",
+      "error"
+    );
+
+    document.getElementById("profileGrid").scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+    return;
+  }
+
+
+  /* Vérification du téléphone */
+
   if (!phoneControl.isValidNumber()) {
+
     phoneInput.setCustomValidity(
       "Veuillez saisir un numéro de téléphone valide pour le pays sélectionné."
     );
+
     phoneInput.reportValidity();
     phoneInput.setCustomValidity("");
+
     return;
   }
+
+
+  /* Vérification de la configuration */
 
   if (
     SUPABASE_PUBLIC_KEY ===
     "REMPLACE_PAR_TA_CLE_PUBLIQUE_SUPABASE"
   ) {
+
     showMessage(
       "La configuration du formulaire n'est pas terminée. La clé publique Supabase doit être renseignée.",
       "error"
     );
+
     return;
   }
+
 
   submitButton.disabled = true;
   submitButton.textContent = "Enregistrement en cours...";
 
+
   try {
+
     await phoneControl.promise;
 
     const selectedCountry = phoneControl.getSelectedCountryData();
 
+
+    /* DONNÉES ENVOYÉES À SUPABASE */
+
     const payload = {
-      first_name: document.getElementById("firstName").value.trim(),
-      last_name: document.getElementById("lastName").value.trim(),
-      email: document.getElementById("email").value.trim().toLowerCase(),
-      phone_e164: phoneControl.getNumber(),
-      country_iso2: selectedCountry.iso2.toUpperCase(),
-      country_name: selectedCountry.name,
+
+      first_name:
+        document.getElementById("firstName").value.trim(),
+
+      last_name:
+        document.getElementById("lastName").value.trim(),
+
+      email:
+        document.getElementById("email").value.trim().toLowerCase(),
+
+      phone_e164:
+        phoneControl.getNumber(),
+
+      country_iso2:
+        selectedCountry.iso2.toUpperCase(),
+
+      country_name:
+        selectedCountry.name,
+
+      profile_category:
+        selectedProfile,
+
       privacy_notice_acknowledged:
         document.getElementById("consent").checked
+
     };
 
+
+    /* REQUÊTE SUPABASE */
+
     const response = await fetch(SUPABASE_FUNCTION_URL, {
+
       method: "POST",
+
       headers: {
         "Content-Type": "application/json",
         "apikey": SUPABASE_PUBLIC_KEY
       },
+
       body: JSON.stringify(payload)
+
     });
+
+
+    /* RÉPONSE DU SERVEUR */
 
     let result = {};
 
     try {
+
       result = await response.json();
+
     } catch {
-      throw new Error("Le serveur a renvoyé une réponse inattendue.");
+
+      throw new Error(
+        "Le serveur a renvoyé une réponse inattendue."
+      );
+
     }
 
+
     if (!response.ok || result.success !== true) {
+
       throw new Error(
-        result.error || "Impossible d'enregistrer votre demande."
+        result.error ||
+        "Impossible d'enregistrer votre demande."
       );
+
     }
+
+
+    /* SUCCÈS */
 
     showMessage(
       "Votre manifestation d'intérêt a bien été enregistrée. Merci pour votre intérêt envers le programme EH-X. KZETRAL pourra vous contacter au sujet de son développement.",
       "success"
     );
 
+
+    /* RÉINITIALISATION */
+
     form.reset();
+
+    selectedProfile = "";
+
+    profileOptions.forEach(option => {
+
+      option.classList.remove("selected");
+
+      option.setAttribute("aria-pressed", "false");
+
+    });
+
     phoneControl.setCountry("fr");
 
+
   } catch (error) {
+
     console.error("Erreur du formulaire :", error);
 
     showMessage(
@@ -1296,11 +1624,18 @@ form.addEventListener("submit", async event => {
       "error"
     );
 
+
   } finally {
+
     submitButton.disabled = false;
-    submitButton.textContent = "Valider ma manifestation d'intérêt";
+
+    submitButton.textContent =
+      "Valider ma manifestation d'intérêt";
+
   }
+
 });
+
 </script>
 
 </body>
